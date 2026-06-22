@@ -3,6 +3,15 @@ import { prisma } from '@/lib/prisma'
 
 export const dynamic = 'force-dynamic'
 
+const SKILL_NAMES: Record<string, string> = {
+  LISTENING: 'Menyimak',
+  READING: 'Membaca',
+  SPEAKING: 'Berbicara',
+  WRITING: 'Menulis',
+  MEDIATION: 'Mediasi',
+  INTEGRATED: 'Tugas Terintegrasi',
+}
+
 export async function GET() {
   try {
     const levels = [
@@ -15,12 +24,12 @@ export async function GET() {
     ]
 
     const skills = [
-      { code: 'LISTENING', name: 'Menyimak', icon: '👂' },
-      { code: 'READING', name: 'Membaca', icon: '📖' },
-      { code: 'SPEAKING', name: 'Berbicara', icon: '🎤' },
-      { code: 'WRITING', name: 'Menulis', icon: '✍️' },
-      { code: 'MEDIATION', name: 'Mediasi', icon: '🔄' },
-      { code: 'INTEGRATED', name: 'Tugas Terintegrasi', icon: '🧩' },
+      { code: 'LISTENING', name: 'Menyimak' },
+      { code: 'READING', name: 'Membaca' },
+      { code: 'SPEAKING', name: 'Berbicara' },
+      { code: 'WRITING', name: 'Menulis' },
+      { code: 'MEDIATION', name: 'Mediasi' },
+      { code: 'INTEGRATED', name: 'Tugas Terintegrasi' },
     ]
 
     const levelsWithDescriptors = await Promise.all(

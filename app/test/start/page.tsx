@@ -3,17 +3,18 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import Navbar from '@/components/landing/Navbar'
 import Footer from '@/components/landing/Footer'
+import { Headphones, BookOpen, Mic, PenSquare, RefreshCw, Puzzle, Settings, Sparkles, Sliders } from 'lucide-react'
 
 const DIMENSIONS = [
-  { code: 'LISTENING', name: 'Menyimak', icon: '👂' },
-  { code: 'READING', name: 'Membaca', icon: '📖' },
-  { code: 'SPEAKING', name: 'Berbicara', icon: '🎤' },
-  { code: 'WRITING', name: 'Menulis', icon: '✍️' },
-  { code: 'MEDIATION', name: 'Mediasi', icon: '🔄' },
-  { code: 'INTEGRATED', name: 'Tugas Terintegrasi', icon: '🧩' },
+  { code: 'LISTENING', name: 'Menyimak', icon: Headphones, color: '#378ADD' },
+  { code: 'READING', name: 'Membaca', icon: BookOpen, color: '#10B981' },
+  { code: 'SPEAKING', name: 'Berbicara', icon: Mic, color: '#F59E0B' },
+  { code: 'WRITING', name: 'Menulis', icon: PenSquare, color: '#8B5CF6' },
+  { code: 'MEDIATION', name: 'Mediasi', icon: RefreshCw, color: '#EC4899' },
+  { code: 'INTEGRATED', name: 'Tugas Terintegrasi', icon: Puzzle, color: '#06B6D4' },
 ]
 
 const LEVELS = [
@@ -34,15 +35,13 @@ export default function TestStartPage() {
 
   const toggleDimension = (code: string) => {
     setSelectedDimensions(prev =>
-      prev.includes(code)
-        ? prev.filter(d => d !== code)
-        : [...prev, code]
+      prev.includes(code) ? prev.filter(d => d !== code) : [...prev, code]
     )
   }
 
   const handleStartTest = async () => {
     if (selectedDimensions.length === 0) {
-      alert('Please select at least one dimension')
+      alert('Pilih minimal satu dimensi')
       return
     }
 
@@ -61,7 +60,7 @@ export default function TestStartPage() {
 
       if (!res.ok) {
         const data = await res.json()
-        throw new Error(data.error || 'Failed to start test')
+        throw new Error(data.error || 'Gagal memulai tes')
       }
 
       const data = await res.json()
@@ -77,45 +76,66 @@ export default function TestStartPage() {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-[#F8F6F1] pt-24 pb-16">
+      <div className="min-h-screen bg-[#F8FAFC] pt-24 pb-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h1 className="font-playfair text-4xl md:text-5xl font-bold text-[#0B1F3A] mb-4">
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center gap-2 bg-[#0B3D91]/10 text-[#0B3D91] text-xs font-medium tracking-wider px-4 py-1.5 rounded-full uppercase mb-4">
+                <Sparkles className="w-3.5 h-3.5" />
+                Konfigurasi Tes
+              </div>
+              <h1 className="font-[family-name:var(--font-playfair)] text-3xl md:text-4xl font-bold text-[#0B3D91] mb-2">
                 Practice Test
               </h1>
-              <p className="text-lg text-gray-600">
-                Configure your test preferences and start practicing
+              <p className="text-muted-foreground">
+                Sesuaikan preferensi tes dan mulai latihan
               </p>
             </div>
 
-            <Card className="mb-6">
+            <Card className="border-0 premium-shadow-md rounded-2xl mb-6">
               <CardHeader>
-                <CardTitle>Select Dimensions</CardTitle>
+                <CardTitle className="text-base flex items-center gap-2">
+                  <Sliders className="w-4 h-4 text-[#0B3D91]" />
+                  Pilih Dimensi
+                </CardTitle>
+                <CardDescription className="text-xs">Pilih satu atau lebih dimensi yang ingin diuji</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                  {DIMENSIONS.map(dim => (
-                    <button
-                      key={dim.code}
-                      onClick={() => toggleDimension(dim.code)}
-                      className={`p-4 rounded-lg border-2 transition-all ${
-                        selectedDimensions.includes(dim.code)
-                          ? 'border-[#C8102E] bg-[#C8102E]/5'
-                          : 'border-gray-200 hover:border-gray-300'
-                      }`}
-                    >
-                      <div className="text-3xl mb-2">{dim.icon}</div>
-                      <div className="text-sm font-semibold text-[#0B1F3A]">{dim.name}</div>
-                    </button>
-                  ))}
+                  {DIMENSIONS.map(dim => {
+                    const Icon = dim.icon
+                    const isSelected = selectedDimensions.includes(dim.code)
+                    return (
+                      <button
+                        key={dim.code}
+                        onClick={() => toggleDimension(dim.code)}
+                        className={`p-5 rounded-2xl border-2 transition-all ${
+                          isSelected
+                            ? 'border-[#0B3D91] bg-[#0B3D91]/5'
+                            : 'border-gray-100 hover:border-gray-300 bg-white'
+                        }`}
+                      >
+                        <div className={`w-10 h-10 rounded-xl flex items-center justify-center mx-auto mb-2`}
+                          style={{ backgroundColor: isSelected ? dim.color + '20' : '#F8FAFC' }}>
+                          <Icon className="w-5 h-5" style={{ color: dim.color }} />
+                        </div>
+                        <div className={`text-xs font-semibold ${isSelected ? 'text-[#0B3D91]' : 'text-muted-foreground'}`}>
+                          {dim.name}
+                        </div>
+                      </button>
+                    )
+                  })}
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="mb-6">
+            <Card className="border-0 premium-shadow-md rounded-2xl mb-6">
               <CardHeader>
-                <CardTitle>Select Level (Optional)</CardTitle>
+                <CardTitle className="text-base flex items-center gap-2">
+                  <Settings className="w-4 h-4 text-[#0B3D91]" />
+                  Pilih Level (Opsional)
+                </CardTitle>
+                <CardDescription className="text-xs">Kosongkan untuk menyertakan semua level</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-3 md:grid-cols-6 gap-2">
@@ -123,26 +143,31 @@ export default function TestStartPage() {
                     <button
                       key={level.code}
                       onClick={() => setSelectedLevel(selectedLevel === level.code ? '' : level.code)}
-                      className={`p-3 rounded-lg border-2 transition-all ${
+                      className={`p-4 rounded-xl border-2 transition-all ${
                         selectedLevel === level.code
-                          ? 'border-[#C8102E] bg-[#C8102E]/5'
-                          : 'border-gray-200 hover:border-gray-300'
+                          ? 'border-[#0B3D91] bg-[#0B3D91]/5'
+                          : 'border-gray-100 hover:border-gray-300 bg-white'
                       }`}
                     >
-                      <div className="text-lg font-bold text-[#0B1F3A]">{level.code}</div>
-                      <div className="text-xs text-gray-600">{level.name}</div>
+                      <div className={`text-base font-bold ${selectedLevel === level.code ? 'text-[#0B3D91]' : 'text-muted-foreground'}`}>
+                        {level.code}
+                      </div>
+                      <div className={`text-[10px] ${selectedLevel === level.code ? 'text-[#0B3D91]' : 'text-muted-foreground'}`}>
+                        {level.name}
+                      </div>
                     </button>
                   ))}
                 </div>
-                <p className="text-xs text-gray-500 mt-2">
-                  Leave empty to include all levels
-                </p>
               </CardContent>
             </Card>
 
-            <Card className="mb-6">
+            <Card className="border-0 premium-shadow-md rounded-2xl mb-6">
               <CardHeader>
-                <CardTitle>Number of Questions</CardTitle>
+                <CardTitle className="text-base flex items-center gap-2">
+                  <Sliders className="w-4 h-4 text-[#0B3D91]" />
+                  Jumlah Soal
+                </CardTitle>
+                <CardDescription className="text-xs">Sesuaikan panjang tes</CardDescription>
               </CardHeader>
               <CardContent>
                 <input
@@ -152,12 +177,12 @@ export default function TestStartPage() {
                   step="5"
                   value={questionCount}
                   onChange={(e) => setQuestionCount(parseInt(e.target.value))}
-                  className="w-full"
+                  className="w-full accent-[#0B3D91]"
                 />
-                <div className="flex justify-between text-sm text-gray-600 mt-2">
-                  <span>5 questions</span>
-                  <span className="font-semibold text-[#0B1F3A]">{questionCount} questions</span>
-                  <span>50 questions</span>
+                <div className="flex justify-between text-sm text-muted-foreground mt-2">
+                  <span>5 soal</span>
+                  <span className="font-semibold text-[#0B3D91]">{questionCount} soal</span>
+                  <span>50 soal</span>
                 </div>
               </CardContent>
             </Card>
@@ -166,9 +191,9 @@ export default function TestStartPage() {
               <Button
                 onClick={handleStartTest}
                 disabled={loading || selectedDimensions.length === 0}
-                className="flex-1 bg-[#C8102E] hover:bg-red-800 text-white py-6 text-lg"
+                className="flex-1 bg-[#0B3D91] hover:bg-[#0B3D91]/90 text-white py-6 text-lg rounded-xl"
               >
-                {loading ? 'Starting Test...' : 'Start Practice Test'}
+                {loading ? 'Memulai Tes...' : 'Mulai Practice Test'}
               </Button>
             </div>
           </div>

@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import Navbar from '@/components/landing/Navbar'
 import Footer from '@/components/landing/Footer'
+import { BarChart3, Headphones, BookOpen, Mic, PenSquare, RefreshCw, Puzzle, Award, Sparkles } from 'lucide-react'
 
 interface TestResult {
   id: string
@@ -22,12 +23,12 @@ interface TestResult {
 }
 
 const DIMENSIONS = [
-  { code: 'LISTENING', name: 'Menyimak', icon: '👂', color: '#378ADD' },
-  { code: 'READING', name: 'Membaca', icon: '📖', color: '#10B981' },
-  { code: 'SPEAKING', name: 'Berbicara', icon: '🎤', color: '#F59E0B' },
-  { code: 'WRITING', name: 'Menulis', icon: '✍️', color: '#8B5CF6' },
-  { code: 'MEDIATION', name: 'Mediasi', icon: '🔄', color: '#EC4899' },
-  { code: 'INTEGRATED', name: 'Tugas Terintegrasi', icon: '🧩', color: '#06B6D4' },
+  { code: 'LISTENING', name: 'Menyimak', icon: Headphones, color: '#378ADD' },
+  { code: 'READING', name: 'Membaca', icon: BookOpen, color: '#10B981' },
+  { code: 'SPEAKING', name: 'Berbicara', icon: Mic, color: '#F59E0B' },
+  { code: 'WRITING', name: 'Menulis', icon: PenSquare, color: '#8B5CF6' },
+  { code: 'MEDIATION', name: 'Mediasi', icon: RefreshCw, color: '#EC4899' },
+  { code: 'INTEGRATED', name: 'Tugas Terintegrasi', icon: Puzzle, color: '#06B6D4' },
 ]
 
 export default function TestResultsPage() {
@@ -43,8 +44,9 @@ export default function TestResultsPage() {
   const fetchResults = async () => {
     try {
       const res = await fetch(`/api/test/results/${sessionId}`)
+      if (!res.ok) throw new Error('Failed to fetch results')
       const data = await res.json()
-      setResult(data.result)
+      setResult(data)
     } catch (err) {
       console.error('Error fetching results:', err)
     } finally {
@@ -54,146 +56,119 @@ export default function TestResultsPage() {
 
   if (loading) {
     return (
-      <>
+      <div className="min-h-screen bg-[#F8FAFC]">
         <Navbar />
-        <div className="min-h-screen bg-[#F8F6F1] flex items-center justify-center">
-          <div className="text-center">
-            <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-[#C8102E]"></div>
-            <p className="mt-4 text-gray-600">Loading results...</p>
+        <div className="pt-24 pb-16 px-6">
+          <div className="max-w-4xl mx-auto animate-pulse space-y-6">
+            <div className="h-8 w-64 bg-gray-200 rounded-lg" />
+            <div className="h-48 bg-gray-200 rounded-2xl" />
           </div>
         </div>
         <Footer />
-      </>
+      </div>
     )
   }
 
   if (!result) {
     return (
-      <>
+      <div className="min-h-screen bg-[#F8FAFC]">
         <Navbar />
-        <div className="min-h-screen bg-[#F8F6F1] flex items-center justify-center">
-          <p className="text-gray-600">Results not found</p>
+        <div className="pt-24 pb-16 px-6 text-center">
+          <Award className="w-16 h-16 text-muted-foreground/30 mx-auto mb-4" />
+          <p className="text-muted-foreground">Hasil tes tidak ditemukan.</p>
         </div>
         <Footer />
-      </>
+      </div>
     )
   }
 
-  const getScoreColor = (score: number) => {
-    if (score >= 80) return 'text-green-600'
-    if (score >= 60) return 'text-blue-600'
-    if (score >= 40) return 'text-yellow-600'
-    return 'text-red-600'
-  }
-
   return (
-    <>
+    <div className="min-h-screen bg-[#F8FAFC]">
       <Navbar />
-      <div className="min-h-screen bg-[#F8F6F1] pt-24 pb-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h1 className="font-playfair text-4xl md:text-5xl font-bold text-[#0B1F3A] mb-4">
-                Test Results
-              </h1>
-              <p className="text-lg text-gray-600">
-                Your diagnostic report and recommendations
-              </p>
+      <div className="pt-24 pb-16 px-6">
+        <div className="max-w-4xl mx-auto space-y-8">
+          <div className="text-center">
+            <div className="inline-flex items-center gap-2 bg-[#0B3D91]/10 text-[#0B3D91] text-xs font-medium tracking-wider px-4 py-1.5 rounded-full uppercase mb-4">
+              <BarChart3 className="w-3.5 h-3.5" />
+              Hasil Tes BIGT
             </div>
+            <h1 className="font-[family-name:var(--font-playfair)] text-3xl md:text-4xl font-bold text-[#0B3D91] mb-2">
+              Hasil Assessment Anda
+            </h1>
+            <p className="text-muted-foreground">
+              {new Date(result.createdAt).toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+            </p>
+          </div>
 
-            <Card className="mb-6">
+          <Card className="border-0 premium-shadow-lg rounded-2xl overflow-hidden">
+            <div className="bg-gradient-to-r from-[#0B3D91] to-[#1a4a8a] px-8 py-10 text-center">
+              <Badge className="bg-[#D4AF37] text-white border-0 text-lg px-6 py-2 mb-3">
+                {result.overallLevel}
+              </Badge>
+              <h2 className="font-[family-name:var(--font-playfair)] text-2xl font-bold text-white">
+                Skor Keseluruhan: {result.overallScore.toFixed(1)}%
+              </h2>
+            </div>
+          </Card>
+
+          <Card className="border-0 premium-shadow-md rounded-2xl">
+            <CardHeader>
+              <CardTitle className="text-base flex items-center gap-2">
+                <BarChart3 className="w-4 h-4 text-[#0B3D91]" />
+                Skor per Dimensi
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {DIMENSIONS.map((dim) => {
+                  const Icon = dim.icon
+                  const scoreKey = dim.code.toLowerCase() + 'Score' as keyof typeof result
+                  const score = result[scoreKey as keyof TestResult] as number
+
+                  return (
+                    <div key={dim.code} className="flex items-center gap-4 p-4 rounded-xl bg-[#F8FAFC] border border-gray-100">
+                      <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ backgroundColor: dim.color + '15' }}>
+                        <Icon className="w-5 h-5" style={{ color: dim.color }} />
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-sm font-medium text-[#0B3D91]">{dim.name}</p>
+                        <div className="w-full bg-gray-200 rounded-full h-1.5 mt-1">
+                          <div className="h-1.5 rounded-full transition-all duration-500" style={{ width: `${score}%`, backgroundColor: dim.color }} />
+                        </div>
+                      </div>
+                      <span className="text-sm font-bold text-[#0B3D91]">{score}%</span>
+                    </div>
+                  )
+                })}
+              </div>
+            </CardContent>
+          </Card>
+
+          {result.recommendations && result.recommendations.length > 0 && (
+            <Card className="border-0 premium-shadow-md rounded-2xl">
               <CardHeader>
-                <CardTitle className="text-center">Overall Performance</CardTitle>
+                <CardTitle className="text-base flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-[#D4AF37]" />
+                  Rekomendasi Belajar
+                </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="text-center mb-6">
-                  <div className="inline-block px-8 py-4 bg-[#C8102E] rounded-xl mb-4">
-                    <div className="text-5xl font-bold text-white mb-2">{result.overallLevel}</div>
-                    <div className="text-white/80 text-sm">CEFR Level</div>
-                  </div>
-                  <div className="text-3xl font-bold text-[#0B1F3A]">
-                    {result.overallScore.toFixed(1)}%
-                  </div>
-                  <p className="text-gray-600 mt-2">Overall Score</p>
-                </div>
+                <ul className="space-y-3">
+                  {result.recommendations.map((rec: any, i: number) => (
+                    <li key={i} className="flex items-start gap-3 p-3 rounded-xl bg-[#F8FAFC]">
+                      <div className="w-6 h-6 rounded-full bg-[#0B3D91]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <span className="text-[10px] font-bold text-[#0B3D91]">{i + 1}</span>
+                      </div>
+                      <p className="text-sm text-muted-foreground">{typeof rec === 'string' ? rec : rec.description}</p>
+                    </li>
+                  ))}
+                </ul>
               </CardContent>
             </Card>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-              {DIMENSIONS.map(dim => {
-                const scoreKey = `${dim.code.toLowerCase()}Score` as keyof TestResult
-                const score = result[scoreKey] as number
-
-                return (
-                  <Card key={dim.code}>
-                    <CardContent className="pt-6">
-                      <div className="flex items-center gap-3 mb-4">
-                        <span className="text-3xl">{dim.icon}</span>
-                        <div>
-                          <div className="font-semibold text-[#0B1F3A]">{dim.name}</div>
-                          <div className="text-xs text-gray-500">{dim.code}</div>
-                        </div>
-                      </div>
-                      <div className={`text-3xl font-bold ${getScoreColor(score)}`}>
-                        {score.toFixed(1)}%
-                      </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2 mt-3">
-                        <div
-                          className="h-2 rounded-full transition-all"
-                          style={{
-                            width: `${score}%`,
-                            backgroundColor: dim.color,
-                          }}
-                        ></div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                )
-              })}
-            </div>
-
-            {result.recommendations && result.recommendations.length > 0 && (
-              <Card className="mb-6">
-                <CardHeader>
-                  <CardTitle>Recommendations</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3">
-                    {result.recommendations.map((rec: any, i: number) => (
-                      <div key={i} className="p-4 bg-[#F8F6F1] rounded-lg">
-                        <div className="flex items-start gap-3">
-                          <Badge variant="outline" className="shrink-0">
-                            {rec.dimension}
-                          </Badge>
-                          <div>
-                            <div className="font-semibold text-[#0B1F3A] mb-1">
-                              Score: {rec.score.toFixed(1)}%
-                            </div>
-                            <p className="text-sm text-gray-600">{rec.suggestion}</p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            )}
-
-            <div className="text-center">
-              <p className="text-sm text-gray-500">
-                Test completed on {new Date(result.createdAt).toLocaleDateString('id-ID', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                  hour: '2-digit',
-                  minute: '2-digit',
-                })}
-              </p>
-            </div>
-          </div>
+          )}
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   )
 }
