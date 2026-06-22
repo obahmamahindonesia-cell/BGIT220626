@@ -5,6 +5,8 @@ import { prisma } from '@/lib/prisma'
 import { scoreWriting, scoreSpeaking } from '@/lib/ai-scorer'
 import { createCertificate } from '@/lib/certificate'
 
+export const dynamic = 'force-dynamic'
+
 export async function POST(request: NextRequest) {
   const cookieStore = cookies()
   
