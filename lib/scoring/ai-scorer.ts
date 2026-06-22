@@ -1,4 +1,4 @@
-import { openai } from '@/lib/openai'
+import { getOpenAI } from '@/lib/openai'
 import { AIScoreResult, QuestionRubric } from '@/types'
 
 const SCORING_SYSTEM_PROMPT = `
@@ -28,7 +28,7 @@ ${response}
 ${rubric ? `Rubrik Penilaian: ${JSON.stringify(rubric)}` : ''}
 `
 
-  const completion = await openai.chat.completions.create({
+  const completion = await getOpenAI().chat.completions.create({
     model: 'gpt-4o',
     messages: [
       { role: 'system', content: SCORING_SYSTEM_PROMPT },
