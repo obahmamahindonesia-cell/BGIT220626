@@ -8,7 +8,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import Link from 'next/link'
 import { toast } from 'sonner'
-import { Globe, Sparkles, ShieldCheck, BarChart3, ArrowRight } from 'lucide-react'
+import { Globe, Sparkles, ShieldCheck, BarChart3 } from 'lucide-react'
 
 function LoginForm() {
   const [email, setEmail] = useState('')
@@ -22,15 +22,8 @@ function LoginForm() {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
-
     const { error } = await supabase.auth.signInWithPassword({ email, password })
-
-    if (error) {
-      toast.error(error.message)
-      setLoading(false)
-      return
-    }
-
+    if (error) { toast.error(error.message); setLoading(false); return }
     toast.success('Login berhasil!')
     router.push(redirectTo)
     router.refresh()
@@ -42,73 +35,61 @@ function LoginForm() {
       provider: 'google',
       options: { redirectTo: `${window.location.origin}/auth/callback` },
     })
-
-    if (error) {
-      toast.error(error.message)
-      setLoading(false)
-    }
+    if (error) { toast.error(error.message); setLoading(false) }
   }
 
   return (
-    <div className="min-h-screen flex bg-[#F8FAFC]">
-      <div className="hidden lg:flex w-1/2 bg-gradient-to-br from-[#0B3D91] via-[#0B3D91] to-[#1a4a8a] p-12 flex-col justify-between relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
+    <div className="min-h-screen flex bg-[#F7F9FC]">
+      <div className="hidden lg:flex w-1/2 bg-gradient-to-br from-[#0B1F3A] via-[#0B1F3A] to-[#123E7C] p-12 flex-col justify-between relative overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.04]">
           <div className="absolute top-20 left-20 w-72 h-72 border border-white/20 rounded-full" />
           <div className="absolute bottom-20 right-20 w-96 h-96 border border-white/10 rounded-full" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] border border-white/5 rounded-full" />
         </div>
-
         <div>
-          <Link href="/" className="inline-block bg-white/10 backdrop-blur-sm rounded-xl p-3 border border-white/20">
-            <span className="font-[family-name:var(--font-playfair)] text-2xl font-bold text-white">
-              BIGT
-            </span>
+          <Link href="/" className="inline-block bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/10">
+            <span className="font-[family-name:var(--font-playfair)] text-2xl font-bold text-white">BIGT</span>
           </Link>
         </div>
-
         <div className="relative z-10">
           <h1 className="font-[family-name:var(--font-playfair)] text-4xl font-bold text-white mb-4 leading-tight">
-            Standar Kemahiran<br />
-            Bahasa Indonesia<br />
-            <span className="text-[#D4AF37]">untuk Dunia</span>
+            Standar Kemahiran<br />Bahasa Indonesia<br />
+            <span className="text-[#C9A227]">untuk Dunia</span>
           </h1>
-          <p className="text-white/60 text-sm max-w-md mb-10 leading-relaxed">
-            BIGT adalah sistem asesmen kemahiran Bahasa Indonesia generasi baru berbasis kecerdasan buatan, 
+          <p className="text-white/50 text-sm max-w-md mb-10 leading-relaxed">
+            BIGT adalah sistem asesmen kemahiran Bahasa Indonesia generasi baru berbasis kecerdasan buatan,
             adaptive testing, dan kerangka AKSI.
           </p>
-
-          <div className="space-y-4">
+          <div className="space-y-5">
             <div className="flex items-center gap-4">
-              <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
-                <Sparkles className="w-5 h-5 text-[#D4AF37]" />
+              <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
+                <Sparkles className="w-5 h-5 text-[#C9A227]" />
               </div>
               <div>
                 <p className="text-white text-sm font-medium">AI-Powered Assessment</p>
-                <p className="text-white/50 text-xs">Penilaian otomatis dengan GPT-4o</p>
+                <p className="text-white/40 text-xs">Penilaian otomatis dengan GPT-4o</p>
               </div>
             </div>
             <div className="flex items-center gap-4">
-              <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
-                <BarChart3 className="w-5 h-5 text-[#D4AF37]" />
+              <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
+                <BarChart3 className="w-5 h-5 text-[#C9A227]" />
               </div>
               <div>
                 <p className="text-white text-sm font-medium">Diagnostic Report</p>
-                <p className="text-white/50 text-xs">Laporan detail per dimensi kemampuan</p>
+                <p className="text-white/40 text-xs">Laporan detail per dimensi kemampuan</p>
               </div>
             </div>
             <div className="flex items-center gap-4">
-              <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
-                <ShieldCheck className="w-5 h-5 text-[#D4AF37]" />
+              <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
+                <ShieldCheck className="w-5 h-5 text-[#C9A227]" />
               </div>
               <div>
                 <p className="text-white text-sm font-medium">Digital Certificate</p>
-                <p className="text-white/50 text-xs">Sertifikat digital dengan verifikasi QR</p>
+                <p className="text-white/40 text-xs">Sertifikat digital dengan verifikasi QR</p>
               </div>
             </div>
           </div>
         </div>
-
-        <div className="relative z-10 text-white/40 text-xs">
+        <div className="relative z-10 text-white/30 text-xs">
           <Globe className="w-4 h-4 inline mr-1" />
           Trusted by future learners worldwide
         </div>
@@ -117,59 +98,33 @@ function LoginForm() {
       <div className="w-full lg:w-1/2 flex items-center justify-center p-8">
         <div className="w-full max-w-sm">
           <div className="mb-8">
-            <h2 className="font-[family-name:var(--font-playfair)] text-2xl font-bold text-[#0B3D91]">
-              Selamat Datang Kembali
-            </h2>
-            <p className="text-muted-foreground text-sm mt-1">
-              Masuk ke akun BIGT Anda untuk melanjutkan.
-            </p>
+            <h2 className="font-[family-name:var(--font-playfair)] text-2xl font-bold text-[#0B1F3A]">Selamat Datang Kembali</h2>
+            <p className="text-[#64748B] text-sm mt-1">Masuk ke akun BIGT Anda untuk melanjutkan.</p>
           </div>
-
           <form onSubmit={handleLogin} className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="email" className="text-xs font-medium">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="nama@email.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="rounded-xl border-gray-200 h-11"
-              />
+            <div className="space-y-1.5">
+              <Label htmlFor="email" className="text-xs font-medium text-[#0B1F3A]">Email</Label>
+              <Input id="email" type="email" placeholder="nama@email.com"
+                value={email} onChange={(e) => setEmail(e.target.value)} required
+                className="rounded-lg border-[#E5EAF2] h-11 text-sm" />
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="password" className="text-xs font-medium">Password</Label>
-              <Input
-                id="password"
-                type="password"
-                placeholder="••••••••"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                className="rounded-xl border-gray-200 h-11"
-              />
+            <div className="space-y-1.5">
+              <Label htmlFor="password" className="text-xs font-medium text-[#0B1F3A]">Password</Label>
+              <Input id="password" type="password" placeholder="••••••••"
+                value={password} onChange={(e) => setPassword(e.target.value)} required
+                className="rounded-lg border-[#E5EAF2] h-11 text-sm" />
             </div>
-            <Button type="submit" className="w-full bg-[#0B3D91] hover:bg-[#0B3D91]/90 text-white rounded-xl h-11" disabled={loading}>
+            <Button type="submit" disabled={loading}
+              className="w-full bg-[#0B1F3A] hover:bg-[#0B1F3A]/90 text-white rounded-lg h-11 text-sm">
               {loading ? 'Memproses...' : 'Masuk'}
             </Button>
           </form>
-
           <div className="relative my-6">
-            <div className="absolute inset-0 flex items-center">
-              <span className="w-full border-t border-gray-200" />
-            </div>
-            <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-white px-3 text-muted-foreground">atau</span>
-            </div>
+            <div className="absolute inset-0 flex items-center"><span className="w-full border-t border-[#E5EAF2]" /></div>
+            <div className="relative flex justify-center text-xs uppercase"><span className="bg-white px-3 text-[#64748B]">atau</span></div>
           </div>
-
-          <Button
-            variant="outline"
-            className="w-full rounded-xl h-11 border-gray-200 hover:bg-gray-50"
-            onClick={handleGoogleLogin}
-            disabled={loading}
-          >
+          <Button variant="outline" className="w-full rounded-lg border-[#E5EAF2] h-11 text-sm hover:bg-gray-50"
+            onClick={handleGoogleLogin} disabled={loading}>
             <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
               <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
               <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
@@ -178,12 +133,9 @@ function LoginForm() {
             </svg>
             Masuk dengan Google
           </Button>
-
-          <p className="text-center text-sm text-muted-foreground mt-8">
+          <p className="text-center text-sm text-[#64748B] mt-8">
             Belum punya akun?{' '}
-            <Link href="/register" className="text-[#0B3D91] hover:underline font-medium">
-              Daftar sekarang
-            </Link>
+            <Link href="/register" className="text-[#0B1F3A] hover:underline font-medium">Daftar sekarang</Link>
           </p>
         </div>
       </div>
@@ -193,7 +145,7 @@ function LoginForm() {
 
 export default function LoginPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-[#F8FAFC]"><p className="text-muted-foreground">Memuat...</p></div>}>
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-[#F7F9FC]"><p className="text-[#64748B]">Memuat...</p></div>}>
       <LoginForm />
     </Suspense>
   )

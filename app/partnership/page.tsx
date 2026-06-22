@@ -1,282 +1,106 @@
 'use client'
 
 import { useState } from 'react'
-import Navbar from '@/components/landing/Navbar'
-import Footer from '@/components/landing/Footer'
+import PublicLayout from '@/components/layouts/PublicLayout'
 import { Button } from '@/components/ui/button'
-
-export const dynamic = 'force-dynamic'
+import { Input } from '@/components/ui/input'
+import { Sparkles, Building2, BarChart3, Award, HeadphonesIcon, PenSquare, CheckCircle, Mail, Send } from 'lucide-react'
 
 const BENEFITS = [
-  {
-    title: 'Branding Bersama',
-    desc: 'Sertifikat dan laporan dengan co-branding institusi Anda alongside BIGT — meningkatkan kredibilitas dan pengakuan.',
-  },
-  {
-    title: 'Dashboard Institusi',
-    desc: 'Akses dashboard khusus untuk memantau hasil peserta, analisis statistik, dan laporan agregat secara real-time.',
-  },
-  {
-    title: 'Harga Institusional',
-    desc: 'Skema harga khusus untuk volume besar dengan fleksibilitas pembayaran dan penjadwalan tes massal.',
-  },
-  {
-    title: 'Dukungan Teknis Prioritas',
-    desc: 'Tim dukungan khusus untuk partner institusi — termasuk bantuan setup, troubleshooting, dan pelatihan staf.',
-  },
-  {
-    title: 'Kustomisasi Asesmen',
-    desc: 'Kemampuan untuk menyesuaikan konteks soal dan register sesuai kebutuhan spesifik institusi Anda.',
-  },
-  {
-    title: 'Integrasi API',
-    desc: 'API terdokumentasi untuk integrasi langsung dengan sistem manajemen akademik atau HR Anda.',
-  },
-]
-
-const INTEGRATIONS = [
-  {
-    name: 'LMS Integration',
-    desc: 'Integrasikan BIGT dengan Learning Management System Anda melalui API standar (LTI, REST).',
-  },
-  {
-    name: 'SSO & Authentication',
-    desc: 'Single Sign-On dengan sistem autentikasi institusi — SAML, OAuth 2.0, atau LDAP.',
-  },
-  {
-    name: 'Data Sync',
-    desc: 'Sinkronisasi data peserta dan hasil tes secara otomatis dengan database institusi.',
-  },
-  {
-    name: 'Webhook & Callbacks',
-    desc: 'Notifikasi real-time saat tes selesai, sertifikat terbit, atau event penting lainnya.',
-  },
-]
-
-const TARGET_INSTITUTIONS = [
-  {
-    name: 'Universitas',
-    desc: 'Asesmen masuk, penempatan kelas bahasa, dan syarat kelulusan.',
-  },
-  {
-    name: 'Pusat Bahasa',
-    desc: 'Evaluasi dan sertifikasi peserta program bahasa Indonesia.',
-  },
-  {
-    name: 'Pemerintah',
-    desc: 'Standarisasi kompetensi bahasa untuk pegawai negeri dan diplomat.',
-  },
-  {
-    name: 'Korporasi',
-    desc: 'Evaluasi kemampuan bahasa karyawan asing dan rekrutmen.',
-  },
+  { icon: Building2, title: 'Branding Bersama', desc: 'Sertifikat dan laporan dengan co-branding institusi Anda alongside BIGT.' },
+  { icon: BarChart3, title: 'Dashboard Institusi', desc: 'Akses dashboard khusus untuk memantau hasil peserta secara real-time.' },
+  { icon: Award, title: 'Harga Institusional', desc: 'Skema harga khusus untuk volume besar dengan fleksibilitas penjadwalan.' },
+  { icon: HeadphonesIcon, title: 'Dukungan Teknis Prioritas', desc: 'Tim dukungan khusus untuk partner institusi.' },
+  { icon: PenSquare, title: 'Kustomisasi Asesmen', desc: 'Sesuaikan konteks soal dan register sesuai kebutuhan spesifik institusi.' },
+  { icon: BarChart3, title: 'Laporan Analitik', desc: 'Data agregat dan insight untuk pengambilan keputusan berbasis bukti.' },
 ]
 
 export default function PartnershipPage() {
-  const [formData, setFormData] = useState({
-    institution: '',
-    contactName: '',
-    email: '',
-    type: '',
-    message: '',
-  })
-  const [submitted, setSubmitted] = useState(false)
+  const [form, setForm] = useState({ name: '', email: '', institution: '', message: '' })
+  const [sent, setSent] = useState(false)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    setSubmitted(true)
+    setSent(true)
   }
 
   return (
-    <main>
-      <Navbar />
-
-      <section className="bg-[#0B1F3A] text-[#F8F6F1] pt-28 pb-20 px-6">
+    <PublicLayout>
+      <section className="bg-gradient-to-br from-[#0B1F3A] via-[#0B1F3A] to-[#123E7C] text-white py-20 px-6">
         <div className="max-w-3xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-[#C9A84C]/15 border border-[#C9A84C]/40 text-[#C9A84C] text-xs font-medium tracking-wider px-4 py-1.5 rounded-full uppercase mb-6">
-            Kemitraan
+          <div className="inline-flex items-center gap-2 bg-[#C9A227]/15 border border-[#C9A227]/30 text-[#C9A227] text-xs font-medium tracking-wider px-4 py-1.5 rounded-full uppercase mb-6">
+            <Sparkles className="w-3.5 h-3.5" /> Kemitraan
           </div>
-          <h1 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold leading-tight mb-6">
-            Bermitra dengan <span className="text-[#C9A84C]">BIGT</span>
-          </h1>
-          <p className="text-white/60 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-            Integrasikan standar asesmen bahasa Indonesia terbaik ke dalam ekosistem institusi Anda. Bangun kredibilitas bersama BIGT.
-          </p>
+          <h1 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold leading-tight mb-6">Bermitra <span className="text-[#C9A227]">dengan BIGT</span></h1>
+          <p className="text-white/50 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">Bergabunglah dengan jaringan institusi global yang telah mempercayai BIGT sebagai mitra asesmen bahasa Indonesia.</p>
         </div>
       </section>
 
-      <section className="py-20 px-6 bg-white">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-xs font-semibold tracking-widest uppercase text-[#C8102E] mb-2">
-            Institusi Target
-          </div>
-          <h2 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-semibold text-[#0B1F3A] mb-8 leading-tight">
-            Untuk siapa kemitraan ini
-          </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {TARGET_INSTITUTIONS.map((inst) => (
-              <div
-                key={inst.name}
-                className="bg-[#F8F6F1] border border-gray-200 rounded-xl p-5 text-center"
-              >
-                <h3 className="text-sm font-semibold text-[#0B1F3A] mb-2">{inst.name}</h3>
-                <p className="text-xs text-[#6B7280] leading-relaxed">{inst.desc}</p>
-              </div>
-            ))}
-          </div>
+      <section className="py-16 px-6 max-w-6xl mx-auto">
+        <div className="inline-flex items-center gap-2 bg-[#0B1F3A]/10 text-[#0B1F3A] text-xs font-medium tracking-wider px-4 py-1.5 rounded-full uppercase mb-4">
+          <Sparkles className="w-3.5 h-3.5" /> Keuntungan
         </div>
-      </section>
-
-      <section className="py-20 px-6 bg-[#F8F6F1]">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-xs font-semibold tracking-widest uppercase text-[#C8102E] mb-2">
-            Manfaat Kemitraan
-          </div>
-          <h2 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-semibold text-[#0B1F3A] mb-8 leading-tight">
-            Mengapa bermitra dengan BIGT
-          </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {BENEFITS.map((b) => (
-              <div
-                key={b.title}
-                className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm"
-              >
+        <h2 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-semibold text-[#0B1F3A] mb-8">Mengapa bermitra dengan BIGT?</h2>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {BENEFITS.map(b => {
+            const Icon = b.icon
+            return (
+              <div key={b.title} className="bg-white border border-[#E5EAF2] premium-shadow-sm rounded-xl p-6 card-hover">
+                <div className="w-10 h-10 rounded-lg bg-[#0B1F3A]/5 flex items-center justify-center mb-3">
+                  <Icon className="w-5 h-5 text-[#0B1F3A]" />
+                </div>
                 <h3 className="text-sm font-semibold text-[#0B1F3A] mb-2">{b.title}</h3>
-                <p className="text-xs text-[#6B7280] leading-relaxed">{b.desc}</p>
+                <p className="text-xs text-[#64748B] leading-relaxed">{b.desc}</p>
               </div>
-            ))}
-          </div>
+            )
+          })}
         </div>
       </section>
 
-      <section className="py-20 px-6 bg-white">
+      <section className="py-16 px-6 bg-white">
         <div className="max-w-4xl mx-auto">
-          <div className="text-xs font-semibold tracking-widest uppercase text-[#C8102E] mb-2">
-            Integrasi Teknis
+          <div className="inline-flex items-center gap-2 bg-[#0B1F3A]/10 text-[#0B1F3A] text-xs font-medium tracking-wider px-4 py-1.5 rounded-full uppercase mb-4">
+            <Mail className="w-3.5 h-3.5" /> Hubungi Kami
           </div>
-          <h2 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-semibold text-[#0B1F3A] mb-8 leading-tight">
-            Opsi integrasi
-          </h2>
-          <div className="grid sm:grid-cols-2 gap-4">
-            {INTEGRATIONS.map((int) => (
-              <div
-                key={int.name}
-                className="bg-[#F8F6F1] border border-gray-200 rounded-xl p-6"
-              >
-                <h3 className="text-sm font-semibold text-[#0B1F3A] mb-2">{int.name}</h3>
-                <p className="text-xs text-[#6B7280] leading-relaxed">{int.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 px-6 bg-[#F8F6F1]">
-        <div className="max-w-xl mx-auto">
-          <div className="text-xs font-semibold tracking-widest uppercase text-[#C8102E] mb-2 text-center">
-            Hubungi Kami
-          </div>
-          <h2 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-semibold text-[#0B1F3A] mb-8 leading-tight text-center">
-            Mulai percakapan
-          </h2>
-
-          {submitted ? (
-            <div className="bg-white border-2 border-green-200 rounded-xl p-8 text-center">
-              <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
-                <span className="text-green-600 text-xl font-bold">&#10003;</span>
-              </div>
-              <h3 className="text-lg font-semibold text-[#0B1F3A] mb-2">Terima kasih</h3>
-              <p className="text-sm text-[#6B7280] leading-relaxed">
-                Tim kemitraan BIGT akan menghubungi Anda dalam 2 hari kerja. Kami menantikan kolaborasi bersama institusi Anda.
-              </p>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="bg-white border border-gray-200 rounded-xl p-6 md:p-8 shadow-sm">
+          <div className="grid md:grid-cols-2 gap-12 items-start">
+            <div>
+              <h2 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-semibold text-[#0B1F3A] mb-4">Diskusikan kebutuhan institusi Anda</h2>
+              <p className="text-[#64748B] text-sm leading-relaxed mb-8">Tim kami akan menghubungi Anda dalam 1-2 hari kerja untuk mendiskusikan skema kemitraan yang sesuai.</p>
               <div className="space-y-4">
-                <div>
-                  <label className="block text-xs font-medium text-[#0B1F3A] mb-1.5">
-                    Nama Institusi
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={formData.institution}
-                    onChange={(e) => setFormData({ ...formData, institution: e.target.value })}
-                    placeholder="Nama universitas, perusahaan, atau organisasi"
-                    className="w-full px-4 py-3 text-sm border border-gray-200 rounded-lg bg-[#F8F6F1] text-[#0B1F3A] placeholder:text-[#6B7280]/50 focus:outline-none focus:ring-2 focus:ring-[#C9A84C]/40 focus:border-[#C9A84C] transition-all"
-                  />
-                </div>
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-medium text-[#0B1F3A] mb-1.5">
-                      Nama Kontak
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={formData.contactName}
-                      onChange={(e) => setFormData({ ...formData, contactName: e.target.value })}
-                      placeholder="Nama lengkap"
-                      className="w-full px-4 py-3 text-sm border border-gray-200 rounded-lg bg-[#F8F6F1] text-[#0B1F3A] placeholder:text-[#6B7280]/50 focus:outline-none focus:ring-2 focus:ring-[#C9A84C]/40 focus:border-[#C9A84C] transition-all"
-                    />
+                {['Respon cepat dalam 1x24 jam', 'Konsultasi gratis tanpa kewajiban', 'Pendampingan teknis penuh'].map((item, i) => (
+                  <div key={i} className="flex items-center gap-3 text-sm text-[#64748B]">
+                    <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                    {item}
                   </div>
-                  <div>
-                    <label className="block text-xs font-medium text-[#0B1F3A] mb-1.5">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      placeholder="email@institusi.ac.id"
-                      className="w-full px-4 py-3 text-sm border border-gray-200 rounded-lg bg-[#F8F6F1] text-[#0B1F3A] placeholder:text-[#6B7280]/50 focus:outline-none focus:ring-2 focus:ring-[#C9A84C]/40 focus:border-[#C9A84C] transition-all"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-xs font-medium text-[#0B1F3A] mb-1.5">
-                    Tipe Institusi
-                  </label>
-                  <select
-                    required
-                    value={formData.type}
-                    onChange={(e) => setFormData({ ...formData, type: e.target.value })}
-                    className="w-full px-4 py-3 text-sm border border-gray-200 rounded-lg bg-[#F8F6F1] text-[#0B1F3A] focus:outline-none focus:ring-2 focus:ring-[#C9A84C]/40 focus:border-[#C9A84C] transition-all"
-                  >
-                    <option value="">Pilih tipe institusi</option>
-                    <option value="universitas">Universitas</option>
-                    <option value="pusat-bahasa">Pusat Bahasa</option>
-                    <option value="pemerintah">Pemerintah</option>
-                    <option value="korporasi">Korporasi</option>
-                    <option value="lainnya">Lainnya</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-xs font-medium text-[#0B1F3A] mb-1.5">
-                    Pesan
-                  </label>
-                  <textarea
-                    rows={4}
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="Ceritakan kebutuhan asesmen institusi Anda..."
-                    className="w-full px-4 py-3 text-sm border border-gray-200 rounded-lg bg-[#F8F6F1] text-[#0B1F3A] placeholder:text-[#6B7280]/50 focus:outline-none focus:ring-2 focus:ring-[#C9A84C]/40 focus:border-[#C9A84C] transition-all resize-none"
-                  />
-                </div>
-                <Button
-                  type="submit"
-                  className="w-full bg-[#C8102E] hover:bg-red-800 text-white py-3 text-sm font-semibold"
-                >
-                  Kirim Permintaan Kemitraan
-                </Button>
+                ))}
               </div>
-            </form>
-          )}
+            </div>
+            <div className="bg-[#F7F9FC] border border-[#E5EAF2] rounded-xl p-6">
+              {sent ? (
+                <div className="text-center py-8">
+                  <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-4" />
+                  <h3 className="font-semibold text-[#0B1F3A] mb-2">Pesan Terkirim!</h3>
+                  <p className="text-sm text-[#64748B]">Tim kami akan menghubungi Anda segera.</p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div><label className="text-xs font-medium text-[#0B1F3A] block mb-1">Nama Lengkap</label>
+                    <Input value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} required placeholder="Nama Anda" className="rounded-lg border-[#E5EAF2] h-10 text-sm" /></div>
+                  <div><label className="text-xs font-medium text-[#0B1F3A] block mb-1">Email</label>
+                    <Input type="email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} required placeholder="nama@institusi.ac.id" className="rounded-lg border-[#E5EAF2] h-10 text-sm" /></div>
+                  <div><label className="text-xs font-medium text-[#0B1F3A] block mb-1">Institusi</label>
+                    <Input value={form.institution} onChange={e => setForm({ ...form, institution: e.target.value })} required placeholder="Nama institusi" className="rounded-lg border-[#E5EAF2] h-10 text-sm" /></div>
+                  <div><label className="text-xs font-medium text-[#0B1F3A] block mb-1">Pesan</label>
+                    <textarea value={form.message} onChange={e => setForm({ ...form, message: e.target.value })} rows={3} placeholder="Ceritakan kebutuhan Anda" className="w-full rounded-lg border border-[#E5EAF2] p-3 text-sm resize-none" /></div>
+                  <Button type="submit" className="w-full bg-[#D7193F] hover:bg-[#D7193F]/90 text-white rounded-lg h-10 text-sm">
+                    <Send className="w-4 h-4 mr-2" /> Kirim Pesan
+                  </Button>
+                </form>
+              )}
+            </div>
+          </div>
         </div>
       </section>
-
-      <Footer />
-    </main>
+    </PublicLayout>
   )
 }

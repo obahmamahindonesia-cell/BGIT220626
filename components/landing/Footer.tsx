@@ -3,86 +3,46 @@ import { Sparkles } from 'lucide-react'
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0B3D91] text-white">
+    <footer className="bg-[#0B1F3A] text-white">
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div className="md:col-span-1">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-xl p-3 mb-4">
-              <Sparkles className="w-5 h-5 text-[#D4AF37]" />
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg p-3 mb-4">
+              <Sparkles className="w-5 h-5 text-[#C9A227]" />
               <span className="font-[family-name:var(--font-playfair)] text-lg font-bold">BIGT</span>
             </div>
-            <p className="text-white/60 text-sm leading-relaxed">
-              Bahasa Indonesia Global Test. Standar Kemahiran Bahasa Indonesia untuk Dunia.
-            </p>
+            <p className="text-white/50 text-sm leading-relaxed">Bahasa Indonesia Global Test. Standar Kemahiran Bahasa Indonesia untuk Dunia.</p>
           </div>
-
           <div>
-            <h3 className="text-sm font-semibold mb-4 text-[#D4AF37]">Platform</h3>
+            <h3 className="text-sm font-semibold mb-4 text-[#C9A227]">Platform</h3>
             <ul className="space-y-2">
-              <li>
-                <Link href="/framework" className="text-white/60 hover:text-white text-sm transition-colors">
-                  Framework AKSI
-                </Link>
-              </li>
-              <li>
-                <Link href="/levels" className="text-white/60 hover:text-white text-sm transition-colors">
-                  Level CEFR
-                </Link>
-              </li>
-              <li>
-                <Link href="/products" className="text-white/60 hover:text-white text-sm transition-colors">
-                  Produk Test
-                </Link>
-              </li>
-              <li>
-                <Link href="/verify" className="text-white/60 hover:text-white text-sm transition-colors">
-                  Verifikasi Sertifikat
-                </Link>
-              </li>
+              <li><Link href="/framework" className="text-white/50 hover:text-white text-sm transition-colors">Framework AKSI</Link></li>
+              <li><Link href="/levels" className="text-white/50 hover:text-white text-sm transition-colors">Level CEFR</Link></li>
+              <li><Link href="/products" className="text-white/50 hover:text-white text-sm transition-colors">Produk Test</Link></li>
+              <li><Link href="/verify" className="text-white/50 hover:text-white text-sm transition-colors">Verifikasi Sertifikat</Link></li>
             </ul>
           </div>
-
           <div>
-            <h3 className="text-sm font-semibold mb-4 text-[#D4AF37]">Perusahaan</h3>
+            <h3 className="text-sm font-semibold mb-4 text-[#C9A227]">Perusahaan</h3>
             <ul className="space-y-2">
-              <li>
-                <Link href="/about" className="text-white/60 hover:text-white text-sm transition-colors">
-                  Tentang BIGT
-                </Link>
-              </li>
-              <li>
-                <Link href="/partnership" className="text-white/60 hover:text-white text-sm transition-colors">
-                  Kemitraan
-                </Link>
-              </li>
-              <li>
-                <Link href="/waitlist" className="text-white/60 hover:text-white text-sm transition-colors">
-                  Waitlist
-                </Link>
-              </li>
+              <li><Link href="/about" className="text-white/50 hover:text-white text-sm transition-colors">Tentang BIGT</Link></li>
+              <li><Link href="/partnership" className="text-white/50 hover:text-white text-sm transition-colors">Kemitraan</Link></li>
+              <li><Link href="/waitlist" className="text-white/50 hover:text-white text-sm transition-colors">Waitlist</Link></li>
             </ul>
           </div>
-
           <div>
-            <h3 className="text-sm font-semibold mb-4 text-[#D4AF37]">Kontak</h3>
+            <h3 className="text-sm font-semibold mb-4 text-[#C9A227]">Kontak</h3>
             <ul className="space-y-2">
-              <li className="text-white/60 text-sm">info@bahasacerdas.site</li>
-              <li className="text-white/60 text-sm">Jakarta, Indonesia</li>
+              <li className="text-white/50 text-sm">info@bahasacerdas.site</li>
+              <li className="text-white/50 text-sm">Jakarta, Indonesia</li>
             </ul>
           </div>
         </div>
-
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-white/50 text-sm">
-            &copy; 2026 BIGT — Bahasa Indonesia Global Test. All rights reserved.
-          </p>
+          <p className="text-white/40 text-sm">&copy; 2026 BIGT — Bahasa Indonesia Global Test. All rights reserved.</p>
           <div className="flex gap-6">
-            <Link href="/privacy" className="text-white/50 hover:text-white text-sm transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="/terms" className="text-white/50 hover:text-white text-sm transition-colors">
-              Terms of Service
-            </Link>
+            <Link href="/privacy" className="text-white/40 hover:text-white text-sm transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="text-white/40 hover:text-white text-sm transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>

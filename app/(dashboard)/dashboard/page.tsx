@@ -20,12 +20,12 @@ import {
 } from 'lucide-react'
 
 const CEFR_LEVELS = [
-  { code: 'A1', label: 'Pemula', color: 'bg-gray-300' },
-  { code: 'A2', label: 'Dasar', color: 'bg-blue-300' },
-  { code: 'B1', label: 'Madya', color: 'bg-blue-500' },
-  { code: 'B2', label: 'Madya Atas', color: 'bg-green-500' },
-  { code: 'C1', label: 'Mahir', color: 'bg-red-500' },
-  { code: 'C2', label: 'Sangat Mahir', color: 'bg-amber-500' },
+  { code: 'A1', label: 'Pemula' },
+  { code: 'A2', label: 'Dasar' },
+  { code: 'B1', label: 'Madya' },
+  { code: 'B2', label: 'Madya Atas' },
+  { code: 'C1', label: 'Mahir' },
+  { code: 'C2', label: 'Sangat Mahir' },
 ]
 
 const DIMENSION_SCORES = {
@@ -52,11 +52,8 @@ export default function DashboardPage() {
     const loadData = async () => {
       const supabase = createClient()
       const { data: { user } } = await supabase.auth.getUser()
-      if (user?.user_metadata?.name) {
-        setUserName(user.user_metadata.name)
-      } else if (user?.email) {
-        setUserName(user.email.split('@')[0])
-      }
+      if (user?.user_metadata?.name) setUserName(user.user_metadata.name)
+      else if (user?.email) setUserName(user.email.split('@')[0])
       setLoading(false)
     }
     loadData()
@@ -65,11 +62,11 @@ export default function DashboardPage() {
   if (loading) {
     return (
       <div className="space-y-6 animate-pulse">
-        <div className="h-8 w-64 bg-gray-200 rounded-lg" />
+        <div className="h-8 w-56 bg-gray-200 rounded-lg" />
         <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
-          {[...Array(5)].map((_, i) => <div key={i} className="h-24 bg-gray-200 rounded-2xl" />)}
+          {[...Array(5)].map((_, i) => <div key={i} className="h-24 bg-gray-100 rounded-xl" />)}
         </div>
-        <div className="h-64 bg-gray-200 rounded-2xl" />
+        <div className="h-72 bg-gray-100 rounded-xl" />
       </div>
     )
   }
@@ -77,16 +74,16 @@ export default function DashboardPage() {
   const currentLevelIndex = CEFR_LEVELS.findIndex(l => l.code === stats.currentLevel)
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
+    <div className="space-y-8">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="font-[family-name:var(--font-playfair)] text-3xl font-bold text-[#0B3D91]">
+          <h1 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-bold text-[#0B1F3A]">
             Selamat datang, {userName}
           </h1>
-          <p className="text-muted-foreground mt-1">Lanjutkan perjalanan kemahiran Bahasa Indonesia Anda.</p>
+          <p className="text-[#64748B] text-sm mt-1">Lanjutkan perjalanan kemahiran Bahasa Indonesia Anda.</p>
         </div>
         <Link href="/test">
-          <Button className="bg-[#E11D48] hover:bg-[#E11D48]/90 text-white shadow-lg shadow-[#E11D48]/20 rounded-xl h-11 px-6">
+          <Button className="bg-[#D7193F] hover:bg-[#D7193F]/90 text-white shadow-lg shadow-[#D7193F]/20 rounded-xl h-10 px-5 text-sm">
             <Sparkles className="w-4 h-4 mr-2" />
             Mulai Tes
           </Button>
@@ -94,121 +91,92 @@ export default function DashboardPage() {
       </div>
 
       <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
-        <Card className="premium-shadow-md border-0 rounded-2xl">
-          <CardContent className="p-5">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 rounded-xl bg-[#0B3D91]/10 flex items-center justify-center">
-                <BarChart3 className="w-5 h-5 text-[#0B3D91]" />
-              </div>
-            </div>
-            <p className="text-2xl font-bold text-[#0B3D91]">{stats.totalTests}</p>
-            <p className="text-xs text-muted-foreground mt-1">Total Tes Selesai</p>
-          </CardContent>
-        </Card>
-
-        <Card className="premium-shadow-md border-0 rounded-2xl">
-          <CardContent className="p-5">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center">
-                <GraduationCap className="w-5 h-5 text-[#D4AF37]" />
-              </div>
-            </div>
-            <p className="text-2xl font-bold text-[#0B3D91]">{stats.currentLevel}</p>
-            <p className="text-xs text-muted-foreground mt-1">Level Saat Ini</p>
-          </CardContent>
-        </Card>
-
-        <Card className="premium-shadow-md border-0 rounded-2xl">
-          <CardContent className="p-5">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 rounded-xl bg-green-50 flex items-center justify-center">
-                <Award className="w-5 h-5 text-green-600" />
-              </div>
-            </div>
-            <p className="text-2xl font-bold text-[#0B3D91]">{stats.certificates}</p>
-            <p className="text-xs text-muted-foreground mt-1">Sertifikat Dimiliki</p>
-          </CardContent>
-        </Card>
-
-        <Card className="premium-shadow-md border-0 rounded-2xl">
-          <CardContent className="p-5">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center">
-                <TrendingUp className="w-5 h-5 text-[#E11D48]" />
-              </div>
-            </div>
-            <p className="text-2xl font-bold text-[#0B3D91]">{stats.highestScore}%</p>
-            <p className="text-xs text-muted-foreground mt-1">Skor Tertinggi</p>
-          </CardContent>
-        </Card>
-
-        <Card className="premium-shadow-md border-0 rounded-2xl">
-          <CardContent className="p-5">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 rounded-xl bg-purple-50 flex items-center justify-center">
-                <Clock className="w-5 h-5 text-purple-600" />
-              </div>
-            </div>
-            <p className="text-2xl font-bold text-[#0B3D91]">{stats.studyHours} jam</p>
-            <p className="text-xs text-muted-foreground mt-1">Jam Belajar</p>
-          </CardContent>
-        </Card>
+        {[
+          { icon: BarChart3, bg: 'bg-[#0B1F3A]/5', color: '#0B1F3A', value: stats.totalTests, label: 'Total Tes Selesai' },
+          { icon: GraduationCap, bg: 'bg-[#C9A227]/10', color: '#C9A227', value: stats.currentLevel, label: 'Level Saat Ini' },
+          { icon: Award, bg: 'bg-green-50', color: '#16a34a', value: stats.certificates, label: 'Sertifikat Dimiliki' },
+          { icon: TrendingUp, bg: 'bg-[#D7193F]/5', color: '#D7193F', value: `${stats.highestScore}%`, label: 'Skor Tertinggi' },
+          { icon: Clock, bg: 'bg-purple-50', color: '#7c3aed', value: `${stats.studyHours} jam`, label: 'Jam Belajar' },
+        ].map((stat) => {
+          const Icon = stat.icon
+          return (
+            <Card key={stat.label} className="border border-[#E5EAF2] premium-shadow-sm rounded-xl">
+              <CardContent className="p-5">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className={`w-10 h-10 rounded-lg ${stat.bg} flex items-center justify-center`}>
+                    <Icon className="w-5 h-5" style={{ color: stat.color }} />
+                  </div>
+                </div>
+                <p className="text-xl font-bold text-[#0B1F3A]">{stat.value}</p>
+                <p className="text-xs text-[#64748B] mt-0.5">{stat.label}</p>
+              </CardContent>
+            </Card>
+          )
+        })}
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-6">
-          <Card className="border-0 premium-shadow-md rounded-2xl overflow-hidden">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-base flex items-center gap-2">
-                <Target className="w-4 h-4 text-[#0B3D91]" />
+          <Card className="border border-[#E5EAF2] premium-shadow-sm rounded-xl">
+            <CardHeader className="pb-4">
+              <CardTitle className="text-base flex items-center gap-2 text-[#0B1F3A]">
+                <Target className="w-4 h-4" />
                 Perkembangan Kemahiran
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                {CEFR_LEVELS.map((level, i) => (
-                  <div key={level.code} className="flex items-center gap-3">
-                    <span className={`w-8 h-8 rounded-lg ${level.color} flex items-center justify-center text-white text-xs font-bold flex-shrink-0`}>
-                      {level.code}
-                    </span>
-                    <div className="flex-1">
-                      <div className="flex justify-between text-xs mb-1">
-                        <span className="font-medium text-[#0B3D91]">{level.label}</span>
-                        {i === currentLevelIndex && <Badge className="bg-[#D4AF37] text-white border-0 text-[10px]">Level Saat Ini</Badge>}
-                      </div>
-                      <div className="w-full bg-gray-100 rounded-full h-2">
-                        <div
-                          className={`h-2 rounded-full transition-all duration-700 ${i <= currentLevelIndex ? level.color.replace('bg-', 'bg-') : 'bg-gray-100'}`}
-                          style={{
-                            width: i < currentLevelIndex ? '100%' : i === currentLevelIndex ? '60%' : '0%',
-                            opacity: i <= currentLevelIndex ? 1 : 0.3,
-                          }}
-                        />
+                {CEFR_LEVELS.map((level, i) => {
+                  const isCurrent = i === currentLevelIndex
+                  const isCompleted = i < currentLevelIndex
+                  const barColor = isCompleted ? '#0B1F3A' : isCurrent ? '#C9A227' : '#E5EAF2'
+                  return (
+                    <div key={level.code} className="flex items-center gap-3">
+                      <span className={`w-8 h-7 rounded-md flex items-center justify-center text-xs font-bold flex-shrink-0 ${
+                        isCompleted ? 'bg-[#0B1F3A] text-white' :
+                        isCurrent ? 'bg-[#C9A227] text-white' :
+                        'bg-gray-100 text-[#64748B]'
+                      }`}>
+                        {level.code}
+                      </span>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex justify-between text-xs mb-1">
+                          <span className="font-medium text-[#0B1F3A]">{level.label}</span>
+                          {isCurrent && <Badge className="bg-[#C9A227]/10 text-[#C9A227] border-0 text-[10px] font-medium">Level Saat Ini</Badge>}
+                        </div>
+                        <div className="w-full bg-gray-100 rounded-full h-2">
+                          <div className={`h-2 rounded-full transition-all duration-700`}
+                            style={{
+                              width: isCompleted ? '100%' : isCurrent ? '60%' : '0%',
+                              backgroundColor: barColor,
+                            }}
+                          />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  )
+                })}
               </div>
             </CardContent>
           </Card>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Card className="border-0 premium-shadow-md rounded-2xl card-hover">
+            <Card className="border border-[#E5EAF2] premium-shadow-sm rounded-xl card-hover">
               <CardHeader className="pb-3">
-                <CardTitle className="text-base flex items-center gap-2">
-                  <BookOpen className="w-4 h-4 text-[#0B3D91]" />
+                <CardTitle className="text-base flex items-center gap-2 text-[#0B1F3A]">
+                  <BookOpen className="w-4 h-4" />
                   Lanjutkan Tes
                 </CardTitle>
-                <CardDescription className="text-xs">Ada sesi tes yang belum selesai</CardDescription>
+                <CardDescription className="text-xs text-[#64748B]">Ada sesi tes yang belum selesai</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-[#0B3D91]">Practice Test</p>
-                    <p className="text-xs text-muted-foreground">15 dari 25 soal terjawab</p>
+                    <p className="text-sm font-medium text-[#0B1F3A]">Practice Test</p>
+                    <p className="text-xs text-[#64748B] mt-0.5">15 dari 25 soal terjawab</p>
                   </div>
                   <Link href="/test">
-                    <Button size="sm" className="bg-[#0B3D91] hover:bg-[#0B3D91]/90 text-white rounded-xl">
+                    <Button size="sm" className="bg-[#D7193F] hover:bg-[#D7193F]/90 text-white rounded-lg text-xs h-9">
                       Lanjutkan <ChevronRight className="w-3 h-3 ml-1" />
                     </Button>
                   </Link>
@@ -216,22 +184,22 @@ export default function DashboardPage() {
               </CardContent>
             </Card>
 
-            <Card className="border-0 premium-shadow-md rounded-2xl card-hover">
+            <Card className="border border-[#E5EAF2] premium-shadow-sm rounded-xl card-hover">
               <CardHeader className="pb-3">
-                <CardTitle className="text-base flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-[#D4AF37]" />
+                <CardTitle className="text-base flex items-center gap-2 text-[#0B1F3A]">
+                  <Sparkles className="w-4 h-4 text-[#C9A227]" />
                   Rekomendasi Tes
                 </CardTitle>
-                <CardDescription className="text-xs">Berdasarkan level Anda saat ini</CardDescription>
+                <CardDescription className="text-xs text-[#64748B]">Berdasarkan level Anda saat ini</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-[#0B3D91]">BIGT Placement</p>
-                    <p className="text-xs text-muted-foreground">45 menit • 25 soal</p>
+                    <p className="text-sm font-medium text-[#0B1F3A]">BIGT Placement</p>
+                    <p className="text-xs text-[#64748B] mt-0.5">45 menit - 25 soal</p>
                   </div>
                   <Link href="/test">
-                    <Button size="sm" variant="outline" className="rounded-xl">
+                    <Button size="sm" variant="outline" className="rounded-lg text-xs h-9 border-[#E5EAF2] text-[#0B1F3A]">
                       Coba <ArrowRight className="w-3 h-3 ml-1" />
                     </Button>
                   </Link>
@@ -242,27 +210,25 @@ export default function DashboardPage() {
         </div>
 
         <div className="space-y-6">
-          <Card className="border-0 premium-shadow-md rounded-2xl">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-base flex items-center gap-2">
-                <BarChart3 className="w-4 h-4 text-[#0B3D91]" />
+          <Card className="border border-[#E5EAF2] premium-shadow-sm rounded-xl">
+            <CardHeader className="pb-4">
+              <CardTitle className="text-base flex items-center gap-2 text-[#0B1F3A]">
+                <BarChart3 className="w-4 h-4" />
                 Skor per Dimensi
               </CardTitle>
-              <CardDescription className="text-xs">Kemahiran berdasarkan 6 dimensi</CardDescription>
+              <CardDescription className="text-xs text-[#64748B]">Kemahiran berdasarkan 6 dimensi</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {Object.entries(DIMENSION_SCORES).map(([key, score]) => (
                   <div key={key}>
                     <div className="flex justify-between text-xs mb-1">
-                      <span className="text-muted-foreground capitalize">{key.toLowerCase()}</span>
-                      <span className="font-medium text-[#0B3D91]">{score}%</span>
+                      <span className="text-[#64748B] capitalize">{key.toLowerCase()}</span>
+                      <span className="font-medium text-[#0B1F3A]">{score}%</span>
                     </div>
                     <div className="w-full bg-gray-100 rounded-full h-1.5">
-                      <div
-                        className="h-1.5 rounded-full bg-gradient-to-r from-[#0B3D91] to-[#D4AF37] transition-all duration-500"
-                        style={{ width: `${score}%` }}
-                      />
+                      <div className="h-1.5 rounded-full bg-gradient-to-r from-[#0B1F3A] to-[#C9A227] transition-all duration-500"
+                        style={{ width: `${score}%` }} />
                     </div>
                   </div>
                 ))}
@@ -270,30 +236,30 @@ export default function DashboardPage() {
             </CardContent>
           </Card>
 
-          <Card className="border-0 premium-shadow-md rounded-2xl">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-base flex items-center gap-2">
-                <Clock className="w-4 h-4 text-[#0B3D91]" />
+          <Card className="border border-[#E5EAF2] premium-shadow-sm rounded-xl">
+            <CardHeader className="pb-4">
+              <CardTitle className="text-base flex items-center gap-2 text-[#0B1F3A]">
+                <Clock className="w-4 h-4" />
                 Aktivitas Terakhir
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
-              <div className="flex items-start gap-3 p-3 rounded-xl bg-[#F8FAFC]">
-                <div className="w-8 h-8 rounded-lg bg-[#0B3D91]/10 flex items-center justify-center flex-shrink-0">
-                  <BookOpen className="w-4 h-4 text-[#0B3D91]" />
+              <div className="flex items-start gap-3 p-3 rounded-lg bg-[#F7F9FC]">
+                <div className="w-8 h-8 rounded-lg bg-[#0B1F3A]/5 flex items-center justify-center flex-shrink-0">
+                  <BookOpen className="w-4 h-4 text-[#0B1F3A]" />
                 </div>
-                <div>
-                  <p className="text-xs font-medium text-[#0B3D91]">Practice Test</p>
-                  <p className="text-[10px] text-muted-foreground">2 hari yang lalu</p>
+                <div className="min-w-0">
+                  <p className="text-xs font-medium text-[#0B1F3A]">Practice Test</p>
+                  <p className="text-[11px] text-[#64748B]">2 hari yang lalu</p>
                 </div>
               </div>
-              <div className="flex items-start gap-3 p-3 rounded-xl bg-[#F8FAFC]">
-                <div className="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center flex-shrink-0">
-                  <Award className="w-4 h-4 text-[#D4AF37]" />
+              <div className="flex items-start gap-3 p-3 rounded-lg bg-[#F7F9FC]">
+                <div className="w-8 h-8 rounded-lg bg-[#C9A227]/10 flex items-center justify-center flex-shrink-0">
+                  <Award className="w-4 h-4 text-[#C9A227]" />
                 </div>
-                <div>
-                  <p className="text-xs font-medium text-[#0B3D91]">Sertifikat B1 Diterbitkan</p>
-                  <p className="text-[10px] text-muted-foreground">1 minggu yang lalu</p>
+                <div className="min-w-0">
+                  <p className="text-xs font-medium text-[#0B1F3A]">Sertifikat B1 Diterbitkan</p>
+                  <p className="text-[11px] text-[#64748B]">1 minggu yang lalu</p>
                 </div>
               </div>
             </CardContent>

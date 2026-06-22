@@ -11,27 +11,27 @@
 @layer base {
   :root {
     --background: 210 40% 98%;
-    --foreground: 222 47% 11%;
+    --foreground: 215 45% 14%;
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 215 45% 14%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
-    --primary: 215 85% 30%;
+    --popover-foreground: 215 45% 14%;
+    --primary: 215 45% 14%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222 47% 11%;
-    --muted: 210 40% 96%;
+    --secondary: 215 30% 96%;
+    --secondary-foreground: 215 45% 14%;
+    --muted: 215 20% 96%;
     --muted-foreground: 215 16% 47%;
-    --accent: 42 65% 52%;
-    --accent-foreground: 222 47% 11%;
-    --destructive: 348 83% 47%;
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 215 85% 30%;
-    --radius: 1.25rem;
-    --chart-1: 215 85% 30%;
-    --chart-2: 42 65% 52%;
-    --chart-3: 348 83% 47%;
+    --accent: 43 70% 46%;
+    --accent-foreground: 215 45% 14%;
+    --destructive: 348 79% 47%;
+    --border: 220 20% 92%;
+    --input: 220 20% 92%;
+    --ring: 215 45% 14%;
+    --radius: 0.75rem;
+    --chart-1: 215 45% 14%;
+    --chart-2: 43 70% 46%;
+    --chart-3: 348 79% 47%;
     --chart-4: 160 84% 39%;
     --chart-5: 258 90% 66%;
   }
@@ -40,7 +40,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-[#F8FAFC] text-foreground;
+    @apply bg-[#F7F9FC] text-[#0B1F3A];
   }
 }
 
@@ -65,12 +65,12 @@
     box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.08), 0 8px 10px -6px rgb(0 0 0 / 0.04);
   }
   .sidebar-link {
-    @apply flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition-all duration-200;
+    @apply flex items-center gap-3 rounded-lg px-4 py-2.5 text-sm font-medium transition-all duration-200;
   }
   .sidebar-link-active {
-    @apply bg-white/10 text-white;
+    @apply bg-white/10 text-white shadow-sm border-l-[3px] border-[#D7193F];
   }
   .sidebar-link-inactive {
-    @apply text-white/50 hover:text-white hover:bg-white/5;
+    @apply text-slate-300 hover:text-white hover:bg-white/5;
   }
 }
