@@ -1,0 +1,70 @@
+{
+  "name": "UKBI-Next Agency Agents",
+  "description": "AI agents khusus untuk platform UKBI-Next / BahasaCerdas",
+  "divisions": {
+    "engineering": {
+      "description": "Building the UKBI-Next platform",
+      "agents": [
+        "engineering-frontend-developer",
+        "engineering-backend-architect",
+        "engineering-ai-engineer",
+        "engineering-database-optimizer",
+        "engineering-devops-automator",
+        "engineering-code-reviewer",
+        "engineering-technical-writer",
+        "engineering-prompt-engineer",
+        "engineering-software-architect",
+        "engineering-rapid-prototyper"
+      ]
+    },
+    "design": {
+      "description": "UI/UX and brand for BahasaCerdas",
+      "agents": [
+        "design-ui-designer",
+        "design-ux-researcher",
+        "design-brand-guardian",
+        "design-ux-architect",
+        "design-whimsy-injector"
+      ]
+    },
+    "marketing": {
+      "description": "Growth and visibility for UKBI-Next",
+      "agents": [
+        "marketing-growth-hacker",
+        "marketing-content-creator",
+        "marketing-seo-specialist",
+        "marketing-social-media-strategist",
+        "marketing-aeo-foundations",
+        "marketing-agentic-search-optimizer",
+        "marketing-ai-citation-strategist",
+        "marketing-email-strategist",
+        "marketing-pr-communications-manager"
+      ]
+    },
+    "product": {
+      "description": "Product decisions and user insights",
+      "agents": [
+        "product-manager",
+        "product-feedback-synthesizer",
+        "product-behavioral-nudge-engine",
+        "product-sprint-prioritizer"
+      ]
+    },
+    "testing": {
+      "description": "Quality assurance and performance",
+      "agents": [
+        "testing-api-tester",
+        "testing-accessibility-auditor",
+        "testing-performance-benchmarker"
+      ]
+    },
+    "security": {
+      "description": "Application and infrastructure security",
+      "agents": [
+        "security-appsec-engineer",
+        "security-architect"
+      ]
+    }
+  },
+  "usage": "Aktifkan agent dengan menyebut nama agent, contoh: 'Aktifkan Frontend Developer untuk review komponen landing page'"
+}

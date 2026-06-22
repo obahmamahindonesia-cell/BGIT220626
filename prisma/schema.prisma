@@ -1,0 +1,133 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id            String   @id @default(uuid())
+  supabaseId    String   @unique
+  email         String   @unique
+  name          String?
+  role          UserRole @default(TEST_TAKER)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  testSessions  TestSession[]
+  waitlistEntry Waitlist?
+}
+
+enum UserRole {
+  TEST_TAKER
+  ADMIN
+}
+
+model Question {
+  id           String       @id @default(uuid())
+  dimension    Dimension
+  type         QuestionType
+  level        CEFRLevel
+  content      Json
+  rubric       Json?
+  points       Int          @default(10)
+  isActive     Boolean      @default(true)
+  createdAt    DateTime     @default(now())
+
+  answers      Answer[]
+}
+
+enum Dimension {
+  LISTENING
+  READING
+  SPEAKING
+  WRITING
+  MEDIATION
+  INTEGRATED
+}
+
+enum QuestionType {
+  MCQ
+  SHORT_ANSWER
+  ESSAY
+  AUDIO_RESPONSE
+  INTEGRATED_TASK
+}
+
+enum CEFRLevel {
+  A1
+  A2
+  B1
+  B2
+  C1
+  C2
+}
+
+model TestSession {
+  id              String        @id @default(uuid())
+  userId          String
+  user            User          @relation(fields: [userId], references: [id])
+  status          SessionStatus @default(IN_PROGRESS)
+  startedAt       DateTime      @default(now())
+  finishedAt      DateTime?
+  durationSeconds Int?
+
+  answers         Answer[]
+  result          TestResult?
+}
+
+enum SessionStatus {
+  IN_PROGRESS
+  SUBMITTED
+  SCORED
+  FAILED
+}
+
+model Answer {
+  id            String      @id @default(uuid())
+  sessionId     String
+  session       TestSession @relation(fields: [sessionId], references: [id])
+  questionId    String
+  question      Question    @relation(fields: [questionId], references: [id])
+  response      Json
+  rawScore      Float?
+  aiScore       Float?
+  aiFeedback    String?
+  scoredAt      DateTime?
+  createdAt     DateTime    @default(now())
+}
+
+model TestResult {
+  id                String      @id @default(uuid())
+  sessionId         String      @unique
+  session           TestSession @relation(fields: [sessionId], references: [id])
+
+  overallLevel      CEFRLevel
+  overallScore      Float
+
+  listeningScore    Float
+  readingScore      Float
+  speakingScore     Float
+  writingScore      Float
+  mediationScore    Float
+  integratedScore   Float
+
+  toefEquivalent    Int?
+  ieltsEquivalent   Float?
+
+  recommendations   Json
+  createdAt         DateTime    @default(now())
+}
+
+model Waitlist {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String?
+  role      String?
+  userId    String?  @unique
+  user      User?    @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+}
