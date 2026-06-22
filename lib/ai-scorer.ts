@@ -1,13 +1,20 @@
 import OpenAI from 'openai'
 import { toFile } from 'openai'
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-})
+let openai: OpenAI | null = null
+
+function getOpenAI(): OpenAI {
+  if (!openai) {
+    openai = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY,
+    })
+  }
+  return openai
+}
 
 export async function scoreWriting(prompt: string, response: string, rubric: Record<string, unknown> | null, level: string) {
   try {
-    const completion = await openai.chat.completions.create({
+    const completion = await getOpenAI().chat.completions.create({
       model: 'gpt-4o',
       messages: [
         {
@@ -64,13 +71,13 @@ export async function scoreSpeaking(audioBase64: string, prompt: string, level: 
     const audioBuffer = Buffer.from(audioBase64, 'base64')
     const audioFile = await toFile(audioBuffer, 'audio.webm', { type: 'audio/webm' })
     
-    const transcription = await openai.audio.transcriptions.create({
+    const transcription = await getOpenAI().audio.transcriptions.create({
       file: audioFile,
       model: 'whisper-1',
       language: 'id',
     })
 
-    const completion = await openai.chat.completions.create({
+    const completion = await getOpenAI().chat.completions.create({
       model: 'gpt-4o',
       messages: [
         {
