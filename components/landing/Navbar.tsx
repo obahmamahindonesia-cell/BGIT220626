@@ -25,7 +25,7 @@ export default function Navbar() {
   ]
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-xl shadow-sm' : 'bg-transparent'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/90 backdrop-blur-xl ${scrolled ? 'shadow-sm border-b border-[#E5EAF2]' : 'border-b border-transparent'}`}>
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <Image src="/logo_BIGT.png" alt="BIGT Logo" width={120} height={40} className="h-9 w-auto" />
@@ -34,7 +34,7 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
             <Link key={link.href} href={link.href}
-              className={`text-sm transition-colors font-medium ${scrolled ? 'text-[#0B1F3A]/70 hover:text-[#0B1F3A]' : 'text-white/70 hover:text-white'}`}>
+              className="text-sm font-medium text-[#0B1F3A]/70 hover:text-[#D7193F] transition-colors">
               {link.label}
             </Link>
           ))}
@@ -42,7 +42,7 @@ export default function Navbar() {
 
         <div className="hidden md:flex items-center gap-3">
           <Link href="/login">
-            <Button variant="ghost" className={`text-sm rounded-lg ${scrolled ? 'text-[#0B1F3A]/80 hover:text-[#0B1F3A] hover:bg-[#0B1F3A]/10' : 'text-white/80 hover:text-white hover:bg-white/10'}`}>
+            <Button variant="ghost" className="text-sm rounded-lg text-[#0B1F3A]/80 hover:text-[#0B1F3A] hover:bg-[#0B1F3A]/10">
               Masuk
             </Button>
           </Link>
@@ -53,14 +53,14 @@ export default function Navbar() {
           </Link>
         </div>
 
-        <button className={`md:hidden ${scrolled ? 'text-[#0B1F3A]/80' : 'text-white/80'}`}
+        <button className="md:hidden text-[#0B1F3A]/80"
           onClick={() => setMobileOpen(!mobileOpen)}>
           {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden bg-white/95 backdrop-blur-xl border-t border-gray-200 px-6 py-4 space-y-3">
+        <div className="md:hidden bg-white backdrop-blur-xl border-t border-[#E5EAF2] px-6 py-4 space-y-3">
           {navLinks.map((link) => (
             <Link key={link.href} href={link.href}
               className="block text-[#0B1F3A]/70 hover:text-[#0B1F3A] text-sm py-2 font-medium"

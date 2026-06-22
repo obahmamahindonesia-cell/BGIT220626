@@ -94,9 +94,9 @@ export default function DashboardPage() {
         {[
           { icon: BarChart3, bg: 'bg-[#0B1F3A]/5', color: '#0B1F3A', value: stats.totalTests, label: 'Total Tes Selesai' },
           { icon: GraduationCap, bg: 'bg-[#C9A227]/10', color: '#C9A227', value: stats.currentLevel, label: 'Level Saat Ini' },
-          { icon: Award, bg: 'bg-green-50', color: '#16a34a', value: stats.certificates, label: 'Sertifikat Dimiliki' },
+          { icon: Award, bg: 'bg-[#123E7C]/5', color: '#123E7C', value: stats.certificates, label: 'Sertifikat Dimiliki' },
           { icon: TrendingUp, bg: 'bg-[#D7193F]/5', color: '#D7193F', value: `${stats.highestScore}%`, label: 'Skor Tertinggi' },
-          { icon: Clock, bg: 'bg-purple-50', color: '#7c3aed', value: `${stats.studyHours} jam`, label: 'Jam Belajar' },
+          { icon: Clock, bg: 'bg-[#C9A227]/10', color: '#C9A227', value: `${stats.studyHours} jam`, label: 'Jam Belajar' },
         ].map((stat) => {
           const Icon = stat.icon
           return (

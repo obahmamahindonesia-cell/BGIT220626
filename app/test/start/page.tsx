@@ -85,24 +85,34 @@ function TestStartForm() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8 max-w-3xl mx-auto">
       <div>
         <h1 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-bold text-[#0B1F3A]">
           Konfigurasi Tes
         </h1>
-        <p className="text-[#64748B] text-sm mt-1">{product.name} - {product.desc}</p>
+        <p className="text-[#64748B] text-sm mt-1">{product.name} — {product.desc}</p>
       </div>
 
-      <div className="flex items-center gap-1">
+      <div className="hidden sm:flex items-center">
         {STEPS.map((s, i) => (
           <div key={s.id} className="flex items-center flex-1">
-            <div className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
-              step >= s.id ? 'bg-[#0B1F3A] text-white' : 'bg-gray-100 text-[#64748B]'
+            <div className={`flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-medium transition-colors ${
+              step >= s.id ? 'bg-[#0B1F3A] text-white shadow-sm' : 'bg-gray-100 text-[#64748B]'
             }`}>
-              {step > s.id ? <CheckCircle2 className="w-3.5 h-3.5" /> : <span>{s.id}</span>}
-              <span className="hidden sm:inline">{s.label}</span>
+              {step > s.id ? <CheckCircle2 className="w-3.5 h-3.5" /> : <span className="w-3.5 h-3.5 flex items-center justify-center text-[11px] font-bold">{s.id}</span>}
+              <span>{s.label}</span>
             </div>
-            {i < STEPS.length - 1 && <div className="flex-1 h-px bg-gray-200 mx-2" />}
+            {i < STEPS.length - 1 && <div className={`flex-1 h-px mx-2 ${step > s.id ? 'bg-[#0B1F3A]' : 'bg-gray-200'}`} />}
+          </div>
+        ))}
+      </div>
+
+      <div className="flex sm:hidden items-center justify-center gap-3">
+        {STEPS.map((s) => (
+          <div key={s.id} className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-colors ${
+            step === s.id ? 'bg-[#0B1F3A] text-white' : step > s.id ? 'bg-[#0B1F3A]/10 text-[#0B1F3A]' : 'bg-gray-100 text-[#64748B]'
+          }`}>
+            {step > s.id ? <CheckCircle2 className="w-4 h-4" /> : s.id}
           </div>
         ))}
       </div>
@@ -217,13 +227,13 @@ function TestStartForm() {
         </Card>
       )}
 
-      <div className="flex gap-3">
+      <div className="flex gap-3 sticky bottom-0 sm:static pt-4 sm:pt-0 pb-2 sm:pb-0 bg-[#F7F9FC] sm:bg-transparent">
         {step > 1 ? (
           <Button variant="outline" onClick={() => setStep(step - 1)}
-            className="border-[#E5EAF2] text-[#0B1F3A] rounded-lg h-11 px-6 text-sm">
+            className="border-[#E5EAF2] text-[#0B1F3A] rounded-lg h-11 px-6 text-sm flex-1 sm:flex-none">
             <ArrowLeft className="w-4 h-4 mr-2" /> Kembali
           </Button>
-        ) : <div />}
+        ) : <div className="hidden sm:block" />}
         {step < 4 ? (
           <Button onClick={() => setStep(step + 1)} disabled={!canProceed()}
             className="flex-1 bg-[#0B1F3A] hover:bg-[#0B1F3A]/90 text-white rounded-lg h-11 text-sm">
