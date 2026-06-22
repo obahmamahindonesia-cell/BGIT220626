@@ -32,7 +32,7 @@ export default function DashboardPage() {
       setLoading(false)
     }
     loadData()
-  }, [supabase])
+  }, [])
 
   if (loading) {
     return <div className="flex items-center justify-center h-64">Memuat...</div>
