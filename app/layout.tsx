@@ -15,15 +15,18 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "BGIT — Bahasa Global Indonesia Test | Standar Kemahiran Bahasa Indonesia untuk Dunia",
-  description: "BGIT (Bahasa Global Indonesia Test) adalah sistem asesmen kemahiran Bahasa Indonesia modern berbasis AI, CEFR-aligned, adaptive testing, diagnostic report, dan sertifikasi digital.",
-  keywords: ["BGIT", "Bahasa Global Indonesia Test", "Bahasa Indonesia", "CEFR", "tes kemahiran", "language assessment", "adaptive testing"],
-  authors: [{ name: "BGIT" }],
+  title: "BIGT — Bahasa Indonesia Global Test | Standar Kemahiran Bahasa Indonesia untuk Dunia",
+  description: "BIGT adalah sistem asesmen kemahiran Bahasa Indonesia generasi baru berbasis kecerdasan buatan, adaptive testing, dan kerangka AKSI yang dirancang untuk mendukung internasionalisasi Bahasa Indonesia.",
+  keywords: ["BIGT", "Bahasa Indonesia Global Test", "Bahasa Indonesia", "CEFR", "tes kemahiran", "language assessment", "adaptive testing", "AKSI"],
+  authors: [{ name: "BIGT" }],
+  icons: {
+    icon: '/favicon.png',
+  },
   openGraph: {
-    title: "BGIT — Bahasa Global Indonesia Test",
-    description: "BGIT (Bahasa Global Indonesia Test) adalah sistem asesmen kemahiran Bahasa Indonesia modern berbasis AI, CEFR-aligned, adaptive testing, diagnostic report, dan sertifikasi digital.",
+    title: "BIGT — Bahasa Indonesia Global Test",
+    description: "BIGT adalah sistem asesmen kemahiran Bahasa Indonesia generasi baru berbasis kecerdasan buatan, adaptive testing, dan kerangka AKSI yang dirancang untuk mendukung internasionalisasi Bahasa Indonesia.",
     url: "https://bahasacerdas.site",
-    siteName: "BGIT — Bahasa Global Indonesia Test",
+    siteName: "BIGT — Bahasa Indonesia Global Test",
     locale: "id_ID",
     type: "website",
   },

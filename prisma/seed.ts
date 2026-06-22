@@ -378,6 +378,7 @@ async function main() {
     await prisma.question.create({
       data: {
         dimension: question.dimension,
+        skill: question.dimension.toLowerCase(),
         type: question.type,
         level: question.level,
         content: question.content,

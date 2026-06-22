@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic'
 
 const PRODUCTS = [
   {
-    name: 'BGIT Academic',
+    name: 'BIGT Academic',
     tag: 'Akademik',
     description: 'Asesmen komprehensif untuk keperluan akademik — masuk universitas, beasiswa, dan penyetaraan ijazah. Mengukur kemampuan bahasa Indonesia dalam konteks akademik tingkat tinggi.',
     audience: 'Calon mahasiswa, pelamar beasiswa, peneliti asing',
@@ -21,7 +21,7 @@ const PRODUCTS = [
     level: 'B1 — C2',
   },
   {
-    name: 'BGIT Professional',
+    name: 'BIGT Professional',
     tag: 'Profesional',
     description: 'Asesmen kemahiran bahasa Indonesia untuk dunia kerja. Dirancang untuk mengukur kemampuan komunikatif dalam konteks bisnis, korporat, dan profesional.',
     audience: 'Profesional asing, ekspatriat, pekerja migran',
@@ -35,7 +35,7 @@ const PRODUCTS = [
     level: 'A2 — C1',
   },
   {
-    name: 'BGIT Placement Test',
+    name: 'BIGT Placement Test',
     tag: 'Penempatan',
     description: 'Tes singkat dan adaptif untuk menentukan level kemahiran bahasa Indonesia secara cepat. Ideal untuk penempatan kelas atau evaluasi awal.',
     audience: 'Lembaga kursus, universitas, pusat bahasa',
@@ -49,7 +49,7 @@ const PRODUCTS = [
     level: 'A1 — C2',
   },
   {
-    name: 'BGIT Young Learners',
+    name: 'BIGT Young Learners',
     tag: 'Anak & Remaja',
     description: 'Asesmen yang dirancang khusus untuk peserta usia 8-15 tahun. Menggunakan pendekatan yang sesuai usia dengan materi yang menarik dan interaktif.',
     audience: 'Siswa sekolah dasar dan menengah',
@@ -63,10 +63,10 @@ const PRODUCTS = [
     level: 'A1 — B2',
   },
   {
-    name: 'BGIT Practice Test',
+    name: 'BIGT Practice Test',
     tag: 'Latihan',
-    description: 'Simulasi tes BGIT untuk persiapan dan familiarisasi. Memberikan gambaran akurat tentang format, tingkat kesulitan, dan pengalaman tes sesungguhnya.',
-    audience: 'Semua calon peserta BGIT',
+    description: 'Simulasi tes BIGT untuk persiapan dan familiarisasi. Memberikan gambaran akurat tentang format, tingkat kesulitan, dan pengalaman tes sesungguhnya.',
+    audience: 'Semua calon peserta BIGT',
     duration: '2 jam',
     useCases: [
       'Persiapan sebelum tes resmi',
@@ -92,7 +92,7 @@ export default function ProductsPage() {
             Tes yang tepat untuk <span className="text-[#C9A84C]">setiap kebutuhan</span>
           </h1>
           <p className="text-white/60 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-            Lima produk BGIT dirancang untuk berbagai konteks — dari keperluan akademik hingga profesional, untuk semua usia dan tingkat kemahiran.
+            Lima produk BIGT dirancang untuk berbagai konteks — dari keperluan akademik hingga profesional, untuk semua usia dan tingkat kemahiran.
           </p>
         </div>
       </section>

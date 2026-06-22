@@ -29,13 +29,18 @@ enum UserRole {
 model Question {
   id           String       @id @default(uuid())
   dimension    Dimension
+  skill        String
+  subskill     String?
   type         QuestionType
   level        CEFRLevel
+  difficulty   Int          @default(3)
   content      Json
   rubric       Json?
+  tags         String[]
   points       Int          @default(10)
   isActive     Boolean      @default(true)
   createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
 
   answers      Answer[]
 }
@@ -83,6 +88,7 @@ enum SessionStatus {
   IN_PROGRESS
   SUBMITTED
   SCORED
+  COMPLETED
   FAILED
 }
 
@@ -120,14 +126,60 @@ model TestResult {
 
   recommendations   Json
   createdAt         DateTime    @default(now())
+
+  certificate       Certificate?
 }
 
 model Waitlist {
-  id        String   @id @default(uuid())
-  email     String   @unique
-  name      String?
-  role      String?
-  userId    String?  @unique
-  user      User?    @relation(fields: [userId], references: [id])
-  createdAt DateTime @default(now())
+  id          String          @id @default(uuid())
+  email       String          @unique
+  name        String?
+  role        String?
+  institution String?
+  status      WaitlistStatus  @default(PENDING)
+  userId      String?         @unique
+  user        User?           @relation(fields: [userId], references: [id])
+  invitedAt   DateTime?
+  registeredAt DateTime?
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+}
+
+enum WaitlistStatus {
+  PENDING
+  INVITED
+  REGISTERED
+  REJECTED
+}
+
+model CanDoDescriptor {
+  id          String      @id @default(uuid())
+  level       CEFRLevel
+  skill       Dimension
+  category    String?
+  descriptor  String
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  @@index([level, skill])
+}
+
+model Certificate {
+  id              String      @id @default(uuid())
+  certificateId   String      @unique
+  testResultId    String      @unique
+  testResult      TestResult  @relation(fields: [testResultId], references: [id])
+  userId          String
+  userName        String
+  overallLevel    CEFRLevel
+  overallScore    Float
+  issuedAt        DateTime    @default(now())
+  qrCodeUrl       String?
+  pdfUrl          String?
+  isActive        Boolean     @default(true)
+  revokedAt       DateTime?
+  revokeReason    String?
+
+  @@index([certificateId])
+  @@index([userId])
 }

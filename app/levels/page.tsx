@@ -100,7 +100,7 @@ export default function LevelsPage() {
             Enam level, satu <span className="text-[#C9A84C]">standar global</span>
           </h1>
           <p className="text-white/60 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-            Setiap level BGIT dipetakan ke CEFR dengan deskriptor can-do yang jelas. Ketahui persis di mana kemampuan bahasa Indonesia Anda berdiri.
+            Setiap level BIGT dipetakan ke CEFR dengan deskriptor can-do yang jelas. Ketahui persis di mana kemampuan bahasa Indonesia Anda berdiri.
           </p>
         </div>
       </section>
@@ -175,7 +175,7 @@ export default function LevelsPage() {
             Temukan level Anda
           </h2>
           <p className="text-white/50 text-sm mb-8">
-            Ikuti BGIT Placement Test untuk mengetahui posisi Anda dalam skala CEFR.
+            Ikuti BIGT Placement Test untuk mengetahui posisi Anda dalam skala CEFR.
           </p>
           <div className="flex gap-3 justify-center flex-wrap">
             <Link href="/register">

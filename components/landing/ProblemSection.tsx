@@ -3,7 +3,7 @@ export default function ProblemSection() {
     <section className="py-20 px-6">
       <div className="max-w-4xl mx-auto">
         <div className="text-xs font-semibold tracking-widest uppercase text-[#C8102E] mb-3">
-          Mengapa BGIT Hadir
+          Mengapa BIGT Hadir
         </div>
         <h2 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-semibold text-[#0B1F3A] mb-6 leading-tight">
           Kesenjangan dalam penilaian kemahiran Bahasa Indonesia
@@ -24,7 +24,7 @@ export default function ProblemSection() {
             </ul>
           </div>
           <div className="bg-[#F8F6F1] rounded-xl p-6 border-l-4 border-[#C9A84C]">
-            <h3 className="text-sm font-semibold text-[#0B1F3A] mb-2">Solusi BGIT</h3>
+            <h3 className="text-sm font-semibold text-[#0B1F3A] mb-2">Solusi BIGT</h3>
             <ul className="text-[#6B7280] text-sm leading-relaxed space-y-2">
               <li>6 dimensi asesmen berbasis CEFR 2018</li>
               <li>Level A1-C2 yang dapat disejajarkan dengan TOEFL, IELTS, HSK</li>

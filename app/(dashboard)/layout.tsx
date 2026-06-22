@@ -42,7 +42,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       <aside className="w-64 bg-[#0B1F3A] text-white flex flex-col">
         <div className="p-6 border-b border-white/10">
           <Link href="/" className="font-[family-name:var(--font-playfair)] text-xl font-bold text-[#C9A84C]">
-            BGIT
+            BIGT
           </Link>
         </div>
         <nav className="flex-1 p-4 space-y-1">

@@ -26,14 +26,14 @@ export default function VerifyPage() {
     if (!certId.trim() || !name.trim()) return
     setLoading(true)
     setTimeout(() => {
-      if (certId.trim().toUpperCase() === 'BGIT-2026-001234' && name.trim().toLowerCase().includes('sari')) {
+      if (certId.trim().toUpperCase() === 'BIGT-2026-001234' && name.trim().toLowerCase().includes('sari')) {
         setResult({
           found: true,
           name: 'Sari Dewi Anggraini',
           level: 'B2 — Madya Atas',
-          product: 'BGIT Academic',
+          product: 'BIGT Academic',
           date: '15 Mei 2026',
-          certificateId: 'BGIT-2026-001234',
+          certificateId: 'BIGT-2026-001234',
         })
       } else {
         setResult({ found: false })
@@ -55,7 +55,7 @@ export default function VerifyPage() {
             Verifikasi <span className="text-[#C9A84C]">keaslian</span> sertifikat
           </h1>
           <p className="text-white/60 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-            Pastikan sertifikat BGIT yang Anda terima adalah asli dan valid. Layanan verifikasi ini terbuka untuk umum.
+            Pastikan sertifikat BIGT yang Anda terima adalah asli dan valid. Layanan verifikasi ini terbuka untuk umum.
           </p>
         </div>
       </section>
@@ -75,7 +75,7 @@ export default function VerifyPage() {
                   type="text"
                   value={certId}
                   onChange={(e) => setCertId(e.target.value)}
-                  placeholder="Contoh: BGIT-2026-001234"
+                  placeholder="Contoh: BIGT-2026-001234"
                   className="w-full px-4 py-3 text-sm border border-gray-200 rounded-lg bg-[#F8F6F1] text-[#0B1F3A] placeholder:text-[#6B7280]/50 focus:outline-none focus:ring-2 focus:ring-[#C9A84C]/40 focus:border-[#C9A84C] transition-all"
                 />
               </div>
@@ -152,7 +152,7 @@ export default function VerifyPage() {
 
           <div className="mt-4 text-center">
             <p className="text-[10px] text-[#6B7280]">
-              Demo: gunakan ID <span className="font-mono text-[#0B1F3A]">BGIT-2026-001234</span> dan nama <span className="text-[#0B1F3A]">Sari</span>
+              Demo: gunakan ID <span className="font-mono text-[#0B1F3A]">BIGT-2026-001234</span> dan nama <span className="text-[#0B1F3A]">Sari</span>
             </p>
           </div>
         </div>
@@ -173,7 +173,7 @@ export default function VerifyPage() {
               </div>
               <h3 className="text-sm font-semibold text-[#0B1F3A] mb-2">Verifikasi QR Code</h3>
               <p className="text-xs text-[#6B7280] leading-relaxed">
-                Setiap sertifikat BGIT dilengkapi QR code unik. Pindai dengan kamera ponsel untuk langsung mengakses halaman verifikasi dan melihat detail sertifikat secara instan.
+                Setiap sertifikat BIGT dilengkapi QR code unik. Pindai dengan kamera ponsel untuk langsung mengakses halaman verifikasi dan melihat detail sertifikat secara instan.
               </p>
             </div>
             <div className="bg-[#F8F6F1] border border-gray-200 rounded-xl p-6">
@@ -182,7 +182,7 @@ export default function VerifyPage() {
               </div>
               <h3 className="text-sm font-semibold text-[#0B1F3A] mb-2">Verifikasi Manual</h3>
               <p className="text-xs text-[#6B7280] leading-relaxed">
-                Masukkan ID sertifikat dan nama peserta pada formulir di atas. Sistem akan mencocokkan data dengan basis data resmi BGIT dan menampilkan status verifikasi.
+                Masukkan ID sertifikat dan nama peserta pada formulir di atas. Sistem akan mencocokkan data dengan basis data resmi BIGT dan menampilkan status verifikasi.
               </p>
             </div>
           </div>
@@ -198,7 +198,7 @@ export default function VerifyPage() {
             Transparansi untuk semua pihak
           </h2>
           <p className="text-[#6B7280] text-sm leading-relaxed">
-            Layanan verifikasi BGIT terbuka untuk umum tanpa perlu akun. Institusi pendidikan, pemberi kerja, dan pihak ketiga dapat memverifikasi keaslian sertifikat kapan saja. Data yang ditampilkan terbatas pada informasi yang diperlukan untuk verifikasi — menjaga privasi peserta sambil memastikan integritas sertifikat.
+            Layanan verifikasi BIGT terbuka untuk umum tanpa perlu akun. Institusi pendidikan, pemberi kerja, dan pihak ketiga dapat memverifikasi keaslian sertifikat kapan saja. Data yang ditampilkan terbatas pada informasi yang diperlukan untuk verifikasi — menjaga privasi peserta sambil memastikan integritas sertifikat.
           </p>
         </div>
       </section>

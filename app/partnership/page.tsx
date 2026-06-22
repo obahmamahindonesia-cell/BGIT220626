@@ -10,7 +10,7 @@ export const dynamic = 'force-dynamic'
 const BENEFITS = [
   {
     title: 'Branding Bersama',
-    desc: 'Sertifikat dan laporan dengan co-branding institusi Anda alongside BGIT — meningkatkan kredibilitas dan pengakuan.',
+    desc: 'Sertifikat dan laporan dengan co-branding institusi Anda alongside BIGT — meningkatkan kredibilitas dan pengakuan.',
   },
   {
     title: 'Dashboard Institusi',
@@ -37,7 +37,7 @@ const BENEFITS = [
 const INTEGRATIONS = [
   {
     name: 'LMS Integration',
-    desc: 'Integrasikan BGIT dengan Learning Management System Anda melalui API standar (LTI, REST).',
+    desc: 'Integrasikan BIGT dengan Learning Management System Anda melalui API standar (LTI, REST).',
   },
   {
     name: 'SSO & Authentication',
@@ -97,10 +97,10 @@ export default function PartnershipPage() {
             Kemitraan
           </div>
           <h1 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold leading-tight mb-6">
-            Bermitra dengan <span className="text-[#C9A84C]">BGIT</span>
+            Bermitra dengan <span className="text-[#C9A84C]">BIGT</span>
           </h1>
           <p className="text-white/60 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-            Integrasikan standar asesmen bahasa Indonesia terbaik ke dalam ekosistem institusi Anda. Bangun kredibilitas bersama BGIT.
+            Integrasikan standar asesmen bahasa Indonesia terbaik ke dalam ekosistem institusi Anda. Bangun kredibilitas bersama BIGT.
           </p>
         </div>
       </section>
@@ -133,7 +133,7 @@ export default function PartnershipPage() {
             Manfaat Kemitraan
           </div>
           <h2 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-semibold text-[#0B1F3A] mb-8 leading-tight">
-            Mengapa bermitra dengan BGIT
+            Mengapa bermitra dengan BIGT
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {BENEFITS.map((b) => (
@@ -187,7 +187,7 @@ export default function PartnershipPage() {
               </div>
               <h3 className="text-lg font-semibold text-[#0B1F3A] mb-2">Terima kasih</h3>
               <p className="text-sm text-[#6B7280] leading-relaxed">
-                Tim kemitraan BGIT akan menghubungi Anda dalam 2 hari kerja. Kami menantikan kolaborasi bersama institusi Anda.
+                Tim kemitraan BIGT akan menghubungi Anda dalam 2 hari kerja. Kami menantikan kolaborasi bersama institusi Anda.
               </p>
             </div>
           ) : (

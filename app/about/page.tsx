@@ -32,14 +32,14 @@ export default function AboutPage() {
       <section className="bg-[#0B1F3A] text-[#F8F6F1] pt-28 pb-20 px-6">
         <div className="max-w-3xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 bg-[#C9A84C]/15 border border-[#C9A84C]/40 text-[#C9A84C] text-xs font-medium tracking-wider px-4 py-1.5 rounded-full uppercase mb-6">
-            Tentang BGIT
+            Tentang BIGT
           </div>
           <h1 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold leading-tight mb-6">
             Standar Kemahiran Bahasa Indonesia
             <span className="text-[#C9A84C]"> untuk Dunia.</span>
           </h1>
           <p className="text-white/60 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-            BGIT (Bahasa Global Indonesia Test) adalah asesmen kemahiran bahasa Indonesia modern yang dirancang untuk memenuhi kebutuhan global — setara dengan standar internasional, didukung teknologi AI, dan berorientasi pada kemampuan nyata.
+            BIGT (Bahasa Indonesia Global Test) adalah asesmen kemahiran bahasa Indonesia modern yang dirancang untuk memenuhi kebutuhan global — setara dengan standar internasional, didukung teknologi AI, dan berorientasi pada kemampuan nyata.
           </p>
         </div>
       </section>
@@ -47,7 +47,7 @@ export default function AboutPage() {
       <section className="py-20 px-6 bg-[#F8F6F1]">
         <div className="max-w-3xl mx-auto">
           <div className="text-xs font-semibold tracking-widest uppercase text-[#C8102E] mb-2">
-            Mengapa BGIT
+            Mengapa BIGT
           </div>
           <h2 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-semibold text-[#0B1F3A] mb-6 leading-tight">
             Kesenjangan yang perlu diisi
@@ -57,10 +57,10 @@ export default function AboutPage() {
               Bahasa Indonesia adalah salah satu bahasa dengan penutur terbanyak di dunia. Namun, hingga kini belum ada standar asesmen kemahiran yang diakui secara internasional — setara dengan TOEFL untuk bahasa Inggris, DELF untuk bahasa Prancis, atau HSK untuk bahasa Mandarin.
             </p>
             <p>
-              Tes-tes yang ada saat ini cenderung bersifat satu dimensi, berfokus pada pengetahuan gramatikal, dan tidak mengukur kemampuan komunikatif secara utuh. BGIT hadir untuk menjawab tantangan ini.
+              Tes-tes yang ada saat ini cenderung bersifat satu dimensi, berfokus pada pengetahuan gramatikal, dan tidak mengukur kemampuan komunikatif secara utuh. BIGT hadir untuk menjawab tantangan ini.
             </p>
             <p>
-              Dengan kerangka kerja yang selaras dengan CEFR (Common European Framework of Reference), BGIT mengukur enam dimensi kemahiran — termasuk mediasi dan tugas terintegrasi — sehingga hasilnya dapat dibandingkan langsung dengan standar global.
+              Dengan kerangka kerja yang selaras dengan CEFR (Common European Framework of Reference), BIGT mengukur enam dimensi kemahiran — termasuk mediasi dan tugas terintegrasi — sehingga hasilnya dapat dibandingkan langsung dengan standar global.
             </p>
           </div>
         </div>
@@ -143,7 +143,7 @@ export default function AboutPage() {
             Siap mengukur kemampuan bahasa Indonesiamu?
           </h2>
           <p className="text-white/50 text-sm mb-8">
-            Bergabunglah dengan ribuan peserta yang telah mempercayai BGIT sebagai standar kemahiran mereka.
+            Bergabunglah dengan ribuan peserta yang telah mempercayai BIGT sebagai standar kemahiran mereka.
           </p>
           <div className="flex gap-3 justify-center flex-wrap">
             <Link href="/register">

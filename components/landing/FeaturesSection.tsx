@@ -27,7 +27,7 @@ export default function FeaturesSection() {
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-12">
           <div className="text-xs font-semibold tracking-widest uppercase text-[#C8102E] mb-3">
-            Teknologi BGIT
+            Teknologi BIGT
           </div>
           <h2 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-semibold text-[#0B1F3A] leading-tight">
             Didukung teknologi modern untuk asesmen yang akurat

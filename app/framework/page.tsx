@@ -1,72 +1,31 @@
+'use client'
+
+import { useEffect, useState } from 'react'
 import Navbar from '@/components/landing/Navbar'
 import Footer from '@/components/landing/Footer'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 
-export const dynamic = 'force-dynamic'
+interface CanDoDescriptor {
+  id: string
+  level: string
+  skill: string
+  category: string | null
+  descriptor: string
+}
 
-const CEFR_LEVELS = [
-  {
-    code: 'A1',
-    name: 'Pemula',
-    color: '#6B7280',
-    descriptors: [
-      'Memahami dan menggunakan ekspresi sehari-hari yang sangat dasar',
-      'Memperkenalkan diri dan menjawab pertanyaan sederhana tentang identitas',
-      'Berinteraksi secara sederhana jika lawan bicara berbicara lambat dan jelas',
-    ],
-  },
-  {
-    code: 'A2',
-    name: 'Dasar',
-    color: '#6B7280',
-    descriptors: [
-      'Memahami kalimat dan ekspresi yang berkaitan dengan kebutuhan segera',
-      'Berkomunikasi dalam tugas rutin yang memerlukan pertukaran informasi sederhana',
-      'Mendeskripsikan latar belakang, lingkungan sekitar, dan kebutuhan dasar',
-    ],
-  },
-  {
-    code: 'B1',
-    name: 'Madya',
-    color: '#378ADD',
-    descriptors: [
-      'Memahami poin utama dari teks yang jelas tentang hal-hal yang familiar',
-      'Menghadapi situasi yang umum ditemui saat bepergian di wilayah berbahasa Indonesia',
-      'Menghasilkan teks sederhana yang koheren tentang topik yang familiar atau menarik',
-    ],
-  },
-  {
-    code: 'B2',
-    name: 'Madya Atas',
-    color: '#378ADD',
-    descriptors: [
-      'Memahami gagasan utama dari teks kompleks, termasuk diskusi teknis dalam bidang spesialisasi',
-      'Berinteraksi dengan tingkat kelancaran yang memungkinkan komunikasi reguler dengan penutur asli',
-      'Menghasilkan teks yang jelas dan terperinci serta menjelaskan pandangan tentang suatu isu',
-    ],
-  },
-  {
-    code: 'C1',
-    name: 'Mahir',
-    color: '#C8102E',
-    descriptors: [
-      'Memahami berbagai teks panjang dan menantang, serta mengenali makna implisit',
-      'Mengekspresikan gagasan secara lancar dan spontan tanpa banyak mencari ungkapan',
-      'Menggunakan bahasa secara fleksibel dan efektif untuk tujuan sosial, akademik, dan profesional',
-    ],
-  },
-  {
-    code: 'C2',
-    name: 'Sangat Mahir',
-    color: '#C9A84C',
-    descriptors: [
-      'Memahami dengan mudah hampir semua yang didengar atau dibaca',
-      'Meringkas informasi dari berbagai sumber tertulis dan lisan secara koheren',
-      'Mengekspresikan diri secara spontan, sangat lancar, dan tepat — membedakan nuansa makna halus',
-    ],
-  },
-]
+interface LevelData {
+  code: string
+  name: string
+  description: string
+  descriptorsBySkill: Record<string, CanDoDescriptor[]>
+}
+
+interface SkillData {
+  code: string
+  name: string
+  icon: string
+}
 
 const REGISTERS = [
   {
@@ -94,7 +53,7 @@ const REGISTERS = [
 const PRINCIPLES = [
   {
     title: 'Pendekatan Berorientasi Tindakan',
-    desc: 'BGIT mengukur apa yang bisa dilakukan peserta dengan bahasa Indonesia — bukan sekadar apa yang mereka ketahui. Setiap tugas mencerminkan aktivitas komunikatif nyata.',
+    desc: 'BIGT mengukur apa yang bisa dilakukan peserta dengan bahasa Indonesia — bukan sekadar apa yang mereka ketahui. Setiap tugas mencerminkan aktivitas komunikatif nyata.',
   },
   {
     title: 'Kompetensi Mediasi',
@@ -102,15 +61,46 @@ const PRINCIPLES = [
   },
   {
     title: 'Tugas Terintegrasi',
-    desc: 'Tugas-tugas BGIT menggabungkan beberapa keterampilan sekaligus — membaca, menyimak, menulis, dan berbicara — sebagaimana terjadi dalam komunikasi nyata.',
+    desc: 'Tugas-tugas BIGT menggabungkan beberapa keterampilan sekaligus — membaca, menyimak, menulis, dan berbicara — sebagaimana terjadi dalam komunikasi nyata.',
   },
   {
     title: 'Kompetensi Plurilingual',
-    desc: 'Pengakuan bahwa pengguna bahasa memiliki repertoar linguistik yang kaya. BGIT mempertimbangkan kemampuan peserta dalam memanfaatkan seluruh sumber daya kebahasaan mereka.',
+    desc: 'Pengakuan bahwa pengguna bahasa memiliki repertoar linguistik yang kaya. BIGT mempertimbangkan kemampuan peserta dalam memanfaatkan seluruh sumber daya kebahasaan mereka.',
   },
 ]
 
+const LEVEL_COLORS: Record<string, string> = {
+  A1: '#6B7280',
+  A2: '#6B7280',
+  B1: '#378ADD',
+  B2: '#378ADD',
+  C1: '#C8102E',
+  C2: '#C9A84C',
+}
+
 export default function FrameworkPage() {
+  const [levels, setLevels] = useState<LevelData[]>([])
+  const [skills, setSkills] = useState<SkillData[]>([])
+  const [loading, setLoading] = useState(true)
+  const [selectedLevel, setSelectedLevel] = useState<string>('A1')
+
+  useEffect(() => {
+    fetch('/api/framework')
+      .then(res => res.json())
+      .then(data => {
+        setLevels(data.levels)
+        setSkills(data.skills)
+        setLoading(false)
+      })
+      .catch(err => {
+        console.error('Error fetching framework:', err)
+        setLoading(false)
+      })
+  }, [])
+
+  const currentLevel = levels.find(l => l.code === selectedLevel)
+  const levelColor = LEVEL_COLORS[selectedLevel] || '#6B7280'
+
   return (
     <main>
       <Navbar />
@@ -155,7 +145,7 @@ export default function FrameworkPage() {
       </section>
 
       <section className="py-20 px-6 bg-[#F8F6F1]">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div className="text-xs font-semibold tracking-widest uppercase text-[#C8102E] mb-2">
             Penyelarasan CEFR
           </div>
@@ -163,43 +153,91 @@ export default function FrameworkPage() {
             Can-do descriptors untuk setiap level
           </h2>
           <p className="text-[#6B7280] text-sm leading-relaxed mb-8">
-            Setiap level BGIT dipetakan secara langsung ke CEFR dengan deskriptor can-do yang jelas — sehingga peserta, institusi, dan pemberi kerja memahami persis apa yang mampu dilakukan.
+            Setiap level BIGT dipetakan secara langsung ke CEFR dengan deskriptor can-do yang jelas — sehingga peserta, institusi, dan pemberi kerja memahami persis apa yang mampu dilakukan.
           </p>
-          <div className="space-y-4">
-            {CEFR_LEVELS.map((level) => (
-              <div
-                key={level.code}
-                className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm"
-              >
-                <div className="flex items-start gap-4">
-                  <div
-                    className="w-14 h-14 rounded-xl flex items-center justify-center shrink-0"
-                    style={{ backgroundColor: `${level.color}15` }}
+
+          {loading ? (
+            <div className="text-center py-12">
+              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-[#C8102E]"></div>
+              <p className="mt-4 text-gray-600">Memuat data framework...</p>
+            </div>
+          ) : (
+            <>
+              <div className="flex flex-wrap gap-2 mb-6">
+                {levels.map(level => (
+                  <button
+                    key={level.code}
+                    onClick={() => setSelectedLevel(level.code)}
+                    className={`px-6 py-3 rounded-lg font-semibold transition-all ${
+                      selectedLevel === level.code
+                        ? 'bg-[#C8102E] text-white shadow-md'
+                        : 'bg-white text-[#0B1F3A] hover:bg-gray-100 border border-gray-200'
+                    }`}
                   >
-                    <span
-                      className="text-lg font-bold font-[family-name:var(--font-playfair)]"
-                      style={{ color: level.color }}
-                    >
-                      {level.code}
-                    </span>
+                    {level.code} - {level.name}
+                  </button>
+                ))}
+              </div>
+
+              {currentLevel && (
+                <div>
+                  <div className="bg-white border border-gray-200 rounded-xl p-6 mb-6 shadow-sm">
+                    <div className="flex items-start gap-4">
+                      <div
+                        className="w-16 h-16 rounded-xl flex items-center justify-center shrink-0"
+                        style={{ backgroundColor: `${levelColor}15` }}
+                      >
+                        <span
+                          className="text-2xl font-bold font-[family-name:var(--font-playfair)]"
+                          style={{ color: levelColor }}
+                        >
+                          {currentLevel.code}
+                        </span>
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-lg font-semibold text-[#0B1F3A] mb-2">
+                          {currentLevel.name}
+                        </h3>
+                        <p className="text-sm text-[#6B7280] leading-relaxed">
+                          {currentLevel.description}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-sm font-semibold text-[#0B1F3A] mb-3">
-                      {level.name}
-                    </h3>
-                    <ul className="space-y-1.5">
-                      {level.descriptors.map((d, i) => (
-                        <li key={i} className="flex gap-2 text-xs text-[#6B7280] leading-relaxed">
-                          <span style={{ color: level.color }} className="mt-0.5 font-bold">—</span>
-                          {d}
-                        </li>
-                      ))}
-                    </ul>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {skills.map(skill => {
+                      const descriptors = currentLevel.descriptorsBySkill[skill.code] || []
+                      return (
+                        <div key={skill.code} className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
+                          <h4 className="text-base font-semibold text-[#0B1F3A] mb-3 flex items-center gap-2">
+                            <span className="text-2xl">{skill.icon}</span>
+                            {skill.name}
+                          </h4>
+                          {descriptors.length > 0 ? (
+                            <ul className="space-y-2">
+                              {descriptors.map(desc => (
+                                <li key={desc.id} className="text-sm text-[#6B7280] leading-relaxed">
+                                  {desc.category && (
+                                    <span className="inline-block bg-[#C9A84C] text-[#0B1F3A] text-xs font-semibold px-2 py-0.5 rounded mr-2">
+                                      {desc.category}
+                                    </span>
+                                  )}
+                                  {desc.descriptor}
+                                </li>
+                              ))}
+                            </ul>
+                          ) : (
+                            <p className="text-sm text-gray-500 italic">Belum ada deskriptor untuk skill ini</p>
+                          )}
+                        </div>
+                      )
+                    })}
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              )}
+            </>
+          )}
         </div>
       </section>
 
@@ -212,7 +250,7 @@ export default function FrameworkPage() {
             Empat register, satu standar
           </h2>
           <p className="text-[#6B7280] text-sm leading-relaxed mb-8">
-            BGIT mengukur kemampuan peserta dalam menggunakan bahasa Indonesia di berbagai konteks — dari percakapan sehari-hari hingga komunikasi profesional tingkat tinggi.
+            BIGT mengukur kemampuan peserta dalam menggunakan bahasa Indonesia di berbagai konteks — dari percakapan sehari-hari hingga komunikasi profesional tingkat tinggi.
           </p>
           <div className="grid sm:grid-cols-2 gap-4">
             {REGISTERS.map((r) => (
@@ -237,7 +275,7 @@ export default function FrameworkPage() {
             Lihat detail setiap level
           </h2>
           <p className="text-white/50 text-sm mb-8">
-            Pahami deskripsi lengkap dan contoh kemampuan untuk setiap level BGIT.
+            Pahami deskripsi lengkap dan contoh kemampuan untuk setiap level BIGT.
           </p>
           <div className="flex gap-3 justify-center flex-wrap">
             <Link href="/levels">

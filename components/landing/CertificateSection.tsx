@@ -11,7 +11,7 @@ export default function CertificateSection() {
               Sertifikat digital dengan verifikasi QR
             </h2>
             <p className="text-[#6B7280] text-sm leading-relaxed mb-6">
-              Setiap peserta BGIT menerima sertifikat digital yang dapat diverifikasi secara publik melalui QR code atau Certificate ID. Institusi dan pemberi kerja dapat memvalidasi keaslian sertifikat kapan saja.
+              Setiap peserta BIGT menerima sertifikat digital yang dapat diverifikasi secara publik melalui QR code atau Certificate ID. Institusi dan pemberi kerja dapat memvalidasi keaslian sertifikat kapan saja.
             </p>
             <ul className="space-y-3">
               <li className="flex items-start gap-2 text-sm text-[#6B7280]">
@@ -34,9 +34,9 @@ export default function CertificateSection() {
           </div>
           <div className="bg-gradient-to-br from-[#0B1F3A] to-[#1a3a5c] rounded-xl p-8 text-center">
             <div className="bg-white/10 rounded-lg p-6 mb-4">
-              <div className="text-[#C9A84C] font-[family-name:var(--font-playfair)] text-lg font-bold mb-2">BGIT</div>
+              <div className="text-[#C9A84C] font-[family-name:var(--font-playfair)] text-lg font-bold mb-2">BIGT</div>
               <div className="text-white/80 text-sm mb-1">Certificate of Proficiency</div>
-              <div className="text-white/60 text-xs mb-4">Bahasa Global Indonesia Test</div>
+              <div className="text-white/60 text-xs mb-4">Bahasa Indonesia Global Test</div>
               <div className="bg-[#C9A84C] text-[#0B1F3A] text-3xl font-bold py-3 rounded-lg mb-3">B2</div>
               <div className="text-white/60 text-xs">Madya Atas</div>
             </div>

@@ -19,7 +19,7 @@ export default function LevelScale() {
             Level A1 hingga C2
           </h2>
           <p className="text-[#6B7280] text-sm leading-relaxed max-w-2xl mx-auto">
-            BGIT menggunakan skala CEFR (Common European Framework of Reference) yang dirancang untuk disejajarkan dengan TOEFL iBT, IELTS, dan HSK.
+            BIGT menggunakan skala CEFR (Common European Framework of Reference) yang dirancang untuk disejajarkan dengan TOEFL iBT, IELTS, dan HSK.
           </p>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
