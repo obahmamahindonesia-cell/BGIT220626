@@ -42,7 +42,7 @@ export default function RegisterPage() {
     <div className="min-h-screen flex items-center justify-center bg-cream px-4">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
-          <CardTitle className="font-[family-name:var(--font-playfair)] text-2xl">Daftar UKBI-Next</CardTitle>
+          <CardTitle className="font-[family-name:var(--font-playfair)] text-2xl">Daftar BGIT</CardTitle>
           <CardDescription>Mulai perjalanan kemahiran Bahasa Indonesia Anda</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">

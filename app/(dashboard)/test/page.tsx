@@ -39,7 +39,7 @@ export default function TestCatalogPage() {
       <Card className="border-2 border-[#C9A84C]/30">
         <CardHeader>
           <div className="flex items-center gap-3">
-            <CardTitle className="text-xl">UKBI-Next Standard Test</CardTitle>
+            <CardTitle className="text-xl">BGIT Standard Test</CardTitle>
             <Badge className="bg-[#C9A84C] text-[#0B1F3A] text-xs font-bold">MVP</Badge>
           </div>
           <CardDescription className="text-base">

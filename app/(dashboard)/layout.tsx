@@ -42,9 +42,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       <aside className="w-64 bg-[#0B1F3A] text-white flex flex-col">
         <div className="p-6 border-b border-white/10">
           <Link href="/" className="font-[family-name:var(--font-playfair)] text-xl font-bold text-[#C9A84C]">
-            UKBI-Next
+            BGIT
           </Link>
-          <p className="text-white/40 text-xs mt-1">by BahasaCerdas</p>
         </div>
         <nav className="flex-1 p-4 space-y-1">
           {NAV_ITEMS.map((item) => (

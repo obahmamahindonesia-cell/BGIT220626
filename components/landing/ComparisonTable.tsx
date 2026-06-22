@@ -24,7 +24,7 @@ export default function ComparisonTable() {
               <tr className="border-b border-gray-200">
                 <th className="text-left py-3 px-4 text-[#6B7280] font-medium">Dimensi</th>
                 <th className="text-left py-3 px-4 text-[#6B7280] font-medium">UKBI (2016)</th>
-                <th className="text-left py-3 px-4 text-[#C9A84C] font-semibold">UKBI-Next</th>
+                <th className="text-left py-3 px-4 text-[#C9A84C] font-semibold">BGIT</th>
               </tr>
             </thead>
             <tbody>

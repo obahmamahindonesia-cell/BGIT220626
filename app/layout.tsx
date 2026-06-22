@@ -15,15 +15,15 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "UKBI-Next — Penilaian Kemahiran Bahasa Indonesia Generasi Baru",
-  description: "Platform penilaian kemahiran Bahasa Indonesia setara standar internasional (CEFR-aligned, AI-powered). Ukur 6 dimensi kemahiran: Menyimak, Membaca, Berbicara, Menulis, Mediasi, dan Terintegrasi.",
-  keywords: ["UKBI", "Bahasa Indonesia", "CEFR", "tes kemahiran", "language assessment"],
-  authors: [{ name: "BahasaCerdas" }],
+  title: "BGIT — Bahasa Global Indonesia Test | Standar Kemahiran Bahasa Indonesia untuk Dunia",
+  description: "BGIT (Bahasa Global Indonesia Test) adalah sistem asesmen kemahiran Bahasa Indonesia modern berbasis AI, CEFR-aligned, adaptive testing, diagnostic report, dan sertifikasi digital.",
+  keywords: ["BGIT", "Bahasa Global Indonesia Test", "Bahasa Indonesia", "CEFR", "tes kemahiran", "language assessment", "adaptive testing"],
+  authors: [{ name: "BGIT" }],
   openGraph: {
-    title: "UKBI-Next — Penilaian Kemahiran Bahasa Indonesia Generasi Baru",
-    description: "Platform penilaian kemahiran Bahasa Indonesia setara standar internasional (CEFR-aligned, AI-powered)",
+    title: "BGIT — Bahasa Global Indonesia Test",
+    description: "BGIT (Bahasa Global Indonesia Test) adalah sistem asesmen kemahiran Bahasa Indonesia modern berbasis AI, CEFR-aligned, adaptive testing, diagnostic report, dan sertifikasi digital.",
     url: "https://bahasacerdas.site",
-    siteName: "UKBI-Next",
+    siteName: "BGIT — Bahasa Global Indonesia Test",
     locale: "id_ID",
     type: "website",
   },

@@ -52,7 +52,7 @@ function LoginForm() {
   return (
     <Card className="w-full max-w-md">
       <CardHeader className="text-center">
-        <CardTitle className="font-[family-name:var(--font-playfair)] text-2xl">Masuk ke UKBI-Next</CardTitle>
+        <CardTitle className="font-[family-name:var(--font-playfair)] text-2xl">Masuk ke BGIT</CardTitle>
         <CardDescription>Lanjutkan perjalanan belajar Bahasa Indonesia Anda</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">

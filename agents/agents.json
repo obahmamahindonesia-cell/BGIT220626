@@ -1,9 +1,9 @@
 {
-  "name": "UKBI-Next Agency Agents",
-  "description": "AI agents khusus untuk platform UKBI-Next / BahasaCerdas",
+  "name": "BGIT Agency Agents",
+  "description": "AI agents khusus untuk platform BGIT / Bahasa Global Indonesia Test",
   "divisions": {
     "engineering": {
-      "description": "Building the UKBI-Next platform",
+      "description": "Building the BGIT platform",
       "agents": [
         "engineering-frontend-developer",
         "engineering-backend-architect",
@@ -18,7 +18,7 @@
       ]
     },
     "design": {
-      "description": "UI/UX and brand for BahasaCerdas",
+      "description": "UI/UX and brand for BGIT",
       "agents": [
         "design-ui-designer",
         "design-ux-researcher",
@@ -28,7 +28,7 @@
       ]
     },
     "marketing": {
-      "description": "Growth and visibility for UKBI-Next",
+      "description": "Growth and visibility for BGIT",
       "agents": [
         "marketing-growth-hacker",
         "marketing-content-creator",
