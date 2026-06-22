@@ -19,10 +19,10 @@ export default function DashboardPage() {
   const [lastResult] = useState<{ overallLevel: string; overallScore: number } | null>(null)
   const [history] = useState<TestHistory[]>([])
   const [loading, setLoading] = useState(true)
-  const supabase = createClient()
 
   useEffect(() => {
     const loadData = async () => {
+      const supabase = createClient()
       const { data: { user } } = await supabase.auth.getUser()
       if (user?.user_metadata?.name) {
         setUserName(user.user_metadata.name)

@@ -9,23 +9,24 @@ import { Label } from '@/components/ui/label'
 import { toast } from 'sonner'
 
 export default function ProfilePage() {
-  const supabase = createClient()
   const [user, setUser] = useState<{ email?: string; user_metadata?: { name?: string } } | null>(null)
   const [name, setName] = useState('')
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const loadUser = async () => {
+      const supabase = createClient()
       const { data: { user } } = await supabase.auth.getUser()
       setUser(user)
       setName(user?.user_metadata?.name || '')
       setLoading(false)
     }
     loadUser()
-  }, [supabase])
+  }, [])
 
   const handleUpdate = async (e: React.FormEvent) => {
     e.preventDefault()
+    const supabase = createClient()
     const { error } = await supabase.auth.updateUser({ data: { name } })
     if (error) {
       toast.error(error.message)
