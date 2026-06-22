@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import PublicLayout from '@/components/layouts/PublicLayout'
+import PublicLayout from '@/components/layout/PublicLayout'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Headphones, BookOpen, Mic, PenSquare, RefreshCw, Puzzle, Sparkles, Loader2 } from 'lucide-react'
@@ -17,7 +17,7 @@ const SKILL_ICONS: Record<string, React.ComponentType<{ className?: string }>> =
   LISTENING: Headphones, READING: BookOpen, SPEAKING: Mic, WRITING: PenSquare, MEDIATION: RefreshCw, INTEGRATED: Puzzle,
 }
 const SKILL_COLORS: Record<string, string> = {
-  LISTENING: '#0B1F3A', READING: '#123E7C', SPEAKING: '#C9A227', WRITING: '#D7193F', MEDIATION: '#7c3aed', INTEGRATED: '#0891b2',
+  LISTENING: '#0B1F3A', READING: '#123E7C', SPEAKING: '#C9A227', WRITING: '#D7193F', MEDIATION: '#64748B', INTEGRATED: '#64748B',
 }
 const SKILL_NAMES: Record<string, string> = {
   LISTENING: 'Menyimak', READING: 'Membaca', SPEAKING: 'Berbicara', WRITING: 'Menulis', MEDIATION: 'Mediasi', INTEGRATED: 'Tugas Terintegrasi',

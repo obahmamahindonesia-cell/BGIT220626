@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import PublicLayout from '@/components/layouts/PublicLayout'
+import PublicLayout from '@/components/layout/PublicLayout'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Sparkles, Building2, BarChart3, Award, HeadphonesIcon, PenSquare, CheckCircle, Mail, Send } from 'lucide-react'

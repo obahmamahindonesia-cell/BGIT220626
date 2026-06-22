@@ -114,24 +114,24 @@ export default function ProfilePage() {
                     <Label className="text-xs font-medium text-[#0B1F3A]">Nama Lengkap</Label>
                     <Input value={name} onChange={(e) => setName(e.target.value)}
                       placeholder="Nama lengkap Anda"
-                      className="rounded-lg border-[#E5EAF2] h-10 text-sm" />
+                      className="rounded-lg border-[#E5EAF2] h-11 text-sm" />
                   </div>
                   <div className="space-y-1.5">
                     <Label className="text-xs font-medium text-[#0B1F3A]">Email</Label>
                     <Input value={user?.email || ''} disabled
-                      className="rounded-lg bg-gray-50 border-[#E5EAF2] h-10 text-sm" />
+                      className="rounded-lg bg-gray-50 border-[#E5EAF2] h-11 text-sm" />
                   </div>
                   <div className="space-y-1.5">
                     <Label className="text-xs font-medium text-[#0B1F3A]">Negara</Label>
                     <Input value={country} onChange={(e) => setCountry(e.target.value)}
                       placeholder="Indonesia"
-                      className="rounded-lg border-[#E5EAF2] h-10 text-sm" />
+                      className="rounded-lg border-[#E5EAF2] h-11 text-sm" />
                   </div>
                   <div className="space-y-1.5">
                     <Label className="text-xs font-medium text-[#0B1F3A]">Bahasa Pertama</Label>
                     <Input value={nativeLanguage} onChange={(e) => setNativeLanguage(e.target.value)}
                       placeholder="Bahasa Indonesia"
-                      className="rounded-lg border-[#E5EAF2] h-10 text-sm" />
+                      className="rounded-lg border-[#E5EAF2] h-11 text-sm" />
                   </div>
                 </div>
                 <Button type="submit" disabled={saving}

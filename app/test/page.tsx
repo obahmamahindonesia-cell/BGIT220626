@@ -6,7 +6,7 @@ import { createClient } from '@/lib/supabase/client'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { PenSquare, BookOpen, BarChart3, Clock, ShieldCheck, Sparkles, ArrowRight, UserCircle } from 'lucide-react'
+import { PenSquare, BookOpen, BarChart3, Clock, ShieldCheck, Sparkles, ArrowRight } from 'lucide-react'
 
 const TEST_PRODUCTS = [
   { id: 'academic', name: 'BIGT Academic', description: 'Untuk keperluan akademik dan studi lanjut', duration: '120 menit', questions: 50, color: '#0B1F3A' },
@@ -52,10 +52,10 @@ export default function TestHubPage() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
         {TEST_PRODUCTS.map((product) => (
           <Card key={product.id}
-            className="border border-[#E5EAF2] premium-shadow-sm rounded-xl card-hover cursor-pointer"
+            className="border border-[#E5EAF2] rounded-2xl shadow-sm card-hover cursor-pointer flex flex-col"
             onClick={() => handleStartTest(product)}>
             <CardHeader className="pb-3">
               <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-2.5"
@@ -65,12 +65,12 @@ export default function TestHubPage() {
               <CardTitle className="text-sm text-[#0B1F3A]">{product.name}</CardTitle>
               <CardDescription className="text-xs text-[#64748B] leading-relaxed">{product.description}</CardDescription>
             </CardHeader>
-            <CardContent>
-              <div className="flex items-center gap-3 text-xs text-[#64748B] mb-3">
+            <CardContent className="flex flex-col justify-between flex-1">
+              <div className="flex items-center gap-3 text-xs text-[#64748B] mb-4">
                 <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{product.duration}</span>
                 <span className="flex items-center gap-1"><BookOpen className="w-3 h-3" />{product.questions} soal</span>
               </div>
-              <Button size="sm" className="w-full rounded-lg text-xs h-9 bg-[#D7193F] hover:bg-[#D7193F]/90 text-white">
+              <Button size="sm" className="w-full rounded-lg text-xs h-9 bg-[#D7193F] hover:bg-[#D7193F]/90 text-white mt-auto">
                 Mulai Tes <ArrowRight className="w-3 h-3 ml-1" />
               </Button>
             </CardContent>
@@ -78,7 +78,7 @@ export default function TestHubPage() {
         ))}
       </div>
 
-      <Card className="border border-[#E5EAF2] premium-shadow-sm rounded-xl">
+      <Card className="border border-[#E5EAF2] rounded-2xl shadow-sm">
         <CardHeader className="pb-4">
           <CardTitle className="text-base flex items-center gap-2 text-[#0B1F3A]">
             <BarChart3 className="w-4 h-4" />
@@ -100,7 +100,7 @@ export default function TestHubPage() {
                   </div>
                   <div className="flex items-center gap-3 flex-shrink-0">
                     {session.status === 'completed' ? (
-                      <Badge className="bg-green-50 text-green-700 border-0 text-xs">{session.overallLevel || '-'}</Badge>
+                      <Badge className="bg-[#123E7C]/10 text-[#123E7C] border-0 text-xs">{session.overallLevel || '-'}</Badge>
                     ) : session.status === 'in_progress' ? (
                       <Button size="sm" variant="outline" className="rounded-lg border-[#E5EAF2] text-xs h-9 text-[#0B1F3A]"
                         onClick={() => router.push(`/test/${session.id}`)}>
@@ -112,7 +112,7 @@ export default function TestHubPage() {
               ))}
             </div>
           ) : (
-            <div className="text-center py-10">
+            <div className="text-center py-12">
               <ShieldCheck className="w-12 h-12 text-[#E5EAF2] mx-auto mb-3" />
               <p className="text-sm text-[#64748B]">Belum ada sesi tes. Mulai tes pertama Anda!</p>
             </div>
@@ -120,20 +120,22 @@ export default function TestHubPage() {
         </CardContent>
       </Card>
 
-      <div className="bg-gradient-to-r from-[#0B1F3A] to-[#123E7C] rounded-xl p-6 md:p-8">
-        <div className="flex items-start gap-4">
-          <div className="w-12 h-12 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
-            <Sparkles className="w-6 h-6 text-[#C9A227]" />
-          </div>
-          <div>
-            <h3 className="font-[family-name:var(--font-playfair)] text-lg font-bold text-white mb-1">Tes Berbasis AI</h3>
-            <p className="text-white/60 text-sm leading-relaxed max-w-xl">
-              Tes BIGT menggunakan AI untuk menilai kemampuan writing dan speaking secara otomatis,
-              memberikan feedback detail dan rekomendasi belajar yang dipersonalisasi.
-            </p>
+      <Card className="border border-[#E5EAF2] rounded-2xl shadow-sm overflow-hidden">
+        <div className="bg-gradient-to-r from-[#0B1F3A] to-[#123E7C] p-6 md:p-8">
+          <div className="flex items-start gap-4">
+            <div className="w-12 h-12 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
+              <Sparkles className="w-6 h-6 text-[#C9A227]" />
+            </div>
+            <div>
+              <h3 className="font-[family-name:var(--font-playfair)] text-lg font-bold text-white mb-1">Tes Berbasis AI</h3>
+              <p className="text-white/60 text-sm leading-relaxed max-w-xl">
+                Tes BIGT menggunakan AI untuk menilai kemampuan writing dan speaking secara otomatis,
+                memberikan feedback detail dan rekomendasi belajar yang dipersonalisasi.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
+      </Card>
     </div>
   )
 }

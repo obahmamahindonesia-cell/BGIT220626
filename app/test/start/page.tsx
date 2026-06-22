@@ -11,8 +11,8 @@ const DIMENSIONS = [
   { code: 'READING', name: 'Membaca', icon: BookOpen, color: '#123E7C' },
   { code: 'SPEAKING', name: 'Berbicara', icon: Mic, color: '#C9A227' },
   { code: 'WRITING', name: 'Menulis', icon: PenSquare, color: '#D7193F' },
-  { code: 'MEDIATION', name: 'Mediasi', icon: RefreshCw, color: '#7c3aed' },
-  { code: 'INTEGRATED', name: 'Tugas Terintegrasi', icon: Puzzle, color: '#0891b2' },
+  { code: 'MEDIATION', name: 'Mediasi', icon: RefreshCw, color: '#64748B' },
+  { code: 'INTEGRATED', name: 'Tugas Terintegrasi', icon: Puzzle, color: '#64748B' },
 ]
 
 const LEVELS = [

@@ -1,6 +1,6 @@
 'use client'
 
-import PublicLayout from '@/components/layouts/PublicLayout'
+import PublicLayout from '@/components/layout/PublicLayout'
 import Hero from '@/components/landing/Hero'
 import ProblemSection from '@/components/landing/ProblemSection'
 import DimensionsGrid from '@/components/landing/DimensionsGrid'

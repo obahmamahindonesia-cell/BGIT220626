@@ -90,7 +90,7 @@ export default function DashboardPage() {
         </Link>
       </div>
 
-      <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-5">
         {[
           { icon: BarChart3, bg: 'bg-[#0B1F3A]/5', color: '#0B1F3A', value: stats.totalTests, label: 'Total Tes Selesai' },
           { icon: GraduationCap, bg: 'bg-[#C9A227]/10', color: '#C9A227', value: stats.currentLevel, label: 'Level Saat Ini' },
@@ -100,14 +100,14 @@ export default function DashboardPage() {
         ].map((stat) => {
           const Icon = stat.icon
           return (
-            <Card key={stat.label} className="border border-[#E5EAF2] premium-shadow-sm rounded-xl">
-              <CardContent className="p-5">
+            <Card key={stat.label} className="border border-[#E5EAF2] rounded-2xl shadow-sm">
+              <CardContent className="p-5 flex flex-col justify-center min-h-[120px]">
                 <div className="flex items-center gap-3 mb-3">
                   <div className={`w-10 h-10 rounded-lg ${stat.bg} flex items-center justify-center`}>
                     <Icon className="w-5 h-5" style={{ color: stat.color }} />
                   </div>
                 </div>
-                <p className="text-xl font-bold text-[#0B1F3A]">{stat.value}</p>
+                <p className="text-2xl font-bold text-[#0B1F3A]">{stat.value}</p>
                 <p className="text-xs text-[#64748B] mt-0.5">{stat.label}</p>
               </CardContent>
             </Card>

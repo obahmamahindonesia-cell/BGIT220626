@@ -1,6 +1,6 @@
 'use client'
 
-import PublicLayout from '@/components/layouts/PublicLayout'
+import PublicLayout from '@/components/layout/PublicLayout'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Sparkles } from 'lucide-react'
