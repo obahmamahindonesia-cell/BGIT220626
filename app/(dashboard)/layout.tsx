@@ -16,11 +16,11 @@ const NAV_ITEMS = [
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
   const router = useRouter()
-  const supabase = createClient()
   const [userName, setUserName] = useState('')
 
   useEffect(() => {
     const getUser = async () => {
+      const supabase = createClient()
       const { data: { user } } = await supabase.auth.getUser()
       if (user?.user_metadata?.name) {
         setUserName(user.user_metadata.name)
@@ -29,9 +29,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       }
     }
     getUser()
-  }, [supabase])
+  }, [])
 
   const handleLogout = async () => {
+    const supabase = createClient()
     await supabase.auth.signOut()
     router.push('/login')
     router.refresh()
