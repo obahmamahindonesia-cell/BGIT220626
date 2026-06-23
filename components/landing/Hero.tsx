@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { Sparkles, ArrowRight } from 'lucide-react'
@@ -31,6 +32,17 @@ export default function Hero() {
       </div>
 
       <div className="max-w-4xl mx-auto relative z-10">
+        <div className="mb-8 flex justify-center">
+          <Image
+            src="/logo_BIGT.png"
+            alt="BIGT — Bahasa Indonesia Global Test"
+            width={280}
+            height={80}
+            className="h-14 md:h-16 w-auto brightness-0 invert"
+            priority
+          />
+        </div>
+
         <div className="inline-flex items-center gap-2 bg-[#C9A227]/15 border border-[#C9A227]/30 text-[#C9A227] text-xs font-medium tracking-wider px-4 py-1.5 rounded-full uppercase mb-6">
           <Sparkles className="w-3.5 h-3.5" />
           Standar Kemahiran Bahasa Indonesia untuk Dunia
