@@ -190,11 +190,11 @@ export default function ProfilePage() {
             </CardHeader>
             <CardContent className="space-y-2">
               <Button variant="outline" className="w-full justify-between rounded-lg border-[#E5EAF2] h-10">
-                <span className="flex items-center gap-2 text-xs text-[#0B1F3A]"><Lock className="w-3.5 h-3.5" />Ubah Password</span>
+                <span className="flex items-center gap-2 text-xs text-[#0B1F3A]"><Lock className="w-3.5 h-3.5" />Ubah Kata Sandi</span>
                 <ChevronRight className="w-3.5 h-3.5 text-[#64748B]" />
               </Button>
               <Button variant="outline" className="w-full justify-between rounded-lg border-[#E5EAF2] h-10">
-                <span className="flex items-center gap-2 text-xs text-[#0B1F3A]"><Clock className="w-3.5 h-3.5" />Riwayat Login</span>
+                <span className="flex items-center gap-2 text-xs text-[#0B1F3A]"><Clock className="w-3.5 h-3.5" />Riwayat Masuk</span>
                 <ChevronRight className="w-3.5 h-3.5 text-[#64748B]" />
               </Button>
             </CardContent>

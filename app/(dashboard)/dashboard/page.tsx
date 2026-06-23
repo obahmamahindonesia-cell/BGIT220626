@@ -172,7 +172,7 @@ export default function DashboardPage() {
               <CardContent>
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-[#0B1F3A]">Practice Test</p>
+                    <p className="text-sm font-medium text-[#0B1F3A]">Tes Latihan</p>
                     <p className="text-xs text-[#64748B] mt-0.5">15 dari 25 soal terjawab</p>
                   </div>
                   <Link href="/test">
@@ -195,7 +195,7 @@ export default function DashboardPage() {
               <CardContent>
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-[#0B1F3A]">BIGT Placement</p>
+                    <p className="text-sm font-medium text-[#0B1F3A]">BIGT Penempatan</p>
                     <p className="text-xs text-[#64748B] mt-0.5">45 menit - 25 soal</p>
                   </div>
                   <Link href="/test">
@@ -249,7 +249,7 @@ export default function DashboardPage() {
                   <BookOpen className="w-4 h-4 text-[#0B1F3A]" />
                 </div>
                 <div className="min-w-0">
-                  <p className="text-xs font-medium text-[#0B1F3A]">Practice Test</p>
+                  <p className="text-xs font-medium text-[#0B1F3A]">Tes Latihan</p>
                   <p className="text-[11px] text-[#64748B]">2 hari yang lalu</p>
                 </div>
               </div>

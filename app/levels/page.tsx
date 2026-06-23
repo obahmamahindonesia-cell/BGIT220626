@@ -61,7 +61,7 @@ export default function LevelsPage() {
       <section className="bg-gradient-to-r from-[#0B1F3A] to-[#123E7C] py-16 px-6 text-center">
         <div className="max-w-2xl mx-auto">
           <h2 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-semibold text-white mb-4">Temukan level Anda</h2>
-          <p className="text-white/50 text-sm mb-8">Ikuti BIGT Placement Test untuk mengetahui posisi Anda dalam skala CEFR.</p>
+          <p className="text-white/50 text-sm mb-8">Ikuti Tes Penempatan BIGT untuk mengetahui posisi Anda dalam skala CEFR.</p>
           <div className="flex gap-3 justify-center flex-wrap">
             <Link href="/register"><Button className="bg-[#D7193F] hover:bg-[#D7193F]/90 text-white px-7 py-3 text-sm font-semibold rounded-lg">Mulai Tes</Button></Link>
             <Link href="/products"><Button variant="outline" className="border-white/30 text-white hover:bg-white/10 px-7 py-3 text-sm font-medium rounded-lg">Lihat Produk</Button></Link>

@@ -9,10 +9,10 @@ import { Badge } from '@/components/ui/badge'
 import { PenSquare, BookOpen, BarChart3, Clock, ShieldCheck, Sparkles, ArrowRight } from 'lucide-react'
 
 const TEST_PRODUCTS = [
-  { id: 'academic', name: 'BIGT Academic', description: 'Untuk keperluan akademik dan studi lanjut', duration: '120 menit', questions: 50, color: '#0B1F3A' },
-  { id: 'professional', name: 'BIGT Professional', description: 'Untuk keperluan karier dan profesional', duration: '90 menit', questions: 40, color: '#123E7C' },
-  { id: 'placement', name: 'BIGT Placement', description: 'Untuk penempatan level dan diagnosis awal', duration: '45 menit', questions: 25, color: '#C9A227' },
-  { id: 'practice', name: 'BIGT Practice', description: 'Latihan mandiri dengan feedback instan', duration: '30 menit', questions: 15, color: '#D7193F' },
+  { id: 'academic', name: 'BIGT Akademik', description: 'Untuk keperluan akademik dan studi lanjut', duration: '120 menit', questions: 50, color: '#0B1F3A' },
+  { id: 'professional', name: 'BIGT Profesional', description: 'Untuk keperluan karier dan lingkungan kerja', duration: '90 menit', questions: 40, color: '#123E7C' },
+  { id: 'placement', name: 'BIGT Penempatan', description: 'Untuk diagnosis awal dan penempatan level', duration: '45 menit', questions: 25, color: '#C9A227' },
+  { id: 'practice', name: 'BIGT Latihan', description: 'Latihan mandiri dengan umpan balik instan', duration: '30 menit', questions: 15, color: '#D7193F' },
 ]
 
 export default function TestHubPage() {
@@ -127,10 +127,10 @@ export default function TestHubPage() {
               <Sparkles className="w-6 h-6 text-[#C9A227]" />
             </div>
             <div>
-              <h3 className="font-[family-name:var(--font-playfair)] text-lg font-bold text-white mb-1">Tes Berbasis AI</h3>
+              <h3 className="font-[family-name:var(--font-playfair)] text-lg font-bold text-white mb-1">Tes Berbasis Kecerdasan Buatan</h3>
               <p className="text-white/60 text-sm leading-relaxed max-w-xl">
-                Tes BIGT menggunakan AI untuk menilai kemampuan writing dan speaking secara otomatis,
-                memberikan feedback detail dan rekomendasi belajar yang dipersonalisasi.
+                Tes BIGT menggunakan kecerdasan buatan untuk menilai kemampuan menulis dan berbicara,
+                memberikan umpan balik detail, dan menyusun rekomendasi belajar yang dipersonalisasi.
               </p>
             </div>
           </div>

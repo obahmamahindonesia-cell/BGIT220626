@@ -32,10 +32,10 @@ const STEPS = [
 ]
 
 const PRODUCTS: Record<string, { name: string; desc: string }> = {
-  academic: { name: 'BIGT Academic', desc: 'Asesmen komprehensif untuk keperluan akademik' },
-  professional: { name: 'BIGT Professional', desc: 'Asesmen untuk dunia kerja dan profesional' },
-  placement: { name: 'BIGT Placement', desc: 'Tes adaptif untuk penempatan level' },
-  practice: { name: 'BIGT Practice', desc: 'Latihan mandiri dengan feedback instan' },
+  academic: { name: 'BIGT Akademik', desc: 'Asesmen komprehensif untuk keperluan akademik' },
+  professional: { name: 'BIGT Profesional', desc: 'Asesmen untuk dunia kerja dan profesional' },
+  placement: { name: 'BIGT Penempatan', desc: 'Tes adaptif untuk penempatan level' },
+  practice: { name: 'BIGT Latihan', desc: 'Latihan mandiri dengan umpan balik instan' },
 }
 
 function TestStartForm() {

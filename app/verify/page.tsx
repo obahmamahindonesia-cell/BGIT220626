@@ -22,7 +22,7 @@ export default function VerifyPage() {
     setLoading(true)
     setTimeout(() => {
       if (certId.trim().toUpperCase() === 'BIGT-2026-001234' && name.trim().toLowerCase().includes('sari')) {
-        setResult({ found: true, name: 'Ni Putu Sari', level: 'B2', product: 'BIGT Academic', date: '15 Juni 2026', certificateId: 'BIGT-2026-001234' })
+        setResult({ found: true, name: 'Ni Putu Sari', level: 'B2', product: 'BIGT Akademik', date: '15 Juni 2026', certificateId: 'BIGT-2026-001234' })
       } else {
         setResult({ found: false, certificateId: certId.trim().toUpperCase() })
       }

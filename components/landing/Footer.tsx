@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Sparkles } from 'lucide-react'
+import Image from 'next/image'
 
 export default function Footer() {
   return (
@@ -7,9 +7,9 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div className="md:col-span-1">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg p-3 mb-4">
-              <Sparkles className="w-5 h-5 text-[#C9A227]" />
-              <span className="font-[family-name:var(--font-playfair)] text-lg font-bold">BIGT</span>
+            <div className="mb-4">
+              <Image src="/icon_BIGT.png" alt="BIGT Logo" width={48} height={48} className="h-10 w-auto brightness-0 invert opacity-80" />
+              <span className="font-[family-name:var(--font-playfair)] text-xl font-bold text-white ml-3 align-middle">BIGT</span>
             </div>
             <p className="text-white/50 text-sm leading-relaxed">Bahasa Indonesia Global Test. Standar Kemahiran Bahasa Indonesia untuk Dunia.</p>
           </div>
@@ -39,10 +39,10 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-white/40 text-sm">&copy; 2026 BIGT — Bahasa Indonesia Global Test. All rights reserved.</p>
+          <p className="text-white/40 text-sm">&copy; 2026 BIGT — Bahasa Indonesia Global Test. Hak cipta dilindungi undang-undang.</p>
           <div className="flex gap-6">
-            <Link href="/privacy" className="text-white/40 hover:text-white text-sm transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="text-white/40 hover:text-white text-sm transition-colors">Terms of Service</Link>
+            <Link href="/privacy" className="text-white/40 hover:text-white text-sm transition-colors">Kebijakan Privasi</Link>
+            <Link href="/terms" className="text-white/40 hover:text-white text-sm transition-colors">Syarat Layanan</Link>
           </div>
         </div>
       </div>

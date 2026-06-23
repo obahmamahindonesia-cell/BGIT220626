@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import Link from 'next/link'
+import Image from 'next/image'
 import { toast } from 'sonner'
 import { Globe, Sparkles, ShieldCheck, BarChart3 } from 'lucide-react'
 
@@ -24,7 +25,7 @@ function LoginForm() {
     setLoading(true)
     const { error } = await supabase.auth.signInWithPassword({ email, password })
     if (error) { toast.error(error.message); setLoading(false); return }
-    toast.success('Login berhasil!')
+    toast.success('Masuk berhasil!')
     router.push(redirectTo)
     router.refresh()
   }
@@ -46,8 +47,9 @@ function LoginForm() {
           <div className="absolute bottom-20 right-20 w-96 h-96 border border-white/10 rounded-full" />
         </div>
         <div>
-          <Link href="/" className="inline-block bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/10">
-            <span className="font-[family-name:var(--font-playfair)] text-2xl font-bold text-white">BIGT</span>
+          <Link href="/" className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-3 border border-white/10">
+            <Image src="/icon_BIGT.png" alt="BIGT" width={36} height={36} className="h-8 w-auto brightness-0 invert opacity-80" />
+            <span className="font-[family-name:var(--font-playfair)] text-xl font-bold text-white">BIGT</span>
           </Link>
         </div>
         <div className="relative z-10">
@@ -56,8 +58,7 @@ function LoginForm() {
             <span className="text-[#C9A227]">untuk Dunia</span>
           </h1>
           <p className="text-white/50 text-sm max-w-md mb-10 leading-relaxed">
-            BIGT adalah sistem asesmen kemahiran Bahasa Indonesia generasi baru berbasis kecerdasan buatan,
-            adaptive testing, dan kerangka AKSI.
+            Masuk ke akun BIGT Anda untuk mengikuti tes, melihat hasil asesmen, dan mengelola sertifikat digital.
           </p>
           <div className="space-y-5">
             <div className="flex items-center gap-4">
@@ -65,8 +66,8 @@ function LoginForm() {
                 <Sparkles className="w-5 h-5 text-[#C9A227]" />
               </div>
               <div>
-                <p className="text-white text-sm font-medium">AI-Powered Assessment</p>
-                <p className="text-white/40 text-xs">Penilaian otomatis dengan GPT-4o</p>
+                <p className="text-white text-sm font-medium">Asesmen Berbasis AI</p>
+                <p className="text-white/40 text-xs">Penilaian otomatis dengan kecerdasan buatan</p>
               </div>
             </div>
             <div className="flex items-center gap-4">
@@ -74,8 +75,8 @@ function LoginForm() {
                 <BarChart3 className="w-5 h-5 text-[#C9A227]" />
               </div>
               <div>
-                <p className="text-white text-sm font-medium">Diagnostic Report</p>
-                <p className="text-white/40 text-xs">Laporan detail per dimensi kemampuan</p>
+                <p className="text-white text-sm font-medium">Laporan Diagnostik</p>
+                <p className="text-white/40 text-xs">Laporan detail per dimensi kemahiran</p>
               </div>
             </div>
             <div className="flex items-center gap-4">
@@ -83,7 +84,7 @@ function LoginForm() {
                 <ShieldCheck className="w-5 h-5 text-[#C9A227]" />
               </div>
               <div>
-                <p className="text-white text-sm font-medium">Digital Certificate</p>
+                <p className="text-white text-sm font-medium">Sertifikat Digital</p>
                 <p className="text-white/40 text-xs">Sertifikat digital dengan verifikasi QR</p>
               </div>
             </div>
