@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Image from 'next/image'
+import { GraduationCap } from 'lucide-react'
 
 export default function Footer() {
   return (
@@ -7,9 +7,11 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div className="md:col-span-1">
-            <div className="mb-4">
-              <Image src="/icon_BIGT.png" alt="BIGT Logo" width={48} height={48} className="h-10 w-auto brightness-0 invert opacity-80" />
-              <span className="font-[family-name:var(--font-playfair)] text-xl font-bold text-white ml-3 align-middle">BIGT</span>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center">
+                <GraduationCap className="w-5 h-5 text-[#C9A227]" />
+              </div>
+              <span className="font-[family-name:var(--font-playfair)] text-xl font-bold text-white">BIGT</span>
             </div>
             <p className="text-white/50 text-sm leading-relaxed">Bahasa Indonesia Global Test. Standar Kemahiran Bahasa Indonesia untuk Dunia.</p>
           </div>
