@@ -1,36 +1,29 @@
-import { createClient } from '@/lib/supabase/server'
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
 export async function middleware(request: NextRequest) {
-  const supabase = createClient()
-  const { data: { session } } = await supabase.auth.getSession()
-
   const protectedRoutes = ['/dashboard', '/test']
-  const isProtectedRoute = protectedRoutes.some(route => 
+  const isProtectedRoute = protectedRoutes.some(route =>
     request.nextUrl.pathname.startsWith(route)
   )
 
-  if (isProtectedRoute && !session) {
+  const authRoutes = ['/login', '/register']
+  const isAuthRoute = authRoutes.some(route =>
+    request.nextUrl.pathname.startsWith(route)
+  )
+
+  const sbAccessToken = request.cookies.get('sb-access-token')?.value
+  const sbRefreshToken = request.cookies.get('sb-refresh-token')?.value
+  const hasSession = !!(sbAccessToken || sbRefreshToken)
+
+  if (isProtectedRoute && !hasSession) {
     const redirectUrl = new URL('/login', request.url)
     redirectUrl.searchParams.set('redirect', request.nextUrl.pathname)
     return NextResponse.redirect(redirectUrl)
   }
 
-  const authRoutes = ['/login', '/register']
-  const isAuthRoute = authRoutes.some(route => 
-    request.nextUrl.pathname.startsWith(route)
-  )
-
-  if (isAuthRoute && session) {
+  if (isAuthRoute && hasSession) {
     return NextResponse.redirect(new URL('/dashboard', request.url))
-  }
-
-  if (session) {
-    const { data: { session: refreshedSession }, error } = await supabase.auth.refreshSession()
-    if (error || !refreshedSession) {
-      return NextResponse.redirect(new URL('/login', request.url))
-    }
   }
 
   return NextResponse.next()
