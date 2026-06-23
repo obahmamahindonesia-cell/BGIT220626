@@ -3,6 +3,7 @@
 import { Suspense, useState } from 'react'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
+import AppLayout from '@/components/layout/AppLayout'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { toast } from 'sonner'
@@ -138,28 +139,30 @@ function TestStartForm() {
 
       {step === 1 && (
         <Card className="border border-[#E5EAF2] premium-shadow-sm rounded-xl">
-          <CardHeader className="pb-4">
-            <CardTitle className="text-base text-[#0B1F3A] flex items-center gap-2">
-              <Settings className="w-4 h-4" />
+          <CardHeader className="pb-5 px-6 pt-6">
+            <CardTitle className="text-base text-[#0B1F3A] flex items-center gap-2.5">
+              <div className="w-7 h-7 rounded-lg bg-[#0B1F3A]/5 flex items-center justify-center">
+                <Settings className="w-3.5 h-3.5 text-[#0B1F3A]" />
+              </div>
               Pilih Dimensi
             </CardTitle>
-            <CardDescription className="text-xs text-[#64748B]">Pilih satu atau lebih dimensi yang ingin diuji</CardDescription>
+            <CardDescription className="text-xs text-[#64748B] mt-2">Pilih satu atau lebih dimensi yang ingin diuji</CardDescription>
           </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+          <CardContent className="px-6 pb-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {DIMENSIONS.map(dim => {
                 const Icon = dim.icon
                 const isSelected = selectedDimensions.includes(dim.code)
                 return (
                   <button key={dim.code} onClick={() => toggleDimension(dim.code)}
-                    className={`p-4 rounded-xl border-2 transition-all text-left ${
+                    className={`p-5 rounded-xl border-2 transition-all text-left ${
                       isSelected ? 'border-[#0B1F3A] bg-[#0B1F3A]/5' : 'border-[#E5EAF2] hover:border-gray-300 bg-white'
                     }`}>
-                    <div className="w-9 h-9 rounded-lg flex items-center justify-center mb-2"
+                    <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3"
                       style={{ backgroundColor: isSelected ? dim.color + '15' : '#F7F9FC' }}>
-                      <Icon className="w-[18px] h-[18px]" style={{ color: dim.color }} />
+                      <Icon className="w-5 h-5" style={{ color: dim.color }} />
                     </div>
-                    <div className={`text-xs font-medium ${isSelected ? 'text-[#0B1F3A]' : 'text-[#64748B]'}`}>{dim.name}</div>
+                    <div className={`text-sm font-medium leading-snug ${isSelected ? 'text-[#0B1F3A]' : 'text-[#64748B]'}`}>{dim.name}</div>
                   </button>
                 )
               })}
@@ -170,25 +173,27 @@ function TestStartForm() {
 
       {step === 2 && (
         <Card className="border border-[#E5EAF2] premium-shadow-sm rounded-xl">
-          <CardHeader className="pb-4">
-            <CardTitle className="text-base text-[#0B1F3A] flex items-center gap-2">
-              <Settings className="w-4 h-4" />
+          <CardHeader className="pb-5 px-6 pt-6">
+            <CardTitle className="text-base text-[#0B1F3A] flex items-center gap-2.5">
+              <div className="w-7 h-7 rounded-lg bg-[#0B1F3A]/5 flex items-center justify-center">
+                <Settings className="w-3.5 h-3.5 text-[#0B1F3A]" />
+              </div>
               Pilih Level
             </CardTitle>
-            <CardDescription className="text-xs text-[#64748B]">Kosongkan untuk menyertakan semua level</CardDescription>
+            <CardDescription className="text-xs text-[#64748B] mt-2">Kosongkan untuk menyertakan semua level</CardDescription>
           </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-3 md:grid-cols-6 gap-2">
+          <CardContent className="px-6 pb-6">
+            <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
               {LEVELS.map(level => (
                 <button key={level.code}
                   onClick={() => setSelectedLevel(selectedLevel === level.code ? '' : level.code)}
-                  className={`p-3 rounded-lg border-2 text-center transition-all ${
+                  className={`p-4 rounded-xl border-2 text-center transition-all ${
                     selectedLevel === level.code
                       ? 'border-[#0B1F3A] bg-[#0B1F3A]/5'
                       : 'border-[#E5EAF2] hover:border-gray-300 bg-white'
                   }`}>
                   <div className={`text-sm font-bold ${selectedLevel === level.code ? 'text-[#0B1F3A]' : 'text-[#64748B]'}`}>{level.code}</div>
-                  <div className={`text-[10px] ${selectedLevel === level.code ? 'text-[#0B1F3A]' : 'text-[#64748B]'}`}>{level.name}</div>
+                  <div className={`text-[11px] mt-0.5 ${selectedLevel === level.code ? 'text-[#0B1F3A]' : 'text-[#64748B]'}`}>{level.name}</div>
                 </button>
               ))}
             </div>
@@ -198,18 +203,20 @@ function TestStartForm() {
 
       {step === 3 && (
         <Card className="border border-[#E5EAF2] premium-shadow-sm rounded-xl">
-          <CardHeader className="pb-4">
-            <CardTitle className="text-base text-[#0B1F3A] flex items-center gap-2">
-              <Settings className="w-4 h-4" />
+          <CardHeader className="pb-5 px-6 pt-6">
+            <CardTitle className="text-base text-[#0B1F3A] flex items-center gap-2.5">
+              <div className="w-7 h-7 rounded-lg bg-[#0B1F3A]/5 flex items-center justify-center">
+                <Settings className="w-3.5 h-3.5 text-[#0B1F3A]" />
+              </div>
               Jumlah Soal
             </CardTitle>
-            <CardDescription className="text-xs text-[#64748B]">Sesuaikan panjang tes</CardDescription>
+            <CardDescription className="text-xs text-[#64748B] mt-2">Sesuaikan panjang tes</CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className="px-6 pb-6">
             <input type="range" min="5" max="50" step="5" value={questionCount}
               onChange={(e) => setQuestionCount(parseInt(e.target.value))}
-              className="w-full accent-[#0B1F3A]" />
-            <div className="flex justify-between text-xs text-[#64748B] mt-2">
+              className="w-full accent-[#0B1F3A] h-2" />
+            <div className="flex justify-between text-xs text-[#64748B] mt-3">
               <span>5 soal</span>
               <span className="font-semibold text-[#0B1F3A]">{questionCount} soal</span>
               <span>50 soal</span>
@@ -220,25 +227,27 @@ function TestStartForm() {
 
       {step === 4 && (
         <Card className="border border-[#E5EAF2] premium-shadow-sm rounded-xl">
-          <CardHeader className="pb-4">
-            <CardTitle className="text-base text-[#0B1F3A] flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-[#C9A227]" />
+          <CardHeader className="pb-5 px-6 pt-6">
+            <CardTitle className="text-base text-[#0B1F3A] flex items-center gap-2.5">
+              <div className="w-7 h-7 rounded-lg bg-[#C9A227]/10 flex items-center justify-center">
+                <Sparkles className="w-3.5 h-3.5 text-[#C9A227]" />
+              </div>
               Ringkasan Tes
             </CardTitle>
-            <CardDescription className="text-xs text-[#64748B]">Pastikan konfigurasi Anda sudah benar</CardDescription>
+            <CardDescription className="text-xs text-[#64748B] mt-2">Pastikan konfigurasi Anda sudah benar</CardDescription>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              <div className="p-4 rounded-lg bg-[#F7F9FC] border border-[#E5EAF2]">
-                <p className="text-[10px] text-[#64748B] uppercase tracking-wider font-medium mb-1">Produk</p>
+          <CardContent className="px-6 pb-6 space-y-5">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="p-5 rounded-xl bg-[#F7F9FC] border border-[#E5EAF2]">
+                <p className="text-[10px] text-[#64748B] uppercase tracking-wider font-medium mb-1.5">Produk</p>
                 <p className="text-sm font-semibold text-[#0B1F3A]">{product.name}</p>
               </div>
-              <div className="p-4 rounded-lg bg-[#F7F9FC] border border-[#E5EAF2]">
-                <p className="text-[10px] text-[#64748B] uppercase tracking-wider font-medium mb-1">Dimensi</p>
+              <div className="p-5 rounded-xl bg-[#F7F9FC] border border-[#E5EAF2]">
+                <p className="text-[10px] text-[#64748B] uppercase tracking-wider font-medium mb-1.5">Dimensi</p>
                 <p className="text-sm font-semibold text-[#0B1F3A]">{selectedDimensions.length} dipilih</p>
               </div>
-              <div className="p-4 rounded-lg bg-[#F7F9FC] border border-[#E5EAF2]">
-                <p className="text-[10px] text-[#64748B] uppercase tracking-wider font-medium mb-1">Level</p>
+              <div className="p-5 rounded-xl bg-[#F7F9FC] border border-[#E5EAF2]">
+                <p className="text-[10px] text-[#64748B] uppercase tracking-wider font-medium mb-1.5">Level</p>
                 <p className="text-sm font-semibold text-[#0B1F3A]">{selectedLevel || 'Semua level'}</p>
               </div>
             </div>
@@ -271,8 +280,10 @@ function TestStartForm() {
 
 export default function TestStartPage() {
   return (
+    <AppLayout>
     <Suspense fallback={<div className="py-12 text-center text-[#64748B] text-sm">Memuat...</div>}>
       <TestStartForm />
     </Suspense>
+    </AppLayout>
   )
 }

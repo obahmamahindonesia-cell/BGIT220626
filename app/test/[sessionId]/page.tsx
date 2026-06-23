@@ -1,20 +1,46 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useCallback } from 'react'
 import { useParams, useRouter } from 'next/navigation'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
+import { useTestStore } from '@/store/testStore'
+import TestHeader from '@/components/test/TestHeader'
+import StimulusPanel from '@/components/test/StimulusPanel'
+import QuestionPanel from '@/components/test/QuestionPanel'
+import QuestionNavigator from '@/components/test/QuestionNavigator'
+import TestFooter from '@/components/test/TestFooter'
+import { createClient } from '@/lib/supabase/client'
+import { ShieldCheck } from 'lucide-react'
 
-interface Question {
-  id: string
-  dimension: string
-  skill: string
-  type: string
-  level: string
-  difficulty: number
-  points: number
-  content: any
+function LoadingSkeleton() {
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-[#0A1428] via-[#0D1B34] to-[#0A1428] flex items-center justify-center">
+      <div className="text-center space-y-4">
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-[#10B981] to-[#059669] shadow-lg shadow-[#10B981]/20 mx-auto animate-pulse">
+          <ShieldCheck className="w-8 h-8 text-white" />
+        </div>
+        <div className="space-y-2">
+          <div className="h-4 w-48 bg-white/[0.06] rounded-lg mx-auto animate-pulse" />
+          <div className="h-3 w-32 bg-white/[0.04] rounded-lg mx-auto animate-pulse" />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function EmptyState() {
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-[#0A1428] via-[#0D1B34] to-[#0A1428] flex items-center justify-center">
+      <div className="text-center space-y-4">
+        <div className="w-16 h-16 rounded-2xl bg-white/[0.06] flex items-center justify-center mx-auto">
+          <ShieldCheck className="w-8 h-8 text-white/20" />
+        </div>
+        <p className="text-white/40 text-sm">Soal tidak tersedia untuk sesi ini.</p>
+        <a href="/test" className="text-[10px] text-[#10B981] hover:text-[#34D399] font-medium transition-colors">
+          Kembali ke Pusat Tes
+        </a>
+      </div>
+    </div>
+  )
 }
 
 export default function TestRunnerPage() {
@@ -22,206 +48,130 @@ export default function TestRunnerPage() {
   const router = useRouter()
   const sessionId = params.sessionId as string
 
-  const [questions, setQuestions] = useState<Question[]>([])
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [answers, setAnswers] = useState<Record<string, any>>({})
-  const [loading, setLoading] = useState(true)
-  const [submitting, setSubmitting] = useState(false)
+  const {
+    questions,
+    setSession,
+    timeRemaining,
+    setTimeRemaining,
+    finishTest,
+    answers,
+    sessionId: storedSessionId,
+  } = useTestStore()
+
+  const initSession = useCallback(async () => {
+    try {
+      const supabase = createClient()
+      const { data: { user } } = await supabase.auth.getUser()
+      if (!user) {
+        router.push('/login')
+        return
+      }
+
+      const res = await fetch(`/api/test/sessions/${sessionId}`)
+      if (!res.ok) throw new Error('Session not found')
+      const data = await res.json()
+
+      if (!data.questions || data.questions.length === 0) {
+        return
+      }
+
+      if (data.session.status !== 'IN_PROGRESS') {
+        router.push(`/test/${sessionId}/results`)
+        return
+      }
+
+      setSession(sessionId, data.questions)
+    } catch {
+      useTestStore.setState({ questions: [] })
+    }
+  }, [sessionId, setSession, router])
 
   useEffect(() => {
-    fetchSession()
-  }, [sessionId])
+    initSession()
+  }, [initSession])
 
-  const fetchSession = async () => {
-    try {
-      const res = await fetch(`/api/test/sessions/${sessionId}`)
-      const data = await res.json()
-      setQuestions(data.questions)
-    } catch (err) {
-      console.error('Error fetching session:', err)
-    } finally {
-      setLoading(false)
-    }
-  }
+  useEffect(() => {
+    if (timeRemaining <= 0) return
 
-  const currentQuestion = questions[currentIndex]
-
-  const handleAnswer = (answer: any) => {
-    if (!currentQuestion) return
-    setAnswers(prev => ({
-      ...prev,
-      [currentQuestion.id]: answer,
-    }))
-  }
-
-  const handleNext = async () => {
-    if (!currentQuestion) return
-
-    const answer = answers[currentQuestion.id]
-    if (!answer) {
-      alert('Please provide an answer before continuing')
-      return
-    }
-
-    try {
-      await fetch('/api/test/answers', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          sessionId,
-          questionId: currentQuestion.id,
-          answer,
-        }),
-      })
-
-      if (currentIndex < questions.length - 1) {
-        setCurrentIndex(prev => prev + 1)
-      } else {
-        handleComplete()
+    const interval = setInterval(() => {
+      const remaining = useTestStore.getState().timeRemaining
+      if (remaining <= 1) {
+        clearInterval(interval)
+        finishTest()
+        return
       }
-    } catch (err) {
-      console.error('Error submitting answer:', err)
+      setTimeRemaining(remaining - 1)
+    }, 1000)
+
+    return () => clearInterval(interval)
+  }, [timeRemaining, setTimeRemaining, finishTest])
+
+  const autoSave = useCallback(async () => {
+    const state = useTestStore.getState()
+    if (!state.sessionId || state.questions.length === 0) return
+
+    for (const q of state.questions) {
+      const answer = state.answers[q.id]
+      if (answer) {
+        try {
+          await fetch('/api/test/answers', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ sessionId: state.sessionId, questionId: q.id, answer }),
+          })
+        } catch { }
+      }
     }
-  }
+  }, [])
 
-  const handleComplete = async () => {
-    setSubmitting(true)
+  useEffect(() => {
+    if (questions.length === 0) return
+    const interval = setInterval(autoSave, 15000)
+    return () => clearInterval(interval)
+  }, [questions.length, autoSave])
 
-    try {
-      const res = await fetch('/api/test/complete', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ sessionId }),
-      })
-
-      if (!res.ok) throw new Error('Failed to complete test')
-
-      router.push(`/test/${sessionId}/results`)
-    } catch (err) {
-      console.error('Error completing test:', err)
-      alert('Failed to complete test')
-    } finally {
-      setSubmitting(false)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') {
+        useTestStore.getState().previousQuestion()
+      } else if (e.key === 'ArrowRight') {
+        useTestStore.getState().nextQuestion()
+      }
     }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [])
+
+  if (storedSessionId !== sessionId && questions.length === 0) {
+    return <LoadingSkeleton />
   }
 
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-[#C8102E]"></div>
-          <p className="mt-4 text-gray-600">Loading test...</p>
-        </div>
-      </div>
-    )
+  if (questions.length === 0) {
+    return <EmptyState />
   }
-
-  if (!currentQuestion) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p className="text-gray-600">No questions available</p>
-      </div>
-    )
-  }
-
-  const progress = ((currentIndex + 1) / questions.length) * 100
 
   return (
-    <div className="min-h-screen bg-[#F8F6F1] py-8">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="mb-6">
-            <div className="flex justify-between items-center mb-2">
-              <span className="text-sm text-gray-600">
-                Question {currentIndex + 1} of {questions.length}
-              </span>
-              <Badge variant="outline">
-                {currentQuestion.dimension} - {currentQuestion.level}
-              </Badge>
-            </div>
-            <div className="w-full bg-gray-200 rounded-full h-2">
-              <div
-                className="bg-[#C8102E] h-2 rounded-full transition-all"
-                style={{ width: `${progress}%` }}
-              ></div>
-            </div>
-          </div>
+    <div className="min-h-screen bg-gradient-to-b from-[#0A1428] via-[#0D1B34] to-[#0A1428] overflow-hidden">
+      <TestHeader />
 
-          <Card className="mb-6">
-            <CardContent className="pt-6">
-              <div className="mb-6">
-                <h2 className="text-xl font-semibold text-[#0B1F3A] mb-4">
-                  {currentQuestion.content?.prompt || 'No prompt available'}
-                </h2>
-              </div>
+      <div className="fixed top-16 bottom-16 left-0 right-0 flex">
+        {/* Left: Stimulus Panel */}
+        <div className="hidden lg:flex lg:w-[35%] border-r border-white/[0.06] bg-white/[0.02]">
+          <StimulusPanel />
+        </div>
 
-              {currentQuestion.type === 'MCQ' && currentQuestion.content?.options && (
-                <div className="space-y-3">
-                  {currentQuestion.content.options.map((option: string, i: number) => {
-                    const optionLetter = String.fromCharCode(65 + i)
-                    const isSelected = answers[currentQuestion.id]?.selectedOption === optionLetter
+        {/* Center: Question Panel */}
+        <div className="flex-1 min-w-0 lg:border-r border-white/[0.06]">
+          <QuestionPanel />
+        </div>
 
-                    return (
-                      <button
-                        key={i}
-                        onClick={() => handleAnswer({ selectedOption: optionLetter })}
-                        className={`w-full text-left p-4 rounded-lg border-2 transition-all ${
-                          isSelected
-                            ? 'border-[#C8102E] bg-[#C8102E]/5'
-                            : 'border-gray-200 hover:border-gray-300'
-                        }`}
-                      >
-                        <span className="font-semibold mr-3">{optionLetter}.</span>
-                        {option}
-                      </button>
-                    )
-                  })}
-                </div>
-              )}
-
-              {currentQuestion.type === 'ESSAY' && (
-                <textarea
-                  value={answers[currentQuestion.id]?.text || ''}
-                  onChange={(e) => handleAnswer({ text: e.target.value })}
-                  placeholder="Type your answer here..."
-                  className="w-full p-4 border rounded-lg min-h-[200px] resize-y"
-                />
-              )}
-
-              {currentQuestion.type === 'SHORT_ANSWER' && (
-                <input
-                  type="text"
-                  value={answers[currentQuestion.id]?.text || ''}
-                  onChange={(e) => handleAnswer({ text: e.target.value })}
-                  placeholder="Type your answer here..."
-                  className="w-full p-4 border rounded-lg"
-                />
-              )}
-            </CardContent>
-          </Card>
-
-          <div className="flex gap-3">
-            <Button
-              variant="outline"
-              onClick={() => setCurrentIndex(prev => Math.max(0, prev - 1))}
-              disabled={currentIndex === 0}
-            >
-              Previous
-            </Button>
-            <Button
-              onClick={handleNext}
-              disabled={submitting}
-              className="flex-1 bg-[#C8102E] hover:bg-red-800 text-white"
-            >
-              {submitting
-                ? 'Completing...'
-                : currentIndex === questions.length - 1
-                ? 'Complete Test'
-                : 'Next Question'}
-            </Button>
-          </div>
+        {/* Right: Navigator */}
+        <div className="hidden xl:flex xl:w-[20%]">
+          <QuestionNavigator />
         </div>
       </div>
+
+      <TestFooter />
     </div>
   )
 }

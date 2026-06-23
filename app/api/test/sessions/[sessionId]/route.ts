@@ -59,16 +59,26 @@ export async function GET(
     return NextResponse.json({ error: 'Session not found' }, { status: 404 })
   }
 
-  const questions = session.answers.map(answer => ({
-    id: answer.question.id,
-    dimension: answer.question.dimension,
-    skill: answer.question.skill,
-    type: answer.question.type,
-    level: answer.question.level,
-    difficulty: answer.question.difficulty,
-    points: answer.question.points,
-    content: answer.question.content,
-  }))
+  const rawQuestions = await prisma.question.findMany({
+    where: { id: { in: session.questionIds } },
+  })
+
+  const idMap = Object.fromEntries(rawQuestions.map(q => [q.id, q]))
+
+  const questions = session.questionIds.map(qid => {
+    const q = idMap[qid]
+    if (!q) return null
+    return {
+      id: q.id,
+      dimension: q.dimension,
+      skill: q.skill,
+      type: q.type,
+      level: q.level,
+      difficulty: q.difficulty,
+      points: q.points,
+      content: q.content,
+    }
+  }).filter(Boolean)
 
   return NextResponse.json({
     session: {

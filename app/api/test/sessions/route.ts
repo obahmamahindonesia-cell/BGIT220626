@@ -71,12 +71,26 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    const questionIds = questions.map(q => q.id)
+
     const session = await prisma.testSession.create({
       data: {
         userId: dbUser.id,
         status: 'IN_PROGRESS',
+        questionIds,
       },
     })
+
+    const formattedQuestions = questions.map(q => ({
+      id: q.id,
+      dimension: q.dimension,
+      skill: q.skill,
+      type: q.type,
+      level: q.level,
+      difficulty: q.difficulty,
+      points: q.points,
+      content: q.content,
+    }))
 
     return NextResponse.json({
       session: {
@@ -84,16 +98,8 @@ export async function POST(request: NextRequest) {
         status: session.status,
         startedAt: session.startedAt,
       },
-      questions: questions.map(q => ({
-        id: q.id,
-        dimension: q.dimension,
-        skill: q.skill,
-        type: q.type,
-        level: q.level,
-        difficulty: q.difficulty,
-        points: q.points,
-        content: q.content,
-      })),
+      questionIds,
+      questions: formattedQuestions,
     })
   } catch (err: any) {
     console.error('Error creating test session:', err)
