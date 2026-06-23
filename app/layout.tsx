@@ -21,6 +21,7 @@ export const metadata: Metadata = {
   authors: [{ name: "BIGT" }],
   icons: {
     icon: '/favicon.png',
+    apple: '/apple-touch-icon.png',
   },
   openGraph: {
     title: "BIGT — Bahasa Indonesia Global Test",

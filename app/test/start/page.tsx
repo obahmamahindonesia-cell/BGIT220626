@@ -4,6 +4,7 @@ import { Suspense, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
+import { toast } from 'sonner'
 import { Headphones, BookOpen, Mic, PenSquare, RefreshCw, Puzzle, Settings, Sparkles, CheckCircle2, ArrowRight, ArrowLeft } from 'lucide-react'
 
 const DIMENSIONS = [
@@ -71,14 +72,15 @@ function TestStartForm() {
           questionCount,
         }),
       })
+      const text = await res.text()
+      let data: any
+      try { data = JSON.parse(text) } catch { data = {} }
       if (!res.ok) {
-        const data = await res.json()
-        throw new Error(data.error || 'Gagal memulai tes')
+        throw new Error(data?.error || `Gagal memulai tes (${res.status})`)
       }
-      const data = await res.json()
-      router.push(`/test/${data.session.id}`)
+      router.push(`/test/${data?.session?.id}`)
     } catch (err: any) {
-      alert(err.message)
+      toast.error(err.message)
     } finally {
       setLoading(false)
     }

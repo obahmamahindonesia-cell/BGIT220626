@@ -36,9 +36,9 @@ export default function Hero() {
           <Image
             src="/logo_BIGT.png"
             alt="BIGT — Bahasa Indonesia Global Test"
-            width={280}
-            height={80}
-            className="h-14 md:h-16 w-auto brightness-0 invert"
+            width={420}
+            height={120}
+            className="h-20 md:h-24 w-auto brightness-0 invert"
             priority
           />
         </div>

@@ -16,6 +16,13 @@ interface WaitlistEntry {
   invitedAt: string | null
 }
 
+const STATUS_LABEL: Record<string, string> = {
+  PENDING: 'Menunggu',
+  INVITED: 'Diundang',
+  REGISTERED: 'Terdaftar',
+  REJECTED: 'Ditolak',
+}
+
 export default function AdminWaitlistPage() {
   const [waitlist, setWaitlist] = useState<WaitlistEntry[]>([])
   const [loading, setLoading] = useState(true)
@@ -30,20 +37,20 @@ export default function AdminWaitlistPage() {
       const data = await res.json()
       setWaitlist(data.waitlist)
     } catch (err) {
-      console.error('Error fetching waitlist:', err)
+      console.error('Gagal mengambil daftar tunggu:', err)
     } finally {
       setLoading(false)
     }
   }
 
   const handleInvite = async (id: string) => {
-    if (!confirm('Send invitation to this user?')) return
+    if (!confirm('Kirim undangan ke pengguna ini?')) return
 
     try {
       await fetch(`/api/admin/waitlist/${id}/invite`, { method: 'POST' })
       fetchWaitlist()
     } catch (err) {
-      console.error('Error sending invitation:', err)
+      console.error('Gagal mengirim undangan:', err)
     }
   }
 
@@ -61,7 +68,7 @@ export default function AdminWaitlistPage() {
     return (
       <div className="text-center py-12">
         <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-[#C8102E]"></div>
-        <p className="mt-4 text-gray-600">Loading waitlist...</p>
+        <p className="mt-4 text-gray-600">Memuat daftar tunggu...</p>
       </div>
     )
   }
@@ -69,18 +76,18 @@ export default function AdminWaitlistPage() {
   return (
     <div>
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-[#0B1F3A] mb-2">Waitlist Management</h1>
-        <p className="text-gray-600">Manage waitlist entries and send invitations</p>
+        <h1 className="text-3xl font-bold text-[#0B1F3A] mb-2">Manajemen Daftar Tunggu</h1>
+        <p className="text-gray-600">Kelola pendaftar dan kirim undangan</p>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle>Waitlist Entries ({waitlist.length})</CardTitle>
+          <CardTitle>Pendaftar ({waitlist.length})</CardTitle>
         </CardHeader>
         <CardContent>
           {waitlist.length === 0 ? (
             <div className="text-center py-12 text-gray-500">
-              <p>No waitlist entries yet</p>
+              <p>Belum ada pendaftar</p>
             </div>
           ) : (
             <div className="space-y-3">
@@ -94,7 +101,7 @@ export default function AdminWaitlistPage() {
                       <div className="flex items-center gap-2 mb-1">
                         <h3 className="font-semibold text-[#0B1F3A]">{entry.name}</h3>
                         <Badge className={getStatusColor(entry.status)}>
-                          {entry.status}
+                          {STATUS_LABEL[entry.status] || entry.status}
                         </Badge>
                       </div>
                       <p className="text-sm text-gray-600 mb-1">{entry.email}</p>
@@ -104,8 +111,8 @@ export default function AdminWaitlistPage() {
                         </p>
                       )}
                       <p className="text-xs text-gray-400 mt-2">
-                        Joined {new Date(entry.createdAt).toLocaleDateString('id-ID')}
-                        {entry.invitedAt && ` • Invited ${new Date(entry.invitedAt).toLocaleDateString('id-ID')}`}
+                        Bergabung {new Date(entry.createdAt).toLocaleDateString('id-ID')}
+                        {entry.invitedAt && ` • Diundang ${new Date(entry.invitedAt).toLocaleDateString('id-ID')}`}
                       </p>
                     </div>
                     <div className="flex gap-2 ml-4">
@@ -115,7 +122,7 @@ export default function AdminWaitlistPage() {
                           onClick={() => handleInvite(entry.id)}
                           className="bg-[#C8102E] hover:bg-red-800 text-white"
                         >
-                          Send Invite
+                          Kirim Undangan
                         </Button>
                       )}
                     </div>

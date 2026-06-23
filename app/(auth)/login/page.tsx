@@ -8,7 +8,8 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import Link from 'next/link'
 import { toast } from 'sonner'
-import { Globe, Sparkles, ShieldCheck, BarChart3, GraduationCap, ArrowLeft } from 'lucide-react'
+import Image from 'next/image'
+import { Globe, Sparkles, ShieldCheck, BarChart3, ArrowLeft } from 'lucide-react'
 
 function LoginForm() {
   const [email, setEmail] = useState('')
@@ -46,11 +47,8 @@ function LoginForm() {
           <div className="absolute bottom-20 right-20 w-96 h-96 border border-white/10 rounded-full" />
         </div>
         <div>
-          <Link href="/" className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-3 border border-white/10">
-            <div className="w-8 h-8 rounded-md bg-white/10 flex items-center justify-center">
-              <GraduationCap className="w-4 h-4 text-[#C9A227]" />
-            </div>
-            <span className="font-[family-name:var(--font-playfair)] text-xl font-bold text-white">BIGT</span>
+          <Link href="/" className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-lg px-4 py-3 border border-white/10">
+            <Image src="/logo_BIGT.png" alt="BIGT Logo" width={100} height={32} className="h-6 w-auto brightness-0 invert opacity-90" />
           </Link>
         </div>
         <div className="relative z-10">

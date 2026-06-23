@@ -234,12 +234,12 @@ export default function ProfilePage() {
               <div className="grid grid-cols-2 gap-3">
                 <div className="p-3 rounded-lg bg-[#F7F9FC] border border-[#E5EAF2] text-center">
                   <BookOpen className="w-5 h-5 text-[#0B1F3A] mx-auto mb-1.5" />
-                  <p className="text-[11px] font-medium text-[#0B1F3A]">First Test</p>
+                  <p className="text-[11px] font-medium text-[#0B1F3A]">Tes Pertama</p>
                   <p className="text-[9px] text-[#64748B]">Selesaikan tes pertama</p>
                 </div>
                 <div className="p-3 rounded-lg bg-[#F7F9FC] border border-[#E5EAF2] text-center">
                   <Award className="w-5 h-5 text-[#C9A227] mx-auto mb-1.5" />
-                  <p className="text-[11px] font-medium text-[#0B1F3A]">Level Up</p>
+                  <p className="text-[11px] font-medium text-[#0B1F3A]">Naik Level</p>
                   <p className="text-[9px] text-[#64748B]">Naik ke level B1</p>
                 </div>
               </div>

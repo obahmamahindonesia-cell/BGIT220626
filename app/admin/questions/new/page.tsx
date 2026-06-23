@@ -62,12 +62,12 @@ export default function NewQuestionPage() {
         body: JSON.stringify(body),
       })
 
-      if (!res.ok) throw new Error('Failed to create question')
+      if (!res.ok) throw new Error('Gagal membuat soal')
 
       router.push('/admin/questions')
     } catch (err) {
-      console.error('Error creating question:', err)
-      alert('Failed to create question')
+      console.error('Gagal membuat soal:', err)
+      alert('Gagal membuat soal')
     } finally {
       setLoading(false)
     }
@@ -77,21 +77,21 @@ export default function NewQuestionPage() {
     <div>
       <div className="mb-8">
         <Link href="/admin/questions" className="text-sm text-gray-600 hover:text-gray-900">
-          ← Back to Item Bank
+          ← Kembali ke Bank Soal
         </Link>
-        <h1 className="text-3xl font-bold text-[#0B1F3A] mt-4 mb-2">Create New Question</h1>
-        <p className="text-gray-600">Add a new question to the item bank</p>
+        <h1 className="text-3xl font-bold text-[#0B1F3A] mt-4 mb-2">Buat Soal Baru</h1>
+        <p className="text-gray-600">Tambah soal baru ke bank soal</p>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle>Question Details</CardTitle>
+          <CardTitle>Detail Soal</CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <Label>Dimension</Label>
+                <Label>Dimensi</Label>
                 <select
                   value={formData.dimension}
                   onChange={(e) => setFormData({ ...formData, dimension: e.target.value })}
@@ -117,7 +117,7 @@ export default function NewQuestionPage() {
               </div>
 
               <div>
-                <Label>Type</Label>
+                <Label>Tipe</Label>
                 <select
                   value={formData.type}
                   onChange={(e) => setFormData({ ...formData, type: e.target.value })}
@@ -134,21 +134,21 @@ export default function NewQuestionPage() {
                 <Input
                   value={formData.skill}
                   onChange={(e) => setFormData({ ...formData, skill: e.target.value })}
-                  placeholder="e.g., reading_comprehension"
+                  placeholder="mis: reading_comprehension"
                 />
               </div>
 
               <div>
-                <Label>Subskill (optional)</Label>
+                <Label>Subskill (opsional)</Label>
                 <Input
                   value={formData.subskill}
                   onChange={(e) => setFormData({ ...formData, subskill: e.target.value })}
-                  placeholder="e.g., inference"
+                  placeholder="mis: inference"
                 />
               </div>
 
               <div>
-                <Label>Difficulty (1-5)</Label>
+                <Label>Kesulitan (1-5)</Label>
                 <Input
                   type="number"
                   min="1"
@@ -159,7 +159,7 @@ export default function NewQuestionPage() {
               </div>
 
               <div>
-                <Label>Points</Label>
+                <Label>Poin</Label>
                 <Input
                   type="number"
                   min="1"
@@ -169,11 +169,11 @@ export default function NewQuestionPage() {
               </div>
 
               <div>
-                <Label>Tags (comma-separated)</Label>
+                <Label>Tag (pisahkan dengan koma)</Label>
                 <Input
                   value={formData.tags}
                   onChange={(e) => setFormData({ ...formData, tags: e.target.value })}
-                  placeholder="e.g., grammar, vocabulary"
+                  placeholder="mis: grammar, vocabulary"
                 />
               </div>
             </div>
@@ -183,7 +183,7 @@ export default function NewQuestionPage() {
               <Textarea
                 value={formData.prompt}
                 onChange={(e) => setFormData({ ...formData, prompt: e.target.value })}
-                placeholder="Enter the question prompt..."
+                placeholder="Masukkan prompt soal..."
                 rows={4}
                 required
               />
@@ -191,7 +191,7 @@ export default function NewQuestionPage() {
 
             {formData.type === 'MCQ' && (
               <div className="space-y-3">
-                <Label>Options</Label>
+                <Label>Opsi</Label>
                 {formData.options.map((opt, i) => (
                   <div key={i} className="flex gap-2">
                     <Input
@@ -201,12 +201,12 @@ export default function NewQuestionPage() {
                         newOptions[i] = e.target.value
                         setFormData({ ...formData, options: newOptions })
                       }}
-                      placeholder={`Option ${String.fromCharCode(65 + i)}`}
+                      placeholder={`Opsi ${String.fromCharCode(65 + i)}`}
                     />
                   </div>
                 ))}
                 <div>
-                  <Label>Correct Answer (A, B, C, or D)</Label>
+                  <Label>Jawaban Benar (A, B, C, atau D)</Label>
                   <Input
                     value={formData.correctAnswer}
                     onChange={(e) => setFormData({ ...formData, correctAnswer: e.target.value.toUpperCase() })}
@@ -218,7 +218,7 @@ export default function NewQuestionPage() {
             )}
 
             <div>
-              <Label>Rubric (JSON, optional)</Label>
+              <Label>Rubrik (JSON, opsional)</Label>
               <Textarea
                 value={formData.rubric}
                 onChange={(e) => setFormData({ ...formData, rubric: e.target.value })}
@@ -233,10 +233,10 @@ export default function NewQuestionPage() {
                 disabled={loading}
                 className="bg-[#C8102E] hover:bg-red-800 text-white"
               >
-                {loading ? 'Creating...' : 'Create Question'}
+                {loading ? 'Membuat...' : 'Buat Soal'}
               </Button>
               <Link href="/admin/questions">
-                <Button variant="outline">Cancel</Button>
+                <Button variant="outline">Batal</Button>
               </Link>
             </div>
           </form>

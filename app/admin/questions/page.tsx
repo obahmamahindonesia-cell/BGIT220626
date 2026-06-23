@@ -40,20 +40,20 @@ export default function AdminQuestionsPage() {
       setQuestions(data.questions)
       setTotal(data.pagination.total)
     } catch (err) {
-      console.error('Error fetching questions:', err)
+      console.error('Gagal mengambil soal:', err)
     } finally {
       setLoading(false)
     }
   }
 
   const handleDelete = async (id: string) => {
-    if (!confirm('Are you sure you want to delete this question?')) return
+    if (!confirm('Yakin ingin menghapus soal ini?')) return
 
     try {
       await fetch(`/api/admin/questions/${id}`, { method: 'DELETE' })
       fetchQuestions()
     } catch (err) {
-      console.error('Error deleting question:', err)
+      console.error('Gagal menghapus soal:', err)
     }
   }
 
@@ -63,7 +63,7 @@ export default function AdminQuestionsPage() {
     return (
       <div className="text-center py-12">
         <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-[#C8102E]"></div>
-        <p className="mt-4 text-gray-600">Loading questions...</p>
+        <p className="mt-4 text-gray-600">Memuat soal...</p>
       </div>
     )
   }
@@ -72,24 +72,24 @@ export default function AdminQuestionsPage() {
     <div>
       <div className="flex justify-between items-center mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-[#0B1F3A] mb-2">Item Bank</h1>
-          <p className="text-gray-600">Manage assessment questions</p>
+          <h1 className="text-3xl font-bold text-[#0B1F3A] mb-2">Bank Soal</h1>
+          <p className="text-gray-600">Kelola soal asesmen BIGT</p>
         </div>
         <Link href="/admin/questions/new">
           <Button className="bg-[#C8102E] hover:bg-red-800 text-white">
-            + Add Question
+            + Tambah Soal
           </Button>
         </Link>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle>Questions ({total})</CardTitle>
+          <CardTitle>Soal ({total})</CardTitle>
         </CardHeader>
         <CardContent>
           {questions.length === 0 ? (
             <div className="text-center py-12 text-gray-500">
-              <p>No questions found. Create your first question to get started.</p>
+              <p>Belum ada soal. Buat soal pertama Anda untuk memulai.</p>
             </div>
           ) : (
             <div className="space-y-3">
@@ -112,18 +112,18 @@ export default function AdminQuestionsPage() {
                         </Badge>
                         {!q.isActive && (
                           <Badge variant="destructive" className="text-xs">
-                            Inactive
+                            Nonaktif
                           </Badge>
                         )}
                       </div>
                       <p className="text-sm text-gray-700 line-clamp-2">
-                        {q.content?.prompt || 'No prompt'}
+                        {q.content?.prompt || 'Tidak ada prompt'}
                       </p>
                       <div className="flex gap-4 mt-2 text-xs text-gray-500">
                         <span>Skill: {q.skill}</span>
-                        <span>Difficulty: {q.difficulty}/5</span>
-                        <span>Points: {q.points}</span>
-                        {q._count && <span>Used: {q._count.answers}x</span>}
+                        <span>Kesulitan: {q.difficulty}/5</span>
+                        <span>Poin: {q.points}</span>
+                        {q._count && <span>Digunakan: {q._count.answers}x</span>}
                       </div>
                       {q.tags.length > 0 && (
                         <div className="flex gap-1 mt-2">
@@ -149,7 +149,7 @@ export default function AdminQuestionsPage() {
                         size="sm"
                         onClick={() => handleDelete(q.id)}
                       >
-                        Delete
+                        Hapus
                       </Button>
                     </div>
                   </div>
@@ -165,17 +165,17 @@ export default function AdminQuestionsPage() {
                 onClick={() => setPage(p => Math.max(1, p - 1))}
                 disabled={page === 1}
               >
-                Previous
+                Sebelumnya
               </Button>
               <span className="px-4 py-2 text-sm text-gray-600">
-                Page {page} of {totalPages}
+                Halaman {page} dari {totalPages}
               </span>
               <Button
                 variant="outline"
                 onClick={() => setPage(p => Math.min(totalPages, p + 1))}
                 disabled={page === totalPages}
               >
-                Next
+                Selanjutnya
               </Button>
             </div>
           )}
