@@ -1,6 +1,7 @@
 'use client'
 
 import { Menu } from 'lucide-react'
+import LanguageToggle from '@/components/LanguageToggle'
 
 interface AppTopbarProps {
   onMenuClick: () => void
@@ -16,7 +17,7 @@ export default function AppTopbar({ onMenuClick }: AppTopbarProps) {
         <Menu className="w-5 h-5 text-[#0B1F3A]" />
       </button>
       <span className="font-[family-name:var(--font-playfair)] text-lg font-bold text-[#0B1F3A]">BIGT</span>
-      <div className="w-9 h-9" />
+      <LanguageToggle />
     </header>
   )
 }

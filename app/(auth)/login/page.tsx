@@ -10,6 +10,7 @@ import Link from 'next/link'
 import { toast } from 'sonner'
 import Image from 'next/image'
 import { Globe, Sparkles, ShieldCheck, BarChart3, ArrowLeft } from 'lucide-react'
+import { useI18n } from '@/lib/i18n/context'
 
 function LoginForm() {
   const [email, setEmail] = useState('')
@@ -19,6 +20,7 @@ function LoginForm() {
   const searchParams = useSearchParams()
   const redirectTo = searchParams.get('redirect') || '/dashboard'
   const supabase = createClient()
+  const { t } = useI18n()
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -36,7 +38,7 @@ function LoginForm() {
         }),
       })
     }
-    toast.success('Masuk berhasil!')
+    toast.success(t('auth.loginSuccess'))
     router.push(redirectTo)
     router.refresh()
   }
@@ -63,46 +65,45 @@ function LoginForm() {
           </Link>
         </div>
         <div className="relative z-10">
-          <h1 className="font-[family-name:var(--font-playfair)] text-4xl font-bold text-white mb-4 leading-tight">
-            Standar Kemahiran<br />Bahasa Indonesia<br />
-            <span className="text-[#C9A227]">untuk Dunia</span>
+          <h1 className="font-[family-name:var(--font-playfair)] text-4xl font-bold text-white mb-4 leading-tight whitespace-pre-line">
+            {t('auth.loginHeroTitle')}
           </h1>
           <p className="text-white/50 text-sm max-w-md mb-10 leading-relaxed">
-            Masuk ke akun BIGT Anda untuk mengikuti tes, melihat hasil asesmen, dan mengelola sertifikat digital.
+            {t('auth.loginHeroDesc')}
           </p>
           <div className="space-y-5">
-            <div className="flex items-center gap-4">
-              <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
-                <Sparkles className="w-5 h-5 text-[#C9A227]" />
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
+                  <Sparkles className="w-5 h-5 text-[#C9A227]" />
+                </div>
+                <div>
+                  <p className="text-white text-sm font-medium">{t('landing.features.aiScoring')}</p>
+                  <p className="text-white/40 text-xs">{t('landing.features.aiScoringDesc')}</p>
+                </div>
               </div>
-              <div>
-                <p className="text-white text-sm font-medium">Asesmen Berbasis AI</p>
-                <p className="text-white/40 text-xs">Penilaian otomatis dengan kecerdasan buatan</p>
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
+                  <BarChart3 className="w-5 h-5 text-[#C9A227]" />
+                </div>
+                <div>
+                  <p className="text-white text-sm font-medium">{t('landing.features.diagnosticReport')}</p>
+                  <p className="text-white/40 text-xs">{t('landing.features.diagnosticReportDesc')}</p>
+                </div>
               </div>
-            </div>
-            <div className="flex items-center gap-4">
-              <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
-                <BarChart3 className="w-5 h-5 text-[#C9A227]" />
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
+                  <ShieldCheck className="w-5 h-5 text-[#C9A227]" />
+                </div>
+                <div>
+                  <p className="text-white text-sm font-medium">{t('landing.features.digitalCert')}</p>
+                  <p className="text-white/40 text-xs">{t('landing.features.digitalCertDesc')}</p>
+                </div>
               </div>
-              <div>
-                <p className="text-white text-sm font-medium">Laporan Diagnostik</p>
-                <p className="text-white/40 text-xs">Laporan detail per dimensi kemahiran</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4">
-              <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
-                <ShieldCheck className="w-5 h-5 text-[#C9A227]" />
-              </div>
-              <div>
-                <p className="text-white text-sm font-medium">Sertifikat Digital</p>
-                <p className="text-white/40 text-xs">Sertifikat digital dengan verifikasi QR</p>
-              </div>
-            </div>
           </div>
         </div>
         <div className="relative z-10 text-white/30 text-xs">
           <Globe className="w-4 h-4 inline mr-1" />
-          Trusted by future learners worldwide
+          {t('auth.trustedBy')}
         </div>
       </div>
 
@@ -111,32 +112,32 @@ function LoginForm() {
           <div className="mb-8">
             <Link href="/" className="inline-flex items-center gap-1.5 text-xs text-[#64748B] hover:text-[#0B1F3A] transition-colors mb-4">
               <ArrowLeft className="w-3.5 h-3.5" />
-              Kembali ke Beranda
+              {t('auth.backToHome')}
             </Link>
-            <h2 className="font-[family-name:var(--font-playfair)] text-2xl font-bold text-[#0B1F3A]">Selamat Datang Kembali</h2>
-            <p className="text-[#64748B] text-sm mt-1">Masuk ke akun BIGT Anda untuk melanjutkan.</p>
+            <h2 className="font-[family-name:var(--font-playfair)] text-2xl font-bold text-[#0B1F3A]">{t('auth.loginTitle')}</h2>
+            <p className="text-[#64748B] text-sm mt-1">{t('auth.loginSubtitle')}</p>
           </div>
           <form onSubmit={handleLogin} className="space-y-4">
             <div className="space-y-1.5">
-              <Label htmlFor="email" className="text-xs font-medium text-[#0B1F3A]">Email</Label>
-              <Input id="email" type="email" placeholder="nama@email.com"
+              <Label htmlFor="email" className="text-xs font-medium text-[#0B1F3A]">{t('auth.email')}</Label>
+              <Input id="email" type="email" placeholder={t('auth.emailPlaceholder')}
                 value={email} onChange={(e) => setEmail(e.target.value)} required
                 className="rounded-lg border-[#E5EAF2] h-11 text-sm" />
             </div>
             <div className="space-y-1.5">
-              <Label htmlFor="password" className="text-xs font-medium text-[#0B1F3A]">Password</Label>
-              <Input id="password" type="password" placeholder="••••••••"
+              <Label htmlFor="password" className="text-xs font-medium text-[#0B1F3A]">{t('auth.password')}</Label>
+              <Input id="password" type="password" placeholder={t('auth.passwordPlaceholder')}
                 value={password} onChange={(e) => setPassword(e.target.value)} required
                 className="rounded-lg border-[#E5EAF2] h-11 text-sm" />
             </div>
             <Button type="submit" disabled={loading}
               className="w-full bg-[#0B1F3A] hover:bg-[#0B1F3A]/90 text-white rounded-lg h-11 text-sm">
-              {loading ? 'Memproses...' : 'Masuk'}
+              {loading ? t('common.processing') : t('auth.loginButton')}
             </Button>
           </form>
           <div className="relative my-6">
             <div className="absolute inset-0 flex items-center"><span className="w-full border-t border-[#E5EAF2]" /></div>
-            <div className="relative flex justify-center text-xs uppercase"><span className="bg-white px-3 text-[#64748B]">atau</span></div>
+            <div className="relative flex justify-center text-xs uppercase"><span className="bg-white px-3 text-[#64748B]">{t('auth.or')}</span></div>
           </div>
           <Button variant="outline" className="w-full rounded-lg border-[#E5EAF2] h-11 text-sm hover:bg-gray-50"
             onClick={handleGoogleLogin} disabled={loading}>
@@ -146,11 +147,11 @@ function LoginForm() {
               <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
               <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
             </svg>
-            Masuk dengan Google
+            {t('auth.loginGoogle')}
           </Button>
           <p className="text-center text-sm text-[#64748B] mt-8">
-            Belum punya akun?{' '}
-            <Link href="/register" className="text-[#0B1F3A] hover:underline font-medium">Daftar sekarang</Link>
+            {t('auth.noAccount')}{' '}
+            <Link href="/register" className="text-[#0B1F3A] hover:underline font-medium">{t('auth.registerLink')}</Link>
           </p>
         </div>
       </div>
@@ -159,8 +160,9 @@ function LoginForm() {
 }
 
 export default function LoginPage() {
+  const { t } = useI18n()
   return (
-    <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-[#F7F9FC]"><p className="text-[#64748B]">Memuat...</p></div>}>
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-[#F7F9FC]"><p className="text-[#64748B]">{t('common.loading')}</p></div>}>
       <LoginForm />
     </Suspense>
   )

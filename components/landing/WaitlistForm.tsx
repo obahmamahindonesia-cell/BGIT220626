@@ -5,8 +5,10 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { toast } from 'sonner'
 import { Mail, Sparkles } from 'lucide-react'
+import { useI18n } from '@/lib/i18n/context'
 
 export default function WaitlistForm() {
+  const { t } = useI18n()
   const [email, setEmail] = useState('')
   const [name, setName] = useState('')
   const [loading, setLoading] = useState(false)
@@ -24,14 +26,14 @@ export default function WaitlistForm() {
 
       if (!res.ok) {
         const data = await res.json()
-        throw new Error(data.error || 'Gagal mendaftar')
+        throw new Error(data.error || t('landing.waitlistError'))
       }
 
-      toast.success('Berhasil mendaftar waitlist! Kami akan menghubungi Anda.')
+      toast.success(t('landing.waitlistSuccess'))
       setEmail('')
       setName('')
     } catch (err: unknown) {
-      toast.error(err instanceof Error ? err.message : 'Terjadi kesalahan')
+      toast.error(err instanceof Error ? err.message : t('common.saveFailed'))
     } finally {
       setLoading(false)
     }
@@ -45,25 +47,25 @@ export default function WaitlistForm() {
       <div className="max-w-xl mx-auto relative z-10">
         <div className="inline-flex items-center gap-2 bg-[#D4AF37]/15 border border-[#D4AF37]/30 text-[#D4AF37] text-xs font-medium tracking-wider px-4 py-1.5 rounded-full uppercase mb-4">
           <Sparkles className="w-3.5 h-3.5" />
-          Early Access
+          {t('landing.waitlistBadge')}
         </div>
         <h2 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl text-white font-semibold mb-3">
-          Jadilah yang pertama tahu
+          {t('landing.waitlistTitle')}
         </h2>
         <p className="text-white/50 text-sm mb-8">
-          Untuk institusi, pendidik, dan individu yang siap menyambut era baru penilaian Bahasa Indonesia.
+          {t('landing.waitlistDesc')}
         </p>
         <form onSubmit={handleSubmit} className="flex gap-3 max-w-md mx-auto flex-wrap justify-center">
           <Input
             type="text"
-            placeholder="Nama Anda"
+            placeholder={t('landing.waitlistName')}
             value={name}
             onChange={(e) => setName(e.target.value)}
             className="bg-white/10 border-white/20 text-white placeholder:text-white/30 min-w-[140px] flex-1 rounded-xl"
           />
           <Input
             type="email"
-            placeholder="Email kamu"
+            placeholder={t('landing.waitlistEmail')}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -74,7 +76,7 @@ export default function WaitlistForm() {
             disabled={loading}
             className="bg-[#E11D48] hover:bg-[#E11D48]/90 text-white px-6 whitespace-nowrap rounded-xl"
           >
-            {loading ? 'Mendaftar...' : 'Daftar Sekarang'}
+            {loading ? t('landing.waitlistRegistering') : t('landing.waitlistCta')}
           </Button>
         </form>
       </div>

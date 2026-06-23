@@ -4,9 +4,11 @@ import { useState } from 'react'
 import { useTestStore } from '@/store/testStore'
 import { useRouter } from 'next/navigation'
 import { ChevronLeft, ChevronRight, Save, AlertTriangle, X, Loader2, Flag } from 'lucide-react'
+import { useI18n } from '@/lib/i18n/context'
 
 export default function TestFooter() {
   const router = useRouter()
+  const { t } = useI18n()
   const {
     sessionId,
     questions,
@@ -37,7 +39,7 @@ export default function TestFooter() {
       return
     }
 
-    setSaveStatus({ state: 'saving', message: 'Menyimpan...' })
+    setSaveStatus({ state: 'saving', message: t('common.saving') })
 
     const answer = useTestStore.getState().answers[currentQuestion.id]
     if (answer) {
@@ -52,10 +54,10 @@ export default function TestFooter() {
           }),
         })
         if (!res.ok) throw new Error('Failed to save')
-        setSaveStatus({ state: 'saved', message: 'Tersimpan' })
+        setSaveStatus({ state: 'saved', message: t('common.saved') })
         setTimeout(() => setSaveStatus({ state: 'idle', message: '' }), 2000)
       } catch {
-        setSaveStatus({ state: 'error', message: 'Gagal menyimpan' })
+        setSaveStatus({ state: 'error', message: t('common.saveFailed') })
         setTimeout(() => setSaveStatus({ state: 'idle', message: '' }), 3000)
       }
     }
@@ -89,7 +91,7 @@ export default function TestFooter() {
       finishTest()
       router.push(`/test/${sessionId}/results`)
     } catch {
-      alert('Gagal menyelesaikan tes. Silakan coba lagi.')
+      alert(t('testRunner.endFailed'))
     } finally {
       setSubmitting(false)
       setShowEndModal(false)
@@ -107,7 +109,7 @@ export default function TestFooter() {
               className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] disabled:opacity-30 disabled:cursor-not-allowed text-white/60 text-xs font-medium transition-all"
             >
               <ChevronLeft className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Sebelumnya</span>
+              <span className="hidden sm:inline">{t('testRunner.previous')}</span>
             </button>
           </div>
 
@@ -115,19 +117,19 @@ export default function TestFooter() {
             {saveStatus.state === 'saving' && (
               <span className="flex items-center gap-1.5 text-[10px] text-white/30">
                 <Loader2 className="w-3 h-3 animate-spin" />
-                Menyimpan...
+                {t('common.saving')}
               </span>
             )}
             {saveStatus.state === 'saved' && (
               <span className="flex items-center gap-1.5 text-[10px] text-[#10B981]">
                 <Save className="w-3 h-3" />
-                Tersimpan
+                {t('common.saved')}
               </span>
             )}
             {saveStatus.state === 'error' && (
               <span className="flex items-center gap-1.5 text-[10px] text-red-400">
                 <AlertTriangle className="w-3 h-3" />
-                Gagal menyimpan
+                {t('common.saveFailed')}
               </span>
             )}
           </div>
@@ -138,7 +140,7 @@ export default function TestFooter() {
               className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-red-400/60 hover:text-red-400 hover:bg-red-500/10 text-xs font-medium transition-all"
             >
               <Flag className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Akhiri Sesi</span>
+              <span className="hidden sm:inline">{t('testRunner.endSession')}</span>
             </button>
 
             <button
@@ -149,11 +151,11 @@ export default function TestFooter() {
               {isLast ? (
                 <>
                   <Save className="w-3.5 h-3.5" />
-                  Kumpulkan
+                  {t('testRunner.submit')}
                 </>
               ) : (
                 <>
-                  Simpan & Lanjut
+                  {t('testRunner.saveContinue')}
                   <ChevronRight className="w-3.5 h-3.5" />
                 </>
               )}
@@ -171,18 +173,18 @@ export default function TestFooter() {
                   <AlertTriangle className="w-5 h-5 text-red-400" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold text-white/90">Akhiri Sesi Tes?</h3>
-                  <p className="text-[11px] text-white/40">Semua jawaban akan dikumpulkan dan dinilai.</p>
+                  <h3 className="text-sm font-semibold text-white/90">{t('testRunner.endTitle')}</h3>
+                  <p className="text-[11px] text-white/40">{t('testRunner.endDesc')}</p>
                 </div>
               </div>
 
               <div className="p-4 rounded-xl bg-white/[0.04] border border-white/[0.06] space-y-2 mb-5">
                 <div className="flex justify-between text-xs">
-                  <span className="text-white/40">Soal terjawab</span>
+                  <span className="text-white/40">{t('testRunner.answeredCount')}</span>
                   <span className="text-white/80 font-medium">{getAnsweredCount()} / {questions.length}</span>
                 </div>
                 <div className="flex justify-between text-xs">
-                  <span className="text-white/40">Waktu tersisa</span>
+                  <span className="text-white/40">{t('testRunner.timeRemaining')}</span>
                   <span className="text-white/80 font-medium">{Math.floor(timeRemaining / 60)}:{String(timeRemaining % 60).padStart(2, '0')} m</span>
                 </div>
                 <div className="w-full h-1 rounded-full bg-white/[0.06] overflow-hidden">
@@ -196,7 +198,7 @@ export default function TestFooter() {
               {getAnsweredCount() < questions.length && (
                 <p className="text-[11px] text-[#F59E0B] mb-4 flex items-center gap-1.5">
                   <AlertTriangle className="w-3 h-3" />
-                  {questions.length - getAnsweredCount()} soal belum terjawab
+                  {t('testRunner.unanswered', { n: questions.length - getAnsweredCount() })}
                 </p>
               )}
 
@@ -206,7 +208,7 @@ export default function TestFooter() {
                   className="flex-1 py-2.5 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] text-white/60 text-xs font-medium transition-all"
                 >
                   <X className="w-3.5 h-3.5 inline mr-1.5" />
-                  Kembali
+                  {t('common.back')}
                 </button>
                 <button
                   onClick={handleEndTest}
@@ -216,10 +218,10 @@ export default function TestFooter() {
                   {submitting ? (
                     <span className="flex items-center justify-center gap-1.5">
                       <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                      Mengumpulkan...
+                      {t('testRunner.submitting')}
                     </span>
                   ) : (
-                    'Ya, Akhiri Sesi'
+                    t('testRunner.confirmEnd')
                   )}
                 </button>
               </div>

@@ -5,10 +5,13 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Menu, X } from 'lucide-react'
+import { useI18n } from '@/lib/i18n/context'
+import LanguageToggle from '@/components/LanguageToggle'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const { t } = useI18n()
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20)
@@ -17,11 +20,11 @@ export default function Navbar() {
   }, [])
 
   const navLinks = [
-    { href: '/about', label: 'Tentang' },
-    { href: '/framework', label: 'Framework' },
-    { href: '/levels', label: 'Level' },
-    { href: '/products', label: 'Produk' },
-    { href: '/verify', label: 'Verifikasi' },
+    { href: '/about', label: t('nav.about') },
+    { href: '/framework', label: t('nav.framework') },
+    { href: '/levels', label: t('nav.levels') },
+    { href: '/products', label: t('nav.products') },
+    { href: '/verify', label: t('nav.verify') },
   ]
 
   return (
@@ -41,14 +44,15 @@ export default function Navbar() {
         </div>
 
         <div className="hidden md:flex items-center gap-3">
+          <LanguageToggle />
           <Link href="/login">
             <Button variant="ghost" className="text-sm rounded-lg text-[#0B1F3A]/80 hover:text-[#0B1F3A] hover:bg-[#0B1F3A]/10">
-              Masuk
+              {t('nav.login')}
             </Button>
           </Link>
           <Link href="/register">
             <Button className="bg-[#D7193F] hover:bg-[#D7193F]/90 text-white text-sm px-5 rounded-lg">
-              Gabung Waitlist
+              {t('nav.joinWaitlist')}
             </Button>
           </Link>
         </div>
@@ -67,9 +71,9 @@ export default function Navbar() {
               onClick={() => setMobileOpen(false)}>{link.label}</Link>
           ))}
           <div className="pt-3 border-t border-gray-200 space-y-2">
-            <Link href="/login" className="block text-[#0B1F3A]/80 text-sm py-2 font-medium" onClick={() => setMobileOpen(false)}>Masuk</Link>
+            <Link href="/login" className="block text-[#0B1F3A]/80 text-sm py-2 font-medium" onClick={() => setMobileOpen(false)}>{t('nav.login')}</Link>
             <Link href="/register" onClick={() => setMobileOpen(false)}>
-              <Button className="w-full bg-[#D7193F] hover:bg-[#D7193F]/90 text-white text-sm rounded-lg">Gabung Waitlist</Button>
+              <Button className="w-full bg-[#D7193F] hover:bg-[#D7193F]/90 text-white text-sm rounded-lg">{t('nav.joinWaitlist')}</Button>
             </Link>
           </div>
         </div>

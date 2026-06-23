@@ -4,6 +4,7 @@ import { useEffect, useState, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { createClient } from '@/lib/supabase/client'
+import { useI18n } from '@/lib/i18n/context'
 import {
   Sparkles, BookOpen, Target, BarChart3, Settings, CheckCircle2,
   Mic, Monitor, ChevronLeft, ChevronRight, User, GraduationCap,
@@ -67,6 +68,8 @@ export default function OnboardingPage() {
   const [errors, setErrors] = useState<Record<string, boolean>>({})
   const [micState, setMicState] = useState<'idle' | 'testing' | 'pass' | 'fail'>('idle')
   const [speakerState, setSpeakerState] = useState<'idle' | 'testing' | 'pass' | 'fail'>('idle')
+
+  const { t } = useI18n()
 
   useEffect(() => {
     const init = async () => {
@@ -202,7 +205,7 @@ export default function OnboardingPage() {
           <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center mx-auto animate-pulse shadow-lg shadow-[#10B981]/20">
             <ShieldCheck className="w-7 h-7 text-white" />
           </div>
-          <p className="text-gray-400 text-sm">Memuat...</p>
+          <p className="text-gray-400 text-sm">{t('common.loading')}</p>
         </div>
       </div>
     )
@@ -223,11 +226,11 @@ export default function OnboardingPage() {
         <div className="flex items-center gap-3">
           {currentStep > 0 && (
             <button onClick={handlePrev} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-500 text-xs transition-colors">
-              <ChevronLeft className="w-3 h-3" /> Kembali
+              <ChevronLeft className="w-3 h-3" /> {t('common.back')}
             </button>
           )}
-          <button onClick={() => { if (confirm('Lewati proses onboarding?')) handleSave(false) }} className="text-[11px] text-gray-400 hover:text-gray-600 transition-colors">
-            Lewati
+            <button onClick={() => { if (confirm('Lewati proses onboarding?')) handleSave(false) }} className="text-[11px] text-gray-400 hover:text-gray-600 transition-colors">
+            {t('common.skip')}
           </button>
         </div>
       </header>
@@ -244,7 +247,7 @@ export default function OnboardingPage() {
               ))}
             </div>
             <span className="text-[11px] text-gray-400 tabular-nums">
-              Langkah {currentStep + 1} dari {totalSteps}
+              {t('onboarding.stepLabel', { current: currentStep + 1, total: totalSteps })}
             </span>
           </div>
           <div className="w-full h-0.5 rounded-full bg-gray-200 overflow-hidden">
@@ -268,18 +271,17 @@ export default function OnboardingPage() {
                   <Sparkles className="w-10 h-10 text-white" />
                 </div>
                 <h1 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-bold text-gray-900 mb-2">
-                  Selamat datang di BIGT, {userName}!
+                  {t('onboarding.welcome', { name: userName })}
                 </h1>
                 <p className="text-gray-500 text-sm md:text-base max-w-md leading-relaxed">
-                  Tes kemahiran Bahasa Indonesia berbasis AI yang adaptif dan sesuai
-                  standar internasional CEFR. Selesaikan 6 langkah singkat untuk memulai.
+                  {t('onboarding.welcomeDesc')}
                 </p>
                 <div className="grid grid-cols-2 gap-3 mt-8 w-full max-w-sm">
                   {[
-                    { icon: Zap, label: 'Adaptif & AI', sub: 'Soal menyesuaikan level Anda' },
-                    { icon: Globe, label: 'Standar CEFR', sub: 'A1 hingga C2' },
-                    { icon: BarChart3, label: '6 Dimensi', sub: 'Laporan detail per aspek' },
-                    { icon: ShieldCheck, label: 'Sertifikat', sub: 'Verifikasi QR digital' },
+                    { icon: Zap, label: t('onboarding.featureCards.0.label'), sub: t('onboarding.featureCards.0.sub') },
+                    { icon: Globe, label: t('onboarding.featureCards.1.label'), sub: t('onboarding.featureCards.1.sub') },
+                    { icon: BarChart3, label: t('onboarding.featureCards.2.label'), sub: t('onboarding.featureCards.2.sub') },
+                    { icon: ShieldCheck, label: t('onboarding.featureCards.3.label'), sub: t('onboarding.featureCards.3.sub') },
                   ].map((item) => {
                     const Icon = item.icon
                     return (
@@ -297,17 +299,17 @@ export default function OnboardingPage() {
             {currentStep === 1 && (
               <div className="flex-1 py-4">
                 <div className="mb-6">
-                  <h2 className="text-lg font-semibold text-gray-900">Data Diri</h2>
-                  <p className="text-xs text-gray-500 mt-1">Bantu kami mengenal Anda lebih baik.</p>
+                  <h2 className="text-lg font-semibold text-gray-900">{t('onboarding.personalData')}</h2>
+                  <p className="text-xs text-gray-500 mt-1">{t('onboarding.personalDataDesc')}</p>
                 </div>
                 <div className="space-y-4">
                   <div>
-                    <label className="text-xs font-medium text-gray-600 block mb-1.5">Nama Lengkap</label>
+                    <label className="text-xs font-medium text-gray-600 block mb-1.5">{t('onboarding.fullName')}</label>
                     <input value={userName} disabled
                       className="w-full py-3 px-4 rounded-xl bg-gray-100 border border-gray-200 text-gray-400 text-sm cursor-not-allowed" />
                   </div>
                   <div>
-                    <label className="text-xs font-medium text-gray-600 block mb-1.5">Usia</label>
+                    <label className="text-xs font-medium text-gray-600 block mb-1.5">{t('onboarding.age')}</label>
                     <div className="flex gap-2">
                       {['<18', '18-24', '25-34', '35-44', '45+'].map(age => (
                         <button key={age} onClick={() => update('age', age)}
@@ -322,7 +324,7 @@ export default function OnboardingPage() {
                     </div>
                   </div>
                   <div>
-                    <label className="text-xs font-medium text-gray-600 block mb-1.5">Profesi / Tujuan Utama</label>
+                    <label className="text-xs font-medium text-gray-600 block mb-1.5">{t('onboarding.profession')}</label>
                     <div className="grid grid-cols-2 gap-2">
                       {PROFESI.map(p => (
                         <button key={p} onClick={() => update('profession', p)}
@@ -335,10 +337,10 @@ export default function OnboardingPage() {
                         </button>
                       ))}
                     </div>
-                    {errors.profession && <p className="text-red-500 text-[10px] mt-1">Pilih profesi Anda</p>}
+                    {errors.profession && <p className="text-red-500 text-[10px] mt-1">{t('onboarding.profError')}</p>}
                   </div>
                   <div>
-                    <label className="text-xs font-medium text-gray-600 block mb-1.5">Target Level CEFR</label>
+                    <label className="text-xs font-medium text-gray-600 block mb-1.5">{t('onboarding.targetLevel')}</label>
                     <div className="flex gap-1.5">
                       {CEFR_LEVELS.map(l => (
                         <button key={l} onClick={() => update('targetLevel', form.targetLevel === l ? '' : l)}
@@ -351,7 +353,7 @@ export default function OnboardingPage() {
                         </button>
                       ))}
                     </div>
-                    <p className="text-[10px] text-gray-400 mt-1.5">Kosongkan jika belum tahu target Anda</p>
+                    <p className="text-[10px] text-gray-400 mt-1.5">{t('onboarding.targetLevelHint')}</p>
                   </div>
                 </div>
               </div>
@@ -360,8 +362,8 @@ export default function OnboardingPage() {
             {currentStep === 2 && (
               <div className="flex-1 py-4">
                 <div className="mb-6">
-                  <h2 className="text-lg font-semibold text-gray-900">Tujuan Tes</h2>
-                  <p className="text-xs text-gray-500 mt-1">Pilih satu atau lebih tujuan Anda mengikuti tes BIGT.</p>
+                  <h2 className="text-lg font-semibold text-gray-900">{t('onboarding.goalsTitle')}</h2>
+                  <p className="text-xs text-gray-500 mt-1">{t('onboarding.goalsDesc')}</p>
                 </div>
                 <div className="space-y-2">
                   {GOALS.map(goal => (
@@ -385,7 +387,7 @@ export default function OnboardingPage() {
                       </span>
                     </button>
                   ))}
-                  {errors.testGoals && <p className="text-red-500 text-[10px]">Pilih minimal satu tujuan</p>}
+                  {errors.testGoals && <p className="text-red-500 text-[10px]">{t('onboarding.goalsMinError')}</p>}
                 </div>
               </div>
             )}
@@ -393,30 +395,30 @@ export default function OnboardingPage() {
             {currentStep === 3 && (
               <div className="flex-1 py-4">
                 <div className="mb-6">
-                  <h2 className="text-lg font-semibold text-gray-900">Pengalaman Belajar</h2>
-                  <p className="text-xs text-gray-500 mt-1">Ceritakan pengalaman Anda dengan Bahasa Indonesia.</p>
+                  <h2 className="text-lg font-semibold text-gray-900">{t('onboarding.expTitle')}</h2>
+                  <p className="text-xs text-gray-500 mt-1">{t('onboarding.expDesc')}</p>
                 </div>
                 <div className="space-y-5">
                   <div>
-                    <label className="text-xs font-medium text-gray-600 block mb-2">Pernah mengikuti tes Bahasa Indonesia sebelumnya?</label>
+                    <label className="text-xs font-medium text-gray-600 block mb-2">{t('onboarding.prevTest')}</label>
                     <div className="flex gap-2">
                       <button onClick={() => update('hasPreviousTest', true)}
                         className={`flex-1 py-2.5 rounded-xl text-xs font-medium border transition-all ${
                           form.hasPreviousTest
                             ? 'border-[#10B981] bg-[#10B981]/10 text-[#10B981]'
                             : 'border-gray-200 bg-white text-gray-500'
-                        }`}>Ya</button>
+                        }`}>{t('common.yes')}</button>
                       <button onClick={() => { update('hasPreviousTest', false); update('previousTestType', '') }}
                         className={`flex-1 py-2.5 rounded-xl text-xs font-medium border transition-all ${
                           !form.hasPreviousTest
                             ? 'border-[#10B981] bg-[#10B981]/10 text-[#10B981]'
                             : 'border-gray-200 bg-white text-gray-500'
-                        }`}>Belum</button>
+                        }`}>{t('common.no')}</button>
                     </div>
                   </div>
                   {form.hasPreviousTest && (
                     <div>
-                      <label className="text-xs font-medium text-gray-600 block mb-2">Jenis tes sebelumnya</label>
+                      <label className="text-xs font-medium text-gray-600 block mb-2">{t('onboarding.prevTestType')}</label>
                       <div className="grid grid-cols-2 gap-2">
                         {PREVIOUS_TESTS.map(t => (
                           <button key={t} onClick={() => update('previousTestType', t)}
@@ -430,7 +432,7 @@ export default function OnboardingPage() {
                     </div>
                   )}
                   <div>
-                    <label className="text-xs font-medium text-gray-600 block mb-2">Lama belajar Bahasa Indonesia</label>
+                    <label className="text-xs font-medium text-gray-600 block mb-2">{t('onboarding.learningDuration')}</label>
                     <div className="grid grid-cols-2 gap-2">
                       {LEARNING_DURATIONS.map(d => (
                         <button key={d} onClick={() => update('learningDuration', d)}
@@ -449,17 +451,17 @@ export default function OnboardingPage() {
             {currentStep === 4 && (
               <div className="flex-1 py-4">
                 <div className="mb-6">
-                  <h2 className="text-lg font-semibold text-gray-900">Preferensi Tes</h2>
-                  <p className="text-xs text-gray-500 mt-1">Sesuaikan pengalaman tes sesuai keinginan Anda.</p>
+                  <h2 className="text-lg font-semibold text-gray-900">{t('onboarding.prefTitle')}</h2>
+                  <p className="text-xs text-gray-500 mt-1">{t('onboarding.prefDesc')}</p>
                 </div>
                 <div className="space-y-6">
                   <div>
-                    <label className="text-xs font-medium text-gray-600 block mb-2">Durasi tes yang diinginkan</label>
+                    <label className="text-xs font-medium text-gray-600 block mb-2">{t('onboarding.prefDuration')}</label>
                     <div className="flex gap-2">
                       {[
-                        { value: 30, label: '30 menit', sub: 'Cepat' },
-                        { value: 60, label: '60 menit', sub: 'Standar' },
-                        { value: 90, label: '90 menit', sub: 'Lengkap' },
+                        { value: 30, label: t('onboarding.durations.30'), sub: t('onboarding.durationSubs.30') },
+                        { value: 60, label: t('onboarding.durations.60'), sub: t('onboarding.durationSubs.60') },
+                        { value: 90, label: t('onboarding.durations.90'), sub: t('onboarding.durationSubs.90') },
                       ].map(opt => (
                         <button key={opt.value} onClick={() => update('preferredDuration', opt.value)}
                           className={`flex-1 py-3 rounded-xl border transition-all ${
@@ -476,7 +478,7 @@ export default function OnboardingPage() {
                     </div>
                   </div>
                   <div>
-                    <label className="text-xs font-medium text-gray-600 block mb-2">Mode awal</label>
+                    <label className="text-xs font-medium text-gray-600 block mb-2">{t('onboarding.prefMode')}</label>
                     <div className="flex gap-2">
                       <button onClick={() => update('practiceMode', true)}
                         className={`flex-1 py-3 rounded-xl border transition-all ${
@@ -485,8 +487,8 @@ export default function OnboardingPage() {
                             : 'border-gray-200 bg-white'
                         }`}>
                         <BookOpen className={`w-4 h-4 mx-auto mb-1 ${form.practiceMode ? 'text-[#10B981]' : 'text-gray-400'}`} />
-                        <p className={`text-sm font-semibold ${form.practiceMode ? 'text-[#10B981]' : 'text-gray-600'}`}>Practice Mode</p>
-                        <p className="text-[10px] text-gray-400 mt-0.5">Latihan dulu</p>
+                        <p className={`text-sm font-semibold ${form.practiceMode ? 'text-[#10B981]' : 'text-gray-600'}`}>{t('onboarding.practiceMode')}</p>
+                        <p className="text-[10px] text-gray-400 mt-0.5">{t('onboarding.practiceModeSub')}</p>
                       </button>
                       <button onClick={() => update('practiceMode', false)}
                         className={`flex-1 py-3 rounded-xl border transition-all ${
@@ -495,15 +497,15 @@ export default function OnboardingPage() {
                             : 'border-gray-200 bg-white'
                         }`}>
                         <Zap className={`w-4 h-4 mx-auto mb-1 ${!form.practiceMode ? 'text-[#10B981]' : 'text-gray-400'}`} />
-                        <p className={`text-sm font-semibold ${!form.practiceMode ? 'text-[#10B981]' : 'text-gray-600'}`}>Full Test</p>
-                        <p className="text-[10px] text-gray-400 mt-0.5">Langsung ujian</p>
+                        <p className={`text-sm font-semibold ${!form.practiceMode ? 'text-[#10B981]' : 'text-gray-600'}`}>{t('onboarding.fullTest')}</p>
+                        <p className="text-[10px] text-gray-400 mt-0.5">{t('onboarding.fullTestSub')}</p>
                       </button>
                     </div>
                   </div>
                   <div className="flex items-center justify-between py-3 px-4 rounded-xl bg-white border border-gray-200">
                     <div className="flex items-center gap-2.5">
                       <Globe className="w-4 h-4 text-gray-400" />
-                      <span className="text-xs text-gray-600">Notifikasi hasil via email</span>
+                      <span className="text-xs text-gray-600">{t('onboarding.emailNotif')}</span>
                     </div>
                     <button onClick={() => update('emailNotifications', !form.emailNotifications)}
                       className={`w-10 h-6 rounded-full transition-all ${
@@ -521,8 +523,8 @@ export default function OnboardingPage() {
             {currentStep === 5 && (
               <div className="flex-1 py-4">
                 <div className="mb-6">
-                  <h2 className="text-lg font-semibold text-gray-900">Cek Perangkat</h2>
-                  <p className="text-xs text-gray-500 mt-1">Pastikan perangkat Anda siap sebelum memulai tes.</p>
+                  <h2 className="text-lg font-semibold text-gray-900">{t('onboarding.techTitle')}</h2>
+                  <p className="text-xs text-gray-500 mt-1">{t('onboarding.techDesc')}</p>
                 </div>
                 <div className="space-y-4">
                   <div className="p-5 rounded-xl bg-white border border-gray-200 shadow-sm">
@@ -539,8 +541,8 @@ export default function OnboardingPage() {
                         }`} />
                       </div>
                       <div className="flex-1">
-                        <p className="text-sm font-semibold text-gray-700">Mikrofon</p>
-                        <p className="text-[10px] text-gray-400">Untuk sesi berbicara (Speaking)</p>
+                        <p className="text-sm font-semibold text-gray-700">{t('onboarding.mic')}</p>
+                        <p className="text-[10px] text-gray-400">{t('onboarding.micDesc')}</p>
                       </div>
                       <button onClick={testMic} disabled={micState === 'testing' || micState === 'pass'}
                         className={`px-4 py-2 rounded-xl text-xs font-medium transition-all ${
@@ -551,17 +553,17 @@ export default function OnboardingPage() {
                             : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                         }`}>
                         {micState === 'testing' ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> :
-                         micState === 'pass' ? 'Berhasil' :
-                         micState === 'fail' ? 'Coba Lagi' : 'Uji'}
+                         micState === 'pass' ? t('common.success') :
+                         micState === 'fail' ? t('common.retry') : t('common.test')}
                       </button>
                     </div>
                     {micState === 'pass' && (
                       <div className="flex items-center gap-1.5 text-[10px] text-[#10B981]">
-                        <CheckCircle2 className="w-3 h-3" /> Mikrofon terdeteksi
+                        <CheckCircle2 className="w-3 h-3" /> {t('onboarding.micPass')}
                       </div>
                     )}
                     {micState === 'fail' && (
-                      <div className="text-[10px] text-red-500">Izinkan akses mikrofon di browser Anda</div>
+                      <div className="text-[10px] text-red-500">{t('onboarding.micFail')}</div>
                     )}
                   </div>
 
@@ -579,8 +581,8 @@ export default function OnboardingPage() {
                         }`} />
                       </div>
                       <div className="flex-1">
-                        <p className="text-sm font-semibold text-gray-700">Speaker / Headphone</p>
-                        <p className="text-[10px] text-gray-400">Untuk sesi menyimak (Listening)</p>
+                        <p className="text-sm font-semibold text-gray-700">{t('onboarding.speaker')}</p>
+                        <p className="text-[10px] text-gray-400">{t('onboarding.speakerDesc')}</p>
                       </div>
                       <button onClick={testSpeaker} disabled={speakerState === 'testing' || speakerState === 'pass'}
                         className={`px-4 py-2 rounded-xl text-xs font-medium transition-all ${
@@ -591,13 +593,13 @@ export default function OnboardingPage() {
                             : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                         }`}>
                         {speakerState === 'testing' ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> :
-                         speakerState === 'pass' ? 'Berhasil' :
-                         speakerState === 'fail' ? 'Coba Lagi' : 'Uji'}
+                         speakerState === 'pass' ? t('common.success') :
+                         speakerState === 'fail' ? t('common.retry') : t('common.test')}
                       </button>
                     </div>
                     {speakerState === 'pass' && (
                       <div className="flex items-center gap-1.5 text-[10px] text-[#10B981]">
-                        <CheckCircle2 className="w-3 h-3" /> Suara uji diputar
+                        <CheckCircle2 className="w-3 h-3" /> {t('onboarding.speakerPass')}
                       </div>
                     )}
                   </div>
@@ -605,7 +607,7 @@ export default function OnboardingPage() {
                   <div className="p-4 rounded-xl bg-white border border-gray-200">
                     <div className="flex items-center gap-2.5">
                       <Monitor className="w-4 h-4 text-gray-400" />
-                      <span className="text-xs text-gray-500">Browser: Chrome / Firefox / Edge (direkomendasikan)</span>
+                      <span className="text-xs text-gray-500">{t('onboarding.browserInfo')}</span>
                     </div>
                   </div>
                 </div>
@@ -618,19 +620,18 @@ export default function OnboardingPage() {
                   <Zap className="w-8 h-8 text-white" />
                 </div>
                 <h2 className="font-[family-name:var(--font-playfair)] text-xl md:text-2xl font-bold text-gray-900 mb-2">
-                  Siap Memulai, {userName}!
+                  {t('onboarding.readyTitle', { name: userName })}
                 </h2>
                 <p className="text-gray-500 text-sm max-w-sm leading-relaxed mb-6">
-                  Anda akan mengikuti tes adaptif yang mencakup 6 dimensi kemahiran
-                  Bahasa Indonesia dengan standar CEFR internasional.
+                  {t('onboarding.readyDesc')}
                 </p>
 
                 <div className="w-full max-w-sm space-y-3 mb-8">
                   {[
-                    { icon: User, label: 'Profil', value: form.profession || 'Terisi' },
-                    { icon: Target, label: 'Target Level', value: form.targetLevel || 'Belum ditentukan' },
-                    { icon: BarChart3, label: 'Tujuan', value: `${form.testGoals.length} dipilih` },
-                    { icon: Settings, label: 'Durasi', value: `${form.preferredDuration} menit` },
+                    { icon: User, label: t('onboarding.readySummary.0'), value: form.profession || 'Terisi' },
+                    { icon: Target, label: t('onboarding.readySummary.1'), value: form.targetLevel || 'Belum ditentukan' },
+                    { icon: BarChart3, label: t('onboarding.readySummary.2'), value: `${form.testGoals.length} ${t('common.selected')}` },
+                    { icon: Settings, label: t('onboarding.readySummary.3'), value: `${form.preferredDuration} menit` },
                   ].map(item => {
                     const Icon = item.icon
                     return (
@@ -649,13 +650,13 @@ export default function OnboardingPage() {
                     className="w-full py-3 rounded-xl bg-gradient-to-r from-[#10B981] to-[#059669] text-white text-sm font-semibold shadow-lg shadow-[#10B981]/20 hover:shadow-[#10B981]/30 hover:translate-y-[-1px] active:translate-y-0 transition-all disabled:opacity-50 flex items-center justify-center gap-2"
                   >
                     {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Zap className="w-4 h-4" />}
-                    {saving ? 'Menyiapkan...' : 'Mulai Tes BIGT Sekarang'}
+                    {saving ? t('onboarding.preparing') : t('onboarding.startTest')}
                   </button>
                   <button onClick={() => { update('practiceMode', true); handleSave(true) }}
                     className="w-full py-3 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-500 text-xs font-medium transition-all flex items-center justify-center gap-1.5"
                   >
                     <BookOpen className="w-3.5 h-3.5" />
-                    Mulai Practice Mode Dulu
+                    {t('onboarding.startPractice')}
                   </button>
                 </div>
               </div>
@@ -674,7 +675,7 @@ export default function OnboardingPage() {
               <button onClick={handleNext}
                 className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#10B981] to-[#059669] text-white text-xs font-semibold shadow-lg shadow-[#10B981]/20 hover:shadow-[#10B981]/30 hover:translate-y-[-1px] active:translate-y-0 transition-all"
               >
-                Lanjut <ChevronRight className="w-3.5 h-3.5" />
+                {t('common.next')} <ChevronRight className="w-3.5 h-3.5" />
               </button>
             )}
           </div>

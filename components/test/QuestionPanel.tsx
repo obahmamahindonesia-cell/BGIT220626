@@ -2,10 +2,12 @@
 
 import { useTestStore } from '@/store/testStore'
 import { Flag } from 'lucide-react'
+import { useI18n } from '@/lib/i18n/context'
 
 const OPTION_LABELS = ['A', 'B', 'C', 'D', 'E']
 
 export default function QuestionPanel() {
+  const { t } = useI18n()
   const {
     questions,
     currentIndex,
@@ -64,7 +66,7 @@ export default function QuestionPanel() {
     <textarea
       value={answer?.text || ''}
       onChange={(e) => setAnswer(question.id, { text: e.target.value })}
-      placeholder="Tulis jawaban Anda di sini..."
+      placeholder={t('testRunner.essayPlaceholder')}
       className="w-full min-h-[240px] p-5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white/80 text-sm leading-relaxed placeholder:text-white/20 resize-y focus:outline-none focus:border-[#10B981]/50 focus:bg-white/[0.05] transition-all"
     />
   )
@@ -75,7 +77,7 @@ export default function QuestionPanel() {
         type="text"
         value={answer?.text || ''}
         onChange={(e) => setAnswer(question.id, { text: e.target.value })}
-        placeholder="Ketik jawaban singkat Anda..."
+        placeholder={t('testRunner.shortPlaceholder')}
         className="w-full py-4 px-5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white/80 text-sm placeholder:text-white/20 focus:outline-none focus:border-[#10B981]/50 focus:bg-white/[0.05] transition-all"
       />
       {answer?.text && answer.text.length > 0 && (
@@ -94,11 +96,11 @@ export default function QuestionPanel() {
     <div className="h-full flex flex-col">
       <div className="flex items-center justify-between px-5 py-3 border-b border-white/[0.06] flex-shrink-0">
         <div className="flex items-center gap-2">
-          <span className="text-xs text-white/40">Soal {currentIndex + 1}</span>
+          <span className="text-xs text-white/40">{t('testRunner.questionLabel', { n: currentIndex + 1 })}</span>
           <span className="text-white/20">/</span>
           <span className="text-xs text-white/40">{questions.length}</span>
           <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-white/[0.06] text-white/30 font-medium ml-2">
-            {question.points} poin
+            {t('testRunner.points', { n: question.points })}
           </span>
         </div>
         <button
@@ -110,14 +112,14 @@ export default function QuestionPanel() {
           }`}
         >
           <Flag className={`w-3 h-3 ${isFlagged ? 'fill-[#F59E0B]' : ''}`} />
-          {isFlagged ? 'Ditandai' : 'Tandai'}
+          {isFlagged ? t('testRunner.flagged') : t('testRunner.flag')}
         </button>
       </div>
 
       <div className="flex-1 overflow-y-auto p-5 space-y-6">
         <div>
           <h2 className="text-base md:text-lg font-semibold text-white/90 leading-relaxed">
-            {content.prompt || 'Teks soal tidak tersedia'}
+            {content.prompt || t('testRunner.noQuestionText')}
           </h2>
           {question.skill && (
             <p className="text-xs text-white/30 mt-2">{question.skill}</p>
@@ -138,10 +140,10 @@ export default function QuestionPanel() {
                   <line x1="8" y1="23" x2="16" y2="23" />
                 </svg>
               </div>
-              <p className="text-white/60 text-sm mb-4">Rekam respons lisan Anda</p>
+              <p className="text-white/60 text-sm mb-4">{t('testRunner.recordResponse')}</p>
               <button className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#10B981] text-white text-sm font-semibold hover:bg-[#10B981]/90 transition-colors shadow-lg shadow-[#10B981]/20">
                 <div className="w-3 h-3 rounded-full bg-white animate-pulse" />
-                Mulai Rekam
+                {t('testRunner.startRecording')}
               </button>
             </div>
           )}

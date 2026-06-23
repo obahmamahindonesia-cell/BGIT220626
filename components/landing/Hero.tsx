@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { Sparkles, ArrowRight } from 'lucide-react'
+import { useI18n } from '@/lib/i18n/context'
 
 const LEVELS = [
   { code: 'A1', color: '#64748B', label: 'Pemula' },
@@ -16,6 +17,7 @@ const LEVELS = [
 ]
 
 export default function Hero() {
+  const { t } = useI18n()
   const [activeStep, setActiveStep] = useState(0)
 
   useEffect(() => {
@@ -45,17 +47,15 @@ export default function Hero() {
 
         <div className="inline-flex items-center gap-2 bg-[#C9A227]/15 border border-[#C9A227]/30 text-[#C9A227] text-xs font-medium tracking-wider px-4 py-1.5 rounded-full uppercase mb-6">
           <Sparkles className="w-3.5 h-3.5" />
-          Standar Kemahiran Bahasa Indonesia untuk Dunia
+          {t('landing.badge')}
         </div>
 
-        <h1 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
-          Bahasa Indonesia<br />
-          Global Test<span className="text-[#C9A227]">.</span>
+        <h1 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 whitespace-pre-line">
+          {t('landing.heroTitle')}<span className="text-[#C9A227]">.</span>
         </h1>
 
         <p className="text-white/50 text-base md:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
-          BIGT adalah sistem asesmen kemahiran Bahasa Indonesia generasi baru berbasis kecerdasan buatan,
-          adaptive testing, dan kerangka AKSI yang dirancang untuk mendukung internasionalisasi Bahasa Indonesia.
+          {t('landing.heroDesc')}
         </p>
 
         <div className="flex items-center justify-center gap-2 max-w-lg mx-auto mb-8">
@@ -73,12 +73,12 @@ export default function Hero() {
         <div className="flex gap-3 justify-center flex-wrap">
           <Link href="/register">
             <Button className="bg-[#D7193F] hover:bg-[#D7193F]/90 text-white px-7 py-3 text-sm font-semibold shadow-lg shadow-[#D7193F]/25 rounded-lg">
-              Gabung Waitlist
+              {t('landing.heroCta')}
             </Button>
           </Link>
           <Link href="/framework">
             <Button variant="outline" className="border-white/30 text-white hover:bg-white/10 px-7 py-3 text-sm font-medium rounded-lg">
-              Lihat Framework
+              {t('landing.heroFramework')}
             </Button>
           </Link>
         </div>

@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef } from 'react'
 import { useTestStore } from '@/store/testStore'
 import { ShieldCheck, Maximize2, Minimize2, Flag, Clock, AlertTriangle } from 'lucide-react'
+import { useI18n } from '@/lib/i18n/context'
 
 function formatTime(seconds: number): string {
   const m = Math.floor(seconds / 60)
@@ -37,6 +38,7 @@ function TimerRing({ remaining, total }: { remaining: number; total: number }) {
 }
 
 export default function TestHeader() {
+  const { t } = useI18n()
   const {
     sessionId,
     questions,
@@ -85,7 +87,7 @@ export default function TestHeader() {
           </div>
           <div className="hidden md:block w-px h-6 bg-white/[0.08]" />
           <div className="hidden md:flex items-center gap-2">
-            <span className="text-xs text-white/40">Adaptive Test</span>
+            <span className="text-xs text-white/40">{t('testRunner.adaptiveTest')}</span>
             {currentQuestion && (
               <>
                 <span className="text-white/20 mx-1">•</span>
@@ -109,7 +111,7 @@ export default function TestHeader() {
             <div className="hidden sm:flex items-center gap-1.5 ml-1">
               {isWarning && <AlertTriangle className={`w-3.5 h-3.5 ${isCritical ? 'text-red-400 animate-pulse' : 'text-amber-400'}`} />}
               <span className={`text-[10px] font-medium ${isCritical ? 'text-red-400' : isWarning ? 'text-amber-400' : 'text-white/30'}`}>
-                {isCritical ? 'Hampir habis!' : isWarning ? `${Math.ceil(timeRemaining / 60)} menit` : 'tersisa'}
+                {isCritical ? t('testRunner.almostDone') : isWarning ? t('testRunner.minutes', { n: Math.ceil(timeRemaining / 60) }) : t('testRunner.remaining')}
               </span>
             </div>
           </div>
@@ -138,14 +140,14 @@ export default function TestHeader() {
 
             <button
               onClick={() => {
-                if (confirm('Apakah Anda yakin ingin mengakhiri sesi tes? Semua jawaban yang belum tersimpan akan hilang.')) {
+                if (confirm(t('testRunner.confirmEndSession'))) {
                   finishTest()
                 }
               }}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-red-500/10 text-red-400/70 hover:text-red-400 transition-colors text-xs font-medium"
             >
               <Flag className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Akhiri</span>
+              <span className="hidden sm:inline">{t('common.end')}</span>
             </button>
           </div>
         </div>

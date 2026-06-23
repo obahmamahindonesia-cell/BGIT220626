@@ -2,8 +2,10 @@
 
 import { useTestStore } from '@/store/testStore'
 import { Headphones, BookOpen, FileText, Image } from 'lucide-react'
+import { useI18n } from '@/lib/i18n/context'
 
 export default function StimulusPanel() {
+  const { t } = useI18n()
   const question = useTestStore((s) => s.questions[s.currentIndex])
 
   if (!question) return null
@@ -26,7 +28,7 @@ export default function StimulusPanel() {
             <FileText className="w-3 h-3 text-white/50" />
           )}
         </div>
-        <span className="text-[10px] font-medium text-white/40 uppercase tracking-wider">Materi Stimulus</span>
+        <span className="text-[10px] font-medium text-white/40 uppercase tracking-wider">{t('testRunner.stimulus')}</span>
       </div>
 
       <div className="flex-1 overflow-y-auto p-5 space-y-5">
@@ -45,8 +47,8 @@ export default function StimulusPanel() {
                 <Headphones className="w-5 h-5 text-[#10B981]" />
               </div>
               <div>
-                <p className="text-sm font-semibold text-white/70">Audio Stimulus</p>
-                <p className="text-[10px] text-white/30">Putar audio sebelum menjawab</p>
+                <p className="text-sm font-semibold text-white/70">{t('testRunner.audioStimulus')}</p>
+                <p className="text-[10px] text-white/30">{t('testRunner.audioHint')}</p>
               </div>
             </div>
             <div className="flex items-center gap-3 p-3 rounded-lg bg-white/[0.04] border border-white/[0.06]">
@@ -79,7 +81,7 @@ export default function StimulusPanel() {
           <div className="p-5 rounded-xl bg-white/[0.03] border border-white/[0.06]">
             <div className="flex items-center gap-2 mb-3">
               <Image className="w-4 h-4 text-white/30" />
-              <span className="text-[10px] text-white/30">Gambar</span>
+              <span className="text-[10px] text-white/30">{t('testRunner.image')}</span>
             </div>
             <div className="w-full aspect-video rounded-lg bg-gradient-to-br from-white/[0.04] to-white/[0.02] flex items-center justify-center border border-white/[0.06]">
               <Image className="w-10 h-10 text-white/10" />
@@ -89,7 +91,7 @@ export default function StimulusPanel() {
 
         {!hasPassage && !hasAudio && !hasImage && (
           <div className="flex items-center justify-center h-full">
-            <p className="text-white/20 text-sm">Tidak ada materi stimulus untuk soal ini.</p>
+            <p className="text-white/20 text-sm">{t('testRunner.noStimulus')}</p>
           </div>
         )}
       </div>

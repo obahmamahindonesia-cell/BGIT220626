@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { toast } from 'sonner'
 import { Headphones, BookOpen, Mic, PenSquare, RefreshCw, Puzzle, Settings, Sparkles, CheckCircle2, ArrowRight, ArrowLeft } from 'lucide-react'
+import { useI18n } from '@/lib/i18n/context'
 
 const DIMENSIONS = [
   { code: 'LISTENING', name: 'Menyimak', icon: Headphones, color: '#0B1F3A' },
@@ -28,10 +29,10 @@ const LEVELS = [
 ]
 
 const STEPS = [
-  { id: 1, label: 'Dimensi' },
-  { id: 2, label: 'Level' },
-  { id: 3, label: 'Soal' },
-  { id: 4, label: 'Mulai' },
+  { id: 1, label: 'testConfig.steps.0' },
+  { id: 2, label: 'testConfig.steps.1' },
+  { id: 3, label: 'testConfig.steps.2' },
+  { id: 4, label: 'testConfig.steps.3' },
 ]
 
 const PRODUCTS: Record<string, { name: string; desc: string }> = {
@@ -43,6 +44,7 @@ const PRODUCTS: Record<string, { name: string; desc: string }> = {
 
 function TestStartForm() {
   const router = useRouter()
+  const { t } = useI18n()
   const searchParams = useSearchParams()
   const productId = searchParams.get('product') || 'practice'
   const product = PRODUCTS[productId]
@@ -56,9 +58,9 @@ function TestStartForm() {
   if (!product) {
     return (
       <div className="text-center py-20">
-        <h1 className="font-[family-name:var(--font-playfair)] text-2xl font-bold text-[#0B1F3A]">Produk Tes Tidak Ditemukan</h1>
-        <p className="text-[#64748B] text-sm mt-2">Produk &quot;{productId}&quot; tidak valid.</p>
-        <Link href="/test" className="inline-block mt-6 text-[#D7193F] hover:underline text-sm font-medium">Kembali ke Pusat Tes</Link>
+        <h1 className="font-[family-name:var(--font-playfair)] text-2xl font-bold text-[#0B1F3A]">{t('testConfig.notFound')}</h1>
+        <p className="text-[#64748B] text-sm mt-2">{t('testConfig.notFoundDesc', { product: productId })}</p>
+        <Link href="/test" className="inline-block mt-6 text-[#D7193F] hover:underline text-sm font-medium">{t('testConfig.backToHub')}</Link>
       </div>
     )
   }
@@ -76,7 +78,7 @@ function TestStartForm() {
     setLoading(true)
     try {
       if (selectedDimensions.length === 0) {
-        throw new Error('Pilih minimal satu dimensi tes.')
+        throw new Error(t('testConfig.dimError'))
       }
       const res = await fetch('/api/test/sessions', {
         method: 'POST',
@@ -91,10 +93,10 @@ function TestStartForm() {
       let data: any
       try { data = JSON.parse(text) } catch { data = {} }
       if (!res.ok) {
-        throw new Error(data?.error || 'Gagal memulai tes. Silakan coba lagi.')
+        throw new Error(data?.error || t('testConfig.failedStart'))
       }
       if (!data?.session?.id) {
-        throw new Error('Server tidak mengembalikan ID sesi tes.')
+        throw new Error(t('testConfig.noSessionId'))
       }
       router.push(`/test/${data.session.id}`)
     } catch (err: any) {
@@ -108,7 +110,7 @@ function TestStartForm() {
     <div className="space-y-8 max-w-3xl mx-auto">
       <div>
         <h1 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-bold text-[#0B1F3A]">
-          Konfigurasi Tes
+          {t('testConfig.configTitle')}
         </h1>
         <p className="text-[#64748B] text-sm mt-1">{product.name} — {product.desc}</p>
       </div>
@@ -120,7 +122,7 @@ function TestStartForm() {
               step >= s.id ? 'bg-[#0B1F3A] text-white shadow-sm' : 'bg-gray-100 text-[#64748B]'
             }`}>
               {step > s.id ? <CheckCircle2 className="w-3.5 h-3.5" /> : <span className="w-3.5 h-3.5 flex items-center justify-center text-[11px] font-bold">{s.id}</span>}
-              <span>{s.label}</span>
+              <span>{t(s.label)}</span>
             </div>
             {i < STEPS.length - 1 && <div className={`flex-1 h-px mx-2 ${step > s.id ? 'bg-[#0B1F3A]' : 'bg-gray-200'}`} />}
           </div>
@@ -144,9 +146,9 @@ function TestStartForm() {
               <div className="w-7 h-7 rounded-lg bg-[#0B1F3A]/5 flex items-center justify-center">
                 <Settings className="w-3.5 h-3.5 text-[#0B1F3A]" />
               </div>
-              Pilih Dimensi
+              {t('testConfig.dimTitle')}
             </CardTitle>
-            <CardDescription className="text-xs text-[#64748B] mt-2">Pilih satu atau lebih dimensi yang ingin diuji</CardDescription>
+            <CardDescription className="text-xs text-[#64748B] mt-2">{t('testConfig.dimDesc')}</CardDescription>
           </CardHeader>
           <CardContent className="px-6 pb-6">
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -178,9 +180,9 @@ function TestStartForm() {
               <div className="w-7 h-7 rounded-lg bg-[#0B1F3A]/5 flex items-center justify-center">
                 <Settings className="w-3.5 h-3.5 text-[#0B1F3A]" />
               </div>
-              Pilih Level
+              {t('testConfig.levelTitle')}
             </CardTitle>
-            <CardDescription className="text-xs text-[#64748B] mt-2">Kosongkan untuk menyertakan semua level</CardDescription>
+            <CardDescription className="text-xs text-[#64748B] mt-2">{t('testConfig.levelDesc')}</CardDescription>
           </CardHeader>
           <CardContent className="px-6 pb-6">
             <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
@@ -208,9 +210,9 @@ function TestStartForm() {
               <div className="w-7 h-7 rounded-lg bg-[#0B1F3A]/5 flex items-center justify-center">
                 <Settings className="w-3.5 h-3.5 text-[#0B1F3A]" />
               </div>
-              Jumlah Soal
+              {t('testConfig.qtyTitle')}
             </CardTitle>
-            <CardDescription className="text-xs text-[#64748B] mt-2">Sesuaikan panjang tes</CardDescription>
+            <CardDescription className="text-xs text-[#64748B] mt-2">{t('testConfig.qtyDesc')}</CardDescription>
           </CardHeader>
           <CardContent className="px-6 pb-6">
             <input type="range" min="5" max="50" step="5" value={questionCount}
@@ -232,23 +234,23 @@ function TestStartForm() {
               <div className="w-7 h-7 rounded-lg bg-[#C9A227]/10 flex items-center justify-center">
                 <Sparkles className="w-3.5 h-3.5 text-[#C9A227]" />
               </div>
-              Ringkasan Tes
+              {t('testConfig.summaryTitle')}
             </CardTitle>
-            <CardDescription className="text-xs text-[#64748B] mt-2">Pastikan konfigurasi Anda sudah benar</CardDescription>
+            <CardDescription className="text-xs text-[#64748B] mt-2">{t('testConfig.summaryDesc')}</CardDescription>
           </CardHeader>
           <CardContent className="px-6 pb-6 space-y-5">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div className="p-5 rounded-xl bg-[#F7F9FC] border border-[#E5EAF2]">
-                <p className="text-[10px] text-[#64748B] uppercase tracking-wider font-medium mb-1.5">Produk</p>
+                <p className="text-[10px] text-[#64748B] uppercase tracking-wider font-medium mb-1.5">{t('testConfig.summaryProduct')}</p>
                 <p className="text-sm font-semibold text-[#0B1F3A]">{product.name}</p>
               </div>
               <div className="p-5 rounded-xl bg-[#F7F9FC] border border-[#E5EAF2]">
                 <p className="text-[10px] text-[#64748B] uppercase tracking-wider font-medium mb-1.5">Dimensi</p>
-                <p className="text-sm font-semibold text-[#0B1F3A]">{selectedDimensions.length} dipilih</p>
+                <p className="text-sm font-semibold text-[#0B1F3A]">{selectedDimensions.length} {t('common.selected')}</p>
               </div>
               <div className="p-5 rounded-xl bg-[#F7F9FC] border border-[#E5EAF2]">
                 <p className="text-[10px] text-[#64748B] uppercase tracking-wider font-medium mb-1.5">Level</p>
-                <p className="text-sm font-semibold text-[#0B1F3A]">{selectedLevel || 'Semua level'}</p>
+                <p className="text-sm font-semibold text-[#0B1F3A]">{selectedLevel || t('testConfig.summaryAllLevels')}</p>
               </div>
             </div>
           </CardContent>
@@ -259,18 +261,18 @@ function TestStartForm() {
         {step > 1 ? (
           <Button variant="outline" onClick={() => setStep(step - 1)}
             className="border-[#E5EAF2] text-[#0B1F3A] rounded-lg h-11 px-6 text-sm flex-1 sm:flex-none">
-            <ArrowLeft className="w-4 h-4 mr-2" /> Kembali
+            <ArrowLeft className="w-4 h-4 mr-2" /> {t('common.back')}
           </Button>
         ) : <div className="hidden sm:block" />}
         {step < 4 ? (
           <Button onClick={() => setStep(step + 1)} disabled={!canProceed()}
             className="flex-1 bg-[#0B1F3A] hover:bg-[#0B1F3A]/90 text-white rounded-lg h-11 text-sm">
-            Lanjut <ArrowRight className="w-4 h-4 ml-2" />
+            {t('common.next')} <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
         ) : (
           <Button onClick={handleStartTest} disabled={loading}
             className="flex-1 bg-[#D7193F] hover:bg-[#D7193F]/90 text-white rounded-lg h-11 text-sm shadow-lg shadow-[#D7193F]/20">
-            {loading ? 'Memulai Tes...' : 'Mulai Tes Sekarang'}
+            {loading ? t('testConfig.startLoading') : t('testConfig.startNow')}
           </Button>
         )}
       </div>
@@ -279,9 +281,10 @@ function TestStartForm() {
 }
 
 export default function TestStartPage() {
+  const { t } = useI18n()
   return (
     <AppLayout>
-    <Suspense fallback={<div className="py-12 text-center text-[#64748B] text-sm">Memuat...</div>}>
+    <Suspense fallback={<div className="py-12 text-center text-[#64748B] text-sm">{t('common.loading')}</div>}>
       <TestStartForm />
     </Suspense>
     </AppLayout>

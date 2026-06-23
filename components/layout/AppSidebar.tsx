@@ -13,20 +13,22 @@ import {
   GraduationCap,
   X,
 } from 'lucide-react'
+import { useI18n } from '@/lib/i18n/context'
+import LanguageToggle from '@/components/LanguageToggle'
 
 const NAV_ITEMS = [
-  { href: '/dashboard', label: 'Dasbor', icon: LayoutDashboard },
-  { href: '/test', label: 'Mulai Tes', icon: PenSquare },
-  { href: '/profile', label: 'Profil', icon: UserCircle },
+  { href: '/dashboard', label: 'nav.dashboard', icon: LayoutDashboard },
+  { href: '/test', label: 'nav.takeTest', icon: PenSquare },
+  { href: '/profile', label: 'nav.profile', icon: UserCircle },
 ]
 
 const CEFR_LEVELS = [
-  { code: 'A1', label: 'Pemula' },
-  { code: 'A2', label: 'Dasar' },
-  { code: 'B1', label: 'Madya' },
-  { code: 'B2', label: 'Madya Atas' },
-  { code: 'C1', label: 'Mahir' },
-  { code: 'C2', label: 'Sangat Mahir' },
+  { code: 'A1', label: 'landing.levels.A1' },
+  { code: 'A2', label: 'landing.levels.A2' },
+  { code: 'B1', label: 'landing.levels.B1' },
+  { code: 'B2', label: 'landing.levels.B2' },
+  { code: 'C1', label: 'landing.levels.C1' },
+  { code: 'C2', label: 'landing.levels.C2' },
 ]
 
 interface AppSidebarProps {
@@ -37,6 +39,7 @@ interface AppSidebarProps {
 export default function AppSidebar({ mobile, onClose }: AppSidebarProps) {
   const pathname = usePathname()
   const router = useRouter()
+  const { t } = useI18n()
   const [userName, setUserName] = useState('')
   const [userLevel] = useState('A1')
 
@@ -96,7 +99,7 @@ export default function AppSidebar({ mobile, onClose }: AppSidebarProps) {
               <Icon
                 className={`w-5 h-5 flex-shrink-0 ${isActive ? 'text-white' : 'text-slate-400'}`}
               />
-              <span>{item.label}</span>
+              <span>{t(item.label)}</span>
             </Link>
           )
         })}
@@ -109,10 +112,10 @@ export default function AppSidebar({ mobile, onClose }: AppSidebarProps) {
           </div>
           <div className="flex-1 min-w-0">
             <p className="text-[10px] font-medium uppercase tracking-wider text-slate-500">
-              Level BIGT
+                    {t('userProfile.levelBigt')}
             </p>
             <p className="text-sm font-semibold text-white truncate">
-              {userLevel} {CEFR_LEVELS[levelIndex]?.label}
+              {userLevel} {CEFR_LEVELS[levelIndex] && t(CEFR_LEVELS[levelIndex].label)}
             </p>
           </div>
         </div>
@@ -129,9 +132,9 @@ export default function AppSidebar({ mobile, onClose }: AppSidebarProps) {
       </div>
 
       <div className="px-5 py-3 border-t border-white/10 flex-shrink-0">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between mb-3">
           <p className="text-xs text-slate-400 truncate max-w-[160px]">
-            {userName || 'Pengguna'}
+            {userName || t('userProfile.defaultName')}
           </p>
           <button
             onClick={handleLogout}
@@ -139,6 +142,9 @@ export default function AppSidebar({ mobile, onClose }: AppSidebarProps) {
           >
             <LogOut className="w-4 h-4 text-slate-400" />
           </button>
+        </div>
+        <div className="flex justify-center">
+          <LanguageToggle />
         </div>
       </div>
     </div>
