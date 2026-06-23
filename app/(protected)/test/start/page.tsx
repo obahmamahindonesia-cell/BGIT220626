@@ -3,7 +3,6 @@
 import { Suspense, useState } from 'react'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
-import AppLayout from '@/components/layout/AppLayout'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { toast } from 'sonner'
@@ -283,10 +282,8 @@ function TestStartForm() {
 export default function TestStartPage() {
   const { t } = useI18n()
   return (
-    <AppLayout>
     <Suspense fallback={<div className="py-12 text-center text-[#64748B] text-sm">{t('common.loading')}</div>}>
       <TestStartForm />
     </Suspense>
-    </AppLayout>
   )
 }

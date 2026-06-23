@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
-import AppLayout from '@/components/layout/AppLayout'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -45,8 +44,7 @@ export default function TestHubPage() {
   }
 
   return (
-    <AppLayout>
-    <div className="space-y-8">
+    <div className="space-y-6">
       <div>
         <h1 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-bold text-[#0B1F3A]">
           {t('testHub.title')}
@@ -140,6 +138,5 @@ export default function TestHubPage() {
         </div>
       </Card>
     </div>
-    </AppLayout>
   )
 }
