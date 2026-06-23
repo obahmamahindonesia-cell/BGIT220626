@@ -4,6 +4,7 @@ import PublicLayout from '@/components/layout/PublicLayout'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Sparkles } from 'lucide-react'
+import PageMeta from '@/components/PageMeta'
 import { useI18n } from '@/lib/i18n/context'
 
 const TEAM = [
@@ -17,6 +18,7 @@ export default function AboutPage() {
   const { t } = useI18n()
   return (
     <PublicLayout>
+      <PageMeta title="Tentang BIGT" description="Pelajari visi BIGT dalam membangun standar kemahiran Bahasa Indonesia untuk dunia melalui asesmen modern, adaptif, dan berbasis kompetensi nyata." />
       <section className="bg-gradient-to-br from-[#0B1F3A] via-[#0B1F3A] to-[#123E7C] text-white py-20 px-6">
         <div className="max-w-3xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 bg-[#C9A227]/15 border border-[#C9A227]/30 text-[#C9A227] text-xs font-medium tracking-wider px-4 py-1.5 rounded-full uppercase mb-6">

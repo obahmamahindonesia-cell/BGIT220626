@@ -15,24 +15,98 @@ const playfair = Playfair_Display({
   variable: '--font-playfair',
 });
 
+const siteUrl = 'https://bahasacerdas.site'
+const brandName = 'BIGT — Bahasa Indonesia Global Test'
+const defaultTitle = 'BIGT — Standar Kemahiran Bahasa Indonesia untuk Dunia'
+const defaultDescription = 'Sistem asesmen kemahiran Bahasa Indonesia berbasis kecerdasan buatan, Kerangka AKSI, dan standar global.'
+
 export const metadata: Metadata = {
-  title: "BIGT — Bahasa Indonesia Global Test | Standar Kemahiran Bahasa Indonesia untuk Dunia",
-  description: "BIGT adalah sistem asesmen kemahiran Bahasa Indonesia generasi baru berbasis kecerdasan buatan, adaptive testing, dan kerangka AKSI yang dirancang untuk mendukung internasionalisasi Bahasa Indonesia.",
-  keywords: ["BIGT", "Bahasa Indonesia Global Test", "Bahasa Indonesia", "CEFR", "tes kemahiran", "language assessment", "adaptive testing", "AKSI"],
-  authors: [{ name: "BIGT" }],
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: defaultTitle,
+    template: '%s | BIGT',
+  },
+  description: defaultDescription,
+  keywords: [
+    'BIGT',
+    'Bahasa Indonesia Global Test',
+    'tes Bahasa Indonesia',
+    'asesmen Bahasa Indonesia',
+    'sertifikasi Bahasa Indonesia',
+    'kemahiran Bahasa Indonesia',
+    'Kerangka AKSI',
+    'CEFR Bahasa Indonesia',
+    'tes BIPA',
+    'Indonesian proficiency test',
+  ],
+  authors: [{ name: 'BIGT' }],
+  creator: 'BIGT',
+  publisher: 'BIGT',
+  applicationName: 'BIGT',
+  generator: 'Next.js',
+  referrer: 'origin-when-cross-origin',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   icons: {
-    icon: '/favicon.png',
-    apple: '/apple-touch-icon.png',
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon.png', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
   },
+  manifest: '/manifest.webmanifest',
   openGraph: {
-    title: "BIGT — Bahasa Indonesia Global Test",
-    description: "BIGT adalah sistem asesmen kemahiran Bahasa Indonesia generasi baru berbasis kecerdasan buatan, adaptive testing, dan kerangka AKSI yang dirancang untuk mendukung internasionalisasi Bahasa Indonesia.",
-    url: "https://bahasacerdas.site",
-    siteName: "BIGT — Bahasa Indonesia Global Test",
-    locale: "id_ID",
-    type: "website",
+    type: 'website',
+    locale: 'id_ID',
+    siteName: brandName,
+    title: defaultTitle,
+    description: defaultDescription,
+    url: siteUrl,
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'BIGT — Bahasa Indonesia Global Test',
+      },
+    ],
   },
-};
+  twitter: {
+    card: 'summary_large_image',
+    title: defaultTitle,
+    description: defaultDescription,
+    images: ['/og-image.png'],
+  },
+  alternates: {
+    canonical: siteUrl,
+  },
+  appleWebApp: {
+    capable: true,
+    title: 'BIGT',
+    statusBarStyle: 'default',
+  },
+  formatDetection: {
+    telephone: false,
+  },
+  other: {
+    'fb:app_id': '',
+    'theme-color': '#0B1F3A',
+  },
+}
 
 export default function RootLayout({
   children,

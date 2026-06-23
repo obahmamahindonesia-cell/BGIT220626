@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BIGT — Bahasa Indonesia Global Test
+
+**Standar Kemahiran Bahasa Indonesia untuk Dunia.**
+
+BIGT adalah sistem asesmen kemahiran Bahasa Indonesia modern berbasis kecerdasan buatan, Kerangka AKSI, dan standar global yang dirancang untuk mendukung internasionalisasi Bahasa Indonesia.
+
+## Tech Stack
+
+- **Framework:** Next.js 14 (App Router)
+- **Language:** TypeScript
+- **Database:** PostgreSQL (Supabase)
+- **ORM:** Prisma
+- **Auth:** Supabase Auth
+- **Styling:** Tailwind CSS
+- **Animation:** Framer Motion
+- **Charts:** Recharts
+- **AI Integration:** OpenAI GPT-4o for scoring
+
+## Brand Identity
+
+| Element | Value |
+|---|---|
+| Nama | BIGT — Bahasa Indonesia Global Test |
+| Tagline | Standar Kemahiran Bahasa Indonesia untuk Dunia |
+| Production | https://bahasacerdas.site |
+| Navy | `#0B1F3A` |
+| Royal | `#123E7C` |
+| Crimson | `#D7193F` |
+| Gold | `#C9A227` |
+
+## Metadata & SEO
+
+- Title template: `%s | BIGT`
+- Default title: `BIGT — Standar Kemahiran Bahasa Indonesia untuk Dunia`
+- Description: Sistem asesmen kemahiran Bahasa Indonesia berbasis kecerdasan buatan, Kerangka AKSI, dan standar global.
+- OG image: `/og-image.png` (1200x630)
+- Favicon/icon source: `/public/icon_BIGT.png`
+- Manifest: `/manifest.webmanifest`
+- Robots: `/robots.ts`
+- Sitemap: `/sitemap.ts`
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Production deploys go through **Vercel** (mr-dom02/bgit-220626):
 
-## Learn More
+```bash
+vercel --prod
+```
 
-To learn more about Next.js, take a look at the following resources:
+The production domain is [https://bahasacerdas.site](https://bahasacerdas.site).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Environment Variables
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Copy `.env.example` to `.env.local` and fill in:
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `DATABASE_URL` — Supabase PostgreSQL direct connection
+- `NEXT_PUBLIC_SUPABASE_URL` — Supabase project URL
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY` — Supabase anon key
+- `OPENAI_API_KEY` — OpenAI API key for AI scoring

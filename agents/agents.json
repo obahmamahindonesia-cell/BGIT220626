@@ -1,9 +1,9 @@
 {
-  "name": "BGIT Agency Agents",
-  "description": "AI agents khusus untuk platform BGIT / Bahasa Global Indonesia Test",
+  "name": "BIGT Agency Agents",
+  "description": "AI agents khusus untuk platform BIGT / Bahasa Indonesia Global Test",
   "divisions": {
     "engineering": {
-      "description": "Building the BGIT platform",
+      "description": "Building the BIGT platform",
       "agents": [
         "engineering-frontend-developer",
         "engineering-backend-architect",
@@ -18,7 +18,7 @@
       ]
     },
     "design": {
-      "description": "UI/UX and brand for BGIT",
+      "description": "UI/UX and brand for BIGT",
       "agents": [
         "design-ui-designer",
         "design-ux-researcher",
@@ -28,7 +28,7 @@
       ]
     },
     "marketing": {
-      "description": "Growth and visibility for BGIT",
+      "description": "Growth and visibility for BIGT",
       "agents": [
         "marketing-growth-hacker",
         "marketing-content-creator",

@@ -9,6 +9,7 @@ import { Label } from '@/components/ui/label'
 import Link from 'next/link'
 import { toast } from 'sonner'
 import { Sparkles } from 'lucide-react'
+import PageMeta from '@/components/PageMeta'
 import { useI18n } from '@/lib/i18n/context'
 
 export default function RegisterPage() {
@@ -34,6 +35,7 @@ export default function RegisterPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#F7F9FC] px-4">
+      <PageMeta title="Daftar BIGT" />
       <div className="w-full max-w-sm">
         <div className="text-center mb-8">
           <Link href="/" className="font-[family-name:var(--font-playfair)] text-2xl font-bold text-[#0B1F3A] inline-block mb-4">BIGT</Link>

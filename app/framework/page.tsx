@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import PublicLayout from '@/components/layout/PublicLayout'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
+import PageMeta from '@/components/PageMeta'
 import { useI18n } from '@/lib/i18n/context'
 import { Headphones, BookOpen, Mic, PenSquare, RefreshCw, Puzzle, Sparkles, Loader2 } from 'lucide-react'
 
@@ -52,6 +53,7 @@ export default function FrameworkPage() {
 
   return (
     <PublicLayout>
+      <PageMeta title="Kerangka AKSI" description="Kerangka AKSI adalah dasar pengukuran BIGT yang mengintegrasikan CEFR, asesmen berbasis tindakan, mediasi, dan tugas terintegrasi." />
       <section className="bg-gradient-to-br from-[#0B1F3A] via-[#0B1F3A] to-[#123E7C] text-white py-20 px-6">
         <div className="max-w-3xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 bg-[#C9A227]/15 border border-[#C9A227]/30 text-[#C9A227] text-xs font-medium tracking-wider px-4 py-1.5 rounded-full uppercase mb-6">

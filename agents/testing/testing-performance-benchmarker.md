@@ -85,7 +85,7 @@ export const options = {
 };
 
 export default function () {
-  const baseUrl = __ENV.BASE_URL || 'http://localhost:3000';
+  const baseUrl = __ENV.BASE_URL || 'https://bahasacerdas.site';
   
   // Test critical user journey
   const loginResponse = http.post(`${baseUrl}/api/auth/login`, {

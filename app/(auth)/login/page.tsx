@@ -10,6 +10,7 @@ import Link from 'next/link'
 import { toast } from 'sonner'
 import Image from 'next/image'
 import { Globe, Sparkles, ShieldCheck, BarChart3, ArrowLeft } from 'lucide-react'
+import PageMeta from '@/components/PageMeta'
 import { useI18n } from '@/lib/i18n/context'
 
 function LoginForm() {
@@ -163,6 +164,7 @@ export default function LoginPage() {
   const { t } = useI18n()
   return (
     <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-[#F7F9FC]"><p className="text-[#64748B]">{t('common.loading')}</p></div>}>
+      <PageMeta title="Masuk ke BIGT" />
       <LoginForm />
     </Suspense>
   )
