@@ -8,7 +8,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import Link from 'next/link'
 import { toast } from 'sonner'
-import { Globe, Sparkles, ShieldCheck, BarChart3, GraduationCap } from 'lucide-react'
+import { Globe, Sparkles, ShieldCheck, BarChart3, GraduationCap, ArrowLeft } from 'lucide-react'
 
 function LoginForm() {
   const [email, setEmail] = useState('')
@@ -100,6 +100,10 @@ function LoginForm() {
       <div className="w-full lg:w-1/2 flex items-center justify-center p-8">
         <div className="w-full max-w-sm">
           <div className="mb-8">
+            <Link href="/" className="inline-flex items-center gap-1.5 text-xs text-[#64748B] hover:text-[#0B1F3A] transition-colors mb-4">
+              <ArrowLeft className="w-3.5 h-3.5" />
+              Kembali ke Beranda
+            </Link>
             <h2 className="font-[family-name:var(--font-playfair)] text-2xl font-bold text-[#0B1F3A]">Selamat Datang Kembali</h2>
             <p className="text-[#64748B] text-sm mt-1">Masuk ke akun BIGT Anda untuk melanjutkan.</p>
           </div>
