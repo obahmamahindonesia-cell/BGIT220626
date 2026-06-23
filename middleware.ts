@@ -12,9 +12,7 @@ export async function middleware(request: NextRequest) {
     request.nextUrl.pathname.startsWith(route)
   )
 
-  const sbAccessToken = request.cookies.get('sb-access-token')?.value
-  const sbRefreshToken = request.cookies.get('sb-refresh-token')?.value
-  const hasSession = !!(sbAccessToken || sbRefreshToken)
+  const hasSession = request.cookies.getAll().some(c => c.name.startsWith('sb-'))
 
   if (isProtectedRoute && !hasSession) {
     const redirectUrl = new URL('/login', request.url)
