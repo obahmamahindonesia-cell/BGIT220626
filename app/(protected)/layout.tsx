@@ -3,10 +3,13 @@
 import { useState, useEffect } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
+import { Loader2 } from 'lucide-react'
+import { cn } from '@/lib/utils'
+
+// Import layout components
 import IosNavbar from '@/components/layout/iOSNavbar'
 import IosSidebar from '@/components/layout/iOSSidebar'
 import MobileBottomNav from '@/components/layout/MobileBottomNav'
-import { Loader2 } from 'lucide-react'
 
 export default function ProtectedLayout({ children }: { children: React.ReactNode }) {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
@@ -67,7 +70,7 @@ export default function ProtectedLayout({ children }: { children: React.ReactNod
       {mobileOpen && (
         <div className="fixed inset-0 z-70 lg:hidden">
           <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" onClick={() => setMobileOpen(false)} />
-          <aside className="relative w-[260px] h-full shadow-xl">
+          <aside className="relative w-72 h-full shadow-xl">
             <IosSidebar
               collapsed={false}
               onToggle={() => {}}
@@ -79,9 +82,10 @@ export default function ProtectedLayout({ children }: { children: React.ReactNod
       )}
 
       <div
-        className={`flex-1 flex flex-col min-h-screen transition-all duration-300 ${
+        className={cn(
+          'flex-1 flex flex-col min-h-screen transition-all duration-300',
           sidebarCollapsed ? 'lg:ml-[72px]' : 'lg:ml-[260px]'
-        }`}
+        )}
       >
         <IosNavbar onMenuClick={() => setMobileOpen(true)} />
         <main className="flex-1 px-4 lg:px-8 py-6 lg:py-8 pb-24 lg:pb-8 max-w-[1200px] mx-auto w-full">

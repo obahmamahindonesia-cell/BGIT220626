@@ -7,7 +7,6 @@ import {
   BarChart3, GraduationCap, Award, TrendingUp, Clock,
   ArrowRight, Sparkles, BookOpen, Target, ChevronRight,
   Play, RotateCcw, FileText, Layers, ShieldCheck,
-  Menu, Bell, HelpCircle,
 } from 'lucide-react'
 import { useI18n } from '@/lib/i18n/context'
 import {
@@ -17,21 +16,21 @@ import {
 } from 'recharts'
 
 const DIMENSIONS_META: Record<string, { label: string; color: string }> = {
-  LISTENING: { label: 'Menyimak', color: '#10B981' },
-  READING: { label: 'Membaca', color: '#3B82F6' },
-  SPEAKING: { label: 'Berbicara', color: '#F59E0B' },
-  WRITING: { label: 'Menulis', color: '#8B5CF6' },
-  MEDIATION: { label: 'Mediasi', color: '#EC4899' },
-  INTEGRATED: { label: 'Terintegrasi', color: '#14B8A6' },
+  LISTENING: { label: 'Menyimak', color: '#34C759' },
+  READING: { label: 'Membaca', color: '#007AFF' },
+  SPEAKING: { label: 'Berbicara', color: '#FF9500' },
+  WRITING: { label: 'Menulis', color: '#AF52DE' },
+  MEDIATION: { label: 'Mediasi', color: '#FF2D55' },
+  INTEGRATED: { label: 'Terintegrasi', color: '#5AC8FA' },
 }
 
 const CEFR_META = [
-  { code: 'A1', label: 'Pemula', color: '#6B7280' },
-  { code: 'A2', label: 'Dasar', color: '#9CA3AF' },
-  { code: 'B1', label: 'Madya', color: '#10B981' },
-  { code: 'B2', label: 'Madya Atas', color: '#3B82F6' },
-  { code: 'C1', label: 'Mahir', color: '#8B5CF6' },
-  { code: 'C2', label: 'Sangat Mahir', color: '#F59E0B' },
+  { code: 'A1', label: 'Pemula', color: '#8E8E93' },
+  { code: 'A2', label: 'Dasar', color: '#C7C7CC' },
+  { code: 'B1', label: 'Madya', color: '#34C759' },
+  { code: 'B2', label: 'Madya Atas', color: '#007AFF' },
+  { code: 'C1', label: 'Mahir', color: '#AF52DE' },
+  { code: 'C2', label: 'Sangat Mahir', color: '#FF9500' },
 ]
 
 function classNames(...classes: (string | false | undefined | null)[]) {
@@ -42,18 +41,18 @@ function DashboardSkeleton() {
   return (
     <div className="animate-pulse space-y-8">
       <div className="flex items-center gap-4">
-        <div className="h-14 w-14 rounded-2xl bg-gray-200" />
+        <div className="h-14 w-14 rounded-2xl bg-[#E5E5EA]" />
         <div className="space-y-2">
-          <div className="h-5 w-64 rounded-lg bg-gray-200" />
-          <div className="h-4 w-40 rounded-lg bg-gray-200" />
+          <div className="h-5 w-64 rounded-lg bg-[#E5E5EA]" />
+          <div className="h-4 w-40 rounded-lg bg-[#E5E5EA]" />
         </div>
       </div>
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        {[...Array(4)].map((_, i) => <div key={i} className="h-28 rounded-2xl bg-gray-200" />)}
+        {[...Array(4)].map((_, i) => <div key={i} className="h-28 rounded-2xl bg-[#E5E5EA]" />)}
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2 h-80 rounded-2xl bg-gray-200" />
-        <div className="h-80 rounded-2xl bg-gray-200" />
+        <div className="lg:col-span-2 h-80 rounded-2xl bg-[#E5E5EA]" />
+        <div className="h-80 rounded-2xl bg-[#E5E5EA]" />
       </div>
     </div>
   )
@@ -101,13 +100,13 @@ interface DashboardData {
 function ScoreGauge({ score, size = 140 }: { score: number; size?: number }) {
   const circumference = 2 * Math.PI * (size / 2 - 8)
   const offset = circumference - (score / 100) * circumference
-  const color = score >= 80 ? '#10B981' : score >= 60 ? '#F59E0B' : score >= 40 ? '#F97316' : '#EF4444'
+  const color = score >= 80 ? '#34C759' : score >= 60 ? '#FF9500' : score >= 40 ? '#FF9500' : '#FF3B30'
 
   return (
     <svg width={size} height={size} className="transform -rotate-90">
       <circle
         cx={size / 2} cy={size / 2} r={size / 2 - 8}
-        fill="none" stroke="#E5EAF2"
+        fill="none" stroke="#E5E5EA"
         strokeWidth="6"
       />
       <circle
@@ -132,7 +131,7 @@ function RadialProgress({ label, value, color, size = 80 }: { label: string; val
       <svg width={size} height={size} className="transform -rotate-90">
         <circle
           cx={size / 2} cy={size / 2} r={size / 2 - 6}
-          fill="none" stroke="#E5EAF2"
+          fill="none" stroke="#E5E5EA"
           strokeWidth="4"
         />
         <circle
@@ -146,95 +145,8 @@ function RadialProgress({ label, value, color, size = 80 }: { label: string; val
         />
       </svg>
       <div className="text-center">
-        <p className="text-[10px] font-semibold text-gray-700">{value}%</p>
-        <p className="text-[9px] text-gray-400">{label}</p>
-      </div>
-    </div>
-  )
-}
-
-function TopNavbar({ userName, onMenuClick }: { userName: string; onMenuClick: () => void }) {
-  const { t } = useI18n()
-  return (
-    <header className="sticky top-0 z-30 flex items-center justify-between px-4 md:px-8 h-16 bg-white border-b border-gray-200">
-      <button onClick={onMenuClick} className="lg:hidden w-9 h-9 rounded-xl bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors">
-        <Menu className="w-4 h-4 text-gray-500" />
-      </button>
-
-      <div className="hidden lg:flex items-center gap-3">
-        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center">
-          <ShieldCheck className="w-4 h-4 text-white" />
-        </div>
-        <span className="text-sm font-semibold text-gray-400">{t('dashboard.title')}</span>
-      </div>
-
-      <div className="flex items-center gap-2">
-        <button className="w-9 h-9 rounded-xl bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors relative">
-          <Bell className="w-4 h-4 text-gray-500" />
-          <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-[#10B981]" />
-        </button>
-        <button className="w-9 h-9 rounded-xl bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors">
-          <HelpCircle className="w-4 h-4 text-gray-500" />
-        </button>
-        <span className="hidden sm:block text-sm text-gray-300 mx-1">|</span>
-        <div className="flex items-center gap-2.5 ml-1 pl-1">
-          <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center text-xs font-bold text-white shadow-lg shadow-[#10B981]/20">
-            {userName.charAt(0).toUpperCase()}
-          </div>
-          <span className="hidden sm:block text-sm font-medium text-gray-700">{userName}</span>
-        </div>
-      </div>
-    </header>
-  )
-}
-
-function Sidebar({ onClose, active }: { onClose?: () => void; active?: string }) {
-  const { t } = useI18n()
-  const items = [
-    { href: '/dashboard', label: t('nav.dashboard'), icon: BarChart3 },
-    { href: '/test', label: t('nav.takeTest'), icon: Play },
-    { href: '/test', label: t('nav.testHistory'), icon: RotateCcw },
-    { href: '/profile', label: t('nav.profile'), icon: FileText },
-  ]
-
-  return (
-    <div className="flex flex-col h-full bg-white border-r border-gray-200">
-      <div className="flex items-center gap-3 px-6 h-[72px] border-b border-gray-200 flex-shrink-0">
-        <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center shadow-lg shadow-[#10B981]/20">
-          <ShieldCheck className="w-5 h-5 text-white" />
-        </div>
-        <span className="font-[family-name:var(--font-playfair)] text-lg font-bold text-gray-900">BIGT</span>
-      </div>
-
-      <nav className="flex-1 px-3 py-5 space-y-1 overflow-y-auto">
-        {items.map((item) => {
-          const Icon = item.icon
-          return (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={onClose}
-              className={classNames(
-                'flex items-center gap-3 rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-200',
-                active === item.label
-                  ? 'bg-[#10B981]/10 text-[#10B981] border-l-2 border-[#10B981]'
-                  : 'text-gray-500 hover:text-gray-800 hover:bg-gray-100'
-              )}
-            >
-              <Icon className="w-[18px] h-[18px]" />
-              {item.label}
-            </Link>
-          )
-        })}
-      </nav>
-
-      <div className="px-5 py-4 border-t border-gray-200 flex-shrink-0">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-xl bg-gray-100 flex items-center justify-center">
-            <GraduationCap className="w-4 h-4 text-gray-400" />
-          </div>
-          <div className="text-[10px] text-gray-400 uppercase tracking-wider">{t('common.tagline')}</div>
-        </div>
+        <p className="text-[10px] font-semibold text-[#1C1C1E]">{value}%</p>
+        <p className="text-[9px] text-[#8E8E93]">{label}</p>
       </div>
     </div>
   )
@@ -244,7 +156,6 @@ export default function DashboardPage() {
   const { t } = useI18n()
   const [data, setData] = useState<DashboardData | null>(null)
   const [loading, setLoading] = useState(true)
-  const [mobileSidebar, setMobileSidebar] = useState(false)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -271,20 +182,13 @@ export default function DashboardPage() {
   }, [])
 
   if (loading) {
-    return (
-      <div className="min-h-screen bg-[#F7F9FC]">
-        <TopNavbar userName="" onMenuClick={() => setMobileSidebar(true)} />
-        <div className="max-w-7xl mx-auto px-4 md:px-8 py-8">
-          <DashboardSkeleton />
-        </div>
-      </div>
-    )
+    return <DashboardSkeleton />
   }
 
   if (!data) {
     return (
-      <div className="min-h-screen bg-[#F7F9FC] flex items-center justify-center">
-        <p className="text-gray-500">{t('dashboard.failLoad')}</p>
+      <div className="flex items-center justify-center py-20">
+        <p className="text-[#8E8E93]">{t('dashboard.failLoad')}</p>
       </div>
     )
   }
@@ -305,473 +209,460 @@ export default function DashboardPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-[#F7F9FC]">
-      {mobileSidebar && (
-        <div className="fixed inset-0 z-50 lg:hidden">
-          <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" onClick={() => setMobileSidebar(false)} />
-          <aside className="relative w-72 h-full">
-            <Sidebar onClose={() => setMobileSidebar(false)} />
-          </aside>
-        </div>
-      )}
+    <div className="space-y-8">
+      {/* Welcome Section */}
+      <div className="relative p-6 md:p-8 rounded-3xl bg-white border border-[#E5E5EA] shadow-sm overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#007AFF]/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#FF9500]/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
-      <TopNavbar userName={d.user.name} onMenuClick={() => setMobileSidebar(true)} />
+        <div className="relative flex flex-col md:flex-row md:items-center gap-6 md:gap-10">
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-3 mb-3">
+              <h1 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl lg:text-4xl font-bold text-[#1C1C1E]">
+                {t('dashboard.welcome', { name: d.user.name })}
+              </h1>
+              <span className="text-2xl md:text-3xl">👋</span>
+            </div>
+            <p className="text-[#8E8E93] text-sm md:text-base max-w-xl">
+              {t('dashboard.subtitle')}
+            </p>
 
-      <div className="max-w-7xl mx-auto px-4 md:px-8 py-6 md:py-10">
-        {/* Welcome Section */}
-        <div className="relative mb-10 p-6 md:p-8 rounded-3xl bg-white border border-gray-200 shadow-sm overflow-hidden">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[#10B981]/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#F59E0B]/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none" />
-
-          <div className="relative flex flex-col md:flex-row md:items-center gap-6 md:gap-10">
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-3 mb-3">
-                <h1 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900">
-                  {t('dashboard.welcome', { name: d.user.name })}
-                </h1>
-                <span className="text-2xl md:text-3xl">👋</span>
-              </div>
-              <p className="text-gray-500 text-sm md:text-base max-w-xl">
-                {t('dashboard.subtitle')}
-              </p>
-
-              <div className="flex flex-wrap gap-3 mt-6">
-                <Link href="/test/start">
-                  <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#10B981] to-[#059669] text-white text-sm font-semibold shadow-lg shadow-[#10B981]/25 hover:shadow-[#10B981]/40 hover:translate-y-[-1px] active:translate-y-0 transition-all duration-200">
-                    <Play className="w-4 h-4" />
-                    {t('dashboard.newTest')}
+            <div className="flex flex-wrap gap-3 mt-6">
+              <Link href="/test/start">
+                <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#007AFF] text-white text-sm font-semibold shadow-lg shadow-[#007AFF]/25 hover:shadow-[#007AFF]/40 hover:translate-y-[-1px] active:translate-y-0 transition-all duration-200">
+                  <Play className="w-4 h-4" />
+                  {t('dashboard.newTest')}
+                </button>
+              </Link>
+              {d.pendingSessionId && (
+                <Link href={`/test/${d.pendingSessionId}`}>
+                  <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#F2F2F7] text-[#1C1C1E] text-sm font-medium border border-[#E5E5EA] hover:bg-[#E5E5EA] transition-all duration-200">
+                    <RotateCcw className="w-4 h-4" />
+                    {t('dashboard.resumeTest')}
                   </button>
                 </Link>
-                {d.pendingSessionId && (
-                  <Link href={`/test/${d.pendingSessionId}`}>
-                    <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gray-100 text-gray-700 text-sm font-medium border border-gray-200 hover:bg-gray-200 transition-all duration-200">
-                      <RotateCcw className="w-4 h-4" />
-                      {t('dashboard.resumeTest')}
-                    </button>
-                  </Link>
+              )}
+            </div>
+          </div>
+
+          {d.overallScore !== null && (
+            <div className="flex-shrink-0 flex items-center gap-5 p-4 md:p-5 rounded-2xl bg-[#F2F2F7] border border-[#E5E5EA]">
+              <div className="relative">
+                <ScoreGauge score={d.overallScore} size={120} />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-center">
+                    <p className="text-2xl md:text-3xl font-bold text-[#1C1C1E]">{d.overallScore}</p>
+                    <p className="text-[10px] text-[#8E8E93] -mt-0.5">/ 100</p>
+                  </div>
+                </div>
+              </div>
+              <div className="space-y-1.5">
+                <div className="flex items-center gap-2">
+                  <span className={classNames(
+                    'text-sm font-bold px-2.5 py-0.5 rounded-lg',
+                    d.currentLevel === 'C1' || d.currentLevel === 'C2'
+                      ? 'bg-[#FF9500]/15 text-[#FF9500]'
+                      : d.currentLevel === 'B1' || d.currentLevel === 'B2'
+                      ? 'bg-[#34C759]/15 text-[#34C759]'
+                      : 'bg-[#F2F2F7] text-[#8E8E93]'
+                  )}>
+                    {d.currentLevel}
+                  </span>
+                  <span className="text-sm text-[#C7C7CC]">|</span>
+                  <span className="text-xs text-[#8E8E93]">
+                    {CEFR_META.find(c => c.code === d.currentLevel)?.label || t('common.notYet')}
+                  </span>
+                </div>
+                {d.ieltsEquivalent && (
+                  <p className="text-xs text-[#8E8E93]">
+                  {t('dashboard.ieltsEq', { ielts: d.ieltsEquivalent, toefl: Math.round((d.overallScore / 100) * 120) })}
+                </p>
                 )}
               </div>
             </div>
-
-            {d.overallScore !== null && (
-              <div className="flex-shrink-0 flex items-center gap-5 p-4 md:p-5 rounded-2xl bg-gray-50 border border-gray-200">
-                <div className="relative">
-                  <ScoreGauge score={d.overallScore} size={120} />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center">
-                      <p className="text-2xl md:text-3xl font-bold text-gray-900">{d.overallScore}</p>
-                      <p className="text-[10px] text-gray-400 -mt-0.5">/ 100</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="space-y-1.5">
-                  <div className="flex items-center gap-2">
-                    <span className={classNames(
-                      'text-sm font-bold px-2.5 py-0.5 rounded-lg',
-                      d.currentLevel === 'C1' || d.currentLevel === 'C2'
-                        ? 'bg-[#F59E0B]/15 text-[#F59E0B]'
-                        : d.currentLevel === 'B1' || d.currentLevel === 'B2'
-                        ? 'bg-[#10B981]/15 text-[#10B981]'
-                        : 'bg-gray-100 text-gray-600'
-                    )}>
-                      {d.currentLevel}
-                    </span>
-                    <span className="text-sm text-gray-300">|</span>
-                    <span className="text-xs text-gray-400">
-                      {CEFR_META.find(c => c.code === d.currentLevel)?.label || t('common.notYet')}
-                    </span>
-                  </div>
-                  {d.ieltsEquivalent && (
-                    <p className="text-xs text-gray-400">
-                    {t('dashboard.ieltsEq', { ielts: d.ieltsEquivalent, toefl: Math.round((d.overallScore / 100) * 120) })}
-                  </p>
-                  )}
-                </div>
-              </div>
-            )}
-          </div>
+          )}
         </div>
+      </div>
 
-        {/* Stat Cards */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-8">
-          {[
-            { icon: BarChart3, value: d.totalTestsCompleted, label: t('dashboard.stats.totalTests'), sub: t('dashboard.stats.totalTestsSub') },
-            { icon: Award, value: d.highestScore ? `${d.highestScore}%` : '—', label: t('dashboard.stats.highestScore'), sub: t('dashboard.stats.highestScoreSub') },
-            { icon: GraduationCap, value: d.totalCertificates, label: t('dashboard.stats.certs'), sub: d.totalCertificates ? t('dashboard.stats.certsSubIssued') : t('dashboard.stats.certsSubNone') },
-            { icon: Clock, value: `${d.studyHours} jam`, label: t('dashboard.stats.studyHours'), sub: t('dashboard.stats.studyHoursSub') },
-          ].map((stat) => {
-            const Icon = stat.icon
-            return (
-              <div key={stat.label} className="group relative p-4 md:p-5 rounded-2xl bg-white border border-gray-200 hover:shadow-md transition-all duration-300 overflow-hidden">
-                <div className="relative">
-                  <div className="w-9 h-9 rounded-xl bg-gray-100 flex items-center justify-center mb-3 group-hover:bg-[#10B981]/10 transition-colors">
-                    <Icon className="w-[18px] h-[18px] text-gray-400 group-hover:text-[#10B981] transition-colors" />
-                  </div>
-                  <p className="text-xl md:text-2xl font-bold text-gray-900 tracking-tight">{stat.value}</p>
-                  <p className="text-xs text-gray-500 mt-0.5">{stat.label}</p>
-                  <p className="text-[10px] text-gray-400 mt-0.5">{stat.sub}</p>
+      {/* Stat Cards */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-8">
+        {[
+          { icon: BarChart3, value: d.totalTestsCompleted, label: t('dashboard.stats.totalTests'), sub: t('dashboard.stats.totalTestsSub') },
+          { icon: Award, value: d.highestScore ? `${d.highestScore}%` : '—', label: t('dashboard.stats.highestScore'), sub: t('dashboard.stats.highestScoreSub') },
+          { icon: GraduationCap, value: d.totalCertificates, label: t('dashboard.stats.certs'), sub: d.totalCertificates ? t('dashboard.stats.certsSubIssued') : t('dashboard.stats.certsSubNone') },
+          { icon: Clock, value: `${d.studyHours} jam`, label: t('dashboard.stats.studyHours'), sub: t('dashboard.stats.studyHoursSub') },
+        ].map((stat) => {
+          const Icon = stat.icon
+          return (
+            <div key={stat.label} className="group relative p-4 md:p-5 rounded-2xl bg-white border border-[#E5E5EA] hover:shadow-md transition-all duration-300 overflow-hidden">
+              <div className="relative">
+                <div className="w-9 h-9 rounded-xl bg-[#F2F2F7] flex items-center justify-center mb-3 group-hover:bg-[#007AFF]/10 transition-colors">
+                  <Icon className="w-[18px] h-[18px] text-[#8E8E93] group-hover:text-[#007AFF] transition-colors" />
                 </div>
-              </div>
-            )
-          })}
-        </div>
-
-        {/* Main Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-          {/* Radar Chart */}
-          <div className="lg:col-span-2 p-5 md:p-6 rounded-2xl bg-white border border-gray-200 shadow-sm">
-            <div className="flex items-center justify-between mb-5">
-              <div className="flex items-center gap-2.5">
-                <div className="w-7 h-7 rounded-lg bg-[#10B981]/10 flex items-center justify-center">
-                  <Layers className="w-3.5 h-3.5 text-[#10B981]" />
-                </div>
-                <h2 className="text-sm font-semibold text-gray-700">{t('dashboard.scorePerDim')}</h2>
-              </div>
-              <span className="text-[10px] text-gray-400 uppercase tracking-wider">CEFR</span>
-            </div>
-
-            <ResponsiveContainer width="100%" height={280}>
-              <RadarChart data={radarData} cx="50%" cy="50%" outerRadius="70%">
-                <PolarGrid stroke="#E5EAF2" />
-                <PolarAngleAxis
-                  dataKey="dimension"
-                  tick={{ fill: '#64748B', fontSize: 10 }}
-                  axisLine={false}
-                />
-                <PolarRadiusAxis
-                  angle={90}
-                  domain={[0, 100]}
-                  tick={{ fill: '#94A3B8', fontSize: 9 }}
-                  axisLine={false}
-                />
-                <Radar dataKey="score" stroke="#10B981" fill="#10B981" fillOpacity={0.15} strokeWidth={2} />
-              </RadarChart>
-            </ResponsiveContainer>
-          </div>
-
-          {/* Weakest Dimension / Stats */}
-          <div className="space-y-4">
-            {d.weakestDimension && (
-              <div className="p-5 md:p-6 rounded-2xl bg-gradient-to-br from-[#F59E0B]/[0.06] to-[#F59E0B]/[0.02] border border-[#F59E0B]/[0.15]">
-                <div className="flex items-center gap-2.5 mb-4">
-                  <div className="w-7 h-7 rounded-lg bg-[#F59E0B]/15 flex items-center justify-center">
-                    <Target className="w-3.5 h-3.5 text-[#F59E0B]" />
-                  </div>
-                  <h2 className="text-sm font-semibold text-gray-700">{t('dashboard.focusArea')}</h2>
-                </div>
-                <p className="text-xs text-gray-500 mb-1">{t('dashboard.weakestDim')}</p>
-                <p className="text-lg font-bold text-gray-900 mb-0.5">{d.weakestDimension.dimension}</p>
-                <div className="flex items-center gap-2 mb-4">
-                  <span className="text-sm font-semibold text-[#F59E0B]">{d.weakestDimension.score}%</span>
-                  <span className="text-[10px] px-2 py-0.5 rounded-md bg-[#F59E0B]/10 text-[#F59E0B] font-medium">
-                    {t('dashboard.level', { level: d.weakestDimension.level })}
-                  </span>
-                </div>
-                <div className="w-full h-2 rounded-full bg-gray-200 overflow-hidden mb-3">
-                  <div
-                    className="h-full rounded-full bg-gradient-to-r from-[#F59E0B] to-[#D97706]"
-                    style={{ width: `${d.weakestDimension.score}%` }}
-                  />
-                </div>
-                <div className="p-3 rounded-xl bg-white border border-gray-200">
-                  <p className="text-xs text-gray-500 leading-relaxed">
-                    {t('dashboard.focusText', { dim: d.weakestDimension.dimension })}
-                  </p>
-                </div>
-              </div>
-            )}
-
-            {/* Quick access radial scores */}
-            {dimScores.length > 0 && (
-              <div className="p-5 md:p-6 rounded-2xl bg-white border border-gray-200 shadow-sm">
-                <h2 className="text-sm font-semibold text-gray-700 mb-4">{t('dashboard.dimSummary')}</h2>
-                <div className="grid grid-cols-3 gap-3">
-                  {dimScores.slice(0, 6).map((ds) => (
-                    <RadialProgress
-                      key={ds.key}
-                      label={ds.dimension.split(' ')[0]}
-                      value={ds.score}
-                      color={DIMENSIONS_META[ds.key]?.color || '#10B981'}
-                      size={72}
-                    />
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Score History + Recent Tests */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-          {/* Score History Line Chart */}
-          <div className="lg:col-span-2 p-5 md:p-6 rounded-2xl bg-white border border-gray-200 shadow-sm">
-            <div className="flex items-center justify-between mb-5">
-              <div className="flex items-center gap-2.5">
-                <div className="w-7 h-7 rounded-lg bg-[#3B82F6]/10 flex items-center justify-center">
-                  <TrendingUp className="w-3.5 h-3.5 text-[#3B82F6]" />
-                </div>
-                <h2 className="text-sm font-semibold text-gray-700">{t('dashboard.scoreProgress')}</h2>
+                <p className="text-xl md:text-2xl font-bold text-[#1C1C1E] tracking-tight">{stat.value}</p>
+                <p className="text-xs text-[#8E8E93] mt-0.5">{stat.label}</p>
+                <p className="text-[10px] text-[#8E8E93] mt-0.5">{stat.sub}</p>
               </div>
             </div>
+          )
+        })}
+      </div>
 
-            {d.scoreHistory.length > 1 ? (
-              <ResponsiveContainer width="100%" height={200}>
-                <LineChart data={d.scoreHistory} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#E5EAF2" />
-                  <XAxis
-                    dataKey="date"
-                    tick={{ fill: '#94A3B8', fontSize: 10 }}
-                    axisLine={false}
-                    tickLine={false}
-                  />
-                  <YAxis
-                    domain={[0, 100]}
-                    tick={{ fill: '#94A3B8', fontSize: 9 }}
-                    axisLine={false}
-                    tickLine={false}
-                    width={30}
-                  />
-                  <Line
-                    type="monotone"
-                    dataKey="score"
-                    stroke="#10B981"
-                    strokeWidth={2}
-                    dot={{ fill: '#10B981', r: 3, strokeWidth: 0 }}
-                    activeDot={{ fill: '#10B981', r: 5, strokeWidth: 2, stroke: '#fff' }}
-                  />
-                </LineChart>
-              </ResponsiveContainer>
-            ) : d.scoreHistory.length === 1 ? (
-              <div className="flex items-center justify-center h-48">
-                <p className="text-gray-400 text-sm">{t('dashboard.firstRecorded')}</p>
+      {/* Main Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+        {/* Radar Chart */}
+        <div className="lg:col-span-2 p-5 md:p-6 rounded-2xl bg-white border border-[#E5E5EA] shadow-sm">
+          <div className="flex items-center justify-between mb-5">
+            <div className="flex items-center gap-2.5">
+              <div className="w-7 h-7 rounded-lg bg-[#007AFF]/10 flex items-center justify-center">
+                <Layers className="w-3.5 h-3.5 text-[#007AFF]" />
               </div>
-            ) : (
-              <div className="flex items-center justify-center h-48">
-                <div className="text-center">
-                  <TrendingUp className="w-8 h-8 text-gray-300 mx-auto mb-2" />
-                  <p className="text-gray-400 text-sm">{t('dashboard.noData')}</p>
-                  <Link href="/test/start">
-                    <button className="mt-3 text-xs text-[#10B981] hover:text-[#059669] transition-colors font-medium">
-                      {t('dashboard.startTest')}
-                    </button>
-                  </Link>
+              <h2 className="text-sm font-semibold text-[#1C1C1E]">{t('dashboard.scorePerDim')}</h2>
+            </div>
+            <span className="text-[10px] text-[#8E8E93] uppercase tracking-wider">CEFR</span>
+          </div>
+
+          <ResponsiveContainer width="100%" height={280}>
+            <RadarChart data={radarData} cx="50%" cy="50%" outerRadius="70%">
+              <PolarGrid stroke="#E5E5EA" />
+              <PolarAngleAxis
+                dataKey="dimension"
+                tick={{ fill: '#8E8E93', fontSize: 10 }}
+                axisLine={false}
+              />
+              <PolarRadiusAxis
+                angle={90}
+                domain={[0, 100]}
+                tick={{ fill: '#C7C7CC', fontSize: 9 }}
+                axisLine={false}
+              />
+              <Radar dataKey="score" stroke="#007AFF" fill="#007AFF" fillOpacity={0.15} strokeWidth={2} />
+            </RadarChart>
+          </ResponsiveContainer>
+        </div>
+
+        {/* Weakest Dimension / Stats */}
+        <div className="space-y-4">
+          {d.weakestDimension && (
+            <div className="p-5 md:p-6 rounded-2xl bg-gradient-to-br from-[#FF9500]/[0.06] to-[#FF9500]/[0.02] border border-[#FF9500]/[0.15]">
+              <div className="flex items-center gap-2.5 mb-4">
+                <div className="w-7 h-7 rounded-lg bg-[#FF9500]/15 flex items-center justify-center">
+                  <Target className="w-3.5 h-3.5 text-[#FF9500]" />
                 </div>
+                <h2 className="text-sm font-semibold text-[#1C1C1E]">{t('dashboard.focusArea')}</h2>
               </div>
-            )}
+              <p className="text-xs text-[#8E8E93] mb-1">{t('dashboard.weakestDim')}</p>
+              <p className="text-lg font-bold text-[#1C1C1E] mb-0.5">{d.weakestDimension.dimension}</p>
+              <div className="flex items-center gap-2 mb-4">
+                <span className="text-sm font-semibold text-[#FF9500]">{d.weakestDimension.score}%</span>
+                <span className="text-[10px] px-2 py-0.5 rounded-md bg-[#FF9500]/10 text-[#FF9500] font-medium">
+                  {t('dashboard.level', { level: d.weakestDimension.level })}
+                </span>
+              </div>
+              <div className="w-full h-2 rounded-full bg-[#E5E5EA] overflow-hidden mb-3">
+                <div
+                  className="h-full rounded-full bg-gradient-to-r from-[#FF9500] to-[#FF9500]"
+                  style={{ width: `${d.weakestDimension.score}%` }}
+                />
+              </div>
+              <div className="p-3 rounded-xl bg-white border border-[#E5E5EA]">
+                <p className="text-xs text-[#8E8E93] leading-relaxed">
+                  {t('dashboard.focusText', { dim: d.weakestDimension.dimension })}
+                </p>
+              </div>
+            </div>
+          )}
 
-            {/* Dimension Summary */}
-            {d.scoreHistory.length > 0 && (
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 mt-5 pt-5 border-t border-gray-200">
-                {dimScores.map((ds) => (
-                  <div key={ds.key} className="text-center p-2">
-                    <p className="text-lg font-bold text-gray-900">{ds.score}%</p>
-                    <p className="text-[10px] text-gray-400 mt-0.5 truncate">{ds.dimension}</p>
-                    <div className="w-full h-1 rounded-full bg-gray-200 mt-1.5 overflow-hidden">
-                      <div
-                        className="h-full rounded-full"
-                        style={{ width: `${ds.score}%`, backgroundColor: DIMENSIONS_META[ds.key]?.color || '#10B981' }}
-                      />
-                    </div>
-                  </div>
+          {/* Quick access radial scores */}
+          {dimScores.length > 0 && (
+            <div className="p-5 md:p-6 rounded-2xl bg-white border border-[#E5E5EA] shadow-sm">
+              <h2 className="text-sm font-semibold text-[#1C1C1E] mb-4">{t('dashboard.dimSummary')}</h2>
+              <div className="grid grid-cols-3 gap-3">
+                {dimScores.slice(0, 6).map((ds) => (
+                  <RadialProgress
+                    key={ds.key}
+                    label={ds.dimension.split(' ')[0]}
+                    value={ds.score}
+                    color={DIMENSIONS_META[ds.key]?.color || '#007AFF'}
+                    size={72}
+                  />
                 ))}
               </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Score History + Recent Tests */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+        {/* Score History Line Chart */}
+        <div className="lg:col-span-2 p-5 md:p-6 rounded-2xl bg-white border border-[#E5E5EA] shadow-sm">
+          <div className="flex items-center justify-between mb-5">
+            <div className="flex items-center gap-2.5">
+              <div className="w-7 h-7 rounded-lg bg-[#007AFF]/10 flex items-center justify-center">
+                <TrendingUp className="w-3.5 h-3.5 text-[#007AFF]" />
+              </div>
+              <h2 className="text-sm font-semibold text-[#1C1C1E]">{t('dashboard.scoreProgress')}</h2>
+            </div>
+          </div>
+
+          {d.scoreHistory.length > 1 ? (
+            <ResponsiveContainer width="100%" height={200}>
+              <LineChart data={d.scoreHistory} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#E5E5EA" />
+                <XAxis
+                  dataKey="date"
+                  tick={{ fill: '#C7C7CC', fontSize: 10 }}
+                  axisLine={false}
+                  tickLine={false}
+                />
+                <YAxis
+                  domain={[0, 100]}
+                  tick={{ fill: '#C7C7CC', fontSize: 9 }}
+                  axisLine={false}
+                  tickLine={false}
+                  width={30}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="score"
+                  stroke="#007AFF"
+                  strokeWidth={2}
+                  dot={{ fill: '#007AFF', r: 3, strokeWidth: 0 }}
+                  activeDot={{ fill: '#007AFF', r: 5, strokeWidth: 2, stroke: '#fff' }}
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          ) : d.scoreHistory.length === 1 ? (
+            <div className="flex items-center justify-center h-48">
+              <p className="text-[#8E8E93] text-sm">{t('dashboard.firstRecorded')}</p>
+            </div>
+          ) : (
+            <div className="flex items-center justify-center h-48">
+              <div className="text-center">
+                <TrendingUp className="w-8 h-8 text-[#C7C7CC] mx-auto mb-2" />
+                <p className="text-[#8E8E93] text-sm">{t('dashboard.noData')}</p>
+                <Link href="/test/start">
+                  <button className="mt-3 text-xs text-[#007AFF] hover:text-[#0062CC] transition-colors font-medium">
+                    {t('dashboard.startTest')}
+                  </button>
+                </Link>
+              </div>
+            </div>
+          )}
+
+          {/* Dimension Summary */}
+          {d.scoreHistory.length > 0 && (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 mt-5 pt-5 border-t border-[#E5E5EA]">
+              {dimScores.map((ds) => (
+                <div key={ds.key} className="text-center p-2">
+                  <p className="text-lg font-bold text-[#1C1C1E]">{ds.score}%</p>
+                  <p className="text-[10px] text-[#8E8E93] mt-0.5 truncate">{ds.dimension}</p>
+                  <div className="w-full h-1 rounded-full bg-[#E5E5EA] mt-1.5 overflow-hidden">
+                    <div
+                      className="h-full rounded-full"
+                      style={{ width: `${ds.score}%`, backgroundColor: DIMENSIONS_META[ds.key]?.color || '#007AFF' }}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Recent Tests */}
+        <div className="p-5 md:p-6 rounded-2xl bg-white border border-[#E5E5EA] shadow-sm">
+          <div className="flex items-center justify-between mb-5">
+            <div className="flex items-center gap-2.5">
+              <div className="w-7 h-7 rounded-lg bg-[#AF52DE]/10 flex items-center justify-center">
+                <Clock className="w-3.5 h-3.5 text-[#AF52DE]" />
+              </div>
+              <h2 className="text-sm font-semibold text-[#1C1C1E]">{t('dashboard.recentTests')}</h2>
+            </div>
+            {d.recentTests.length > 0 && (
+              <Link href="/test" className="text-[10px] text-[#007AFF] hover:text-[#0062CC] font-medium transition-colors">
+                {t('dashboard.viewAll')}
+              </Link>
             )}
           </div>
 
-          {/* Recent Tests */}
-          <div className="p-5 md:p-6 rounded-2xl bg-white border border-gray-200 shadow-sm">
-            <div className="flex items-center justify-between mb-5">
-              <div className="flex items-center gap-2.5">
-                <div className="w-7 h-7 rounded-lg bg-[#8B5CF6]/10 flex items-center justify-center">
-                  <Clock className="w-3.5 h-3.5 text-[#8B5CF6]" />
-                </div>
-                <h2 className="text-sm font-semibold text-gray-700">{t('dashboard.recentTests')}</h2>
-              </div>
-              {d.recentTests.length > 0 && (
-                <Link href="/test" className="text-[10px] text-[#10B981] hover:text-[#059669] font-medium transition-colors">
-                  {t('dashboard.viewAll')}
-                </Link>
-              )}
-            </div>
-
-            <div className="space-y-3">
-              {d.recentTests.map((test) => (
-                <Link key={test.id} href={`/test/${test.id}/results`} className="block p-3.5 rounded-xl bg-gray-50 border border-gray-200 hover:bg-gray-100 transition-all duration-200 group">
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="min-w-0 flex-1">
-                      <div className="flex items-center gap-2 mb-1.5">
-                        <span className={classNames(
-                          'text-[10px] font-semibold px-1.5 py-0.5 rounded-md',
-                          test.status === 'COMPLETED'
-                            ? 'bg-[#10B981]/10 text-[#10B981]'
-                            : test.status === 'IN_PROGRESS'
-                            ? 'bg-[#F59E0B]/10 text-[#F59E0B]'
-                            : 'bg-gray-100 text-gray-500'
-                        )}>
-                          {test.status === 'COMPLETED' ? t('common.done') : test.status === 'IN_PROGRESS' ? t('common.inProgress') : test.status}
-                        </span>
-                        {test.level && (
-                          <span className="text-[10px] text-gray-400">{test.level}</span>
-                        )}
-                      </div>
-                      <p className="text-xs text-gray-500">{test.date}</p>
-                      {test.score !== null && (
-                        <p className="text-sm font-bold text-gray-700 mt-1.5">
-                          {t('dashboard.scoreLabel')} <span className={classNames(
-                            test.score >= 80 ? 'text-[#10B981]' : test.score >= 60 ? 'text-[#F59E0B]' : 'text-[#EF4444]'
-                          )}>{test.score}%</span>
-                        </p>
+          <div className="space-y-3">
+            {d.recentTests.map((test) => (
+              <Link key={test.id} href={`/test/${test.id}/results`} className="block p-3.5 rounded-xl bg-[#F2F2F7] border border-[#E5E5EA] hover:bg-[#E5E5EA] transition-all duration-200 group">
+                <div className="flex items-start justify-between gap-3">
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <span className={classNames(
+                        'text-[10px] font-semibold px-1.5 py-0.5 rounded-md',
+                        test.status === 'COMPLETED'
+                          ? 'bg-[#34C759]/10 text-[#34C759]'
+                          : test.status === 'IN_PROGRESS'
+                          ? 'bg-[#FF9500]/10 text-[#FF9500]'
+                          : 'bg-[#F2F2F7] text-[#8E8E93]'
+                      )}>
+                        {test.status === 'COMPLETED' ? t('common.done') : test.status === 'IN_PROGRESS' ? t('common.inProgress') : test.status}
+                      </span>
+                      {test.level && (
+                        <span className="text-[10px] text-[#8E8E93]">{test.level}</span>
                       )}
                     </div>
-                    <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-gray-500 transition-colors flex-shrink-0 mt-0.5" />
+                    <p className="text-xs text-[#8E8E93]">{test.date}</p>
+                    {test.score !== null && (
+                      <p className="text-sm font-bold text-[#1C1C1E] mt-1.5">
+                        {t('dashboard.scoreLabel')} <span className={classNames(
+                          test.score >= 80 ? 'text-[#34C759]' : test.score >= 60 ? 'text-[#FF9500]' : 'text-[#FF3B30]'
+                        )}>{test.score}%</span>
+                      </p>
+                    )}
                   </div>
+                  <ChevronRight className="w-4 h-4 text-[#C7C7CC] group-hover:text-[#8E8E93] transition-colors flex-shrink-0 mt-0.5" />
+                </div>
+              </Link>
+            ))}
+            {d.recentTests.length === 0 && (
+              <div className="text-center py-8">
+                <BookOpen className="w-8 h-8 text-[#C7C7CC] mx-auto mb-2" />
+                <p className="text-[#8E8E93] text-sm">{t('dashboard.noTestsYet')}</p>
+                <Link href="/test/start">
+                  <button className="mt-3 text-xs text-[#007AFF] hover:text-[#0062CC] font-medium transition-colors">
+                    {t('dashboard.startFirst')}
+                  </button>
                 </Link>
-              ))}
-              {d.recentTests.length === 0 && (
-                <div className="text-center py-8">
-                  <BookOpen className="w-8 h-8 text-gray-300 mx-auto mb-2" />
-                  <p className="text-gray-400 text-sm">{t('dashboard.noTestsYet')}</p>
-                  <Link href="/test/start">
-                    <button className="mt-3 text-xs text-[#10B981] hover:text-[#059669] font-medium transition-colors">
-                      {t('dashboard.startFirst')}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Certificate + Recommendations */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Certificate Preview */}
+        {d.latestCertificate ? (
+          <div className="p-5 md:p-6 rounded-2xl bg-gradient-to-br from-[#FF9500]/[0.04] to-white border border-[#FF9500]/[0.15] shadow-sm">
+            <div className="flex items-center gap-2.5 mb-4">
+              <div className="w-7 h-7 rounded-lg bg-[#FF9500]/15 flex items-center justify-center">
+                <Award className="w-3.5 h-3.5 text-[#FF9500]" />
+              </div>
+              <h2 className="text-sm font-semibold text-[#1C1C1E]">{t('dashboard.latestCert')}</h2>
+            </div>
+
+            <div className="relative p-4 rounded-xl bg-gradient-to-br from-[#F2F2F7] to-white border border-[#E5E5EA] overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#FF9500]/5 rounded-full blur-3xl" />
+              <div className="relative">
+                <div className="flex items-center gap-3 mb-3 pb-3 border-b border-[#E5E5EA]">
+                  <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#34C759] to-[#28A745] flex items-center justify-center">
+                    <ShieldCheck className="w-4 h-4 text-white" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold text-[#1C1C1E]">BIGT</p>
+                    <p className="text-[9px] text-[#8E8E93]">{t('dashboard.certDesc')}</p>
+                  </div>
+                </div>
+                <p className="text-lg font-bold text-[#1C1C1E] mb-0.5">{t('dashboard.level', { level: d.latestCertificate.overallLevel })}</p>
+                <p className="text-xs text-[#8E8E93] mb-1">{t('dashboard.overallScore', { score: d.latestCertificate.overallScore })}</p>
+                <p className="text-[10px] text-[#8E8E93]">
+                  {t('dashboard.issued', { date: new Date(d.latestCertificate.issuedAt).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) })}
+                </p>
+                <div className="mt-3 pt-3 border-t border-[#E5E5EA]">
+                  <Link href={`/certificate/${d.latestCertificate.certificateId}`}>
+                    <button className="w-full text-xs font-medium text-[#FF9500] hover:text-[#FF9500] transition-colors">
+                      {t('dashboard.viewCert')}
                     </button>
                   </Link>
                 </div>
-              )}
+              </div>
             </div>
           </div>
-        </div>
-
-        {/* Certificate + Recommendations */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Certificate Preview */}
-          {d.latestCertificate ? (
-            <div className="p-5 md:p-6 rounded-2xl bg-gradient-to-br from-[#F59E0B]/[0.04] to-white border border-[#F59E0B]/[0.15] shadow-sm">
-              <div className="flex items-center gap-2.5 mb-4">
-                <div className="w-7 h-7 rounded-lg bg-[#F59E0B]/15 flex items-center justify-center">
-                  <Award className="w-3.5 h-3.5 text-[#F59E0B]" />
-                </div>
-                <h2 className="text-sm font-semibold text-gray-700">{t('dashboard.latestCert')}</h2>
+        ) : d.totalTestsCompleted > 0 ? (
+          <div className="p-5 md:p-6 rounded-2xl bg-white border border-[#E5E5EA] shadow-sm">
+            <div className="flex items-center gap-2.5 mb-4">
+              <div className="w-7 h-7 rounded-lg bg-[#F2F2F7] flex items-center justify-center">
+                <Award className="w-3.5 h-3.5 text-[#8E8E93]" />
               </div>
+              <h2 className="text-sm font-semibold text-[#1C1C1E]">{t('dashboard.certTitle')}</h2>
+            </div>
+            <p className="text-[#8E8E93] text-sm">
+              {t('dashboard.certCta')}
+            </p>
+            <div className="mt-4 p-3 rounded-xl bg-[#F2F2F7] border border-[#E5E5EA]">
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-[#8E8E93]" />
+                <span className="text-[10px] text-[#8E8E93]">{t('dashboard.certQr')}</span>
+              </div>
+            </div>
+          </div>
+        ) : null}
 
-              <div className="relative p-4 rounded-xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-[#F59E0B]/5 rounded-full blur-3xl" />
-                <div className="relative">
-                  <div className="flex items-center gap-3 mb-3 pb-3 border-b border-gray-200">
-                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center">
-                      <ShieldCheck className="w-4 h-4 text-white" />
+        {/* Recommendations */}
+        <div className={`${d.latestCertificate ? '' : 'lg:col-span-2'}`}>
+          <div className="p-5 md:p-6 rounded-2xl bg-gradient-to-br from-[#007AFF]/[0.03] to-white border border-[#E5E5EA] shadow-sm h-full">
+            <div className="flex items-center gap-2.5 mb-4">
+              <div className="w-7 h-7 rounded-lg bg-[#007AFF]/10 flex items-center justify-center">
+                <Sparkles className="w-3.5 h-3.5 text-[#007AFF]" />
+              </div>
+              <h2 className="text-sm font-semibold text-[#1C1C1E]">{t('dashboard.recommendations')}</h2>
+            </div>
+
+            {d.weakestDimension ? (
+              <div className="space-y-3">
+                <div className="p-3.5 rounded-xl bg-[#F2F2F7] border border-[#E5E5EA]">
+                  <div className="flex items-center gap-2.5 mb-2">
+                    <div className="w-6 h-6 rounded-lg bg-[#007AFF]/10 flex items-center justify-center">
+                      <Target className="w-3 h-3 text-[#007AFF]" />
                     </div>
-                    <div>
-                      <p className="text-xs font-semibold text-gray-700">BIGT</p>
-                      <p className="text-[9px] text-gray-400">{t('dashboard.certDesc')}</p>
-                    </div>
+                    <p className="text-xs font-semibold text-[#1C1C1E]">{t('dashboard.focusOn', { dim: d.weakestDimension.dimension })}</p>
                   </div>
-                  <p className="text-lg font-bold text-gray-900 mb-0.5">{t('dashboard.level', { level: d.latestCertificate.overallLevel })}</p>
-                  <p className="text-xs text-gray-500 mb-1">{t('dashboard.overallScore', { score: d.latestCertificate.overallScore })}</p>
-                  <p className="text-[10px] text-gray-400">
-                    {t('dashboard.issued', { date: new Date(d.latestCertificate.issuedAt).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) })}
+                  <p className="text-xs text-[#8E8E93] leading-relaxed">
+                    {t('dashboard.recDimText')}
                   </p>
-                  <div className="mt-3 pt-3 border-t border-gray-200">
-                    <Link href={`/certificate/${d.latestCertificate.certificateId}`}>
-                      <button className="w-full text-xs font-medium text-[#F59E0B] hover:text-[#D97706] transition-colors">
-                        {t('dashboard.viewCert')}
-                      </button>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ) : d.totalTestsCompleted > 0 ? (
-            <div className="p-5 md:p-6 rounded-2xl bg-white border border-gray-200 shadow-sm">
-              <div className="flex items-center gap-2.5 mb-4">
-                <div className="w-7 h-7 rounded-lg bg-gray-100 flex items-center justify-center">
-                  <Award className="w-3.5 h-3.5 text-gray-400" />
-                </div>
-                <h2 className="text-sm font-semibold text-gray-700">{t('dashboard.certTitle')}</h2>
-              </div>
-              <p className="text-gray-500 text-sm">
-                {t('dashboard.certCta')}
-              </p>
-              <div className="mt-4 p-3 rounded-xl bg-gray-50 border border-gray-200">
-                <div className="flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4 text-gray-400" />
-                  <span className="text-[10px] text-gray-500">{t('dashboard.certQr')}</span>
-                </div>
-              </div>
-            </div>
-          ) : null}
-
-          {/* Recommendations */}
-          <div className={`${d.latestCertificate ? '' : 'lg:col-span-2'}`}>
-            <div className="p-5 md:p-6 rounded-2xl bg-gradient-to-br from-[#10B981]/[0.03] to-white border border-gray-200 shadow-sm h-full">
-              <div className="flex items-center gap-2.5 mb-4">
-                <div className="w-7 h-7 rounded-lg bg-[#10B981]/10 flex items-center justify-center">
-                  <Sparkles className="w-3.5 h-3.5 text-[#10B981]" />
-                </div>
-                <h2 className="text-sm font-semibold text-gray-700">{t('dashboard.recommendations')}</h2>
-              </div>
-
-              {d.weakestDimension ? (
-                <div className="space-y-3">
-                  <div className="p-3.5 rounded-xl bg-gray-50 border border-gray-200">
-                    <div className="flex items-center gap-2.5 mb-2">
-                      <div className="w-6 h-6 rounded-lg bg-[#10B981]/10 flex items-center justify-center">
-                        <Target className="w-3 h-3 text-[#10B981]" />
-                      </div>
-                      <p className="text-xs font-semibold text-gray-700">{t('dashboard.focusOn', { dim: d.weakestDimension.dimension })}</p>
-                    </div>
-                    <p className="text-xs text-gray-500 leading-relaxed">
-                      {t('dashboard.recDimText')}
-                    </p>
-                    <Link href="/test/start">
-                      <button className="mt-3 text-[11px] font-medium text-[#10B981] hover:text-[#059669] transition-colors">
-                        {t('dashboard.startFocus')}
-                      </button>
-                    </Link>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-3">
-                    <div className="p-3 rounded-xl bg-white border border-gray-200">
-                      <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-1">{t('dashboard.quickTest')}</p>
-                      <p className="text-xs text-gray-400">{t('dashboard.quickTestSub')}</p>
-                      <Link href="/test/start">
-                        <button className="mt-2 text-[10px] font-medium text-[#10B981]">{t('common.next')}</button>
-                      </Link>
-                    </div>
-                    <div className="p-3 rounded-xl bg-white border border-gray-200">
-                      <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-1">{t('dashboard.fullTest')}</p>
-                      <p className="text-xs text-gray-400">{t('dashboard.fullTestSub')}</p>
-                      <Link href="/test/start">
-                        <button className="mt-2 text-[10px] font-medium text-[#10B981]">{t('common.next')}</button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <div className="text-center py-6">
-                  <Sparkles className="w-8 h-8 text-gray-300 mx-auto mb-2" />
-                  <p className="text-gray-400 text-sm">{t('dashboard.noRecs')}</p>
                   <Link href="/test/start">
-                    <button className="mt-3 inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-[#10B981] to-[#059669] text-white text-xs font-semibold shadow-lg shadow-[#10B981]/20 hover:shadow-[#10B981]/30 transition-all duration-200">
-                      <Play className="w-3 h-3" />
-                      {t('dashboard.startTest')}
+                    <button className="mt-3 text-[11px] font-medium text-[#007AFF] hover:text-[#0062CC] transition-colors">
+                      {t('dashboard.startFocus')}
                     </button>
                   </Link>
                 </div>
-              )}
-            </div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="p-3 rounded-xl bg-white border border-[#E5E5EA]">
+                    <p className="text-[10px] font-semibold text-[#8E8E93] uppercase tracking-wider mb-1">{t('dashboard.quickTest')}</p>
+                    <p className="text-xs text-[#8E8E93]">{t('dashboard.quickTestSub')}</p>
+                    <Link href="/test/start">
+                      <button className="mt-2 text-[10px] font-medium text-[#007AFF]">{t('common.next')}</button>
+                    </Link>
+                  </div>
+                  <div className="p-3 rounded-xl bg-white border border-[#E5E5EA]">
+                    <p className="text-[10px] font-semibold text-[#8E8E93] uppercase tracking-wider mb-1">{t('dashboard.fullTest')}</p>
+                    <p className="text-xs text-[#8E8E93]">{t('dashboard.fullTestSub')}</p>
+                    <Link href="/test/start">
+                      <button className="mt-2 text-[10px] font-medium text-[#007AFF]">{t('common.next')}</button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="text-center py-6">
+                <Sparkles className="w-8 h-8 text-[#C7C7CC] mx-auto mb-2" />
+                <p className="text-[#8E8E93] text-sm">{t('dashboard.noRecs')}</p>
+                <Link href="/test/start">
+                  <button className="mt-3 inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#007AFF] text-white text-xs font-semibold shadow-lg shadow-[#007AFF]/20 hover:shadow-[#007AFF]/30 transition-all duration-200">
+                    <Play className="w-3 h-3" />
+                    {t('dashboard.startTest')}
+                  </button>
+                </Link>
+              </div>
+            )}
           </div>
         </div>
+      </div>
 
-        {/* Footer info */}
-        <div className="mt-10 pt-6 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-[10px] text-gray-400">
-            {t('dashboard.footerLine')}
-          </p>
-          <Link href="/about" className="text-[10px] text-gray-400 hover:text-gray-600 transition-colors">
-            {t('nav.about')}
-          </Link>
-        </div>
+      {/* Footer info */}
+      <div className="pt-6 border-t border-[#E5E5EA] flex flex-col sm:flex-row items-center justify-between gap-3">
+        <p className="text-[10px] text-[#8E8E93]">
+          {t('dashboard.footerLine')}
+        </p>
+        <Link href="/about" className="text-[10px] text-[#8E8E93] hover:text-[#1C1C1E] transition-colors">
+          {t('nav.about')}
+        </Link>
       </div>
     </div>
   )

@@ -2,12 +2,8 @@
 
 import { useEffect, useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Badge } from '@/components/ui/badge'
 import { toast } from 'sonner'
+import { useI18n } from '@/lib/i18n/context'
 import {
   UserCircle,
   Mail,
@@ -24,6 +20,7 @@ import {
 } from 'lucide-react'
 
 export default function ProfilePage() {
+  const { t } = useI18n()
   const [user, setUser] = useState<{ email?: string; user_metadata?: { name?: string; country?: string; native_language?: string; target_level?: string } } | null>(null)
   const [name, setName] = useState('')
   const [country, setCountry] = useState('')
@@ -61,9 +58,9 @@ export default function ProfilePage() {
   if (loading) {
     return (
       <div className="space-y-6 animate-pulse">
-        <div className="h-8 w-40 bg-gray-100 rounded-lg" />
-        <div className="h-36 bg-gray-100 rounded-xl" />
-        <div className="h-64 bg-gray-100 rounded-xl" />
+        <div className="h-8 w-40 bg-[#E5E5EA] rounded-lg" />
+        <div className="h-36 bg-[#E5E5EA] rounded-xl" />
+        <div className="h-64 bg-[#E5E5EA] rounded-xl" />
       </div>
     )
   }
@@ -71,12 +68,13 @@ export default function ProfilePage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-bold text-[#0B1F3A]">Profil</h1>
-        <p className="text-[#64748B] text-sm mt-1">Kelola informasi akun dan preferensi Anda.</p>
+        <h1 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-bold text-[#1C1C1E]">{t('profile.title')}</h1>
+        <p className="text-[#8E8E93] text-sm mt-1">{t('profile.subtitle')}</p>
       </div>
 
-      <Card className="border border-[#E5EAF2] premium-shadow-sm rounded-xl overflow-hidden">
-        <div className="bg-gradient-to-r from-[#0B1F3A] to-[#123E7C] px-6 md:px-8 py-6">
+      {/* Profile Header */}
+      <div className="rounded-2xl overflow-hidden border border-[#E5E5EA] shadow-sm">
+        <div className="bg-gradient-to-r from-[#007AFF] to-[#0062CC] px-6 md:px-8 py-6">
           <div className="flex items-center gap-5">
             <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center border-2 border-white/20 flex-shrink-0">
               <UserCircle className="w-8 h-8 text-white/80" />
@@ -88,163 +86,180 @@ export default function ProfilePage() {
                 {user?.email}
               </p>
               <div className="flex flex-wrap gap-2 mt-2.5">
-                {country && <Badge className="bg-white/10 text-white border-0 text-[10px] flex items-center gap-1 font-normal"><MapPin className="w-3 h-3" />{country}</Badge>}
-                {nativeLanguage && <Badge className="bg-white/10 text-white border-0 text-[10px] flex items-center gap-1 font-normal"><Globe className="w-3 h-3" />{nativeLanguage}</Badge>}
-                {targetLevel && <Badge className="bg-[#C9A227]/20 text-[#C9A227] border-0 text-[10px] flex items-center gap-1 font-medium"><Target className="w-3 h-3" />Target: {targetLevel}</Badge>}
+                {country && (
+                  <span className="inline-flex items-center gap-1 bg-white/10 text-white rounded-md px-2 py-0.5 text-[10px] font-normal">
+                    <MapPin className="w-3 h-3" />{country}
+                  </span>
+                )}
+                {nativeLanguage && (
+                  <span className="inline-flex items-center gap-1 bg-white/10 text-white rounded-md px-2 py-0.5 text-[10px] font-normal">
+                    <Globe className="w-3 h-3" />{nativeLanguage}
+                  </span>
+                )}
+                {targetLevel && (
+                  <span className="inline-flex items-center gap-1 bg-[#FF9500]/20 text-[#FF9500] rounded-md px-2 py-0.5 text-[10px] font-medium">
+                    <Target className="w-3 h-3" />{t('profile.targetLabel', { level: targetLevel })}
+                  </span>
+                )}
               </div>
             </div>
           </div>
         </div>
-      </Card>
+      </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-6">
-          <Card className="border border-[#E5EAF2] premium-shadow-sm rounded-xl">
-            <CardHeader className="pb-5 px-6 pt-6">
-              <CardTitle className="text-base flex items-center gap-2 text-[#0B1F3A]">
-                <UserCircle className="w-4 h-4" />
-                Informasi Pribadi
-              </CardTitle>
-              <CardDescription className="text-xs text-[#64748B]">Informasi dasar akun BIGT Anda</CardDescription>
-            </CardHeader>
-            <CardContent className="px-6 pb-6">
+          {/* Personal Info Card */}
+          <div className="rounded-2xl bg-white border border-[#E5E5EA] shadow-sm overflow-hidden">
+            <div className="px-6 pt-6 pb-5">
+              <div className="flex items-center gap-2 mb-1">
+                <UserCircle className="w-4 h-4 text-[#007AFF]" />
+                <h3 className="text-base font-semibold text-[#1C1C1E]">{t('profile.personalInfo')}</h3>
+              </div>
+              <p className="text-xs text-[#8E8E93]">{t('profile.personalInfoDesc')}</p>
+            </div>
+            <div className="px-6 pb-6">
               <form onSubmit={handleUpdate} className="space-y-5">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-1.5">
-                    <Label className="text-xs font-medium text-[#0B1F3A]">Nama Lengkap</Label>
-                    <Input value={name} onChange={(e) => setName(e.target.value)}
-                      placeholder="Nama lengkap Anda"
-                      className="rounded-lg border-[#E5EAF2] h-11 text-sm" />
+                    <label className="text-xs font-medium text-[#1C1C1E]">{t('profile.fullName')}</label>
+                    <input value={name} onChange={(e) => setName(e.target.value)}
+                      placeholder={t('profile.fullNamePlaceholder')}
+                      className="w-full rounded-xl border border-[#E5E5EA] h-11 px-4 text-sm text-[#1C1C1E] placeholder:text-[#C7C7CC] focus:outline-none focus:border-[#007AFF] focus:ring-1 focus:ring-[#007AFF]/20 transition-all" />
                   </div>
                   <div className="space-y-1.5">
-                    <Label className="text-xs font-medium text-[#0B1F3A]">Email</Label>
-                    <Input value={user?.email || ''} disabled
-                      className="rounded-lg bg-gray-50 border-[#E5EAF2] h-11 text-sm" />
+                    <label className="text-xs font-medium text-[#1C1C1E]">{t('profile.email')}</label>
+                    <input value={user?.email || ''} disabled
+                      className="w-full rounded-xl border border-[#E5E5EA] h-11 px-4 text-sm text-[#8E8E93] bg-[#F2F2F7] cursor-not-allowed" />
                   </div>
                   <div className="space-y-1.5">
-                    <Label className="text-xs font-medium text-[#0B1F3A]">Negara</Label>
-                    <Input value={country} onChange={(e) => setCountry(e.target.value)}
-                      placeholder="Indonesia"
-                      className="rounded-lg border-[#E5EAF2] h-11 text-sm" />
+                    <label className="text-xs font-medium text-[#1C1C1E]">{t('profile.country')}</label>
+                    <input value={country} onChange={(e) => setCountry(e.target.value)}
+                      placeholder={t('profile.countryPlaceholder')}
+                      className="w-full rounded-xl border border-[#E5E5EA] h-11 px-4 text-sm text-[#1C1C1E] placeholder:text-[#C7C7CC] focus:outline-none focus:border-[#007AFF] focus:ring-1 focus:ring-[#007AFF]/20 transition-all" />
                   </div>
                   <div className="space-y-1.5">
-                    <Label className="text-xs font-medium text-[#0B1F3A]">Bahasa Pertama</Label>
-                    <Input value={nativeLanguage} onChange={(e) => setNativeLanguage(e.target.value)}
-                      placeholder="Bahasa Indonesia"
-                      className="rounded-lg border-[#E5EAF2] h-11 text-sm" />
+                    <label className="text-xs font-medium text-[#1C1C1E]">{t('profile.nativeLanguage')}</label>
+                    <input value={nativeLanguage} onChange={(e) => setNativeLanguage(e.target.value)}
+                      placeholder={t('profile.nativePlaceholder')}
+                      className="w-full rounded-xl border border-[#E5E5EA] h-11 px-4 text-sm text-[#1C1C1E] placeholder:text-[#C7C7CC] focus:outline-none focus:border-[#007AFF] focus:ring-1 focus:ring-[#007AFF]/20 transition-all" />
                   </div>
                 </div>
-                <Button type="submit" disabled={saving}
-                  className="bg-[#D7193F] hover:bg-[#D7193F]/90 text-white rounded-lg h-10 text-sm">
-                  {saving ? 'Menyimpan...' : 'Simpan Perubahan'}
-                </Button>
+                <button type="submit" disabled={saving}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#007AFF] text-white text-sm font-semibold shadow-lg shadow-[#007AFF]/25 hover:shadow-[#007AFF]/40 hover:translate-y-[-1px] active:translate-y-0 transition-all duration-200 disabled:opacity-50">
+                  {saving ? t('common.saving') : t('profile.saveChanges')}
+                </button>
               </form>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
 
-          <Card className="border border-[#E5EAF2] premium-shadow-sm rounded-xl">
-            <CardHeader className="pb-5 px-6 pt-6">
-              <CardTitle className="text-base flex items-center gap-2 text-[#0B1F3A]">
-                <Sparkles className="w-4 h-4 text-[#C9A227]" />
-                Preferensi Belajar
-              </CardTitle>
-              <CardDescription className="text-xs text-[#64748B]">Target dan preferensi pembelajaran Anda</CardDescription>
-            </CardHeader>
-            <CardContent className="px-6 pb-6">
+          {/* Learning Preferences Card */}
+          <div className="rounded-2xl bg-white border border-[#E5E5EA] shadow-sm overflow-hidden">
+            <div className="px-6 pt-6 pb-5">
+              <div className="flex items-center gap-2 mb-1">
+                <Sparkles className="w-4 h-4 text-[#FF9500]" />
+                <h3 className="text-base font-semibold text-[#1C1C1E]">{t('profile.learningPrefs')}</h3>
+              </div>
+              <p className="text-xs text-[#8E8E93]">{t('profile.learningPrefsDesc')}</p>
+            </div>
+            <div className="px-6 pb-6">
               <div className="space-y-5">
                 <div className="space-y-2">
-                  <Label className="text-xs font-medium text-[#0B1F3A] flex items-center gap-2">
-                    <Target className="w-3.5 h-3.5" />
-                    Target Level BIGT
-                  </Label>
+                  <label className="text-xs font-medium text-[#1C1C1E] flex items-center gap-2">
+                    <Target className="w-3.5 h-3.5 text-[#007AFF]" />
+                    {t('profile.targetLevel')}
+                  </label>
                   <div className="grid grid-cols-6 gap-2">
                     {['A1', 'A2', 'B1', 'B2', 'C1', 'C2'].map((level) => (
                       <button key={level} type="button"
                         onClick={() => setTargetLevel(targetLevel === level ? '' : level)}
-                        className={`p-2.5 rounded-lg border text-center transition-all text-xs font-bold ${
+                        className={`p-2.5 rounded-xl border text-center transition-all text-xs font-bold ${
                           targetLevel === level
-                            ? 'border-[#0B1F3A] bg-[#0B1F3A]/5 text-[#0B1F3A]'
-                            : 'border-[#E5EAF2] hover:border-gray-300 text-[#64748B]'
+                            ? 'border-[#007AFF] bg-[#007AFF]/5 text-[#007AFF]'
+                            : 'border-[#E5E5EA] hover:border-[#C7C7CC] text-[#8E8E93]'
                         }`}>
                         {level}
                       </button>
                     ))}
                   </div>
                 </div>
-                <Button onClick={handleUpdate} disabled={saving}
-                  className="bg-[#D7193F] hover:bg-[#D7193F]/90 text-white rounded-lg h-10 text-sm">
-                  Simpan Target
-                </Button>
+                <button onClick={handleUpdate} disabled={saving}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#007AFF] text-white text-sm font-semibold shadow-lg shadow-[#007AFF]/25 hover:shadow-[#007AFF]/40 hover:translate-y-[-1px] active:translate-y-0 transition-all duration-200 disabled:opacity-50">
+                  {t('profile.saveTarget')}
+                </button>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </div>
 
         <div className="space-y-6">
-          <Card className="border border-[#E5EAF2] premium-shadow-sm rounded-xl">
-            <CardHeader className="pb-4 px-6 pt-6">
-              <CardTitle className="text-base flex items-center gap-2 text-[#0B1F3A]">
-                <Lock className="w-4 h-4" />
-                Keamanan
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="px-6 pb-6 space-y-3">
-              <Button variant="outline" className="w-full justify-between rounded-lg border-[#E5EAF2] h-10">
-                <span className="flex items-center gap-2 text-xs text-[#0B1F3A]"><Lock className="w-3.5 h-3.5" />Ubah Kata Sandi</span>
-                <ChevronRight className="w-3.5 h-3.5 text-[#64748B]" />
-              </Button>
-              <Button variant="outline" className="w-full justify-between rounded-lg border-[#E5EAF2] h-10">
-                <span className="flex items-center gap-2 text-xs text-[#0B1F3A]"><Clock className="w-3.5 h-3.5" />Riwayat Masuk</span>
-                <ChevronRight className="w-3.5 h-3.5 text-[#64748B]" />
-              </Button>
-            </CardContent>
-          </Card>
+          {/* Security Card */}
+          <div className="rounded-2xl bg-white border border-[#E5E5EA] shadow-sm overflow-hidden">
+            <div className="px-6 pt-6 pb-4">
+              <div className="flex items-center gap-2 mb-1">
+                <Lock className="w-4 h-4 text-[#1C1C1E]" />
+                <h3 className="text-base font-semibold text-[#1C1C1E]">{t('profile.security')}</h3>
+              </div>
+            </div>
+            <div className="px-6 pb-6 space-y-3">
+              <button className="w-full flex items-center justify-between px-4 py-3 rounded-xl border border-[#E5E5EA] hover:bg-[#F2F2F7] transition-all text-left">
+                <span className="flex items-center gap-2 text-xs text-[#1C1C1E]"><Lock className="w-3.5 h-3.5 text-[#8E8E93]" />{t('profile.changePassword')}</span>
+                <ChevronRight className="w-3.5 h-3.5 text-[#8E8E93]" />
+              </button>
+              <button className="w-full flex items-center justify-between px-4 py-3 rounded-xl border border-[#E5E5EA] hover:bg-[#F2F2F7] transition-all text-left">
+                <span className="flex items-center gap-2 text-xs text-[#1C1C1E]"><Clock className="w-3.5 h-3.5 text-[#8E8E93]" />{t('profile.loginHistory')}</span>
+                <ChevronRight className="w-3.5 h-3.5 text-[#8E8E93]" />
+              </button>
+            </div>
+          </div>
 
-          <Card className="border border-[#E5EAF2] premium-shadow-sm rounded-xl">
-            <CardHeader className="pb-4 px-6 pt-6">
-              <CardTitle className="text-base flex items-center gap-2 text-[#0B1F3A]">
-                <Award className="w-4 h-4 text-[#C9A227]" />
-                Sertifikat
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="px-6 pb-6">
-              <div className="p-4 rounded-lg bg-gradient-to-r from-[#C9A227]/5 to-yellow-50/50 border border-[#C9A227]/20 mb-3">
+          {/* Certificates Card */}
+          <div className="rounded-2xl bg-white border border-[#E5E5EA] shadow-sm overflow-hidden">
+            <div className="px-6 pt-6 pb-4">
+              <div className="flex items-center gap-2 mb-1">
+                <Award className="w-4 h-4 text-[#FF9500]" />
+                <h3 className="text-base font-semibold text-[#1C1C1E]">{t('profile.certificates')}</h3>
+              </div>
+            </div>
+            <div className="px-6 pb-6">
+              <div className="p-4 rounded-xl bg-gradient-to-r from-[#FF9500]/5 to-[#FF9500]/10 border border-[#FF9500]/20 mb-3">
                 <div className="flex items-center gap-3">
-                  <Award className="w-7 h-7 text-[#C9A227] flex-shrink-0" />
+                  <Award className="w-7 h-7 text-[#FF9500] flex-shrink-0" />
                   <div className="min-w-0">
-                    <p className="text-sm font-medium text-[#0B1F3A]">BIGT Level B1</p>
-                    <p className="text-[11px] text-[#64748B]">Diterbitkan 15 Jun 2026</p>
+                    <p className="text-sm font-medium text-[#1C1C1E]">BIGT Level B1</p>
+                    <p className="text-[11px] text-[#8E8E93]">Diterbitkan 15 Jun 2026</p>
                   </div>
                 </div>
               </div>
-              <Button variant="outline" className="w-full rounded-lg border-[#E5EAF2] text-xs h-10 text-[#0B1F3A]">
-                Lihat Semua Sertifikat
-              </Button>
-            </CardContent>
-          </Card>
+              <button className="w-full py-2.5 rounded-xl border border-[#E5E5EA] text-xs font-medium text-[#1C1C1E] hover:bg-[#F2F2F7] transition-all">
+                {t('profile.viewAllCerts')}
+              </button>
+            </div>
+          </div>
 
-          <Card className="border border-[#E5EAF2] premium-shadow-sm rounded-xl">
-            <CardHeader className="pb-4 px-6 pt-6">
-              <CardTitle className="text-base flex items-center gap-2 text-[#0B1F3A]">
-                <Award className="w-4 h-4" />
-                Prestasi
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="px-6 pb-6">
+          {/* Achievements Card */}
+          <div className="rounded-2xl bg-white border border-[#E5E5EA] shadow-sm overflow-hidden">
+            <div className="px-6 pt-6 pb-4">
+              <div className="flex items-center gap-2 mb-1">
+                <Award className="w-4 h-4 text-[#1C1C1E]" />
+                <h3 className="text-base font-semibold text-[#1C1C1E]">{t('profile.achievements')}</h3>
+              </div>
+            </div>
+            <div className="px-6 pb-6">
               <div className="grid grid-cols-2 gap-3">
-                <div className="p-3 rounded-lg bg-[#F7F9FC] border border-[#E5EAF2] text-center">
-                  <BookOpen className="w-5 h-5 text-[#0B1F3A] mx-auto mb-1.5" />
-                  <p className="text-[11px] font-medium text-[#0B1F3A]">Tes Pertama</p>
-                  <p className="text-[9px] text-[#64748B]">Selesaikan tes pertama</p>
+                <div className="p-3 rounded-xl bg-[#F2F2F7] border border-[#E5E5EA] text-center">
+                  <BookOpen className="w-5 h-5 text-[#007AFF] mx-auto mb-1.5" />
+                  <p className="text-[11px] font-medium text-[#1C1C1E]">{t('profile.firstTest')}</p>
+                  <p className="text-[9px] text-[#8E8E93]">{t('profile.firstTestDesc')}</p>
                 </div>
-                <div className="p-3 rounded-lg bg-[#F7F9FC] border border-[#E5EAF2] text-center">
-                  <Award className="w-5 h-5 text-[#C9A227] mx-auto mb-1.5" />
-                  <p className="text-[11px] font-medium text-[#0B1F3A]">Naik Level</p>
-                  <p className="text-[9px] text-[#64748B]">Naik ke level B1</p>
+                <div className="p-3 rounded-xl bg-[#F2F2F7] border border-[#E5E5EA] text-center">
+                  <Award className="w-5 h-5 text-[#FF9500] mx-auto mb-1.5" />
+                  <p className="text-[11px] font-medium text-[#1C1C1E]">{t('profile.levelUp')}</p>
+                  <p className="text-[9px] text-[#8E8E93]">{t('profile.levelUpDesc')}</p>
                 </div>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </div>
       </div>
     </div>
