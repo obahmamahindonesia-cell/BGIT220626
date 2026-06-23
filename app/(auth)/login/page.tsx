@@ -57,9 +57,9 @@ function LoginForm() {
           <div className="absolute top-20 left-20 w-72 h-72 border border-white/20 rounded-full" />
           <div className="absolute bottom-20 right-20 w-96 h-96 border border-white/10 rounded-full" />
         </div>
-        <div className="flex-1 flex items-center justify-center -mt-24">
-          <Link href="/" className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-xl px-6 py-4 border border-white/10">
-            <Image src="/logo_BIGT.png" alt="BIGT Logo" width={200} height={64} className="h-10 w-auto brightness-0 invert opacity-90" />
+        <div className="flex-1 flex items-center justify-center -mt-16">
+          <Link href="/" className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-xl px-8 py-5 border border-white/10">
+            <Image src="/logo_BIGT.png" alt="BIGT Logo" width={260} height={80} className="h-14 w-auto brightness-0 invert opacity-90" />
           </Link>
         </div>
         <div className="relative z-10">

@@ -100,14 +100,14 @@ export default function ProfilePage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-6">
           <Card className="border border-[#E5EAF2] premium-shadow-sm rounded-xl">
-            <CardHeader className="pb-4">
+            <CardHeader className="pb-5 px-6 pt-6">
               <CardTitle className="text-base flex items-center gap-2 text-[#0B1F3A]">
                 <UserCircle className="w-4 h-4" />
                 Informasi Pribadi
               </CardTitle>
               <CardDescription className="text-xs text-[#64748B]">Informasi dasar akun BIGT Anda</CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="px-6 pb-6">
               <form onSubmit={handleUpdate} className="space-y-5">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-1.5">
@@ -143,14 +143,14 @@ export default function ProfilePage() {
           </Card>
 
           <Card className="border border-[#E5EAF2] premium-shadow-sm rounded-xl">
-            <CardHeader className="pb-4">
+            <CardHeader className="pb-5 px-6 pt-6">
               <CardTitle className="text-base flex items-center gap-2 text-[#0B1F3A]">
                 <Sparkles className="w-4 h-4 text-[#C9A227]" />
                 Preferensi Belajar
               </CardTitle>
               <CardDescription className="text-xs text-[#64748B]">Target dan preferensi pembelajaran Anda</CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="px-6 pb-6">
               <div className="space-y-5">
                 <div className="space-y-2">
                   <Label className="text-xs font-medium text-[#0B1F3A] flex items-center gap-2">
@@ -182,13 +182,13 @@ export default function ProfilePage() {
 
         <div className="space-y-6">
           <Card className="border border-[#E5EAF2] premium-shadow-sm rounded-xl">
-            <CardHeader className="pb-3">
+            <CardHeader className="pb-4 px-6 pt-6">
               <CardTitle className="text-base flex items-center gap-2 text-[#0B1F3A]">
                 <Lock className="w-4 h-4" />
                 Keamanan
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-2">
+            <CardContent className="px-6 pb-6 space-y-3">
               <Button variant="outline" className="w-full justify-between rounded-lg border-[#E5EAF2] h-10">
                 <span className="flex items-center gap-2 text-xs text-[#0B1F3A]"><Lock className="w-3.5 h-3.5" />Ubah Kata Sandi</span>
                 <ChevronRight className="w-3.5 h-3.5 text-[#64748B]" />
@@ -201,13 +201,13 @@ export default function ProfilePage() {
           </Card>
 
           <Card className="border border-[#E5EAF2] premium-shadow-sm rounded-xl">
-            <CardHeader className="pb-3">
+            <CardHeader className="pb-4 px-6 pt-6">
               <CardTitle className="text-base flex items-center gap-2 text-[#0B1F3A]">
                 <Award className="w-4 h-4 text-[#C9A227]" />
                 Sertifikat
               </CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="px-6 pb-6">
               <div className="p-4 rounded-lg bg-gradient-to-r from-[#C9A227]/5 to-yellow-50/50 border border-[#C9A227]/20 mb-3">
                 <div className="flex items-center gap-3">
                   <Award className="w-7 h-7 text-[#C9A227] flex-shrink-0" />
@@ -224,13 +224,13 @@ export default function ProfilePage() {
           </Card>
 
           <Card className="border border-[#E5EAF2] premium-shadow-sm rounded-xl">
-            <CardHeader className="pb-3">
+            <CardHeader className="pb-4 px-6 pt-6">
               <CardTitle className="text-base flex items-center gap-2 text-[#0B1F3A]">
                 <Award className="w-4 h-4" />
                 Prestasi
               </CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="px-6 pb-6">
               <div className="grid grid-cols-2 gap-3">
                 <div className="p-3 rounded-lg bg-[#F7F9FC] border border-[#E5EAF2] text-center">
                   <BookOpen className="w-5 h-5 text-[#0B1F3A] mx-auto mb-1.5" />

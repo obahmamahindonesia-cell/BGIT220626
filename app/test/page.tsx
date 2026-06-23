@@ -57,21 +57,21 @@ export default function TestHubPage() {
           <Card key={product.id}
             className="border border-[#E5EAF2] rounded-2xl shadow-sm card-hover cursor-pointer flex flex-col"
             onClick={() => handleStartTest(product)}>
-            <CardHeader className="pb-3">
-              <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-2.5"
+            <CardHeader className="pb-4 px-6 pt-6">
+              <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-3"
                 style={{ backgroundColor: product.color + '12' }}>
-                <PenSquare className="w-5 h-5" style={{ color: product.color }} />
+                <PenSquare className="w-[22px] h-[22px]" style={{ color: product.color }} />
               </div>
-              <CardTitle className="text-sm text-[#0B1F3A]">{product.name}</CardTitle>
-              <CardDescription className="text-xs text-[#64748B] leading-relaxed">{product.description}</CardDescription>
+              <CardTitle className="text-sm font-semibold text-[#0B1F3A]">{product.name}</CardTitle>
+              <CardDescription className="text-xs text-[#64748B] leading-relaxed mt-1">{product.description}</CardDescription>
             </CardHeader>
-            <CardContent className="flex flex-col justify-between flex-1">
-              <div className="flex items-center gap-3 text-xs text-[#64748B] mb-4">
-                <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{product.duration}</span>
-                <span className="flex items-center gap-1"><BookOpen className="w-3 h-3" />{product.questions} soal</span>
+            <CardContent className="flex flex-col justify-between flex-1 px-6 pb-6">
+              <div className="flex items-center gap-4 text-xs text-[#64748B] mb-5">
+                <span className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5" />{product.duration}</span>
+                <span className="flex items-center gap-1.5"><BookOpen className="w-3.5 h-3.5" />{product.questions} soal</span>
               </div>
-              <Button size="sm" className="w-full rounded-lg text-xs h-9 bg-[#D7193F] hover:bg-[#D7193F]/90 text-white mt-auto">
-                Mulai Tes <ArrowRight className="w-3 h-3 ml-1" />
+              <Button size="sm" className="w-full rounded-xl text-xs h-10 bg-[#D7193F] hover:bg-[#D7193F]/90 text-white mt-auto font-medium">
+                Mulai Tes <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
               </Button>
             </CardContent>
           </Card>
@@ -79,13 +79,13 @@ export default function TestHubPage() {
       </div>
 
       <Card className="border border-[#E5EAF2] rounded-2xl shadow-sm">
-        <CardHeader className="pb-4">
+        <CardHeader className="pb-5 px-6 pt-6">
           <CardTitle className="text-base flex items-center gap-2 text-[#0B1F3A]">
             <BarChart3 className="w-4 h-4" />
             Sesi Terakhir
           </CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className="px-6 pb-6">
           {recentSessions.length > 0 ? (
             <div className="space-y-3">
               {recentSessions.map((session) => (

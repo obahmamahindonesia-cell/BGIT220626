@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
@@ -61,18 +62,18 @@ export default function AppSidebar({ mobile, onClose }: AppSidebarProps) {
 
   return (
     <div className="flex flex-col h-full">
-      <div className="flex items-center justify-between px-5 h-16 border-b border-white/10 flex-shrink-0">
+      <div className="flex items-center justify-between px-5 h-[72px] border-b border-white/10 flex-shrink-0">
         <Link
           href="/dashboard"
-          className="font-[family-name:var(--font-playfair)] text-xl font-bold text-white"
           onClick={onClose}
+          className="flex-1 flex items-center"
         >
-          BIGT
+          <Image src="/logo_BIGT.png" alt="BIGT" width={140} height={44} className="h-8 w-auto brightness-0 invert opacity-90" />
         </Link>
         {mobile && onClose && (
           <button
             onClick={onClose}
-            className="w-8 h-8 rounded-lg hover:bg-white/10 flex items-center justify-center"
+            className="w-8 h-8 rounded-lg hover:bg-white/10 flex items-center justify-center flex-shrink-0"
           >
             <X className="w-5 h-5 text-white/70" />
           </button>
