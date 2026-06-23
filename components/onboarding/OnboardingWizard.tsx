@@ -33,13 +33,13 @@ function OptionCard({
   onClick,
   children,
   className = '',
-  icon,
+  Icon,
 }: {
   selected: boolean
   onClick: () => void
   children: React.ReactNode
   className?: string
-  icon?: React.ElementType
+  Icon?: React.ElementType
 }) {
   return (
     <button
@@ -55,12 +55,12 @@ function OptionCard({
       )}
     >
       <div className="flex items-start gap-4">
-        {icon && (
+        {Icon && (
           <div className={classNames(
             'w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors',
             selected ? 'bg-[#007AFF]/10' : 'bg-[#F2F2F7]',
           )}>
-            <icon className={classNames('w-5 h-5', selected ? 'text-[#007AFF]' : 'text-[#8E8E93]')} />
+            <Icon className={classNames('w-5 h-5', selected ? 'text-[#007AFF]' : 'text-[#8E8E93]')} />
           </div>
         )}
         <div className="flex-1">
@@ -369,7 +369,7 @@ export function OnboardingWizard() {
                         key={p.id}
                         selected={data.profession === p.id}
                         onClick={() => updateData({ profession: p.id })}
-                        icon={p.id === 'student' ? GraduationCap : p.id === 'professional' ? Briefcase : p.id === 'teacher' ? BookOpen : p.id === 'bipaLearner' ? Globe : p.id === 'general' ? Sparkles : Settings}
+                        Icon={p.id === 'student' ? GraduationCap : p.id === 'professional' ? Briefcase : p.id === 'teacher' ? BookOpen : p.id === 'bipa_learner' ? Globe : p.id === 'general' ? Sparkles : Settings}
                       >
                         <p className="font-medium text-[#1C1C1E]">{t(p.labelKey)}</p>
                       </OptionCard>
@@ -423,7 +423,7 @@ export function OnboardingWizard() {
                               : [...data.testGoals, goal.id],
                           })
                         }}
-                        icon={Icon}
+                        Icon={Icon}
                       >
                         <p className={classNames('font-medium', selected ? 'text-[#1C1C1E]' : 'text-[#8E8E93]')}>
                           {t(goal.labelKey)}
@@ -530,7 +530,7 @@ export function OnboardingWizard() {
                         selected={data.preferredDuration === opt.value}
                         onClick={() => updateData({ preferredDuration: opt.value })}
                       >
-                        <p classCase={classNames('font-semibold', data.preferredDuration === opt.value ? 'text-[#007AFF]' : 'text-[#8E8E93]')}>
+                        <p className={classNames('font-semibold', data.preferredDuration === opt.value ? 'text-[#007AFF]' : 'text-[#8E8E93]')}>
                           {t(opt.labelKey)}
                         </p>
                         <p className="text-[10px] text-[#8E8E93] mt-0.5">{t(opt.subKey)}</p>
@@ -545,7 +545,7 @@ export function OnboardingWizard() {
                     <OptionCard
                       selected={data.practiceMode}
                       onClick={() => updateData({ practiceMode: true })}
-                      icon={BookOpen}
+                      Icon={BookOpen}
                     >
                       <p className={classNames('font-semibold', data.practiceMode ? 'text-[#1C1C1E]' : 'text-[#8E8E93]')}>
                         {t('onboarding.practiceMode')}
@@ -555,7 +555,7 @@ export function OnboardingWizard() {
                     <OptionCard
                       selected={!data.practiceMode}
                       onClick={() => updateData({ practiceMode: false })}
-                      icon={Zap}
+                      Icon={Zap}
                     >
                       <p className={classNames('font-semibold', !data.practiceMode ? 'text-[#1C1C1E]' : 'text-[#8E8E93]')}>
                         {t('onboarding.fullTest')}
