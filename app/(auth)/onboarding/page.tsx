@@ -197,12 +197,12 @@ export default function OnboardingPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-[#0A1428] via-[#0D1B34] to-[#0A1428] flex items-center justify-center">
+      <div className="min-h-screen bg-[#F7F9FC] flex items-center justify-center">
         <div className="text-center space-y-3">
           <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center mx-auto animate-pulse shadow-lg shadow-[#10B981]/20">
             <ShieldCheck className="w-7 h-7 text-white" />
           </div>
-          <p className="text-white/40 text-sm">Memuat...</p>
+          <p className="text-gray-400 text-sm">Memuat...</p>
         </div>
       </div>
     )
@@ -212,21 +212,21 @@ export default function OnboardingPage() {
   const progressPct = ((currentStep + 1) / totalSteps) * 100
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0A1428] via-[#0D1B34] to-[#0A1428] flex flex-col">
-      <header className="flex items-center justify-between px-6 h-16 border-b border-white/[0.06] flex-shrink-0">
+    <div className="min-h-screen bg-[#F7F9FC] flex flex-col">
+      <header className="flex items-center justify-between px-6 h-16 border-b border-gray-200 flex-shrink-0 bg-white">
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center shadow-lg shadow-[#10B981]/20">
             <ShieldCheck className="w-4 h-4 text-white" />
           </div>
-          <span className="font-[family-name:var(--font-playfair)] text-sm font-bold text-white/60">BIGT</span>
+          <span className="font-[family-name:var(--font-playfair)] text-sm font-bold text-gray-500">BIGT</span>
         </div>
         <div className="flex items-center gap-3">
           {currentStep > 0 && (
-            <button onClick={handlePrev} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.06] hover:bg-white/[0.1] text-white/40 text-xs transition-colors">
+            <button onClick={handlePrev} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-500 text-xs transition-colors">
               <ChevronLeft className="w-3 h-3" /> Kembali
             </button>
           )}
-          <button onClick={() => { if (confirm('Lewati proses onboarding?')) handleSave(false) }} className="text-[11px] text-white/20 hover:text-white/40 transition-colors">
+          <button onClick={() => { if (confirm('Lewati proses onboarding?')) handleSave(false) }} className="text-[11px] text-gray-400 hover:text-gray-600 transition-colors">
             Lewati
           </button>
         </div>
@@ -239,15 +239,15 @@ export default function OnboardingPage() {
               {STEPS.map((s, i) => (
                 <div key={s.id} className={`w-2 h-2 rounded-full transition-all duration-300 ${
                   i === currentStep ? 'bg-[#10B981] w-6' :
-                  i < currentStep ? 'bg-[#10B981]/50' : 'bg-white/[0.08]'
+                  i < currentStep ? 'bg-[#10B981]/50' : 'bg-gray-300'
                 }`} />
               ))}
             </div>
-            <span className="text-[11px] text-white/30 tabular-nums">
+            <span className="text-[11px] text-gray-400 tabular-nums">
               Langkah {currentStep + 1} dari {totalSteps}
             </span>
           </div>
-          <div className="w-full h-0.5 rounded-full bg-white/[0.06] overflow-hidden">
+          <div className="w-full h-0.5 rounded-full bg-gray-200 overflow-hidden">
             <div className="h-full rounded-full bg-gradient-to-r from-[#10B981] to-[#059669] transition-all duration-500 ease-out"
               style={{ width: `${progressPct}%` }} />
           </div>
@@ -267,10 +267,10 @@ export default function OnboardingPage() {
                 <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center mb-6 shadow-xl shadow-[#10B981]/20">
                   <Sparkles className="w-10 h-10 text-white" />
                 </div>
-                <h1 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-bold text-white mb-2">
+                <h1 className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-bold text-gray-900 mb-2">
                   Selamat datang di BIGT, {userName}!
                 </h1>
-                <p className="text-white/40 text-sm md:text-base max-w-md leading-relaxed">
+                <p className="text-gray-500 text-sm md:text-base max-w-md leading-relaxed">
                   Tes kemahiran Bahasa Indonesia berbasis AI yang adaptif dan sesuai
                   standar internasional CEFR. Selesaikan 6 langkah singkat untuk memulai.
                 </p>
@@ -283,10 +283,10 @@ export default function OnboardingPage() {
                   ].map((item) => {
                     const Icon = item.icon
                     return (
-                      <div key={item.label} className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] text-left">
+                      <div key={item.label} className="p-3 rounded-xl bg-white border border-gray-200 text-left shadow-sm">
                         <Icon className="w-4 h-4 text-[#10B981] mb-1.5" />
-                        <p className="text-xs font-semibold text-white/70">{item.label}</p>
-                        <p className="text-[10px] text-white/30">{item.sub}</p>
+                        <p className="text-xs font-semibold text-gray-700">{item.label}</p>
+                        <p className="text-[10px] text-gray-400">{item.sub}</p>
                       </div>
                     )
                   })}
@@ -297,24 +297,24 @@ export default function OnboardingPage() {
             {currentStep === 1 && (
               <div className="flex-1 py-4">
                 <div className="mb-6">
-                  <h2 className="text-lg font-semibold text-white/90">Data Diri</h2>
-                  <p className="text-xs text-white/40 mt-1">Bantu kami mengenal Anda lebih baik.</p>
+                  <h2 className="text-lg font-semibold text-gray-900">Data Diri</h2>
+                  <p className="text-xs text-gray-500 mt-1">Bantu kami mengenal Anda lebih baik.</p>
                 </div>
                 <div className="space-y-4">
                   <div>
-                    <label className="text-xs font-medium text-white/50 block mb-1.5">Nama Lengkap</label>
+                    <label className="text-xs font-medium text-gray-600 block mb-1.5">Nama Lengkap</label>
                     <input value={userName} disabled
-                      className="w-full py-3 px-4 rounded-xl bg-white/[0.03] border border-white/[0.06] text-white/40 text-sm cursor-not-allowed" />
+                      className="w-full py-3 px-4 rounded-xl bg-gray-100 border border-gray-200 text-gray-400 text-sm cursor-not-allowed" />
                   </div>
                   <div>
-                    <label className="text-xs font-medium text-white/50 block mb-1.5">Usia</label>
+                    <label className="text-xs font-medium text-gray-600 block mb-1.5">Usia</label>
                     <div className="flex gap-2">
                       {['<18', '18-24', '25-34', '35-44', '45+'].map(age => (
                         <button key={age} onClick={() => update('age', age)}
                           className={`flex-1 py-2.5 rounded-xl text-xs font-medium border transition-all ${
                             form.age === age
                               ? 'border-[#10B981] bg-[#10B981]/10 text-[#10B981]'
-                              : 'border-white/[0.06] bg-white/[0.03] text-white/40 hover:bg-white/[0.06]'
+                              : 'border-gray-200 bg-white text-gray-500 hover:bg-gray-50'
                           }`}>
                           {age}
                         </button>
@@ -322,36 +322,36 @@ export default function OnboardingPage() {
                     </div>
                   </div>
                   <div>
-                    <label className="text-xs font-medium text-white/50 block mb-1.5">Profesi / Tujuan Utama</label>
+                    <label className="text-xs font-medium text-gray-600 block mb-1.5">Profesi / Tujuan Utama</label>
                     <div className="grid grid-cols-2 gap-2">
                       {PROFESI.map(p => (
                         <button key={p} onClick={() => update('profession', p)}
                           className={`py-2.5 rounded-xl text-xs font-medium border transition-all ${
                             form.profession === p
                               ? 'border-[#10B981] bg-[#10B981]/10 text-[#10B981]'
-                              : 'border-white/[0.06] bg-white/[0.03] text-white/40 hover:bg-white/[0.06]'
+                              : 'border-gray-200 bg-white text-gray-500 hover:bg-gray-50'
                           }`}>
                           {p}
                         </button>
                       ))}
                     </div>
-                    {errors.profession && <p className="text-red-400 text-[10px] mt-1">Pilih profesi Anda</p>}
+                    {errors.profession && <p className="text-red-500 text-[10px] mt-1">Pilih profesi Anda</p>}
                   </div>
                   <div>
-                    <label className="text-xs font-medium text-white/50 block mb-1.5">Target Level CEFR</label>
+                    <label className="text-xs font-medium text-gray-600 block mb-1.5">Target Level CEFR</label>
                     <div className="flex gap-1.5">
                       {CEFR_LEVELS.map(l => (
                         <button key={l} onClick={() => update('targetLevel', form.targetLevel === l ? '' : l)}
                           className={`flex-1 py-2.5 rounded-xl text-xs font-bold border transition-all ${
                             form.targetLevel === l
                               ? 'border-[#F59E0B] bg-[#F59E0B]/10 text-[#F59E0B]'
-                              : 'border-white/[0.06] bg-white/[0.03] text-white/30 hover:bg-white/[0.06]'
+                              : 'border-gray-200 bg-white text-gray-400 hover:bg-gray-50'
                           }`}>
                           {l}
                         </button>
                       ))}
                     </div>
-                    <p className="text-[10px] text-white/20 mt-1.5">Kosongkan jika belum tahu target Anda</p>
+                    <p className="text-[10px] text-gray-400 mt-1.5">Kosongkan jika belum tahu target Anda</p>
                   </div>
                 </div>
               </div>
@@ -360,32 +360,32 @@ export default function OnboardingPage() {
             {currentStep === 2 && (
               <div className="flex-1 py-4">
                 <div className="mb-6">
-                  <h2 className="text-lg font-semibold text-white/90">Tujuan Tes</h2>
-                  <p className="text-xs text-white/40 mt-1">Pilih satu atau lebih tujuan Anda mengikuti tes BIGT.</p>
+                  <h2 className="text-lg font-semibold text-gray-900">Tujuan Tes</h2>
+                  <p className="text-xs text-gray-500 mt-1">Pilih satu atau lebih tujuan Anda mengikuti tes BIGT.</p>
                 </div>
                 <div className="space-y-2">
                   {GOALS.map(goal => (
                     <button key={goal} onClick={() => toggleGoal(goal)}
                       className={`w-full flex items-center gap-3 py-3 px-4 rounded-xl border transition-all text-left ${
                         form.testGoals.includes(goal)
-                          ? 'border-[#10B981] bg-[#10B981]/[0.06]'
-                          : 'border-white/[0.06] bg-white/[0.03] hover:bg-white/[0.06]'
+                          ? 'border-[#10B981] bg-[#10B981]/[0.04]'
+                          : 'border-gray-200 bg-white hover:bg-gray-50'
                       }`}>
                       <div className={`w-5 h-5 rounded-md flex items-center justify-center border transition-all flex-shrink-0 ${
                         form.testGoals.includes(goal)
                           ? 'bg-[#10B981] border-[#10B981]'
-                          : 'border-white/[0.15]'
+                          : 'border-gray-300'
                       }`}>
                         {form.testGoals.includes(goal) && (
                           <CheckCircle2 className="w-3.5 h-3.5 text-white" />
                         )}
                       </div>
-                      <span className={`text-sm ${form.testGoals.includes(goal) ? 'text-white/80' : 'text-white/40'}`}>
+                      <span className={`text-sm ${form.testGoals.includes(goal) ? 'text-gray-900' : 'text-gray-500'}`}>
                         {goal}
                       </span>
                     </button>
                   ))}
-                  {errors.testGoals && <p className="text-red-400 text-[10px]">Pilih minimal satu tujuan</p>}
+                  {errors.testGoals && <p className="text-red-500 text-[10px]">Pilih minimal satu tujuan</p>}
                 </div>
               </div>
             )}
@@ -393,51 +393,51 @@ export default function OnboardingPage() {
             {currentStep === 3 && (
               <div className="flex-1 py-4">
                 <div className="mb-6">
-                  <h2 className="text-lg font-semibold text-white/90">Pengalaman Belajar</h2>
-                  <p className="text-xs text-white/40 mt-1">Ceritakan pengalaman Anda dengan Bahasa Indonesia.</p>
+                  <h2 className="text-lg font-semibold text-gray-900">Pengalaman Belajar</h2>
+                  <p className="text-xs text-gray-500 mt-1">Ceritakan pengalaman Anda dengan Bahasa Indonesia.</p>
                 </div>
                 <div className="space-y-5">
                   <div>
-                    <label className="text-xs font-medium text-white/50 block mb-2">Pernah mengikuti tes Bahasa Indonesia sebelumnya?</label>
+                    <label className="text-xs font-medium text-gray-600 block mb-2">Pernah mengikuti tes Bahasa Indonesia sebelumnya?</label>
                     <div className="flex gap-2">
                       <button onClick={() => update('hasPreviousTest', true)}
                         className={`flex-1 py-2.5 rounded-xl text-xs font-medium border transition-all ${
                           form.hasPreviousTest
                             ? 'border-[#10B981] bg-[#10B981]/10 text-[#10B981]'
-                            : 'border-white/[0.06] bg-white/[0.03] text-white/40'
+                            : 'border-gray-200 bg-white text-gray-500'
                         }`}>Ya</button>
                       <button onClick={() => { update('hasPreviousTest', false); update('previousTestType', '') }}
                         className={`flex-1 py-2.5 rounded-xl text-xs font-medium border transition-all ${
                           !form.hasPreviousTest
                             ? 'border-[#10B981] bg-[#10B981]/10 text-[#10B981]'
-                            : 'border-white/[0.06] bg-white/[0.03] text-white/40'
+                            : 'border-gray-200 bg-white text-gray-500'
                         }`}>Belum</button>
                     </div>
                   </div>
                   {form.hasPreviousTest && (
                     <div>
-                      <label className="text-xs font-medium text-white/50 block mb-2">Jenis tes sebelumnya</label>
+                      <label className="text-xs font-medium text-gray-600 block mb-2">Jenis tes sebelumnya</label>
                       <div className="grid grid-cols-2 gap-2">
                         {PREVIOUS_TESTS.map(t => (
                           <button key={t} onClick={() => update('previousTestType', t)}
                             className={`py-2.5 rounded-xl text-xs font-medium border transition-all ${
                               form.previousTestType === t
                                 ? 'border-[#10B981] bg-[#10B981]/10 text-[#10B981]'
-                                : 'border-white/[0.06] bg-white/[0.03] text-white/40'
+                                : 'border-gray-200 bg-white text-gray-500'
                             }`}>{t}</button>
                         ))}
                       </div>
                     </div>
                   )}
                   <div>
-                    <label className="text-xs font-medium text-white/50 block mb-2">Lama belajar Bahasa Indonesia</label>
+                    <label className="text-xs font-medium text-gray-600 block mb-2">Lama belajar Bahasa Indonesia</label>
                     <div className="grid grid-cols-2 gap-2">
                       {LEARNING_DURATIONS.map(d => (
                         <button key={d} onClick={() => update('learningDuration', d)}
                           className={`py-2.5 rounded-xl text-xs font-medium border transition-all ${
                             form.learningDuration === d
                               ? 'border-[#10B981] bg-[#10B981]/10 text-[#10B981]'
-                              : 'border-white/[0.06] bg-white/[0.03] text-white/40'
+                              : 'border-gray-200 bg-white text-gray-500'
                           }`}>{d}</button>
                       ))}
                     </div>
@@ -449,12 +449,12 @@ export default function OnboardingPage() {
             {currentStep === 4 && (
               <div className="flex-1 py-4">
                 <div className="mb-6">
-                  <h2 className="text-lg font-semibold text-white/90">Preferensi Tes</h2>
-                  <p className="text-xs text-white/40 mt-1">Sesuaikan pengalaman tes sesuai keinginan Anda.</p>
+                  <h2 className="text-lg font-semibold text-gray-900">Preferensi Tes</h2>
+                  <p className="text-xs text-gray-500 mt-1">Sesuaikan pengalaman tes sesuai keinginan Anda.</p>
                 </div>
                 <div className="space-y-6">
                   <div>
-                    <label className="text-xs font-medium text-white/50 block mb-2">Durasi tes yang diinginkan</label>
+                    <label className="text-xs font-medium text-gray-600 block mb-2">Durasi tes yang diinginkan</label>
                     <div className="flex gap-2">
                       {[
                         { value: 30, label: '30 menit', sub: 'Cepat' },
@@ -465,49 +465,49 @@ export default function OnboardingPage() {
                           className={`flex-1 py-3 rounded-xl border transition-all ${
                             form.preferredDuration === opt.value
                               ? 'border-[#10B981] bg-[#10B981]/10'
-                              : 'border-white/[0.06] bg-white/[0.03]'
+                              : 'border-gray-200 bg-white'
                           }`}>
-                          <p className={`text-sm font-semibold ${form.preferredDuration === opt.value ? 'text-[#10B981]' : 'text-white/60'}`}>
+                          <p className={`text-sm font-semibold ${form.preferredDuration === opt.value ? 'text-[#10B981]' : 'text-gray-600'}`}>
                             {opt.label}
                           </p>
-                          <p className="text-[10px] text-white/30 mt-0.5">{opt.sub}</p>
+                          <p className="text-[10px] text-gray-400 mt-0.5">{opt.sub}</p>
                         </button>
                       ))}
                     </div>
                   </div>
                   <div>
-                    <label className="text-xs font-medium text-white/50 block mb-2">Mode awal</label>
+                    <label className="text-xs font-medium text-gray-600 block mb-2">Mode awal</label>
                     <div className="flex gap-2">
                       <button onClick={() => update('practiceMode', true)}
                         className={`flex-1 py-3 rounded-xl border transition-all ${
                           form.practiceMode
                             ? 'border-[#10B981] bg-[#10B981]/10'
-                            : 'border-white/[0.06] bg-white/[0.03]'
+                            : 'border-gray-200 bg-white'
                         }`}>
-                        <BookOpen className={`w-4 h-4 mx-auto mb-1 ${form.practiceMode ? 'text-[#10B981]' : 'text-white/30'}`} />
-                        <p className={`text-sm font-semibold ${form.practiceMode ? 'text-[#10B981]' : 'text-white/60'}`}>Practice Mode</p>
-                        <p className="text-[10px] text-white/30 mt-0.5">Latihan dulu</p>
+                        <BookOpen className={`w-4 h-4 mx-auto mb-1 ${form.practiceMode ? 'text-[#10B981]' : 'text-gray-400'}`} />
+                        <p className={`text-sm font-semibold ${form.practiceMode ? 'text-[#10B981]' : 'text-gray-600'}`}>Practice Mode</p>
+                        <p className="text-[10px] text-gray-400 mt-0.5">Latihan dulu</p>
                       </button>
                       <button onClick={() => update('practiceMode', false)}
                         className={`flex-1 py-3 rounded-xl border transition-all ${
                           !form.practiceMode
                             ? 'border-[#10B981] bg-[#10B981]/10'
-                            : 'border-white/[0.06] bg-white/[0.03]'
+                            : 'border-gray-200 bg-white'
                         }`}>
-                        <Zap className={`w-4 h-4 mx-auto mb-1 ${!form.practiceMode ? 'text-[#10B981]' : 'text-white/30'}`} />
-                        <p className={`text-sm font-semibold ${!form.practiceMode ? 'text-[#10B981]' : 'text-white/60'}`}>Full Test</p>
-                        <p className="text-[10px] text-white/30 mt-0.5">Langsung ujian</p>
+                        <Zap className={`w-4 h-4 mx-auto mb-1 ${!form.practiceMode ? 'text-[#10B981]' : 'text-gray-400'}`} />
+                        <p className={`text-sm font-semibold ${!form.practiceMode ? 'text-[#10B981]' : 'text-gray-600'}`}>Full Test</p>
+                        <p className="text-[10px] text-gray-400 mt-0.5">Langsung ujian</p>
                       </button>
                     </div>
                   </div>
-                  <div className="flex items-center justify-between py-3 px-4 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+                  <div className="flex items-center justify-between py-3 px-4 rounded-xl bg-white border border-gray-200">
                     <div className="flex items-center gap-2.5">
-                      <Globe className="w-4 h-4 text-white/30" />
-                      <span className="text-xs text-white/50">Notifikasi hasil via email</span>
+                      <Globe className="w-4 h-4 text-gray-400" />
+                      <span className="text-xs text-gray-600">Notifikasi hasil via email</span>
                     </div>
                     <button onClick={() => update('emailNotifications', !form.emailNotifications)}
                       className={`w-10 h-6 rounded-full transition-all ${
-                        form.emailNotifications ? 'bg-[#10B981]' : 'bg-white/[0.1]'
+                        form.emailNotifications ? 'bg-[#10B981]' : 'bg-gray-300'
                       }`}>
                       <div className={`w-4 h-4 rounded-full bg-white transition-all shadow-sm ${
                         form.emailNotifications ? 'translate-x-5' : 'translate-x-1'
@@ -521,34 +521,34 @@ export default function OnboardingPage() {
             {currentStep === 5 && (
               <div className="flex-1 py-4">
                 <div className="mb-6">
-                  <h2 className="text-lg font-semibold text-white/90">Cek Perangkat</h2>
-                  <p className="text-xs text-white/40 mt-1">Pastikan perangkat Anda siap sebelum memulai tes.</p>
+                  <h2 className="text-lg font-semibold text-gray-900">Cek Perangkat</h2>
+                  <p className="text-xs text-gray-500 mt-1">Pastikan perangkat Anda siap sebelum memulai tes.</p>
                 </div>
                 <div className="space-y-4">
-                  <div className="p-5 rounded-xl bg-white/[0.04] border border-white/[0.06]">
+                  <div className="p-5 rounded-xl bg-white border border-gray-200 shadow-sm">
                     <div className="flex items-center gap-3 mb-3">
                       <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${
                         micState === 'pass' ? 'bg-[#10B981]/10' :
-                        micState === 'fail' ? 'bg-red-500/10' :
-                        'bg-white/[0.06]'
+                        micState === 'fail' ? 'bg-red-50' :
+                        'bg-gray-100'
                       }`}>
                         <Mic className={`w-5 h-5 ${
                           micState === 'pass' ? 'text-[#10B981]' :
-                          micState === 'fail' ? 'text-red-400' :
-                          'text-white/30'
+                          micState === 'fail' ? 'text-red-500' :
+                          'text-gray-400'
                         }`} />
                       </div>
                       <div className="flex-1">
-                        <p className="text-sm font-semibold text-white/70">Mikrofon</p>
-                        <p className="text-[10px] text-white/30">Untuk sesi berbicara (Speaking)</p>
+                        <p className="text-sm font-semibold text-gray-700">Mikrofon</p>
+                        <p className="text-[10px] text-gray-400">Untuk sesi berbicara (Speaking)</p>
                       </div>
                       <button onClick={testMic} disabled={micState === 'testing' || micState === 'pass'}
                         className={`px-4 py-2 rounded-xl text-xs font-medium transition-all ${
                           micState === 'pass'
                             ? 'bg-[#10B981]/10 text-[#10B981] cursor-default'
                             : micState === 'fail'
-                            ? 'bg-red-500/10 text-red-400 hover:bg-red-500/20'
-                            : 'bg-white/[0.08] text-white/50 hover:bg-white/[0.12]'
+                            ? 'bg-red-50 text-red-500 hover:bg-red-100'
+                            : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                         }`}>
                         {micState === 'testing' ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> :
                          micState === 'pass' ? 'Berhasil' :
@@ -561,34 +561,34 @@ export default function OnboardingPage() {
                       </div>
                     )}
                     {micState === 'fail' && (
-                      <div className="text-[10px] text-red-400">Izinkan akses mikrofon di browser Anda</div>
+                      <div className="text-[10px] text-red-500">Izinkan akses mikrofon di browser Anda</div>
                     )}
                   </div>
 
-                  <div className="p-5 rounded-xl bg-white/[0.04] border border-white/[0.06]">
+                  <div className="p-5 rounded-xl bg-white border border-gray-200 shadow-sm">
                     <div className="flex items-center gap-3 mb-3">
                       <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${
                         speakerState === 'pass' ? 'bg-[#10B981]/10' :
-                        speakerState === 'fail' ? 'bg-red-500/10' :
-                        'bg-white/[0.06]'
+                        speakerState === 'fail' ? 'bg-red-50' :
+                        'bg-gray-100'
                       }`}>
                         <Headphones className={`w-5 h-5 ${
                           speakerState === 'pass' ? 'text-[#10B981]' :
-                          speakerState === 'fail' ? 'text-red-400' :
-                          'text-white/30'
+                          speakerState === 'fail' ? 'text-red-500' :
+                          'text-gray-400'
                         }`} />
                       </div>
                       <div className="flex-1">
-                        <p className="text-sm font-semibold text-white/70">Speaker / Headphone</p>
-                        <p className="text-[10px] text-white/30">Untuk sesi menyimak (Listening)</p>
+                        <p className="text-sm font-semibold text-gray-700">Speaker / Headphone</p>
+                        <p className="text-[10px] text-gray-400">Untuk sesi menyimak (Listening)</p>
                       </div>
                       <button onClick={testSpeaker} disabled={speakerState === 'testing' || speakerState === 'pass'}
                         className={`px-4 py-2 rounded-xl text-xs font-medium transition-all ${
                           speakerState === 'pass'
                             ? 'bg-[#10B981]/10 text-[#10B981] cursor-default'
                             : speakerState === 'fail'
-                            ? 'bg-red-500/10 text-red-400 hover:bg-red-500/20'
-                            : 'bg-white/[0.08] text-white/50 hover:bg-white/[0.12]'
+                            ? 'bg-red-50 text-red-500 hover:bg-red-100'
+                            : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                         }`}>
                         {speakerState === 'testing' ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> :
                          speakerState === 'pass' ? 'Berhasil' :
@@ -602,10 +602,10 @@ export default function OnboardingPage() {
                     )}
                   </div>
 
-                  <div className="p-4 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+                  <div className="p-4 rounded-xl bg-white border border-gray-200">
                     <div className="flex items-center gap-2.5">
-                      <Monitor className="w-4 h-4 text-white/30" />
-                      <span className="text-xs text-white/50">Browser: Chrome / Firefox / Edge (direkomendasikan)</span>
+                      <Monitor className="w-4 h-4 text-gray-400" />
+                      <span className="text-xs text-gray-500">Browser: Chrome / Firefox / Edge (direkomendasikan)</span>
                     </div>
                   </div>
                 </div>
@@ -617,10 +617,10 @@ export default function OnboardingPage() {
                 <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#F59E0B] to-[#D97706] flex items-center justify-center mb-5 shadow-xl shadow-[#F59E0B]/20">
                   <Zap className="w-8 h-8 text-white" />
                 </div>
-                <h2 className="font-[family-name:var(--font-playfair)] text-xl md:text-2xl font-bold text-white mb-2">
+                <h2 className="font-[family-name:var(--font-playfair)] text-xl md:text-2xl font-bold text-gray-900 mb-2">
                   Siap Memulai, {userName}!
                 </h2>
-                <p className="text-white/40 text-sm max-w-sm leading-relaxed mb-6">
+                <p className="text-gray-500 text-sm max-w-sm leading-relaxed mb-6">
                   Anda akan mengikuti tes adaptif yang mencakup 6 dimensi kemahiran
                   Bahasa Indonesia dengan standar CEFR internasional.
                 </p>
@@ -634,10 +634,10 @@ export default function OnboardingPage() {
                   ].map(item => {
                     const Icon = item.icon
                     return (
-                      <div key={item.label} className="flex items-center gap-3 py-2.5 px-4 rounded-xl bg-white/[0.03] border border-white/[0.06]">
-                        <Icon className="w-4 h-4 text-white/30 flex-shrink-0" />
-                        <span className="text-xs text-white/40 flex-1 text-left">{item.label}</span>
-                        <span className="text-xs text-white/70 font-medium">{item.value}</span>
+                      <div key={item.label} className="flex items-center gap-3 py-2.5 px-4 rounded-xl bg-white border border-gray-200 shadow-sm">
+                        <Icon className="w-4 h-4 text-gray-400 flex-shrink-0" />
+                        <span className="text-xs text-gray-500 flex-1 text-left">{item.label}</span>
+                        <span className="text-xs text-gray-800 font-medium">{item.value}</span>
                       </div>
                     )
                   })}
@@ -652,7 +652,7 @@ export default function OnboardingPage() {
                     {saving ? 'Menyiapkan...' : 'Mulai Tes BIGT Sekarang'}
                   </button>
                   <button onClick={() => { update('practiceMode', true); handleSave(true) }}
-                    className="w-full py-3 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] text-white/50 text-xs font-medium transition-all flex items-center justify-center gap-1.5"
+                    className="w-full py-3 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-500 text-xs font-medium transition-all flex items-center justify-center gap-1.5"
                   >
                     <BookOpen className="w-3.5 h-3.5" />
                     Mulai Practice Mode Dulu
@@ -663,10 +663,10 @@ export default function OnboardingPage() {
           </motion.div>
         </AnimatePresence>
 
-        <div className="flex items-center justify-between mt-8 pt-4 border-t border-white/[0.06]">
-          <div className="flex items-center gap-2 text-[10px] text-white/20">
-            <div className={`w-2 h-2 rounded-full ${form.micTested ? 'bg-[#10B981]' : 'bg-white/[0.06]'}`} />
-            <div className={`w-2 h-2 rounded-full ${form.speakerTested ? 'bg-[#10B981]' : 'bg-white/[0.06]'}`} />
+        <div className="flex items-center justify-between mt-8 pt-4 border-t border-gray-200">
+          <div className="flex items-center gap-2 text-[10px] text-gray-400">
+            <div className={`w-2 h-2 rounded-full ${form.micTested ? 'bg-[#10B981]' : 'bg-gray-300'}`} />
+            <div className={`w-2 h-2 rounded-full ${form.speakerTested ? 'bg-[#10B981]' : 'bg-gray-300'}`} />
             {form.testGoals.length > 0 && <div className="w-2 h-2 rounded-full bg-[#10B981]" />}
           </div>
           <div className="flex items-center gap-3">
