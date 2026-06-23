@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/server'
 import { NextResponse } from 'next/server'
+import { prisma } from '@/lib/prisma'
 
 export async function GET(request: Request) {
   const { searchParams, origin } = new URL(request.url)
@@ -8,8 +9,17 @@ export async function GET(request: Request) {
 
   if (code) {
     const supabase = createClient()
-    const { error } = await supabase.auth.exchangeCodeForSession(code)
-    if (!error) {
+    const { data, error } = await supabase.auth.exchangeCodeForSession(code)
+    if (!error && data.user) {
+      await prisma.user.upsert({
+        where: { supabaseId: data.user.id },
+        update: { email: data.user.email!, name: data.user.user_metadata?.name || null },
+        create: {
+          supabaseId: data.user.id,
+          email: data.user.email!,
+          name: data.user.user_metadata?.name || null,
+        },
+      })
       return NextResponse.redirect(`${origin}${next}`)
     }
   }

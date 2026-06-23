@@ -31,13 +31,15 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
-    const dbUser = await prisma.user.findUnique({
+    const dbUser = await prisma.user.upsert({
       where: { supabaseId: user.id },
+      update: { email: user.email!, name: user.user_metadata?.name || undefined },
+      create: {
+        supabaseId: user.id,
+        email: user.email!,
+        name: user.user_metadata?.name || null,
+      },
     })
-
-    if (!dbUser) {
-      return NextResponse.json({ error: 'User not found' }, { status: 404 })
-    }
 
     const body = await request.json()
     const { dimensions, level, questionCount = 20 } = body

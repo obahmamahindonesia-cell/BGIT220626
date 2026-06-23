@@ -90,7 +90,7 @@ export default function DashboardPage() {
         </Link>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-6">
         {[
           { icon: BarChart3, bg: 'bg-[#0B1F3A]/5', color: '#0B1F3A', value: stats.totalTests, label: 'Total Tes Selesai' },
           { icon: GraduationCap, bg: 'bg-[#C9A227]/10', color: '#C9A227', value: stats.currentLevel, label: 'Level Saat Ini' },
@@ -101,14 +101,12 @@ export default function DashboardPage() {
           const Icon = stat.icon
           return (
             <Card key={stat.label} className="border border-[#E5EAF2] rounded-2xl shadow-sm">
-              <CardContent className="p-5 flex flex-col justify-center min-h-[120px]">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className={`w-10 h-10 rounded-lg ${stat.bg} flex items-center justify-center`}>
-                    <Icon className="w-5 h-5" style={{ color: stat.color }} />
-                  </div>
+              <CardContent className="p-6 flex flex-col min-h-[130px]">
+                <div className={`w-11 h-11 rounded-xl ${stat.bg} flex items-center justify-center mb-4`}>
+                  <Icon className="w-5 h-5" style={{ color: stat.color }} />
                 </div>
-                <p className="text-2xl font-bold text-[#0B1F3A]">{stat.value}</p>
-                <p className="text-xs text-[#64748B] mt-0.5">{stat.label}</p>
+                <p className="text-2xl font-bold text-[#0B1F3A] tracking-tight">{stat.value}</p>
+                <p className="text-xs text-[#64748B] mt-1.5 leading-relaxed">{stat.label}</p>
               </CardContent>
             </Card>
           )
@@ -118,13 +116,13 @@ export default function DashboardPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-6">
           <Card className="border border-[#E5EAF2] premium-shadow-sm rounded-xl">
-            <CardHeader className="pb-4">
+            <CardHeader className="pb-5 px-6 pt-6">
               <CardTitle className="text-base flex items-center gap-2 text-[#0B1F3A]">
                 <Target className="w-4 h-4" />
                 Perkembangan Kemahiran
               </CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="px-6 pb-6">
               <div className="space-y-4">
                 {CEFR_LEVELS.map((level, i) => {
                   const isCurrent = i === currentLevelIndex
@@ -162,22 +160,22 @@ export default function DashboardPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Card className="border border-[#E5EAF2] premium-shadow-sm rounded-xl card-hover">
-              <CardHeader className="pb-3">
+              <CardHeader className="pb-4 px-6 pt-6">
                 <CardTitle className="text-base flex items-center gap-2 text-[#0B1F3A]">
                   <BookOpen className="w-4 h-4" />
                   Lanjutkan Tes
                 </CardTitle>
                 <CardDescription className="text-xs text-[#64748B]">Ada sesi tes yang belum selesai</CardDescription>
               </CardHeader>
-              <CardContent>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium text-[#0B1F3A]">Tes Latihan</p>
-                    <p className="text-xs text-[#64748B] mt-0.5">15 dari 25 soal terjawab</p>
+              <CardContent className="px-6 pb-6">
+                <div className="flex items-center justify-between gap-4">
+                  <div className="min-w-0">
+                    <p className="text-sm font-semibold text-[#0B1F3A]">Tes Latihan</p>
+                    <p className="text-xs text-[#64748B] mt-1">15 dari 25 soal terjawab</p>
                   </div>
-                  <Link href="/test">
-                    <Button size="sm" className="bg-[#D7193F] hover:bg-[#D7193F]/90 text-white rounded-lg text-xs h-9">
-                      Lanjutkan <ChevronRight className="w-3 h-3 ml-1" />
+                  <Link href="/test" className="flex-shrink-0">
+                    <Button size="sm" className="bg-[#D7193F] hover:bg-[#D7193F]/90 text-white rounded-lg text-xs h-9 px-4">
+                      Lanjutkan <ChevronRight className="w-3.5 h-3.5 ml-1" />
                     </Button>
                   </Link>
                 </div>
@@ -185,22 +183,22 @@ export default function DashboardPage() {
             </Card>
 
             <Card className="border border-[#E5EAF2] premium-shadow-sm rounded-xl card-hover">
-              <CardHeader className="pb-3">
+              <CardHeader className="pb-4 px-6 pt-6">
                 <CardTitle className="text-base flex items-center gap-2 text-[#0B1F3A]">
                   <Sparkles className="w-4 h-4 text-[#C9A227]" />
                   Rekomendasi Tes
                 </CardTitle>
                 <CardDescription className="text-xs text-[#64748B]">Berdasarkan level Anda saat ini</CardDescription>
               </CardHeader>
-              <CardContent>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium text-[#0B1F3A]">BIGT Penempatan</p>
-                    <p className="text-xs text-[#64748B] mt-0.5">45 menit - 25 soal</p>
+              <CardContent className="px-6 pb-6">
+                <div className="flex items-center justify-between gap-4">
+                  <div className="min-w-0">
+                    <p className="text-sm font-semibold text-[#0B1F3A]">BIGT Penempatan</p>
+                    <p className="text-xs text-[#64748B] mt-1">45 menit — 25 soal</p>
                   </div>
-                  <Link href="/test">
-                    <Button size="sm" variant="outline" className="rounded-lg text-xs h-9 border-[#E5EAF2] text-[#0B1F3A]">
-                      Coba <ArrowRight className="w-3 h-3 ml-1" />
+                  <Link href="/test" className="flex-shrink-0">
+                    <Button size="sm" variant="outline" className="rounded-lg text-xs h-9 px-4 border-[#E5EAF2] text-[#0B1F3A] hover:bg-gray-50">
+                      Coba <ArrowRight className="w-3.5 h-3.5 ml-1" />
                     </Button>
                   </Link>
                 </div>
@@ -211,23 +209,23 @@ export default function DashboardPage() {
 
         <div className="space-y-6">
           <Card className="border border-[#E5EAF2] premium-shadow-sm rounded-xl">
-            <CardHeader className="pb-4">
+            <CardHeader className="pb-5 px-6 pt-6">
               <CardTitle className="text-base flex items-center gap-2 text-[#0B1F3A]">
                 <BarChart3 className="w-4 h-4" />
                 Skor per Dimensi
               </CardTitle>
               <CardDescription className="text-xs text-[#64748B]">Kemahiran berdasarkan 6 dimensi</CardDescription>
             </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
+            <CardContent className="px-6 pb-6">
+              <div className="space-y-5">
                 {Object.entries(DIMENSION_SCORES).map(([key, score]) => (
                   <div key={key}>
-                    <div className="flex justify-between text-xs mb-1">
-                      <span className="text-[#64748B] capitalize">{key.toLowerCase()}</span>
-                      <span className="font-medium text-[#0B1F3A]">{score}%</span>
+                    <div className="flex justify-between text-xs mb-1.5">
+                      <span className="font-medium text-[#64748B] capitalize">{key.toLowerCase()}</span>
+                      <span className="font-semibold text-[#0B1F3A]">{score}%</span>
                     </div>
-                    <div className="w-full bg-gray-100 rounded-full h-1.5">
-                      <div className="h-1.5 rounded-full bg-gradient-to-r from-[#0B1F3A] to-[#C9A227] transition-all duration-500"
+                    <div className="w-full bg-gray-100 rounded-full h-2">
+                      <div className="h-2 rounded-full bg-gradient-to-r from-[#0B1F3A] to-[#C9A227] transition-all duration-500"
                         style={{ width: `${score}%` }} />
                     </div>
                   </div>
@@ -237,29 +235,29 @@ export default function DashboardPage() {
           </Card>
 
           <Card className="border border-[#E5EAF2] premium-shadow-sm rounded-xl">
-            <CardHeader className="pb-4">
+            <CardHeader className="pb-4 px-6 pt-6">
               <CardTitle className="text-base flex items-center gap-2 text-[#0B1F3A]">
                 <Clock className="w-4 h-4" />
                 Aktivitas Terakhir
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-3">
-              <div className="flex items-start gap-3 p-3 rounded-lg bg-[#F7F9FC]">
-                <div className="w-8 h-8 rounded-lg bg-[#0B1F3A]/5 flex items-center justify-center flex-shrink-0">
-                  <BookOpen className="w-4 h-4 text-[#0B1F3A]" />
+            <CardContent className="px-6 pb-6 space-y-3">
+              <div className="flex items-start gap-4 p-4 rounded-xl bg-[#F7F9FC] border border-[#E5EAF2]">
+                <div className="w-9 h-9 rounded-xl bg-[#0B1F3A]/5 flex items-center justify-center flex-shrink-0">
+                  <BookOpen className="w-[18px] h-[18px] text-[#0B1F3A]" />
                 </div>
                 <div className="min-w-0">
-                  <p className="text-xs font-medium text-[#0B1F3A]">Tes Latihan</p>
-                  <p className="text-[11px] text-[#64748B]">2 hari yang lalu</p>
+                  <p className="text-sm font-medium text-[#0B1F3A]">Tes Latihan</p>
+                  <p className="text-xs text-[#64748B] mt-0.5">2 hari yang lalu</p>
                 </div>
               </div>
-              <div className="flex items-start gap-3 p-3 rounded-lg bg-[#F7F9FC]">
-                <div className="w-8 h-8 rounded-lg bg-[#C9A227]/10 flex items-center justify-center flex-shrink-0">
-                  <Award className="w-4 h-4 text-[#C9A227]" />
+              <div className="flex items-start gap-4 p-4 rounded-xl bg-[#F7F9FC] border border-[#E5EAF2]">
+                <div className="w-9 h-9 rounded-xl bg-[#C9A227]/10 flex items-center justify-center flex-shrink-0">
+                  <Award className="w-[18px] h-[18px] text-[#C9A227]" />
                 </div>
                 <div className="min-w-0">
-                  <p className="text-xs font-medium text-[#0B1F3A]">Sertifikat B1 Diterbitkan</p>
-                  <p className="text-[11px] text-[#64748B]">1 minggu yang lalu</p>
+                  <p className="text-sm font-medium text-[#0B1F3A]">Sertifikat B1 Diterbitkan</p>
+                  <p className="text-xs text-[#64748B] mt-0.5">1 minggu yang lalu</p>
                 </div>
               </div>
             </CardContent>
