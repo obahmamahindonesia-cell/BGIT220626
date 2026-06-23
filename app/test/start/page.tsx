@@ -1,6 +1,7 @@
 'use client'
 
 import { Suspense, useState } from 'react'
+import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
@@ -43,13 +44,23 @@ function TestStartForm() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const productId = searchParams.get('product') || 'practice'
-  const product = PRODUCTS[productId] || PRODUCTS.practice
+  const product = PRODUCTS[productId]
 
   const [step, setStep] = useState(1)
   const [loading, setLoading] = useState(false)
   const [selectedDimensions, setSelectedDimensions] = useState<string[]>([])
   const [selectedLevel, setSelectedLevel] = useState<string>('')
   const [questionCount, setQuestionCount] = useState(20)
+
+  if (!product) {
+    return (
+      <div className="text-center py-20">
+        <h1 className="font-[family-name:var(--font-playfair)] text-2xl font-bold text-[#0B1F3A]">Produk Tes Tidak Ditemukan</h1>
+        <p className="text-[#64748B] text-sm mt-2">Produk &quot;{productId}&quot; tidak valid.</p>
+        <Link href="/test" className="inline-block mt-6 text-[#D7193F] hover:underline text-sm font-medium">Kembali ke Pusat Tes</Link>
+      </div>
+    )
+  }
 
   const toggleDimension = (code: string) => {
     setSelectedDimensions(prev => prev.includes(code) ? prev.filter(d => d !== code) : [...prev, code])
@@ -63,6 +74,9 @@ function TestStartForm() {
   const handleStartTest = async () => {
     setLoading(true)
     try {
+      if (selectedDimensions.length === 0) {
+        throw new Error('Pilih minimal satu dimensi tes.')
+      }
       const res = await fetch('/api/test/sessions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -76,9 +90,12 @@ function TestStartForm() {
       let data: any
       try { data = JSON.parse(text) } catch { data = {} }
       if (!res.ok) {
-        throw new Error(data?.error || `Gagal memulai tes (${res.status})`)
+        throw new Error(data?.error || 'Gagal memulai tes. Silakan coba lagi.')
       }
-      router.push(`/test/${data?.session?.id}`)
+      if (!data?.session?.id) {
+        throw new Error('Server tidak mengembalikan ID sesi tes.')
+      }
+      router.push(`/test/${data.session.id}`)
     } catch (err: any) {
       toast.error(err.message)
     } finally {
@@ -140,7 +157,7 @@ function TestStartForm() {
                     }`}>
                     <div className="w-9 h-9 rounded-lg flex items-center justify-center mb-2"
                       style={{ backgroundColor: isSelected ? dim.color + '15' : '#F7F9FC' }}>
-                      <Icon className="w-4.5 h-4.5" style={{ color: dim.color }} />
+                      <Icon className="w-[18px] h-[18px]" style={{ color: dim.color }} />
                     </div>
                     <div className={`text-xs font-medium ${isSelected ? 'text-[#0B1F3A]' : 'text-[#64748B]'}`}>{dim.name}</div>
                   </button>
