@@ -67,20 +67,39 @@ export default function TestRunnerPage() {
         return
       }
 
-      const res = await fetch(`/api/test/sessions/${sessionId}`)
+      const res = await fetch(`/api/test/session/${sessionId}`)
       if (!res.ok) throw new Error('Session not found')
-      const data = await res.json()
+      const json = await res.json()
+      if (!json.success) throw new Error(json.error || 'Session not found')
+      const data = json.data
 
-      if (!data.questions || data.questions.length === 0) {
+      if (!data.items || data.items.length === 0) {
         return
       }
 
-      if (data.session.status !== 'IN_PROGRESS') {
+      if (data.status !== 'IN_PROGRESS') {
         router.push(`/test/${sessionId}/results`)
         return
       }
 
-      setSession(sessionId, data.questions)
+      // Map API items to store format
+      const mappedQuestions = data.items.map((item: any) => ({
+        id: item.id,
+        dimension: item.dimension,
+        skill: item.question?.subskill || '',
+        type: item.question?.questionType || 'MCQ',
+        level: item.level,
+        difficulty: item.difficulty || 3,
+        points: item.maxScore || 10,
+        content: {
+          prompt: item.question?.prompt || '',
+          instruction: item.question?.instruction || '',
+          options: item.question?.options?.map((o: any) => o.text) || [],
+          correctAnswer: '',
+        },
+      }))
+
+      setSession(sessionId, mappedQuestions)
     } catch {
       useTestStore.setState({ questions: [] })
     }
@@ -114,10 +133,10 @@ export default function TestRunnerPage() {
       const answer = state.answers[q.id]
       if (answer) {
         try {
-          await fetch('/api/test/answers', {
+          await fetch(`/api/test/session/${state.sessionId}/answer`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ sessionId: state.sessionId, questionId: q.id, answer }),
+            body: JSON.stringify({ sessionItemId: q.id, answer: answer.selectedOption || answer.text || '' }),
           })
         } catch { }
       }

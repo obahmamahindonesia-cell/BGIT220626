@@ -14,6 +14,7 @@ export default function TestFooter() {
     questions,
     currentIndex,
     timeRemaining,
+    totalTime,
     saveStatus,
     setSaveStatus,
     previousQuestion,
@@ -44,13 +45,12 @@ export default function TestFooter() {
     const answer = useTestStore.getState().answers[currentQuestion.id]
     if (answer) {
       try {
-        const res = await fetch('/api/test/answers', {
+        const res = await fetch(`/api/test/session/${sessionId}/answer`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            sessionId,
-            questionId: currentQuestion.id,
-            answer,
+            sessionItemId: currentQuestion.id,
+            answer: answer.selectedOption || answer.text || '',
           }),
         })
         if (!res.ok) throw new Error('Failed to save')
@@ -68,22 +68,25 @@ export default function TestFooter() {
   const handleEndTest = async () => {
     setSubmitting(true)
     try {
-      const unanswered = questions.filter(q => !useTestStore.getState().answers[q.id])
-      for (const q of unanswered) {
+      for (const q of questions) {
         const answer = useTestStore.getState().answers[q.id]
         if (answer) {
-          await fetch('/api/test/answers', {
+          await fetch(`/api/test/session/${sessionId}/answer`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ sessionId, questionId: q.id, answer }),
+            body: JSON.stringify({
+              sessionItemId: q.id,
+              answer: answer.selectedOption || answer.text || '',
+            }),
           })
         }
       }
 
-      const res = await fetch('/api/test/complete', {
+      const durationSeconds = Math.round(totalTime - timeRemaining)
+      const res = await fetch(`/api/test/session/${sessionId}/complete`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ sessionId }),
+        body: JSON.stringify({ durationSeconds }),
       })
 
       if (!res.ok) throw new Error('Failed to complete test')

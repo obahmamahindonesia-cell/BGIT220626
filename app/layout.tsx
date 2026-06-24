@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/sonner";
 import { I18nProvider } from "@/lib/i18n/context";
+import { ThemeProvider } from "next-themes";
 
 const inter = Inter({
   subsets: ['latin'],
@@ -114,12 +115,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id" className={cn(inter.variable, playfair.variable)}>
+    <html lang="id" className={cn(inter.variable, playfair.variable)} suppressHydrationWarning>
       <body className="font-sans antialiased">
-        <I18nProvider>
-          {children}
-          <Toaster />
-        </I18nProvider>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+          <I18nProvider>
+            {children}
+            <Toaster />
+          </I18nProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

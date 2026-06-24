@@ -7,7 +7,7 @@ export async function GET(request: NextRequest) {
   if (!admin) return unauthorized()
 
   const [totalQuestions, totalUsers, totalSessions, waitlistCount] = await Promise.all([
-    prisma.question.count(),
+    prisma.questionItem.count(),
     prisma.user.count(),
     prisma.testSession.count(),
     prisma.waitlist.count({ where: { status: 'PENDING' } }),

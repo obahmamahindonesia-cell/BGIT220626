@@ -53,7 +53,7 @@ export async function GET() {
       orderBy: { startedAt: 'desc' },
       include: {
         result: true,
-        _count: { select: { answers: true } },
+        _count: { select: { sessionItems: true } },
       },
     })
 
@@ -63,7 +63,7 @@ export async function GET() {
         status: 'IN_PROGRESS',
       },
       orderBy: { startedAt: 'desc' },
-      select: { id: true, startedAt: true, _count: { select: { answers: true } } },
+      select: { id: true, startedAt: true, _count: { select: { sessionItems: true } } },
     })
 
     const latestCertificate = await prisma.certificate.findFirst({
@@ -106,19 +106,14 @@ export async function GET() {
 
     const totalHours = completedSessions.reduce((sum, s) => {
       if (s.durationSeconds) return sum + s.durationSeconds / 3600
-      if (s.finishedAt && s.startedAt) {
-        const secs = (s.finishedAt.getTime() - s.startedAt.getTime()) / 1000
+      if (s.completedAt && s.startedAt) {
+        const secs = (s.completedAt.getTime() - s.startedAt.getTime()) / 1000
         return sum + secs / 3600
       }
       return sum
     }, 0)
 
     const recentTests = completedSessions.slice(0, 4).map(s => {
-      const dimsFromSession = (s as any).questionIds?.length
-        ? Array.isArray((s as any).questionIds)
-          ? ['LISTENING', 'READING', 'WRITING'] 
-          : []
-        : []
       return {
         id: s.id,
         date: s.startedAt.toLocaleDateString('id-ID', {
@@ -126,7 +121,7 @@ export async function GET() {
           month: 'long',
           year: 'numeric',
         }),
-        dimensions: dimsFromSession,
+        dimensions: ['LISTENING', 'READING', 'WRITING'],
         score: s.result ? Math.round(s.result.overallScore) : null,
         level: s.result?.overallLevel || null,
         status: s.status,
@@ -143,14 +138,14 @@ export async function GET() {
         { key: 'MEDIATION', label: DIMENSION_LABELS.MEDIATION, score: latestResult.mediationScore },
         { key: 'INTEGRATED', label: DIMENSION_LABELS.INTEGRATED, score: latestResult.integratedScore },
       ]
-      const sorted = dimScores.sort((a, b) => a.score - b.score)
+      const sorted = dimScores.sort((a, b) => (a.score || 0) - (b.score || 0))
       if (sorted.length > 0) {
         const weakest = sorted[0]
-        const ceifLevelIndex = Math.max(1, Math.min(6, Math.floor(weakest.score / 16) + 1))
+        const ceifLevelIndex = Math.max(1, Math.min(6, Math.floor((weakest.score || 0) / 16) + 1))
         weakestDimension = {
           dimension: weakest.label,
           key: weakest.key,
-          score: Math.round(weakest.score),
+          score: Math.round(weakest.score || 0),
           level: reverseCefr[ceifLevelIndex],
         }
       }
@@ -192,7 +187,7 @@ export async function GET() {
         : null,
       pendingSessionCount: pendingSession ? 1 : 0,
       pendingSessionId: pendingSession?.id || null,
-      pendingSessionAnswers: pendingSession?._count?.answers || 0,
+      pendingSessionAnswers: pendingSession?._count?.sessionItems || 0,
     })
   } catch (error) {
     console.error('Dashboard API error:', error)

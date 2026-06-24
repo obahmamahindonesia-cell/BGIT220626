@@ -79,25 +79,24 @@ function TestStartForm() {
       if (selectedDimensions.length === 0) {
         throw new Error(t('testConfig.dimError'))
       }
-      const res = await fetch('/api/test/sessions', {
+      const res = await fetch('/api/test/start', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          product: productId,
           dimensions: selectedDimensions,
-          level: selectedLevel || undefined,
+          targetLevel: selectedLevel || undefined,
           questionCount,
         }),
       })
-      const text = await res.text()
-      let data: any
-      try { data = JSON.parse(text) } catch { data = {} }
-      if (!res.ok) {
-        throw new Error(data?.error || t('testConfig.failedStart'))
+      const data = await res.json()
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || t('testConfig.failedStart'))
       }
-      if (!data?.session?.id) {
+      if (!data.sessionId) {
         throw new Error(t('testConfig.noSessionId'))
       }
-      router.push(`/test/${data.session.id}`)
+      router.push(data.redirectTo || `/test/${data.sessionId}`)
     } catch (err: any) {
       toast.error(err.message)
     } finally {

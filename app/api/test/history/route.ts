@@ -31,7 +31,7 @@ export async function GET(request: NextRequest) {
     const statusFilter = request.nextUrl.searchParams.get('status')
 
     const where: any = { userId: dbUser.id }
-    if (statusFilter && ['IN_PROGRESS', 'SUBMITTED', 'SCORED', 'COMPLETED', 'FAILED'].includes(statusFilter)) {
+    if (statusFilter && ['CONFIGURED', 'IN_PROGRESS', 'SUBMITTED', 'SCORED', 'COMPLETED', 'CANCELLED', 'FAILED'].includes(statusFilter)) {
       where.status = statusFilter
     }
 
@@ -39,40 +39,44 @@ export async function GET(request: NextRequest) {
       where,
       include: {
         result: true,
-        answers: true,
-        _count: { select: { answers: true } },
+        sessionItems: { include: { answer: true } },
       },
       orderBy: { startedAt: 'desc' },
     })
 
     const mapped = sessions.map((s) => {
-      const answeredQuestions = s.answers ? s.answers.length : 0
-      const totalQuestions = s.questionIds ? s.questionIds.length : 0
-      const product = 'BIGT Akademik'
+      const answeredQuestions = s.sessionItems.filter(i => i.answer).length
+      const totalQuestions = s.questionCount || s.sessionItems.length
+      const product = s.product || 'BIGT Akademik'
+
+      // Map old statuses for backward compat
+      const displayStatus = s.status === 'CONFIGURED' ? 'IN_PROGRESS' : s.status
 
       return {
         id: s.id,
         product,
-        status: s.status,
+        status: displayStatus,
         totalQuestions,
         answeredQuestions,
-        score: s.result?.overallScore ?? null,
-        level: s.result?.overallLevel ?? null,
+        score: s.totalScore ?? null,
+        level: s.cefrLevel ?? null,
         dimensions: s.result
           ? [
               { name: 'LISTENING', score: s.result.listeningScore },
               { name: 'READING', score: s.result.readingScore },
               { name: 'SPEAKING', score: s.result.speakingScore },
               { name: 'WRITING', score: s.result.writingScore },
+              { name: 'MEDIATION', score: s.result.mediationScore },
+              { name: 'INTEGRATED', score: s.result.integratedScore },
             ].filter((d) => d.score != null)
           : [],
         startedAt: s.startedAt.toISOString(),
-        finishedAt: s.finishedAt?.toISOString() ?? null,
+        finishedAt: s.completedAt?.toISOString() ?? null,
         durationSeconds: s.durationSeconds,
       }
     })
 
-    const completed = mapped.filter((s) => s.status === 'COMPLETED' || s.status === 'SCORED')
+    const completed = mapped.filter((s) => s.status === 'COMPLETED' || s.status === 'SCORED' || s.status === 'SUBMITTED')
     const inProgress = mapped.filter((s) => s.status === 'IN_PROGRESS')
     const highestScore = completed.length > 0
       ? Math.round(Math.max(...completed.map((s) => s.score ?? 0)))

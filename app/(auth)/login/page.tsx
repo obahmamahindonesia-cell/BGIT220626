@@ -38,6 +38,11 @@ function LoginForm() {
           name: data.user.user_metadata?.name || null,
         }),
       })
+      await fetch('/api/profile/login-history', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userAgent: navigator.userAgent }),
+      })
     }
     toast.success(t('auth.loginSuccess'))
     router.push(redirectTo)

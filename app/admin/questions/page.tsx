@@ -6,23 +6,34 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import Link from 'next/link'
 
-interface Question {
+interface QuestionItem {
   id: string
+  code: string | null
   dimension: string
-  skill: string
-  type: string
+  subskill: string | null
+  questionType: string
   level: string
   difficulty: number
-  points: number
-  isActive: boolean
+  topic: string | null
+  prompt: string | null
+  status: string
   tags: string[]
-  content: any
+  exposureCount: number
   createdAt: string
-  _count?: { answers: number }
+  options: { id: string; label: string | null; text: string; isCorrect: boolean; order: number }[]
+  _count?: { sessionItems: number }
+}
+
+const STATUS_COLORS: Record<string, string> = {
+  DRAFT: 'bg-gray-100 text-gray-700',
+  REVIEW: 'bg-yellow-100 text-yellow-700',
+  PILOT: 'bg-blue-100 text-blue-700',
+  ACTIVE: 'bg-green-100 text-green-700',
+  RETIRED: 'bg-red-100 text-red-700',
 }
 
 export default function AdminQuestionsPage() {
-  const [questions, setQuestions] = useState<Question[]>([])
+  const [questions, setQuestions] = useState<QuestionItem[]>([])
   const [loading, setLoading] = useState(true)
   const [page, setPage] = useState(1)
   const [total, setTotal] = useState(0)
@@ -36,9 +47,11 @@ export default function AdminQuestionsPage() {
     setLoading(true)
     try {
       const res = await fetch(`/api/admin/questions?page=${page}&limit=${limit}`)
-      const data = await res.json()
-      setQuestions(data.questions)
-      setTotal(data.pagination.total)
+      const json = await res.json()
+      if (json.success) {
+        setQuestions(json.data)
+        setTotal(json.pagination.total)
+      }
     } catch (err) {
       console.error('Gagal mengambil soal:', err)
     } finally {
@@ -47,13 +60,13 @@ export default function AdminQuestionsPage() {
   }
 
   const handleDelete = async (id: string) => {
-    if (!confirm('Yakin ingin menghapus soal ini?')) return
-
+    if (!confirm('Yakin ingin menonaktifkan soal ini?')) return
     try {
-      await fetch(`/api/admin/questions/${id}`, { method: 'DELETE' })
-      fetchQuestions()
+      const res = await fetch(`/api/admin/questions/${id}`, { method: 'DELETE' })
+      const json = await res.json()
+      if (json.success) fetchQuestions()
     } catch (err) {
-      console.error('Gagal menghapus soal:', err)
+      console.error('Gagal menonaktifkan soal:', err)
     }
   }
 
@@ -100,7 +113,7 @@ export default function AdminQuestionsPage() {
                 >
                   <div className="flex justify-between items-start mb-2">
                     <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
+                      <div className="flex items-center gap-2 mb-1 flex-wrap">
                         <Badge variant="outline" className="text-xs">
                           {q.dimension}
                         </Badge>
@@ -108,25 +121,26 @@ export default function AdminQuestionsPage() {
                           {q.level}
                         </Badge>
                         <Badge variant="outline" className="text-xs">
-                          {q.type}
+                          {q.questionType}
                         </Badge>
-                        {!q.isActive && (
-                          <Badge variant="destructive" className="text-xs">
-                            Nonaktif
-                          </Badge>
+                        <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium ${STATUS_COLORS[q.status] || 'bg-gray-100 text-gray-700'}`}>
+                          {q.status}
+                        </span>
+                        {q.code && (
+                          <span className="text-[10px] text-gray-400 font-mono">{q.code}</span>
                         )}
                       </div>
                       <p className="text-sm text-gray-700 line-clamp-2">
-                        {q.content?.prompt || 'Tidak ada prompt'}
+                        {q.prompt || 'Tidak ada prompt'}
                       </p>
                       <div className="flex gap-4 mt-2 text-xs text-gray-500">
-                        <span>Skill: {q.skill}</span>
-                        <span>Kesulitan: {q.difficulty}/5</span>
-                        <span>Poin: {q.points}</span>
-                        {q._count && <span>Digunakan: {q._count.answers}x</span>}
+                        <span>{q.subskill || '—'}</span>
+                        <span>Kesulitan: {q.difficulty}/15</span>
+                        <span>Eksposur: {q.exposureCount}x</span>
+                        {q._count && <span>Digunakan: {q._count.sessionItems}x</span>}
                       </div>
                       {q.tags.length > 0 && (
-                        <div className="flex gap-1 mt-2">
+                        <div className="flex gap-1 mt-2 flex-wrap">
                           {q.tags.map((tag) => (
                             <span
                               key={tag}
@@ -149,7 +163,7 @@ export default function AdminQuestionsPage() {
                         size="sm"
                         onClick={() => handleDelete(q.id)}
                       >
-                        Hapus
+                        Nonaktifkan
                       </Button>
                     </div>
                   </div>

@@ -11,38 +11,43 @@ export async function GET(request: NextRequest) {
   const limit = parseInt(searchParams.get('limit') || '20')
   const dimension = searchParams.get('dimension')
   const level = searchParams.get('level')
+  const status = searchParams.get('status')
   const type = searchParams.get('type')
   const search = searchParams.get('search')
 
   const where: any = {}
   if (dimension) where.dimension = dimension
   if (level) where.level = level
-  if (type) where.type = type
+  if (status) where.status = status
+  if (type) where.questionType = type
   if (search) {
     where.OR = [
-      { content: { path: ['prompt'], string_contains: search } },
+      { prompt: { contains: search, mode: 'insensitive' } },
       { tags: { has: search } },
+      { code: { contains: search, mode: 'insensitive' } },
+      { topic: { contains: search, mode: 'insensitive' } },
     ]
   }
 
   const [questions, total] = await Promise.all([
-    prisma.question.findMany({
+    prisma.questionItem.findMany({
       where,
       skip: (page - 1) * limit,
       take: limit,
-      orderBy: { createdAt: 'desc' },
+      orderBy: { updatedAt: 'desc' },
+      include: {
+        options: { orderBy: { order: 'asc' } },
+        stimulus: true,
+        _count: { select: { sessionItems: true } },
+      },
     }),
-    prisma.question.count({ where }),
+    prisma.questionItem.count({ where }),
   ])
 
   return NextResponse.json({
-    questions,
-    pagination: {
-      page,
-      limit,
-      total,
-      totalPages: Math.ceil(total / limit),
-    },
+    success: true,
+    data: questions,
+    pagination: { page, limit, total, totalPages: Math.ceil(total / limit) },
   })
 }
 
@@ -51,21 +56,21 @@ export async function POST(request: NextRequest) {
   if (!admin) return unauthorized()
 
   const body = await request.json()
-  
-  const question = await prisma.question.create({
+
+  const { options, stimulus, ...questionFields } = body
+
+  const question = await prisma.questionItem.create({
     data: {
-      dimension: body.dimension,
-      skill: body.skill,
-      subskill: body.subskill,
-      type: body.type,
-      level: body.level,
-      difficulty: body.difficulty || 3,
-      content: body.content,
-      rubric: body.rubric,
-      tags: body.tags || [],
-      points: body.points || 10,
+      ...questionFields,
+      options: options
+        ? { create: options.map((o: any, i: number) => ({ label: o.label, text: o.text, isCorrect: o.isCorrect || false, order: i })) }
+        : undefined,
+      stimulus: stimulus
+        ? { connectOrCreate: { where: { id: stimulus.id || '' }, create: { type: stimulus.type || 'TEXT', title: stimulus.title, content: stimulus.content, transcript: stimulus.transcript } } }
+        : undefined,
     },
+    include: { options: { orderBy: { order: 'asc' } }, stimulus: true },
   })
 
-  return NextResponse.json({ question })
+  return NextResponse.json({ success: true, data: question })
 }

@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
-import { Bell, LogOut, User, ChevronDown, Menu } from 'lucide-react'
+import { Bell, LogOut, User, ChevronDown, Menu, Settings } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import LanguageToggle from '@/components/LanguageToggle'
 import Logo from '@/components/brand/Logo'
@@ -119,6 +119,14 @@ export default function IosNavbar({ onMenuClick }: IosNavbarProps) {
                 >
                   <User className="w-4 h-4 text-[#8E8E93]" />
                   Profil
+                </Link>
+                <Link
+                  href="/settings"
+                  onClick={() => setDropdownOpen(false)}
+                  className="flex items-center gap-3 px-4 py-2.5 text-sm text-[#1C1C1E] hover:bg-gray-50 transition-colors"
+                >
+                  <Settings className="w-4 h-4 text-[#8E8E93]" />
+                  Pengaturan
                 </Link>
                 <button
                   onClick={handleLogout}

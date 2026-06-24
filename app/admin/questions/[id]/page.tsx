@@ -7,11 +7,13 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
+import { toast } from 'sonner'
 import Link from 'next/link'
 
 const DIMENSIONS = ['LISTENING', 'READING', 'SPEAKING', 'WRITING', 'MEDIATION', 'INTEGRATED']
 const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']
 const TYPES = ['MCQ', 'SHORT_ANSWER', 'ESSAY', 'AUDIO_RESPONSE', 'INTEGRATED_TASK']
+const STATUSES = ['DRAFT', 'REVIEW', 'PILOT', 'ACTIVE', 'RETIRED']
 
 export default function EditQuestionPage() {
   const router = useRouter()
@@ -19,19 +21,21 @@ export default function EditQuestionPage() {
   const [loading, setLoading] = useState(false)
   const [fetching, setFetching] = useState(true)
   const [formData, setFormData] = useState({
+    code: '',
     dimension: 'READING',
-    skill: '',
     subskill: '',
-    type: 'MCQ',
+    questionType: 'MCQ',
     level: 'B1',
-    difficulty: 3,
-    points: 10,
+    difficulty: 7,
+    topic: '',
     prompt: '',
+    instruction: '',
     options: ['', '', '', ''],
     correctAnswer: '',
+    explanation: '',
+    estimatedTime: 60,
     tags: '',
-    rubric: '',
-    isActive: true,
+    status: 'DRAFT',
   })
 
   useEffect(() => {
@@ -41,26 +45,32 @@ export default function EditQuestionPage() {
   const fetchQuestion = async () => {
     try {
       const res = await fetch(`/api/admin/questions/${params.id}`)
-      const data = await res.json()
-      const q = data.question
+      const json = await res.json()
+      if (!json.success) throw new Error(json.error || 'Gagal memuat soal')
+      const q = json.data
 
       setFormData({
+        code: q.code || '',
         dimension: q.dimension,
-        skill: q.skill,
         subskill: q.subskill || '',
-        type: q.type,
+        questionType: q.questionType,
         level: q.level,
         difficulty: q.difficulty,
-        points: q.points,
-        prompt: q.content?.prompt || '',
-        options: q.content?.options || ['', '', '', ''],
-        correctAnswer: q.content?.correctAnswer || '',
+        topic: q.topic || '',
+        prompt: q.prompt || '',
+        instruction: q.instruction || '',
+        options: q.options?.length
+          ? q.options.map((o: any) => o.text).concat(['', '', '', '']).slice(0, 4)
+          : ['', '', '', ''],
+        correctAnswer: q.correctAnswer || '',
+        explanation: q.explanation || '',
+        estimatedTime: q.estimatedTime || 60,
         tags: q.tags?.join(', ') || '',
-        rubric: q.rubric ? JSON.stringify(q.rubric) : '',
-        isActive: q.isActive,
+        status: q.status,
       })
     } catch (err) {
       console.error('Gagal mengambil soal:', err)
+      toast.error('Gagal memuat soal')
     } finally {
       setFetching(false)
     }
@@ -71,39 +81,49 @@ export default function EditQuestionPage() {
     setLoading(true)
 
     try {
-      const content: any = { prompt: formData.prompt }
-      
-      if (formData.type === 'MCQ') {
-        content.options = formData.options.filter(o => o.trim())
-        content.correctAnswer = formData.correctAnswer
-      }
-
-      const body = {
+      const body: any = {
+        code: formData.code || null,
         dimension: formData.dimension,
-        skill: formData.skill,
         subskill: formData.subskill || null,
-        type: formData.type,
+        questionType: formData.questionType,
         level: formData.level,
         difficulty: formData.difficulty,
-        points: formData.points,
-        content,
+        topic: formData.topic || null,
+        prompt: formData.prompt,
+        instruction: formData.instruction || null,
+        correctAnswer: formData.correctAnswer || null,
+        explanation: formData.explanation || null,
+        estimatedTime: formData.estimatedTime || null,
         tags: formData.tags.split(',').map(t => t.trim()).filter(t => t),
-        rubric: formData.rubric ? JSON.parse(formData.rubric) : null,
-        isActive: formData.isActive,
+        status: formData.status,
+      }
+
+      if (formData.questionType === 'MCQ') {
+        body.options = formData.options
+          .filter(o => o.trim())
+          .map((text, i) => ({
+            label: String.fromCharCode(65 + i),
+            text,
+            isCorrect: formData.correctAnswer === String.fromCharCode(65 + i),
+          }))
       }
 
       const res = await fetch(`/api/admin/questions/${params.id}`, {
-        method: 'PUT',
+        method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       })
+      const json = await res.json()
 
-      if (!res.ok) throw new Error('Gagal memperbarui soal')
+      if (!res.ok || !json.success) {
+        throw new Error(json.error || 'Gagal memperbarui soal')
+      }
 
+      toast.success('Soal berhasil diperbarui')
       router.push('/admin/questions')
-    } catch (err) {
+    } catch (err: any) {
       console.error('Gagal memperbarui soal:', err)
-      alert('Gagal memperbarui soal')
+      toast.error(err.message || 'Gagal memperbarui soal')
     } finally {
       setLoading(false)
     }
@@ -134,7 +154,15 @@ export default function EditQuestionPage() {
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <Label>Kode</Label>
+                <Input
+                  value={formData.code}
+                  onChange={(e) => setFormData({ ...formData, code: e.target.value })}
+                  placeholder="mis: BIGT-RD-B1-001"
+                />
+              </div>
               <div>
                 <Label>Dimensi</Label>
                 <select
@@ -147,7 +175,18 @@ export default function EditQuestionPage() {
                   ))}
                 </select>
               </div>
-
+              <div>
+                <Label>Status</Label>
+                <select
+                  value={formData.status}
+                  onChange={(e) => setFormData({ ...formData, status: e.target.value })}
+                  className="w-full mt-1 p-2 border rounded-md"
+                >
+                  {STATUSES.map(s => (
+                    <option key={s} value={s}>{s}</option>
+                  ))}
+                </select>
+              </div>
               <div>
                 <Label>Level</Label>
                 <select
@@ -160,12 +199,11 @@ export default function EditQuestionPage() {
                   ))}
                 </select>
               </div>
-
               <div>
-                <Label>Tipe</Label>
+                <Label>Tipe Soal</Label>
                 <select
-                  value={formData.type}
-                  onChange={(e) => setFormData({ ...formData, type: e.target.value })}
+                  value={formData.questionType}
+                  onChange={(e) => setFormData({ ...formData, questionType: e.target.value })}
                   className="w-full mt-1 p-2 border rounded-md"
                 >
                   {TYPES.map(t => (
@@ -173,46 +211,41 @@ export default function EditQuestionPage() {
                   ))}
                 </select>
               </div>
-
               <div>
-                <Label>Skill</Label>
-                <Input
-                  value={formData.skill}
-                  onChange={(e) => setFormData({ ...formData, skill: e.target.value })}
-                  placeholder="mis: reading_comprehension"
-                />
-              </div>
-
-              <div>
-                <Label>Subskill (opsional)</Label>
+                <Label>Subskill</Label>
                 <Input
                   value={formData.subskill}
                   onChange={(e) => setFormData({ ...formData, subskill: e.target.value })}
                   placeholder="mis: inference"
                 />
               </div>
-
               <div>
-                <Label>Kesulitan (1-5)</Label>
+                <Label>Kesulitan (1-18)</Label>
                 <Input
                   type="number"
                   min="1"
-                  max="5"
+                  max="18"
                   value={formData.difficulty}
-                  onChange={(e) => setFormData({ ...formData, difficulty: parseInt(e.target.value) })}
+                  onChange={(e) => setFormData({ ...formData, difficulty: parseInt(e.target.value) || 1 })}
                 />
               </div>
-
               <div>
-                <Label>Poin</Label>
+                <Label>Topik</Label>
+                <Input
+                  value={formData.topic}
+                  onChange={(e) => setFormData({ ...formData, topic: e.target.value })}
+                  placeholder="mis: lingkungan"
+                />
+              </div>
+              <div>
+                <Label>Estimasi (detik)</Label>
                 <Input
                   type="number"
-                  min="1"
-                  value={formData.points}
-                  onChange={(e) => setFormData({ ...formData, points: parseInt(e.target.value) })}
+                  min="10"
+                  value={formData.estimatedTime}
+                  onChange={(e) => setFormData({ ...formData, estimatedTime: parseInt(e.target.value) || 60 })}
                 />
               </div>
-
               <div>
                 <Label>Tag (pisahkan dengan koma)</Label>
                 <Input
@@ -220,17 +253,6 @@ export default function EditQuestionPage() {
                   onChange={(e) => setFormData({ ...formData, tags: e.target.value })}
                   placeholder="mis: grammar, vocabulary"
                 />
-              </div>
-
-              <div className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  id="isActive"
-                  checked={formData.isActive}
-                  onChange={(e) => setFormData({ ...formData, isActive: e.target.checked })}
-                  className="w-4 h-4"
-                />
-                <Label htmlFor="isActive">Aktif</Label>
               </div>
             </div>
 
@@ -245,40 +267,72 @@ export default function EditQuestionPage() {
               />
             </div>
 
-            {formData.type === 'MCQ' && (
+            <div>
+              <Label>Instruksi</Label>
+              <Textarea
+                value={formData.instruction}
+                onChange={(e) => setFormData({ ...formData, instruction: e.target.value })}
+                placeholder="Instruksi pengerjaan soal..."
+                rows={2}
+              />
+            </div>
+
+            {formData.questionType === 'MCQ' && (
               <div className="space-y-3">
-                <Label>Opsi</Label>
-                {formData.options.map((opt, i) => (
-                  <div key={i} className="flex gap-2">
-                    <Input
-                      value={opt}
-                      onChange={(e) => {
-                        const newOptions = [...formData.options]
-                        newOptions[i] = e.target.value
-                        setFormData({ ...formData, options: newOptions })
-                      }}
-                      placeholder={`Opsi ${String.fromCharCode(65 + i)}`}
-                    />
-                  </div>
-                ))}
-                <div>
-                  <Label>Jawaban Benar (A, B, C, atau D)</Label>
-                  <Input
+                <Label>Opsi Jawaban</Label>
+                {formData.options.map((opt, i) => {
+                  const label = String.fromCharCode(65 + i)
+                  return (
+                    <div key={i} className="flex gap-2 items-center">
+                      <span className="w-6 text-sm font-medium text-gray-500">{label}</span>
+                      <Input
+                        value={opt}
+                        onChange={(e) => {
+                          const newOptions = [...formData.options]
+                          newOptions[i] = e.target.value
+                          setFormData({ ...formData, options: newOptions })
+                        }}
+                        placeholder={`Opsi ${label}`}
+                      />
+                    </div>
+                  )
+                })}
+                <div className="pt-2">
+                  <Label>Jawaban Benar</Label>
+                  <select
                     value={formData.correctAnswer}
-                    onChange={(e) => setFormData({ ...formData, correctAnswer: e.target.value.toUpperCase() })}
-                    placeholder="A"
-                    maxLength={1}
-                  />
+                    onChange={(e) => setFormData({ ...formData, correctAnswer: e.target.value })}
+                    className="w-full mt-1 p-2 border rounded-md"
+                  >
+                    <option value="">Pilih jawaban benar</option>
+                    {formData.options.filter(o => o.trim()).map((_, i) => (
+                      <option key={i} value={String.fromCharCode(65 + i)}>
+                        {String.fromCharCode(65 + i)}. {formData.options[i]}
+                      </option>
+                    ))}
+                  </select>
                 </div>
               </div>
             )}
 
+            {formData.questionType !== 'MCQ' && (
+              <div>
+                <Label>Kunci Jawaban</Label>
+                <Textarea
+                  value={formData.correctAnswer}
+                  onChange={(e) => setFormData({ ...formData, correctAnswer: e.target.value })}
+                  placeholder="Kunci jawaban untuk soal ini"
+                  rows={2}
+                />
+              </div>
+            )}
+
             <div>
-              <Label>Rubrik (JSON, opsional)</Label>
+              <Label>Penjelasan</Label>
               <Textarea
-                value={formData.rubric}
-                onChange={(e) => setFormData({ ...formData, rubric: e.target.value })}
-                placeholder='{"criteria": "clarity", "weight": 1.0}'
+                value={formData.explanation}
+                onChange={(e) => setFormData({ ...formData, explanation: e.target.value })}
+                placeholder="Penjelasan jawaban..."
                 rows={3}
               />
             </div>

@@ -7,28 +7,33 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
+import { toast } from 'sonner'
 import Link from 'next/link'
 
 const DIMENSIONS = ['LISTENING', 'READING', 'SPEAKING', 'WRITING', 'MEDIATION', 'INTEGRATED']
 const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']
 const TYPES = ['MCQ', 'SHORT_ANSWER', 'ESSAY', 'AUDIO_RESPONSE', 'INTEGRATED_TASK']
+const STATUSES = ['DRAFT', 'REVIEW', 'PILOT', 'ACTIVE']
 
 export default function NewQuestionPage() {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
   const [formData, setFormData] = useState({
+    code: '',
     dimension: 'READING',
-    skill: 'reading_comprehension',
     subskill: '',
-    type: 'MCQ',
+    questionType: 'MCQ',
     level: 'B1',
-    difficulty: 3,
-    points: 10,
+    difficulty: 7,
+    topic: '',
     prompt: '',
+    instruction: '',
     options: ['', '', '', ''],
     correctAnswer: '',
+    explanation: '',
+    estimatedTime: 60,
     tags: '',
-    rubric: '',
+    status: 'DRAFT',
   })
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -36,24 +41,31 @@ export default function NewQuestionPage() {
     setLoading(true)
 
     try {
-      const content: any = { prompt: formData.prompt }
-      
-      if (formData.type === 'MCQ') {
-        content.options = formData.options.filter(o => o.trim())
-        content.correctAnswer = formData.correctAnswer
-      }
-
-      const body = {
+      const body: any = {
+        code: formData.code || null,
         dimension: formData.dimension,
-        skill: formData.skill,
         subskill: formData.subskill || null,
-        type: formData.type,
+        questionType: formData.questionType,
         level: formData.level,
         difficulty: formData.difficulty,
-        points: formData.points,
-        content,
+        topic: formData.topic || null,
+        prompt: formData.prompt,
+        instruction: formData.instruction || null,
+        correctAnswer: formData.questionType === 'MCQ' ? formData.correctAnswer : formData.correctAnswer || null,
+        explanation: formData.explanation || null,
+        estimatedTime: formData.estimatedTime || null,
         tags: formData.tags.split(',').map(t => t.trim()).filter(t => t),
-        rubric: formData.rubric ? JSON.parse(formData.rubric) : null,
+        status: formData.status,
+      }
+
+      if (formData.questionType === 'MCQ') {
+        body.options = formData.options
+          .filter(o => o.trim())
+          .map((text, i) => ({
+            label: String.fromCharCode(65 + i),
+            text,
+            isCorrect: formData.correctAnswer === String.fromCharCode(65 + i),
+          }))
       }
 
       const res = await fetch('/api/admin/questions', {
@@ -61,13 +73,17 @@ export default function NewQuestionPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       })
+      const json = await res.json()
 
-      if (!res.ok) throw new Error('Gagal membuat soal')
+      if (!res.ok || !json.success) {
+        throw new Error(json.error || 'Gagal membuat soal')
+      }
 
+      toast.success('Soal berhasil dibuat')
       router.push('/admin/questions')
-    } catch (err) {
+    } catch (err: any) {
       console.error('Gagal membuat soal:', err)
-      alert('Gagal membuat soal')
+      toast.error(err.message || 'Gagal membuat soal')
     } finally {
       setLoading(false)
     }
@@ -89,7 +105,15 @@ export default function NewQuestionPage() {
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <Label>Kode (opsional)</Label>
+                <Input
+                  value={formData.code}
+                  onChange={(e) => setFormData({ ...formData, code: e.target.value })}
+                  placeholder="mis: BIGT-RD-B1-001"
+                />
+              </div>
               <div>
                 <Label>Dimensi</Label>
                 <select
@@ -102,7 +126,18 @@ export default function NewQuestionPage() {
                   ))}
                 </select>
               </div>
-
+              <div>
+                <Label>Status</Label>
+                <select
+                  value={formData.status}
+                  onChange={(e) => setFormData({ ...formData, status: e.target.value })}
+                  className="w-full mt-1 p-2 border rounded-md"
+                >
+                  {STATUSES.map(s => (
+                    <option key={s} value={s}>{s}</option>
+                  ))}
+                </select>
+              </div>
               <div>
                 <Label>Level</Label>
                 <select
@@ -115,12 +150,11 @@ export default function NewQuestionPage() {
                   ))}
                 </select>
               </div>
-
               <div>
-                <Label>Tipe</Label>
+                <Label>Tipe Soal</Label>
                 <select
-                  value={formData.type}
-                  onChange={(e) => setFormData({ ...formData, type: e.target.value })}
+                  value={formData.questionType}
+                  onChange={(e) => setFormData({ ...formData, questionType: e.target.value })}
                   className="w-full mt-1 p-2 border rounded-md"
                 >
                   {TYPES.map(t => (
@@ -128,16 +162,6 @@ export default function NewQuestionPage() {
                   ))}
                 </select>
               </div>
-
-              <div>
-                <Label>Skill</Label>
-                <Input
-                  value={formData.skill}
-                  onChange={(e) => setFormData({ ...formData, skill: e.target.value })}
-                  placeholder="mis: reading_comprehension"
-                />
-              </div>
-
               <div>
                 <Label>Subskill (opsional)</Label>
                 <Input
@@ -146,28 +170,33 @@ export default function NewQuestionPage() {
                   placeholder="mis: inference"
                 />
               </div>
-
               <div>
-                <Label>Kesulitan (1-5)</Label>
+                <Label>Kesulitan (1-18)</Label>
                 <Input
                   type="number"
                   min="1"
-                  max="5"
+                  max="18"
                   value={formData.difficulty}
-                  onChange={(e) => setFormData({ ...formData, difficulty: parseInt(e.target.value) })}
+                  onChange={(e) => setFormData({ ...formData, difficulty: parseInt(e.target.value) || 1 })}
                 />
               </div>
-
               <div>
-                <Label>Poin</Label>
+                <Label>Topik (opsional)</Label>
+                <Input
+                  value={formData.topic}
+                  onChange={(e) => setFormData({ ...formData, topic: e.target.value })}
+                  placeholder="mis: lingkungan"
+                />
+              </div>
+              <div>
+                <Label>Estimasi Waktu (detik)</Label>
                 <Input
                   type="number"
-                  min="1"
-                  value={formData.points}
-                  onChange={(e) => setFormData({ ...formData, points: parseInt(e.target.value) })}
+                  min="10"
+                  value={formData.estimatedTime}
+                  onChange={(e) => setFormData({ ...formData, estimatedTime: parseInt(e.target.value) || 60 })}
                 />
               </div>
-
               <div>
                 <Label>Tag (pisahkan dengan koma)</Label>
                 <Input
@@ -189,40 +218,72 @@ export default function NewQuestionPage() {
               />
             </div>
 
-            {formData.type === 'MCQ' && (
+            <div>
+              <Label>Instruksi (opsional)</Label>
+              <Textarea
+                value={formData.instruction}
+                onChange={(e) => setFormData({ ...formData, instruction: e.target.value })}
+                placeholder="Instruksi pengerjaan soal..."
+                rows={2}
+              />
+            </div>
+
+            {formData.questionType === 'MCQ' && (
               <div className="space-y-3">
-                <Label>Opsi</Label>
-                {formData.options.map((opt, i) => (
-                  <div key={i} className="flex gap-2">
-                    <Input
-                      value={opt}
-                      onChange={(e) => {
-                        const newOptions = [...formData.options]
-                        newOptions[i] = e.target.value
-                        setFormData({ ...formData, options: newOptions })
-                      }}
-                      placeholder={`Opsi ${String.fromCharCode(65 + i)}`}
-                    />
-                  </div>
-                ))}
-                <div>
-                  <Label>Jawaban Benar (A, B, C, atau D)</Label>
-                  <Input
+                <Label>Opsi Jawaban</Label>
+                {formData.options.map((opt, i) => {
+                  const label = String.fromCharCode(65 + i)
+                  return (
+                    <div key={i} className="flex gap-2 items-center">
+                      <span className="w-6 text-sm font-medium text-gray-500">{label}</span>
+                      <Input
+                        value={opt}
+                        onChange={(e) => {
+                          const newOptions = [...formData.options]
+                          newOptions[i] = e.target.value
+                          setFormData({ ...formData, options: newOptions })
+                        }}
+                        placeholder={`Opsi ${label}`}
+                      />
+                    </div>
+                  )
+                })}
+                <div className="pt-2">
+                  <Label>Jawaban Benar</Label>
+                  <select
                     value={formData.correctAnswer}
-                    onChange={(e) => setFormData({ ...formData, correctAnswer: e.target.value.toUpperCase() })}
-                    placeholder="A"
-                    maxLength={1}
-                  />
+                    onChange={(e) => setFormData({ ...formData, correctAnswer: e.target.value })}
+                    className="w-full mt-1 p-2 border rounded-md"
+                  >
+                    <option value="">Pilih jawaban benar</option>
+                    {formData.options.filter(o => o.trim()).map((_, i) => (
+                      <option key={i} value={String.fromCharCode(65 + i)}>
+                        {String.fromCharCode(65 + i)}. {formData.options[i]}
+                      </option>
+                    ))}
+                  </select>
                 </div>
               </div>
             )}
 
+            {formData.questionType !== 'MCQ' && (
+              <div>
+                <Label>Kunci Jawaban</Label>
+                <Textarea
+                  value={formData.correctAnswer}
+                  onChange={(e) => setFormData({ ...formData, correctAnswer: e.target.value })}
+                  placeholder="Kunci jawaban untuk soal ini"
+                  rows={2}
+                />
+              </div>
+            )}
+
             <div>
-              <Label>Rubrik (JSON, opsional)</Label>
+              <Label>Penjelasan (opsional)</Label>
               <Textarea
-                value={formData.rubric}
-                onChange={(e) => setFormData({ ...formData, rubric: e.target.value })}
-                placeholder='{"criteria": "clarity", "weight": 1.0}'
+                value={formData.explanation}
+                onChange={(e) => setFormData({ ...formData, explanation: e.target.value })}
+                placeholder="Penjelasan jawaban..."
                 rows={3}
               />
             </div>

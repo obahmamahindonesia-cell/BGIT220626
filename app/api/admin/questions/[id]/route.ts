@@ -3,32 +3,30 @@ import { prisma } from '@/lib/prisma'
 import { getAdminUser, unauthorized } from '@/lib/admin-auth'
 
 export async function GET(
-  request: NextRequest,
+  _request: NextRequest,
   { params }: { params: { id: string } }
 ) {
   const admin = await getAdminUser()
   if (!admin) return unauthorized()
 
-  const question = await prisma.question.findUnique({
+  const question = await prisma.questionItem.findUnique({
     where: { id: params.id },
     include: {
-      _count: {
-        select: { answers: true },
-      },
+      options: { orderBy: { order: 'asc' } },
+      stimulus: true,
+      rubric: true,
+      _count: { select: { sessionItems: true } },
     },
   })
 
   if (!question) {
-    return NextResponse.json(
-      { error: 'Question not found' },
-      { status: 404 }
-    )
+    return NextResponse.json({ success: false, error: 'Soal tidak ditemukan' }, { status: 404 })
   }
 
-  return NextResponse.json({ question })
+  return NextResponse.json({ success: true, data: question })
 }
 
-export async function PUT(
+export async function PATCH(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
@@ -36,37 +34,37 @@ export async function PUT(
   if (!admin) return unauthorized()
 
   const body = await request.json()
+  const { options, stimulus, ...questionFields } = body
 
-  const question = await prisma.question.update({
+  const question = await prisma.questionItem.update({
     where: { id: params.id },
     data: {
-      dimension: body.dimension,
-      skill: body.skill,
-      subskill: body.subskill,
-      type: body.type,
-      level: body.level,
-      difficulty: body.difficulty,
-      content: body.content,
-      rubric: body.rubric,
-      tags: body.tags,
-      points: body.points,
-      isActive: body.isActive,
+      ...questionFields,
+      options: options
+        ? {
+            deleteMany: {},
+            create: options.map((o: any, i: number) => ({ label: o.label, text: o.text, isCorrect: o.isCorrect || false, order: i })),
+          }
+        : undefined,
     },
+    include: { options: { orderBy: { order: 'asc' } }, stimulus: true },
   })
 
-  return NextResponse.json({ question })
+  return NextResponse.json({ success: true, data: question })
 }
 
 export async function DELETE(
-  request: NextRequest,
+  _request: NextRequest,
   { params }: { params: { id: string } }
 ) {
   const admin = await getAdminUser()
   if (!admin) return unauthorized()
 
-  await prisma.question.delete({
+  // Soft delete - set to RETIRED
+  await prisma.questionItem.update({
     where: { id: params.id },
+    data: { status: 'RETIRED' },
   })
 
-  return NextResponse.json({ success: true })
+  return NextResponse.json({ success: true, message: 'Soal di-retire.' })
 }

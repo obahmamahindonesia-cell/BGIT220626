@@ -1,25 +1,22 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { useParams } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import Navbar from '@/components/landing/Navbar'
-import Footer from '@/components/landing/Footer'
-import { BarChart3, Headphones, BookOpen, Mic, PenSquare, RefreshCw, Puzzle, Award, Sparkles } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { BarChart3, Headphones, BookOpen, Mic, PenSquare, RefreshCw, Puzzle, Award, Sparkles, Home, RotateCcw } from 'lucide-react'
 
-interface TestResult {
+interface SessionResult {
   id: string
-  overallLevel: string
-  overallScore: number
-  listeningScore: number
-  readingScore: number
-  speakingScore: number
-  writingScore: number
-  mediationScore: number
-  integratedScore: number
-  recommendations: any[]
-  createdAt: string
+  product: string
+  status: string
+  totalScore: number
+  cefrLevel: string
+  completedAt: string
+  startedAt: string
+  durationSeconds: number
+  items: any[]
 }
 
 const DIMENSIONS = [
@@ -33,8 +30,9 @@ const DIMENSIONS = [
 
 export default function TestResultsPage() {
   const params = useParams()
+  const router = useRouter()
   const sessionId = params.sessionId as string
-  const [result, setResult] = useState<TestResult | null>(null)
+  const [session, setSession] = useState<SessionResult | null>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -43,10 +41,11 @@ export default function TestResultsPage() {
 
   const fetchResults = async () => {
     try {
-      const res = await fetch(`/api/test/results/${sessionId}`)
+      const res = await fetch(`/api/test/session/${sessionId}`)
       if (!res.ok) throw new Error('Failed to fetch results')
-      const data = await res.json()
-      setResult(data)
+      const json = await res.json()
+      if (!json.success) throw new Error(json.error || 'Failed to fetch results')
+      setSession(json.data)
     } catch (err) {
       console.error('Error fetching results:', err)
     } finally {
@@ -56,119 +55,91 @@ export default function TestResultsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#F8FAFC]">
-        <Navbar />
-        <div className="pt-24 pb-16 px-6">
-          <div className="max-w-4xl mx-auto animate-pulse space-y-6">
-            <div className="h-8 w-64 bg-gray-200 rounded-lg" />
-            <div className="h-48 bg-gray-200 rounded-2xl" />
-          </div>
-        </div>
-        <Footer />
+      <div className="animate-pulse space-y-6 max-w-4xl mx-auto py-8">
+        <div className="h-8 w-64 bg-gray-200 rounded-lg" />
+        <div className="h-48 bg-gray-200 rounded-2xl" />
       </div>
     )
   }
 
-  if (!result) {
+  if (!session) {
     return (
-      <div className="min-h-screen bg-[#F8FAFC]">
-        <Navbar />
-        <div className="pt-24 pb-16 px-6 text-center">
-          <Award className="w-16 h-16 text-muted-foreground/30 mx-auto mb-4" />
-          <p className="text-muted-foreground">Hasil tes tidak ditemukan.</p>
-        </div>
-        <Footer />
+      <div className="text-center py-20">
+        <Award className="w-16 h-16 text-muted-foreground/30 mx-auto mb-4" />
+        <p className="text-muted-foreground">Hasil tes tidak ditemukan.</p>
+        <Button variant="outline" className="mt-4" onClick={() => router.push('/test')}>
+          Kembali ke Tes
+        </Button>
       </div>
     )
   }
+
+  const totalScore = session.totalScore || 0
+  const cefrLevel = session.cefrLevel || ''
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC]">
-      <Navbar />
-      <div className="pt-24 pb-16 px-6">
-        <div className="max-w-4xl mx-auto space-y-8">
-          <div className="text-center">
-            <div className="inline-flex items-center gap-2 bg-[#0B3D91]/10 text-[#0B3D91] text-xs font-medium tracking-wider px-4 py-1.5 rounded-full uppercase mb-4">
-              <BarChart3 className="w-3.5 h-3.5" />
-              Hasil Tes BIGT
-            </div>
-            <h1 className="font-[family-name:var(--font-playfair)] text-3xl md:text-4xl font-bold text-[#0B3D91] mb-2">
-              Hasil Assessment Anda
-            </h1>
-            <p className="text-muted-foreground">
-              {new Date(result.createdAt).toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
-            </p>
-          </div>
-
-          <Card className="border-0 premium-shadow-lg rounded-2xl overflow-hidden">
-            <div className="bg-gradient-to-r from-[#0B3D91] to-[#1a4a8a] px-8 py-10 text-center">
-              <Badge className="bg-[#D4AF37] text-white border-0 text-lg px-6 py-2 mb-3">
-                {result.overallLevel}
-              </Badge>
-              <h2 className="font-[family-name:var(--font-playfair)] text-2xl font-bold text-white">
-                Skor Keseluruhan: {result.overallScore.toFixed(1)}%
-              </h2>
-            </div>
-          </Card>
-
-          <Card className="border-0 premium-shadow-md rounded-2xl">
-            <CardHeader>
-              <CardTitle className="text-base flex items-center gap-2">
-                <BarChart3 className="w-4 h-4 text-[#0B3D91]" />
-                Skor per Dimensi
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {DIMENSIONS.map((dim) => {
-                  const Icon = dim.icon
-                  const scoreKey = dim.code.toLowerCase() + 'Score' as keyof typeof result
-                  const score = result[scoreKey as keyof TestResult] as number
-
-                  return (
-                    <div key={dim.code} className="flex items-center gap-4 p-4 rounded-xl bg-[#F8FAFC] border border-gray-100">
-                      <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ backgroundColor: dim.color + '15' }}>
-                        <Icon className="w-5 h-5" style={{ color: dim.color }} />
-                      </div>
-                      <div className="flex-1">
-                        <p className="text-sm font-medium text-[#0B3D91]">{dim.name}</p>
-                        <div className="w-full bg-gray-200 rounded-full h-1.5 mt-1">
-                          <div className="h-1.5 rounded-full transition-all duration-500" style={{ width: `${score}%`, backgroundColor: dim.color }} />
-                        </div>
-                      </div>
-                      <span className="text-sm font-bold text-[#0B3D91]">{score}%</span>
-                    </div>
-                  )
-                })}
-              </div>
-            </CardContent>
-          </Card>
-
-          {result.recommendations && result.recommendations.length > 0 && (
-            <Card className="border-0 premium-shadow-md rounded-2xl">
-              <CardHeader>
-                <CardTitle className="text-base flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-[#D4AF37]" />
-                  Rekomendasi Belajar
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3">
-                  {result.recommendations.map((rec: any, i: number) => (
-                    <li key={i} className="flex items-start gap-3 p-3 rounded-xl bg-[#F8FAFC]">
-                      <div className="w-6 h-6 rounded-full bg-[#0B3D91]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="text-[10px] font-bold text-[#0B3D91]">{i + 1}</span>
-                      </div>
-                      <p className="text-sm text-muted-foreground">{typeof rec === 'string' ? rec : rec.description}</p>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          )}
+    <div className="max-w-4xl mx-auto space-y-8">
+      <div className="text-center">
+        <div className="inline-flex items-center gap-2 bg-[#0B3D91]/10 text-[#0B3D91] text-xs font-medium tracking-wider px-4 py-1.5 rounded-full uppercase mb-4">
+          <BarChart3 className="w-3.5 h-3.5" />
+          Hasil Tes BIGT
         </div>
+        <h1 className="font-[family-name:var(--font-playfair)] text-3xl md:text-4xl font-bold text-[#0B1F3A] mb-2">
+          Hasil Assessment Anda
+        </h1>
+        {session.completedAt && (
+          <p className="text-[#64748B]">
+            {new Date(session.completedAt).toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+          </p>
+        )}
       </div>
-      <Footer />
+
+      <Card className="border border-[#E5EAF2] rounded-2xl overflow-hidden">
+        <div className="bg-gradient-to-r from-[#0B1F3A] to-[#123E7C] px-8 py-10 text-center">
+          {cefrLevel && (
+            <Badge className="bg-[#C9A227] text-white border-0 text-lg px-6 py-2 mb-3">
+              {cefrLevel}
+            </Badge>
+          )}
+          <h2 className="font-[family-name:var(--font-playfair)] text-2xl font-bold text-white">
+            Skor Keseluruhan: {Math.round(totalScore)}%
+          </h2>
+        </div>
+      </Card>
+
+      <Card className="border border-[#E5EAF2] rounded-2xl">
+        <CardHeader>
+          <CardTitle className="text-base flex items-center gap-2 text-[#0B1F3A]">
+            <BarChart3 className="w-4 h-4 text-[#123E7C]" />
+            Ringkasan Sesi
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="p-4 rounded-xl bg-[#F7F9FC] border border-[#E5EAF2]">
+              <p className="text-xs text-[#64748B]">Soal Dijawab</p>
+              <p className="text-lg font-bold text-[#0B1F3A]">{session.items?.filter(i => i.answer).length || 0}/{session.items?.length || 0}</p>
+            </div>
+            <div className="p-4 rounded-xl bg-[#F7F9FC] border border-[#E5EAF2]">
+              <p className="text-xs text-[#64748B]">Durasi</p>
+              <p className="text-lg font-bold text-[#0B1F3A]">{session.durationSeconds ? `${Math.floor(session.durationSeconds / 60)} menit` : '-'}</p>
+            </div>
+            <div className="p-4 rounded-xl bg-[#F7F9FC] border border-[#E5EAF2]">
+              <p className="text-xs text-[#64748B]">Produk</p>
+              <p className="text-lg font-bold text-[#0B1F3A]">{session.product || '-'}</p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      <div className="flex justify-center gap-4">
+        <Button variant="outline" onClick={() => router.push('/test')} className="border-[#E5EAF2]">
+          <Home className="w-4 h-4 mr-2" /> Kembali ke Tes
+        </Button>
+        <Button onClick={() => router.push('/test/start')} className="bg-[#D7193F] hover:bg-[#D7193F]/90 text-white">
+          <RotateCcw className="w-4 h-4 mr-2" /> Tes Baru
+        </Button>
+      </div>
     </div>
   )
 }

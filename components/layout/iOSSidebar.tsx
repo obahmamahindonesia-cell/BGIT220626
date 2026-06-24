@@ -12,6 +12,8 @@ import {
   GraduationCap,
   LogOut,
   X,
+  Award,
+  Settings,
 } from 'lucide-react'
 import Logo from '@/components/brand/Logo'
 
@@ -27,12 +29,14 @@ const NAV_SECTIONS = [
     label: 'TES',
     items: [
       { href: '/test/history', label: 'Riwayat Tes', icon: History },
+      { href: '/certificates', label: 'Sertifikat', icon: Award },
     ],
   },
   {
     label: 'AKUN',
     items: [
       { href: '/profile', label: 'Profil', icon: UserCircle },
+      { href: '/settings', label: 'Pengaturan', icon: Settings },
     ],
   },
 ]
@@ -81,7 +85,9 @@ export default function IosSidebar({ mobile, onClose }: AppSidebarProps) {
     if (href === '/dashboard') return pathname === '/dashboard'
     if (href === '/test') return pathname === '/test' || pathname === '/test/start'
     if (href === '/test/history') return pathname.startsWith('/test/history')
+    if (href === '/certificates') return pathname.startsWith('/certificates')
     if (href === '/profile') return pathname.startsWith('/profile')
+    if (href === '/settings') return pathname.startsWith('/settings')
     return pathname.startsWith(href)
   }
 
