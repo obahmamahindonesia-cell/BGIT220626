@@ -375,3 +375,21 @@ model CanDoDescriptor {
 
   @@index([level, skill])
 }
+
+model PracticeQuestion {
+  id          String      @id @default(uuid())
+  dimension   Dimension
+  cefrLevel   CEFRLevel
+  title       String
+  description String?
+  pdfUrl      String?
+  storagePath String?
+  difficulty  Int         @default(3)
+  tags        String[]
+  isActive    Boolean     @default(true)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  @@index([dimension, cefrLevel])
+  @@index([isActive])
+}
