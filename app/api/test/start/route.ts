@@ -109,6 +109,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Create TestSession
+    const blueprintDuration = blueprint?.durationMinutes || Math.max(30, Math.round(selectedQuestions.length * 1.5))
     const session = await prisma.testSession.create({
       data: {
         userId: dbUser.id,
@@ -116,7 +117,10 @@ export async function POST(request: NextRequest) {
         targetLevel: targetLevel || null,
         status: 'IN_PROGRESS',
         questionCount: selectedQuestions.length,
-        metadata: { dimensions: dimensions || null },
+        metadata: {
+          dimensions: dimensions || null,
+          durationMinutes: blueprintDuration,
+        },
       },
     })
 

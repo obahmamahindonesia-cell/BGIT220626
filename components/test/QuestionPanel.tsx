@@ -4,7 +4,7 @@ import { useTestStore } from '@/store/testStore'
 import { Flag } from 'lucide-react'
 import { useI18n } from '@/lib/i18n/context'
 
-const OPTION_LABELS = ['A', 'B', 'C', 'D', 'E']
+const OPTION_LABELS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
 
 export default function QuestionPanel() {
   const { t } = useI18n()
@@ -26,12 +26,12 @@ export default function QuestionPanel() {
 
   const renderMCQ = () => (
     <div className="space-y-3">
-      {content.options?.map((option: string, i: number) => {
-        const label = OPTION_LABELS[i] || String(i + 1)
+      {content.options?.map((option, i) => {
+        const label = option.label || OPTION_LABELS[i] || String(i + 1)
         const isSelected = answer?.selectedOption === label
         return (
           <button
-            key={i}
+            key={label}
             onClick={() => setAnswer(question.id, { selectedOption: label })}
             className={`w-full flex items-start gap-4 p-4 rounded-xl border transition-all duration-200 text-left ${
               isSelected
@@ -45,7 +45,7 @@ export default function QuestionPanel() {
               {label}
             </div>
             <span className={`text-sm leading-relaxed pt-1.5 ${isSelected ? 'text-white/90' : 'text-white/60'}`}>
-              {option}
+              {option.text}
             </span>
             {isSelected && (
               <div className="ml-auto flex-shrink-0 mt-1.5">
@@ -129,7 +129,7 @@ export default function QuestionPanel() {
         <div>
           {question.type === 'MCQ' && renderMCQ()}
           {question.type === 'ESSAY' && renderEssay()}
-          {(question.type === 'SHORT_ANSWER' || question.type === 'SHORT_ANSWER') && renderShortAnswer()}
+          {(question.type === 'SHORT_ANSWER') && renderShortAnswer()}
           {question.type === 'AUDIO_RESPONSE' && (
             <div className="text-center py-8">
               <div className="w-16 h-16 rounded-full bg-[#10B981]/10 flex items-center justify-center mx-auto mb-4">

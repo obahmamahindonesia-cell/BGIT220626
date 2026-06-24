@@ -29,6 +29,7 @@ export async function GET() {
 
     if (!dbUser) {
       return NextResponse.json({
+        needsOnboarding: true,
         user: { name: user.user_metadata?.name || user.email?.split('@')[0] || 'Pengguna', email: user.email },
         currentLevel: null,
         overallScore: null,
@@ -42,6 +43,8 @@ export async function GET() {
         weakestDimension: null,
         latestCertificate: null,
         pendingSessionCount: 0,
+        pendingSessionId: null,
+        pendingSessionAnswers: 0,
       })
     }
 

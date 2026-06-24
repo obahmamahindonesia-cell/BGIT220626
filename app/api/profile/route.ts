@@ -23,13 +23,21 @@ export async function GET() {
       return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 })
     }
 
-    const dbUser = await prisma.user.findUnique({
+    let dbUser = await prisma.user.findUnique({
       where: { supabaseId: authUser.id },
       include: { profile: true },
     })
 
+    // Auto-create User row if missing (handles new registrations)
     if (!dbUser) {
-      return NextResponse.json({ success: false, error: 'User not found' }, { status: 404 })
+      dbUser = await prisma.user.create({
+        data: {
+          supabaseId: authUser.id,
+          email: authUser.email!,
+          name: authUser.user_metadata?.name || null,
+        },
+        include: { profile: true },
+      })
     }
 
     const profile = dbUser.profile

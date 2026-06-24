@@ -40,6 +40,10 @@ function classNames(...classes: (string | false | undefined | null)[]) {
 function DashboardSkeleton() {
   return (
     <div className="animate-pulse space-y-8">
+      <div className="flex items-center gap-2 mb-4">
+        <span className="w-4 h-4 border-2 border-[#007AFF] border-t-transparent rounded-full animate-spin" />
+        <span className="text-sm text-[#8E8E93]">Memuat data akun...</span>
+      </div>
       <div className="flex items-center gap-4">
         <div className="h-14 w-14 rounded-2xl bg-[#E5E5EA]" />
         <div className="space-y-2">
@@ -156,28 +160,44 @@ export default function DashboardPage() {
   const { t } = useI18n()
   const [data, setData] = useState<DashboardData | null>(null)
   const [loading, setLoading] = useState(true)
+  const [loadError, setLoadError] = useState<string | null>(null)
+
+  const fetchData = async () => {
+    setLoading(true)
+    setLoadError(null)
+    try {
+      const controller = new AbortController()
+      const timeoutId = setTimeout(() => controller.abort(), 10000)
+
+      const res = await fetch('/api/dashboard/stats', { signal: controller.signal })
+      clearTimeout(timeoutId)
+
+      const text = await res.text()
+      let json: any
+      try { json = JSON.parse(text) } catch { throw new Error('Server mengembalikan respons yang tidak valid.') }
+
+      if (json.needsOnboarding) {
+        window.location.href = '/onboarding'
+        return
+      }
+
+      setData(json)
+    } catch (err: any) {
+      if (err.name === 'AbortError') {
+        setLoadError('Gagal memuat dasbor. Silakan coba lagi.')
+      } else {
+        setLoadError(err.message || 'Gagal memuat dasbor.')
+      }
+    } finally {
+      setLoading(false)
+    }
+  }
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch('/api/dashboard/stats')
-        if (res.ok) {
-          const json = await res.json()
-          if (json.needsOnboarding) {
-            window.location.href = '/onboarding'
-            return
-          }
-          setData(json)
-        }
-      } catch { } finally {
-        setLoading(false)
-      }
-    }
-
     const supabase = createClient()
     supabase.auth.getUser().then(({ data: { user } }) => {
-      if (!user) window.location.href = '/login'
-      else fetchData()
+      if (!user) { window.location.href = '/login'; return }
+      fetchData()
     })
   }, [])
 
@@ -185,12 +205,25 @@ export default function DashboardPage() {
     return <DashboardSkeleton />
   }
 
-  if (!data) {
+  if (loadError) {
     return (
-      <div className="flex items-center justify-center py-20">
-        <p className="text-[#8E8E93]">{t('dashboard.failLoad')}</p>
+      <div className="flex flex-col items-center justify-center py-20 gap-4">
+        <p className="text-[#FF3B30] text-sm">{loadError}</p>
+        <button
+          onClick={fetchData}
+          className="px-5 py-2.5 rounded-xl bg-[#007AFF] text-white text-sm font-semibold shadow-lg shadow-[#007AFF]/25 hover:shadow-[#007AFF]/40 transition-all"
+        >
+          Coba Lagi
+        </button>
+        <a href="/login" className="text-xs text-[#8E8E93] hover:text-[#1C1C1E] transition-colors">
+          Kembali ke Login
+        </a>
       </div>
     )
+  }
+
+  if (!data) {
+    return null
   }
 
   const d = data

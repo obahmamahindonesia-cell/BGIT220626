@@ -21,14 +21,27 @@ import {
   Globe,
   Users,
   Monitor,
+  AlertCircle,
 } from 'lucide-react';
 import Logo from '@/components/brand/Logo';
 
 const onboardingSchema = z.object({
-  fullName: z.string().min(2, 'Nama harus diisi'),
-  age: z.number().min(12).max(100),
+  fullName: z
+    .string()
+    .transform(val => val.trim())
+    .pipe(
+      z.string()
+        .min(2, 'Nama minimal 2 karakter.')
+        .max(50, 'Nama maksimal 50 karakter.')
+    ),
+  age: z
+    .string()
+    .refine(val => val.trim() !== '', { message: 'Umur belum diisi.' })
+    .refine(val => !Number.isNaN(Number(val.trim())), { message: 'Umur harus berupa angka.' })
+    .refine(val => Number(val.trim()) >= 3, { message: 'Umur minimal 3 tahun.' })
+    .refine(val => Number(val.trim()) <= 12, { message: 'Umur maksimal 12 tahun.' }),
   profession: z.enum(['mahasiswa', 'guru', 'profesional', 'pelajar', 'bipa', 'lainnya']),
-  goals: z.array(z.string()).min(1, 'Pilih minimal satu tujuan'),
+  goals: z.array(z.string()).min(1, 'Pilih minimal satu tujuan.'),
   experience: z.string(),
   preferredDuration: z.enum(['30', '60', '90']),
   wantPracticeFirst: z.boolean(),
@@ -94,12 +107,13 @@ export default function OnboardingWizard() {
   const router = useRouter();
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [saveError, setSaveError] = useState<string | null>(null);
 
   const form = useForm<OnboardingForm>({
     resolver: zodResolver(onboardingSchema),
     defaultValues: {
       fullName: '',
-      age: 25,
+      age: '',
       profession: 'mahasiswa',
       goals: [],
       experience: '',
@@ -112,6 +126,7 @@ export default function OnboardingWizard() {
   const values = watch();
 
   const nextStep = async () => {
+    setSaveError(null);
     const fields = getStepFields(currentStep);
     const isValid = fields ? await trigger(fields) : true;
     if (isValid && currentStep < steps.length) {
@@ -144,12 +159,45 @@ export default function OnboardingWizard() {
 
   const onSubmit = async (data: OnboardingForm) => {
     setIsSubmitting(true);
+    setSaveError(null);
     try {
       localStorage.setItem('bigt_onboarding', JSON.stringify(data));
-      await new Promise(resolve => setTimeout(resolve, 800));
-      router.push('/dashboard');
-    } catch (error) {
-      console.error(error);
+
+      const res = await fetch('/api/user/onboarding', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          age: parseInt(data.age, 10),
+          profession: data.profession,
+          testGoals: data.goals,
+          hasPreviousTest: true,
+          previousTestType: data.experience || null,
+          preferredDuration: parseInt(data.preferredDuration),
+          practiceMode: data.wantPracticeFirst,
+          onboardingCompleted: true,
+          technicalCheckPassed: true,
+        }),
+      });
+
+      if (!res.ok) {
+        const errData = await res.json().catch(() => ({}));
+        throw new Error(errData.error || 'Gagal menyimpan profil. Silakan coba lagi.');
+      }
+
+      const profileRes = await fetch('/api/profile', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: data.fullName }),
+      });
+
+      if (!profileRes.ok) {
+        const errData = await profileRes.json().catch(() => ({}));
+        throw new Error(errData.error || 'Gagal menyimpan nama.');
+      }
+
+      router.replace('/dashboard');
+    } catch (error: any) {
+      setSaveError(error.message || 'Gagal menyimpan profil. Silakan coba lagi.');
     } finally {
       setIsSubmitting(false);
     }
@@ -193,10 +241,15 @@ export default function OnboardingWizard() {
                 id="fullName"
                 {...register('fullName')}
                 placeholder="Masukkan nama Anda"
-                className="rounded-xl border-[#E5E5EA] h-12 px-4 text-base"
+                className={`rounded-xl border h-12 px-4 text-base ${
+                  errors.fullName ? 'border-red-400 focus-visible:ring-red-400' : 'border-[#E5E5EA]'
+                }`}
               />
               {errors.fullName && (
-                <p className="text-xs text-red-500 mt-1">{errors.fullName.message}</p>
+                <p className="text-xs text-red-500 mt-1 flex items-center gap-1">
+                  <AlertCircle className="w-3 h-3" />
+                  {errors.fullName.message}
+                </p>
               )}
             </div>
 
@@ -207,11 +260,20 @@ export default function OnboardingWizard() {
               <Input
                 id="age"
                 type="number"
-                {...register('age', { valueAsNumber: true })}
-                className="rounded-xl border-[#E5E5EA] h-12 px-4 text-base"
+                inputMode="numeric"
+                min={3}
+                max={12}
+                {...register('age')}
+                placeholder="Masukkan usia Anda"
+                className={`rounded-xl border h-12 px-4 text-base ${
+                  errors.age ? 'border-red-400 focus-visible:ring-red-400' : 'border-[#E5E5EA]'
+                }`}
               />
               {errors.age && (
-                <p className="text-xs text-red-500 mt-1">{errors.age.message}</p>
+                <p className="text-xs text-red-500 mt-1 flex items-center gap-1">
+                  <AlertCircle className="w-3 h-3" />
+                  {errors.age.message}
+                </p>
               )}
             </div>
 
@@ -275,7 +337,10 @@ export default function OnboardingWizard() {
               })}
             </div>
             {errors.goals && (
-              <p className="text-xs text-red-500 mt-1">{errors.goals.message}</p>
+              <p className="text-xs text-red-500 mt-1 flex items-center gap-1">
+                <AlertCircle className="w-3 h-3" />
+                {errors.goals.message}
+              </p>
             )}
           </div>
         );
@@ -471,6 +536,13 @@ export default function OnboardingWizard() {
         <CardContent className="p-8">
           {renderStep()}
 
+          {saveError && (
+            <div className="mt-4 p-3 rounded-xl bg-red-50 border border-red-200 flex items-start gap-2">
+              <AlertCircle className="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5" />
+              <p className="text-sm text-red-700">{saveError}</p>
+            </div>
+          )}
+
           <div className="flex justify-between mt-8 pt-4 border-t border-[#E5E5EA]">
             {currentStep > 1 ? (
               <Button
@@ -487,9 +559,19 @@ export default function OnboardingWizard() {
             {currentStep < steps.length ? (
               <Button
                 onClick={nextStep}
+                disabled={isSubmitting}
                 className="ml-auto rounded-xl px-8 h-12 text-sm bg-[#007AFF] hover:bg-[#0066CC] shadow-lg shadow-[#007AFF]/20"
               >
-                Lanjut <ArrowRight className="ml-2 w-4 h-4" />
+                {isSubmitting ? (
+                  <span className="flex items-center gap-2">
+                    <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                    Menyimpan...
+                  </span>
+                ) : (
+                  <>
+                    Lanjut <ArrowRight className="ml-2 w-4 h-4" />
+                  </>
+                )}
               </Button>
             ) : (
               <Button

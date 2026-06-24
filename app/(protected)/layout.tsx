@@ -36,7 +36,7 @@ export default function ProtectedLayout({ children }: { children: React.ReactNod
 
   const isFullScreen =
     pathname.startsWith('/onboarding') ||
-    (pathname.startsWith('/test/') && pathname !== '/test' && pathname !== '/test/start' && !pathname.startsWith('/test/history'))
+    (pathname.startsWith('/test/') && pathname !== '/test' && pathname !== '/test/start' && !pathname.startsWith('/test/history') && pathname.split('/').length === 3)
 
   if (loading) {
     return (

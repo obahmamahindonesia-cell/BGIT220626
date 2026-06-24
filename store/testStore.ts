@@ -1,8 +1,11 @@
+'use client'
+
 import { create } from 'zustand'
-import { AnswerResponse, Dimension, QuestionType } from '@/types'
+import { AnswerResponse, QuestionOption } from '@/types'
 
 export interface TestQuestion {
   id: string
+  sessionItemId: string
   dimension: string
   skill: string
   type: string
@@ -11,11 +14,14 @@ export interface TestQuestion {
   points: number
   content: {
     prompt?: string
-    options?: string[]
-    audioUrl?: string
-    imageUrl?: string
-    passage?: string
+    instruction?: string
+    options?: QuestionOption[]
+    questionType?: string
+    stimulus?: { type: string; title: string | null; content: string | null; transcript: string | null } | null
     correctAnswer?: string
+    subskill?: string
+    topic?: string
+    tags?: string[]
   }
 }
 
@@ -31,18 +37,16 @@ interface TestState {
   answers: Record<string, AnswerResponse>
   flaggedQuestions: Set<string>
   timeRemaining: number
-  totalTime: number
+  durationMinutes: number
   isFinished: boolean
-  isFullscreen: boolean
   saveStatus: SaveStatus
-  autoSaveTimer: number | null
+  debounceTimers: Record<string, NodeJS.Timeout>
 
-  setSession: (sessionId: string, questions: TestQuestion[]) => void
+  setSession: (sessionId: string, questions: TestQuestion[], durationMinutes: number) => void
   setCurrentIndex: (index: number) => void
   setAnswer: (questionId: string, answer: AnswerResponse) => void
   toggleFlag: (questionId: string) => void
   setTimeRemaining: (time: number) => void
-  setFullscreen: (value: boolean) => void
   setSaveStatus: (status: Partial<SaveStatus>) => void
   nextQuestion: () => void
   previousQuestion: () => void
@@ -64,31 +68,59 @@ export const useTestStore = create<TestState>((set, get) => ({
   currentIndex: 0,
   answers: {},
   flaggedQuestions: new Set<string>(),
-  timeRemaining: 1800,
-  totalTime: 1800,
+  timeRemaining: 0,
+  durationMinutes: 0,
   isFinished: false,
-  isFullscreen: false,
   saveStatus: { state: 'idle', message: '' },
-  autoSaveTimer: null,
+  debounceTimers: {},
 
-  setSession: (sessionId, questions) =>
+  setSession: (sessionId, questions, durationMinutes) => {
+    const totalSeconds = durationMinutes * 60
     set({
       sessionId,
       questions,
       currentIndex: 0,
       answers: {},
       flaggedQuestions: new Set<string>(),
-      timeRemaining: questions.length * 90,
-      totalTime: questions.length * 90,
+      timeRemaining: totalSeconds,
+      durationMinutes,
       isFinished: false,
       saveStatus: { state: 'idle', message: '' },
-    }),
+      debounceTimers: {},
+    })
+  },
 
   setCurrentIndex: (index) => set({ currentIndex: index }),
 
   setAnswer: (questionId, answer) => {
     const answers = { ...get().answers, [questionId]: answer }
-    set({ answers, saveStatus: { state: 'idle', message: '' } })
+    set({ answers, saveStatus: { state: 'saving', message: 'Menyimpan Jawaban' } })
+
+    const existing = get().debounceTimers[questionId]
+    if (existing) clearTimeout(existing)
+
+    const timer = setTimeout(async () => {
+      const state = useTestStore.getState()
+      if (!state.sessionId) return
+      try {
+        const res = await fetch(`/api/test/session/${state.sessionId}/answer`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            sessionItemId: questionId,
+            answer: answer.selectedOption || answer.text || '',
+          }),
+        })
+        if (!res.ok) throw new Error('Gagal menyimpan')
+        useTestStore.getState().setSaveStatus({ state: 'saved', message: 'Jawaban Tersimpan' })
+        setTimeout(() => useTestStore.getState().setSaveStatus({ state: 'idle', message: '' }), 2000)
+      } catch {
+        useTestStore.getState().setSaveStatus({ state: 'error', message: 'Gagal Menyimpan' })
+        setTimeout(() => useTestStore.getState().setSaveStatus({ state: 'idle', message: '' }), 3000)
+      }
+    }, 800)
+
+    set({ debounceTimers: { ...get().debounceTimers, [questionId]: timer } })
   },
 
   toggleFlag: (questionId) => {
@@ -99,8 +131,6 @@ export const useTestStore = create<TestState>((set, get) => ({
   },
 
   setTimeRemaining: (time) => set({ timeRemaining: time }),
-
-  setFullscreen: (value) => set({ isFullscreen: value }),
 
   setSaveStatus: (status) =>
     set((state) => ({ saveStatus: { ...state.saveStatus, ...status } })),
@@ -119,19 +149,22 @@ export const useTestStore = create<TestState>((set, get) => ({
 
   finishTest: () => set({ isFinished: true }),
 
-  reset: () =>
+  reset: () => {
+    const timers = get().debounceTimers
+    for (const t of Object.values(timers)) clearTimeout(t)
     set({
       sessionId: null,
       questions: [],
       currentIndex: 0,
       answers: {},
       flaggedQuestions: new Set<string>(),
-      timeRemaining: 1800,
-      totalTime: 1800,
+      timeRemaining: 0,
+      durationMinutes: 0,
       isFinished: false,
-      isFullscreen: false,
       saveStatus: { state: 'idle', message: '' },
-    }),
+      debounceTimers: {},
+    })
+  },
 
   getCurrentQuestion: () => {
     const state = get()

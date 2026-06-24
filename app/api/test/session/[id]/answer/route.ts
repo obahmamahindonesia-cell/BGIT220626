@@ -57,15 +57,6 @@ export async function POST(
       return NextResponse.json({ success: false, error: 'Item tidak ditemukan dalam sesi ini.' }, { status: 400 })
     }
 
-    // Check if already answered
-    const existingAnswer = await prisma.userAnswer.findUnique({
-      where: { sessionItemId },
-    })
-
-    if (existingAnswer) {
-      return NextResponse.json({ success: false, error: 'Soal ini sudah dijawab.' }, { status: 409 })
-    }
-
     // Auto-score for MCQ / SHORT_ANSWER
     const assessment = await assessAnswer(
       {
@@ -82,8 +73,17 @@ export async function POST(
         ? assessment.score === 10
         : null
 
-    const userAnswer = await prisma.userAnswer.create({
-      data: {
+    const userAnswer = await prisma.userAnswer.upsert({
+      where: { sessionItemId },
+      update: {
+        answer,
+        score: assessment.score || null,
+        aiScore: assessment.score || null,
+        aiFeedback: assessment.feedback || null,
+        isCorrect: isCorrect ?? undefined,
+        feedback: assessment.feedback || null,
+      },
+      create: {
         sessionItemId,
         userId: dbUser.id,
         answer,

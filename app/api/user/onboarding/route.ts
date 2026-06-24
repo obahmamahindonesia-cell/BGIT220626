@@ -31,14 +31,24 @@ export async function POST(request: NextRequest) {
   try {
     const supabase = createClient()
     const { data: { user } } = await supabase.auth.getUser()
-    if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-
-    const dbUser = await prisma.user.findUnique({
-      where: { supabaseId: user.id },
-    })
-    if (!dbUser) return NextResponse.json({ error: 'User not found' }, { status: 404 })
+    if (!user) return NextResponse.json({ success: false, error: 'Anda harus masuk terlebih dahulu.' }, { status: 401 })
 
     const body = await request.json()
+
+    if (!body.age || !body.profession) {
+      return NextResponse.json({ success: false, error: 'Data onboarding belum lengkap.' }, { status: 400 })
+    }
+
+    // Ensure User row exists (create if missing — handles new registrations)
+    const dbUser = await prisma.user.upsert({
+      where: { supabaseId: user.id },
+      update: { email: user.email!, name: body.name || user.user_metadata?.name || null },
+      create: {
+        supabaseId: user.id,
+        email: user.email!,
+        name: body.name || user.user_metadata?.name || null,
+      },
+    })
 
     const profile = await prisma.userProfile.upsert({
       where: { userId: dbUser.id },
@@ -75,8 +85,17 @@ export async function POST(request: NextRequest) {
       },
     })
 
-    return NextResponse.json({ ok: true, profile })
+    // Also update supabase user metadata
+    await supabase.auth.updateUser({
+      data: { name: body.name || dbUser.name, onboardingCompleted: true },
+    }).catch(() => {})
+
+    return NextResponse.json({
+      success: true,
+      profile: { onboardingCompleted: profile.onboardingCompleted },
+      redirectTo: '/dashboard',
+    })
   } catch {
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
+    return NextResponse.json({ success: false, error: 'Gagal menyimpan onboarding. Silakan coba lagi.' }, { status: 500 })
   }
 }

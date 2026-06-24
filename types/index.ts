@@ -8,12 +8,24 @@ export type UserRole = 'TEST_TAKER' | 'ADMIN'
 
 export type SessionStatus = 'IN_PROGRESS' | 'SUBMITTED' | 'SCORED' | 'FAILED'
 
+export interface QuestionOption {
+  label: string
+  text: string
+}
+
 export interface QuestionContent {
   prompt: string
-  options?: string[]
+  instruction?: string
+  options?: QuestionOption[]
+  questionType?: string
+  stimulus?: { type: string; title: string | null; content: string | null; transcript: string | null } | null
   audioUrl?: string
   attachments?: string[]
   correctAnswer?: string | number
+  subskill?: string
+  topic?: string
+  tags?: string[]
+  estimatedTime?: number
 }
 
 export interface QuestionRubric {

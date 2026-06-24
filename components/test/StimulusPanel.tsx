@@ -12,9 +12,10 @@ export default function StimulusPanel() {
 
   const content = question.content
   const dimension = question.dimension
-  const hasAudio = content?.audioUrl
-  const hasImage = content?.imageUrl
-  const hasPassage = content?.passage
+  const stimulus = content.stimulus
+  const hasAudio = stimulus?.type === 'AUDIO'
+  const hasImage = stimulus?.type === 'IMAGE'
+  const hasPassage = stimulus?.type === 'TEXT' && !!stimulus?.content
 
   return (
     <div className="h-full flex flex-col">
@@ -35,7 +36,10 @@ export default function StimulusPanel() {
         {hasPassage && (
           <div className="prose prose-sm prose-invert max-w-none">
             <div className="p-4 rounded-xl bg-white/[0.03] border border-white/[0.06]">
-              <p className="text-sm text-white/70 leading-relaxed whitespace-pre-line">{content.passage}</p>
+              {stimulus?.title && (
+                <p className="text-xs font-semibold text-white/40 mb-2">{stimulus.title}</p>
+              )}
+              <p className="text-sm text-white/70 leading-relaxed whitespace-pre-line">{stimulus?.content}</p>
             </div>
           </div>
         )}
@@ -47,7 +51,7 @@ export default function StimulusPanel() {
                 <Headphones className="w-5 h-5 text-[#10B981]" />
               </div>
               <div>
-                <p className="text-sm font-semibold text-white/70">{t('testRunner.audioStimulus')}</p>
+                <p className="text-sm font-semibold text-white/70">{stimulus?.title || t('testRunner.audioStimulus')}</p>
                 <p className="text-[10px] text-white/30">{t('testRunner.audioHint')}</p>
               </div>
             </div>

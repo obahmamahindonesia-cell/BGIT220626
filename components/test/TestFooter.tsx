@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useTestStore } from '@/store/testStore'
 import { useRouter } from 'next/navigation'
-import { ChevronLeft, ChevronRight, Save, AlertTriangle, X, Loader2, Flag } from 'lucide-react'
+import { ChevronLeft, ChevronRight, AlertTriangle, X, Loader2, Flag } from 'lucide-react'
 import { useI18n } from '@/lib/i18n/context'
 
 export default function TestFooter() {
@@ -14,9 +14,7 @@ export default function TestFooter() {
     questions,
     currentIndex,
     timeRemaining,
-    totalTime,
     saveStatus,
-    setSaveStatus,
     previousQuestion,
     nextQuestion,
     finishTest,
@@ -28,61 +26,31 @@ export default function TestFooter() {
 
   const isFirst = currentIndex === 0
   const isLast = currentIndex === questions.length - 1
-  const currentQuestion = questions[currentIndex]
-  const currentAnswer = currentQuestion ? useTestStore.getState().answers[currentQuestion.id] : null
-  const hasAnswer = !!currentAnswer
-
-  const handleSaveAndNext = async () => {
-    if (submitting || !sessionId || !currentQuestion) return
-
-    if (isLast) {
-      setShowEndModal(true)
-      return
-    }
-
-    setSaveStatus({ state: 'saving', message: t('common.saving') })
-
-    const answer = useTestStore.getState().answers[currentQuestion.id]
-    if (answer) {
-      try {
-        const res = await fetch(`/api/test/session/${sessionId}/answer`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            sessionItemId: currentQuestion.id,
-            answer: answer.selectedOption || answer.text || '',
-          }),
-        })
-        if (!res.ok) throw new Error('Failed to save')
-        setSaveStatus({ state: 'saved', message: t('common.saved') })
-        setTimeout(() => setSaveStatus({ state: 'idle', message: '' }), 2000)
-      } catch {
-        setSaveStatus({ state: 'error', message: t('common.saveFailed') })
-        setTimeout(() => setSaveStatus({ state: 'idle', message: '' }), 3000)
-      }
-    }
-
-    nextQuestion()
-  }
+  const answeredCount = getAnsweredCount()
+  const totalCount = questions.length
 
   const handleEndTest = async () => {
     setSubmitting(true)
     try {
-      for (const q of questions) {
-        const answer = useTestStore.getState().answers[q.id]
-        if (answer) {
-          await fetch(`/api/test/session/${sessionId}/answer`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              sessionItemId: q.id,
-              answer: answer.selectedOption || answer.text || '',
-            }),
-          })
-        }
-      }
+      const state = useTestStore.getState()
 
-      const durationSeconds = Math.round(totalTime - timeRemaining)
+      // Flush all pending auto-saves by saving unanswered questions
+      const savePromises = state.questions.map(q => {
+        const answer = state.answers[q.id]
+        if (!answer) return Promise.resolve()
+        return fetch(`/api/test/session/${sessionId}/answer`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            sessionItemId: q.id,
+            answer: answer.selectedOption || answer.text || '',
+          }),
+        }).catch(() => {})
+      })
+      await Promise.all(savePromises)
+
+      const durationSeconds = state.durationMinutes * 60 - state.timeRemaining
+
       const res = await fetch(`/api/test/session/${sessionId}/complete`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -94,7 +62,7 @@ export default function TestFooter() {
       finishTest()
       router.push(`/test/${sessionId}/results`)
     } catch {
-      alert(t('testRunner.endFailed'))
+      alert('Gagal menyelesaikan tes. Silakan coba lagi.')
     } finally {
       setSubmitting(false)
       setShowEndModal(false)
@@ -112,27 +80,29 @@ export default function TestFooter() {
               className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] disabled:opacity-30 disabled:cursor-not-allowed text-white/60 text-xs font-medium transition-all"
             >
               <ChevronLeft className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">{t('testRunner.previous')}</span>
+              <span className="hidden sm:inline">Sebelumnya</span>
             </button>
           </div>
 
           <div className="flex items-center gap-2">
             {saveStatus.state === 'saving' && (
-              <span className="flex items-center gap-1.5 text-[10px] text-white/30">
+              <span className="flex items-center gap-1.5 text-[10px] text-[#F59E0B]">
                 <Loader2 className="w-3 h-3 animate-spin" />
-                {t('common.saving')}
+                Menyimpan Jawaban
               </span>
             )}
             {saveStatus.state === 'saved' && (
               <span className="flex items-center gap-1.5 text-[10px] text-[#10B981]">
-                <Save className="w-3 h-3" />
-                {t('common.saved')}
+                <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                Jawaban Tersimpan
               </span>
             )}
             {saveStatus.state === 'error' && (
               <span className="flex items-center gap-1.5 text-[10px] text-red-400">
                 <AlertTriangle className="w-3 h-3" />
-                {t('common.saveFailed')}
+                Gagal Menyimpan
               </span>
             )}
           </div>
@@ -143,26 +113,27 @@ export default function TestFooter() {
               className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-red-400/60 hover:text-red-400 hover:bg-red-500/10 text-xs font-medium transition-all"
             >
               <Flag className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">{t('testRunner.endSession')}</span>
+              <span className="hidden sm:inline">Selesaikan Tes</span>
             </button>
 
-            <button
-              onClick={handleSaveAndNext}
-              disabled={submitting}
-              className="flex items-center gap-1.5 px-5 py-2 rounded-xl bg-gradient-to-r from-[#10B981] to-[#059669] text-white text-xs font-semibold shadow-lg shadow-[#10B981]/20 hover:shadow-[#10B981]/30 hover:translate-y-[-1px] active:translate-y-0 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {isLast ? (
-                <>
-                  <Save className="w-3.5 h-3.5" />
-                  {t('testRunner.submit')}
-                </>
-              ) : (
-                <>
-                  {t('testRunner.saveContinue')}
-                  <ChevronRight className="w-3.5 h-3.5" />
-                </>
-              )}
-            </button>
+            {isLast ? (
+              <button
+                onClick={() => setShowEndModal(true)}
+                disabled={submitting}
+                className="flex items-center gap-1.5 px-5 py-2 rounded-xl bg-gradient-to-r from-[#10B981] to-[#059669] text-white text-xs font-semibold shadow-lg shadow-[#10B981]/20 hover:shadow-[#10B981]/30 hover:translate-y-[-1px] active:translate-y-0 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <Flag className="w-3.5 h-3.5" />
+                Selesaikan Tes
+              </button>
+            ) : (
+              <button
+                onClick={nextQuestion}
+                className="flex items-center gap-1.5 px-5 py-2 rounded-xl bg-gradient-to-r from-[#10B981] to-[#059669] text-white text-xs font-semibold shadow-lg shadow-[#10B981]/20 hover:shadow-[#10B981]/30 hover:translate-y-[-1px] active:translate-y-0 transition-all"
+              >
+                Berikutnya
+                <ChevronRight className="w-3.5 h-3.5" />
+              </button>
+            )}
           </div>
         </div>
       </footer>
@@ -176,32 +147,32 @@ export default function TestFooter() {
                   <AlertTriangle className="w-5 h-5 text-red-400" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold text-white/90">{t('testRunner.endTitle')}</h3>
-                  <p className="text-[11px] text-white/40">{t('testRunner.endDesc')}</p>
+                  <h3 className="text-sm font-semibold text-white/90">Selesaikan Tes</h3>
+                  <p className="text-[11px] text-white/40">Apakah Anda yakin ingin mengakhiri sesi tes ini?</p>
                 </div>
               </div>
 
               <div className="p-4 rounded-xl bg-white/[0.04] border border-white/[0.06] space-y-2 mb-5">
                 <div className="flex justify-between text-xs">
-                  <span className="text-white/40">{t('testRunner.answeredCount')}</span>
-                  <span className="text-white/80 font-medium">{getAnsweredCount()} / {questions.length}</span>
+                  <span className="text-white/40">Soal Terjawab</span>
+                  <span className="text-white/80 font-medium">{answeredCount} / {totalCount}</span>
                 </div>
                 <div className="flex justify-between text-xs">
-                  <span className="text-white/40">{t('testRunner.timeRemaining')}</span>
+                  <span className="text-white/40">Sisa Waktu</span>
                   <span className="text-white/80 font-medium">{Math.floor(timeRemaining / 60)}:{String(timeRemaining % 60).padStart(2, '0')} m</span>
                 </div>
                 <div className="w-full h-1 rounded-full bg-white/[0.06] overflow-hidden">
                   <div
                     className="h-full rounded-full bg-[#10B981] transition-all"
-                    style={{ width: `${(getAnsweredCount() / questions.length) * 100}%` }}
+                    style={{ width: `${(answeredCount / totalCount) * 100}%` }}
                   />
                 </div>
               </div>
 
-              {getAnsweredCount() < questions.length && (
+              {answeredCount < totalCount && (
                 <p className="text-[11px] text-[#F59E0B] mb-4 flex items-center gap-1.5">
                   <AlertTriangle className="w-3 h-3" />
-                  {t('testRunner.unanswered', { n: questions.length - getAnsweredCount() })}
+                  {totalCount - answeredCount} soal belum terjawab
                 </p>
               )}
 
@@ -211,7 +182,7 @@ export default function TestFooter() {
                   className="flex-1 py-2.5 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] text-white/60 text-xs font-medium transition-all"
                 >
                   <X className="w-3.5 h-3.5 inline mr-1.5" />
-                  {t('common.back')}
+                  Kembali
                 </button>
                 <button
                   onClick={handleEndTest}
@@ -221,10 +192,10 @@ export default function TestFooter() {
                   {submitting ? (
                     <span className="flex items-center justify-center gap-1.5">
                       <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                      {t('testRunner.submitting')}
+                      Memproses...
                     </span>
                   ) : (
-                    t('testRunner.confirmEnd')
+                    'Ya, Selesaikan Tes'
                   )}
                 </button>
               </div>

@@ -91,6 +91,9 @@ export async function GET(
       return base
     })
 
+    const meta = (session.metadata as any) || {}
+    const durationMinutes = meta.durationMinutes || Math.max(30, Math.round(session.questionCount * 1.5))
+
     return NextResponse.json({
       success: true,
       data: {
@@ -99,12 +102,13 @@ export async function GET(
         targetLevel: session.targetLevel,
         status: session.status,
         questionCount: session.questionCount,
+        durationMinutes,
         startedAt: session.startedAt.toISOString(),
         completedAt: session.completedAt?.toISOString() || null,
         durationSeconds: session.durationSeconds,
         totalScore: session.totalScore,
         cefrLevel: session.cefrLevel,
-        metadata: session.metadata,
+        metadata: meta,
         items,
       },
     })
