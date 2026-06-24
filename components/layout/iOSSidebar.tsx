@@ -9,58 +9,53 @@ import {
   LayoutDashboard,
   PenSquare,
   History,
-  BookOpen,
   UserCircle,
   GraduationCap,
-  ChevronLeft,
   LogOut,
+  X,
+  FileCheck,
+  Settings,
 } from 'lucide-react'
-import { useI18n } from '@/lib/i18n/context'
-import LanguageToggle from '@/components/LanguageToggle'
-
-interface iOSSidebarProps {
-  collapsed: boolean
-  onToggle: () => void
-  mobile?: boolean
-  onClose?: () => void
-}
 
 const NAV_SECTIONS = [
   {
-    label: 'nav.dashboard',
+    label: 'UTAMA',
     items: [
-      { href: '/dashboard', label: 'nav.dashboard', icon: LayoutDashboard },
-      { href: '/test', label: 'nav.takeTest', icon: PenSquare },
+      { href: '/dashboard', label: 'Dasbor', icon: LayoutDashboard },
+      { href: '/test', label: 'Mulai Tes', icon: PenSquare },
     ],
   },
   {
-    label: 'nav.testHistory',
+    label: 'TES',
     items: [
-      { href: '/test/history', label: 'nav.testHistory', icon: History },
-      { href: '/practice', label: 'Practice', icon: BookOpen },
+      { href: '/test/history', label: 'Riwayat Tes', icon: History },
     ],
   },
   {
-    label: 'nav.profile',
+    label: 'AKUN',
     items: [
-      { href: '/profile', label: 'nav.profile', icon: UserCircle },
+      { href: '/profile', label: 'Profil', icon: UserCircle },
     ],
   },
 ]
 
 const CEFR_LEVELS = [
-  { code: 'A1', label: 'landing.levels.A1' },
-  { code: 'A2', label: 'landing.levels.A2' },
-  { code: 'B1', label: 'landing.levels.B1' },
-  { code: 'B2', label: 'landing.levels.B2' },
-  { code: 'C1', label: 'landing.levels.C1' },
-  { code: 'C2', label: 'landing.levels.C2' },
+  { code: 'A1', label: 'Pemula' },
+  { code: 'A2', label: 'Dasar' },
+  { code: 'B1', label: 'Madya' },
+  { code: 'B2', label: 'Lanjut' },
+  { code: 'C1', label: 'Mahir' },
+  { code: 'C2', label: 'Sangat Mahir' },
 ]
 
-export default function IosSidebar({ collapsed, onToggle, mobile, onClose }: iOSSidebarProps) {
+interface AppSidebarProps {
+  mobile?: boolean
+  onClose?: () => void
+}
+
+export default function IosSidebar({ mobile, onClose }: AppSidebarProps) {
   const pathname = usePathname()
   const router = useRouter()
-  const { t } = useI18n()
   const [userName, setUserName] = useState('')
   const [userLevel] = useState('A1')
 
@@ -86,36 +81,36 @@ export default function IosSidebar({ collapsed, onToggle, mobile, onClose }: iOS
 
   const isActive = (href: string) => {
     if (href === '/dashboard') return pathname === '/dashboard'
+    if (href === '/test') return pathname === '/test' || pathname === '/test/start'
+    if (href === '/test/history') return pathname.startsWith('/test/history')
+    if (href === '/profile') return pathname.startsWith('/profile')
     return pathname.startsWith(href)
   }
 
   return (
-    <div className={`flex flex-col h-full bg-white transition-all duration-300 ${collapsed ? 'w-[72px]' : 'w-[260px]'}`}>
-      <div className={`flex items-center border-b border-gray-100 flex-shrink-0 ${collapsed ? 'justify-center h-16' : 'justify-between px-4 h-16'}`}>
-        {!collapsed && (
-          <Link href="/dashboard" onClick={onClose} className="flex items-center gap-2.5">
-            <Image src="/icon_BIGT.png" alt="BIGT" width={32} height={32} className="w-7 h-7 rounded-lg" />
-            <span className="text-sm font-semibold text-[#1C1C1E] tracking-tight">BIGT</span>
-          </Link>
-        )}
-        {!mobile && (
-          <button
-            onClick={onToggle}
-            className={`w-8 h-8 rounded-xl hover:bg-gray-100 flex items-center justify-center transition-colors ${collapsed ? 'mt-3' : ''}`}
-          >
-            <ChevronLeft className={`w-4 h-4 text-[#8E8E93] transition-transform ${collapsed ? 'rotate-180' : ''}`} />
+    <div className="flex flex-col h-full bg-gradient-to-b from-[#0B1F3A] to-[#123E7C]">
+      <div className="flex items-center justify-between px-5 h-[72px] border-b border-white/10 flex-shrink-0">
+        <Link
+          href="/dashboard"
+          onClick={onClose}
+          className="flex items-center gap-2.5"
+        >
+          <Image src="/icon_BIGT.png" alt="BIGT" width={32} height={32} className="w-8 h-8 rounded-lg" />
+          <span className="text-base font-bold text-white tracking-tight">BIGT</span>
+        </Link>
+        {mobile && onClose && (
+          <button onClick={onClose} className="w-8 h-8 rounded-lg hover:bg-white/10 flex items-center justify-center flex-shrink-0">
+            <X className="w-5 h-5 text-white/70" />
           </button>
         )}
       </div>
 
-      <nav className="flex-1 px-2 py-4 space-y-4 overflow-y-auto">
+      <nav className="flex-1 px-3 py-5 space-y-5 overflow-y-auto">
         {NAV_SECTIONS.map((section) => (
           <div key={section.label}>
-            {!collapsed && (
-              <p className="px-3 pb-1 text-[11px] font-semibold uppercase tracking-widest text-[#8E8E93]">
-                {t(section.label)}
-              </p>
-            )}
+            <p className="px-3 pb-1.5 text-[11px] font-semibold uppercase tracking-widest text-slate-400">
+              {section.label}
+            </p>
             <div className="space-y-0.5">
               {section.items.map((item) => {
                 const Icon = item.icon
@@ -125,17 +120,14 @@ export default function IosSidebar({ collapsed, onToggle, mobile, onClose }: iOS
                     key={item.href}
                     href={item.href}
                     onClick={onClose}
-                    className={`flex items-center gap-3 rounded-xl transition-all ${
-                      collapsed ? 'justify-center w-12 h-12 mx-auto' : 'px-3 py-2.5'
-                    } ${
+                    className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all ${
                       active
-                        ? 'bg-[#007AFF]/10 text-[#007AFF]'
-                        : 'text-[#8E8E93] hover:bg-gray-50 hover:text-[#1C1C1E]'
+                        ? 'bg-white/10 text-white border-l-[3px] border-[#D7193F] rounded-l-none'
+                        : 'text-slate-300 hover:bg-white/8 hover:text-white'
                     }`}
-                    title={collapsed ? t(item.label) : undefined}
                   >
-                    <Icon className={`w-5 h-5 flex-shrink-0 ${active ? 'text-[#007AFF]' : ''}`} />
-                    {!collapsed && <span className="text-sm font-medium">{t(item.label)}</span>}
+                    <Icon className="w-5 h-5 flex-shrink-0" />
+                    <span className="text-sm font-medium">{item.label}</span>
                   </Link>
                 )
               })}
@@ -144,67 +136,37 @@ export default function IosSidebar({ collapsed, onToggle, mobile, onClose }: iOS
         ))}
       </nav>
 
-      <div className={`border-t border-gray-100 flex-shrink-0 ${collapsed ? 'px-2 py-3' : 'px-4 py-3'}`}>
-        <div className={`flex items-center ${collapsed ? 'justify-center' : 'gap-3'} mb-3`}>
-          {!collapsed && (
-            <>
-              <div className="w-9 h-9 rounded-xl bg-[#007AFF]/10 flex items-center justify-center">
-                <GraduationCap className="w-4 h-4 text-[#007AFF]" />
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-[10px] font-semibold uppercase tracking-widest text-[#8E8E93]">
-                  {t('userProfile.levelBigt')}
-                </p>
-                <p className="text-sm font-semibold text-[#1C1C1E] truncate">
-                  {userLevel} {t(CEFR_LEVELS[levelIndex].label)}
-                </p>
-              </div>
-            </>
-          )}
+      <div className="px-5 py-4 border-t border-white/10 flex-shrink-0">
+        <div className="flex items-center gap-3 mb-3">
+          <div className="w-9 h-9 rounded-lg bg-white/5 flex items-center justify-center">
+            <GraduationCap className="w-4 h-4 text-[#C9A227]/70" />
+          </div>
+          <div className="flex-1 min-w-0">
+            <p className="text-[10px] font-medium uppercase tracking-wider text-slate-500">Level BIGT</p>
+            <p className="text-sm font-semibold text-white truncate">
+              {userLevel} {CEFR_LEVELS[levelIndex]?.label || ''}
+            </p>
+          </div>
         </div>
-        {!collapsed && (
-          <>
-            <div className="w-full bg-gray-100 rounded-full h-1.5 mb-1">
-              <div className="bg-[#007AFF] rounded-full h-1.5 transition-all duration-500" style={{ width: `${progressPercent}%` }} />
-            </div>
-            <div className="flex justify-between text-[10px] text-[#8E8E93] mb-3">
-              <span>A1</span>
-              <span>C2</span>
-            </div>
-          </>
-        )}
-        <div className={`flex items-center ${collapsed ? 'justify-center flex-col gap-2' : 'justify-between'}`}>
-          {!collapsed && (
-            <>
-              <p className="text-xs text-[#8E8E93] truncate max-w-[140px]">
-                {userName || t('userProfile.defaultName')}
-              </p>
-              <div className="flex items-center gap-2">
-                <LanguageToggle />
-                <button
-                  onClick={handleLogout}
-                  className="w-7 h-7 rounded-lg hover:bg-red-50 flex items-center justify-center transition-colors"
-                  title="Keluar"
-                >
-                  <LogOut className="w-4 h-4 text-[#8E8E93] hover:text-red-500" />
-                </button>
-              </div>
-            </>
-          )}
-          {collapsed && (
-            <>
-              <div className="flex flex-col items-center gap-3">
-                <LanguageToggle />
-                <button
-                  onClick={handleLogout}
-                  className="w-9 h-9 rounded-xl hover:bg-red-50 flex items-center justify-center transition-colors"
-                  title="Keluar"
-                >
-                  <LogOut className="w-4 h-4 text-[#8E8E93]" />
-                </button>
-              </div>
-            </>
-          )}
+        <div className="w-full bg-white/10 rounded-full h-1.5 mb-1">
+          <div className="bg-[#C9A227] rounded-full h-1.5 transition-all duration-500" style={{ width: `${progressPercent}%` }} />
+        </div>
+        <div className="flex justify-between text-[10px] text-slate-500 mb-4">
+          <span>A1</span>
+          <span>C2</span>
+        </div>
+
+        <div className="flex items-center justify-between">
+          <p className="text-xs text-slate-400 truncate max-w-[160px]">
+            {userName || 'Pengguna'}
+          </p>
+          <button
+            onClick={handleLogout}
+            className="w-7 h-7 rounded-lg hover:bg-white/5 flex items-center justify-center transition-colors"
+            title="Keluar"
+          >
+            <LogOut className="w-4 h-4 text-slate-400" />
+          </button>
         </div>
       </div>
     </div>

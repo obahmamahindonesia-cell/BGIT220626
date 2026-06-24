@@ -3,18 +3,16 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { LayoutDashboard, PenSquare, History, UserCircle } from 'lucide-react'
-import { useI18n } from '@/lib/i18n/context'
 
 const BOTTOM_NAV = [
-  { href: '/dashboard', label: 'nav.dashboard', icon: LayoutDashboard },
-  { href: '/test', label: 'nav.takeTest', icon: PenSquare },
-  { href: '/test/history', label: 'nav.testHistory', icon: History },
-  { href: '/profile', label: 'nav.profile', icon: UserCircle },
+  { href: '/dashboard', label: 'Dasbor', icon: LayoutDashboard },
+  { href: '/test', label: 'Tes', icon: PenSquare },
+  { href: '/test/history', label: 'Riwayat', icon: History },
+  { href: '/profile', label: 'Profil', icon: UserCircle },
 ]
 
 export default function MobileBottomNav() {
   const pathname = usePathname()
-  const { t } = useI18n()
 
   const isActive = (href: string) => {
     if (href === '/dashboard') return pathname === '/dashboard'
@@ -37,7 +35,7 @@ export default function MobileBottomNav() {
             >
               <Icon className={`w-5 h-5 ${active ? 'fill-[#007AFF]/20' : ''}`} />
               <span className={`text-[10px] font-medium ${active ? 'font-semibold' : ''}`}>
-                {t(item.label)}
+                {item.label}
               </span>
             </Link>
           )

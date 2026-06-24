@@ -4,21 +4,15 @@ import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
-import { Bell, Settings, LogOut, User, ChevronDown, Menu } from 'lucide-react'
+import { Bell, LogOut, User, ChevronDown, Menu } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import LanguageToggle from '@/components/LanguageToggle'
 
-interface iOSNavbarProps {
+interface IosNavbarProps {
   onMenuClick: () => void
 }
 
-const NAV_LINKS = [
-  { href: '/dashboard', label: 'Dashboard' },
-  { href: '/test', label: 'Test' },
-  { href: '/profile', label: 'Profil' },
-]
-
-export default function IosNavbar({ onMenuClick }: iOSNavbarProps) {
+export default function IosNavbar({ onMenuClick }: IosNavbarProps) {
   const pathname = usePathname()
   const router = useRouter()
   const [userName, setUserName] = useState('')
@@ -56,49 +50,45 @@ export default function IosNavbar({ onMenuClick }: iOSNavbarProps) {
 
   const initial = userName ? userName.charAt(0).toUpperCase() : 'U'
 
+  const getBreadcrumb = () => {
+    if (pathname === '/dashboard') return 'Dasbor'
+    if (pathname === '/test') return 'Tes'
+    if (pathname === '/test/start') return 'Mulai Tes'
+    if (pathname.startsWith('/test/history')) return 'Riwayat Tes'
+    if (pathname.startsWith('/test/') && pathname !== '/test' && pathname !== '/test/start') {
+      if (pathname.includes('/results')) return 'Hasil Tes'
+      return 'Tes'
+    }
+    if (pathname === '/profile') return 'Profil'
+    return ''
+  }
+
   return (
-    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-gray-200/60">
-      <div className="flex items-center justify-between px-4 lg:px-6 h-16 max-w-[1400px] mx-auto">
-        <div className="flex items-center gap-3 lg:hidden">
+    <header className="sticky top-0 z-30 h-16 bg-white/90 backdrop-blur-md border-b border-[#E5EAF2]">
+      <div className="flex items-center justify-between h-full px-4 lg:px-6">
+        <div className="flex items-center gap-3">
           <button
             onClick={onMenuClick}
-            className="w-9 h-9 rounded-xl hover:bg-gray-100 flex items-center justify-center transition-colors"
+            className="w-9 h-9 rounded-xl hover:bg-gray-100 flex items-center justify-center transition-colors lg:hidden"
           >
             <Menu className="w-5 h-5 text-[#1C1C1E]" />
           </button>
+          <div className="flex items-center gap-2">
+            <span className="hidden lg:block text-sm font-semibold text-[#007AFF]">BIGT</span>
+            {getBreadcrumb() && (
+              <>
+                <span className="text-sm text-[#C7C7CC] hidden lg:block">/</span>
+                <span className="text-sm text-[#8E8E93] hidden lg:block">{getBreadcrumb()}</span>
+              </>
+            )}
+          </div>
         </div>
-
-        <Link href="/dashboard" className="flex items-center gap-2.5">
-          <Image src="/icon_BIGT.png" alt="BIGT" width={32} height={32} className="w-7 h-7 rounded-lg" />
-          <span className="hidden sm:block text-sm font-semibold text-[#1C1C1E] tracking-tight">
-            BIGT
-          </span>
-        </Link>
-
-        <nav className="hidden lg:flex items-center gap-1">
-          {NAV_LINKS.map((link) => {
-            const isActive = pathname === link.href || pathname.startsWith(link.href + '/')
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
-                  isActive
-                    ? 'bg-[#007AFF]/10 text-[#007AFF]'
-                    : 'text-[#8E8E93] hover:text-[#1C1C1E] hover:bg-gray-100'
-                }`}
-              >
-                {link.label}
-              </Link>
-            )
-          })}
-        </nav>
 
         <div className="flex items-center gap-2">
           <LanguageToggle />
           <button className="relative w-9 h-9 rounded-xl hover:bg-gray-100 flex items-center justify-center transition-colors">
             <Bell className="w-5 h-5 text-[#8E8E93]" />
-            <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[#007AFF]" />
+            <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[#FF3B30]" />
           </button>
 
           <div className="relative" ref={dropdownRef}>
@@ -127,7 +117,7 @@ export default function IosNavbar({ onMenuClick }: iOSNavbarProps) {
                   className="flex items-center gap-3 px-4 py-2.5 text-sm text-[#1C1C1E] hover:bg-gray-50 transition-colors"
                 >
                   <User className="w-4 h-4 text-[#8E8E93]" />
-                  Profile
+                  Profil
                 </Link>
                 <button
                   onClick={handleLogout}

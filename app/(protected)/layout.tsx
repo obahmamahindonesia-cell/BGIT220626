@@ -4,15 +4,12 @@ import { useState, useEffect } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { Loader2 } from 'lucide-react'
-import { cn } from '@/lib/utils'
 
-// Import layout components
-import IosNavbar from '@/components/layout/iOSNavbar'
 import IosSidebar from '@/components/layout/iOSSidebar'
+import IosNavbar from '@/components/layout/iOSNavbar'
 import MobileBottomNav from '@/components/layout/MobileBottomNav'
 
 export default function ProtectedLayout({ children }: { children: React.ReactNode }) {
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [loading, setLoading] = useState(true)
   const [authenticated, setAuthenticated] = useState(false)
@@ -39,7 +36,7 @@ export default function ProtectedLayout({ children }: { children: React.ReactNod
 
   const isFullScreen =
     pathname.startsWith('/onboarding') ||
-    (pathname.startsWith('/test/') && pathname !== '/test' && pathname !== '/test/start')
+    (pathname.startsWith('/test/') && pathname !== '/test' && pathname !== '/test/start' && !pathname.startsWith('/test/history'))
 
   if (loading) {
     return (
@@ -59,36 +56,23 @@ export default function ProtectedLayout({ children }: { children: React.ReactNod
   }
 
   return (
-    <div className="min-h-screen bg-[#F8F9FA]">
-      <div className="hidden lg:flex fixed left-0 top-0 z-60 h-screen">
-        <IosSidebar
-          collapsed={sidebarCollapsed}
-          onToggle={() => setSidebarCollapsed(!sidebarCollapsed)}
-        />
-      </div>
+    <div className="min-h-screen bg-[#F7F9FC]">
+      <aside className="hidden lg:flex fixed left-0 top-0 z-40 h-screen w-[280px]">
+        <IosSidebar />
+      </aside>
 
       {mobileOpen && (
-        <div className="fixed inset-0 z-70 lg:hidden">
-          <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" onClick={() => setMobileOpen(false)} />
-          <aside className="relative w-72 h-full shadow-xl">
-            <IosSidebar
-              collapsed={false}
-              onToggle={() => {}}
-              mobile
-              onClose={() => setMobileOpen(false)}
-            />
+        <div className="fixed inset-0 z-50 lg:hidden">
+          <div className="absolute inset-0 bg-black/40" onClick={() => setMobileOpen(false)} />
+          <aside className="relative w-[280px] h-full shadow-xl">
+            <IosSidebar mobile onClose={() => setMobileOpen(false)} />
           </aside>
         </div>
       )}
 
-      <div
-        className={cn(
-          'flex-1 flex flex-col min-h-screen transition-all duration-300',
-          sidebarCollapsed ? 'lg:ml-[72px]' : 'lg:ml-[260px]'
-        )}
-      >
+      <div className="flex-1 flex flex-col min-h-screen lg:pl-[280px]">
         <IosNavbar onMenuClick={() => setMobileOpen(true)} />
-        <main className="flex-1 px-4 lg:px-8 py-6 lg:py-8 pb-24 lg:pb-8 max-w-[1200px] mx-auto w-full">
+        <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-8 pb-24 lg:pb-8">
           {children}
         </main>
       </div>
