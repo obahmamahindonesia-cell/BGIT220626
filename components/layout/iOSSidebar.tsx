@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
@@ -13,9 +12,8 @@ import {
   GraduationCap,
   LogOut,
   X,
-  FileCheck,
-  Settings,
 } from 'lucide-react'
+import Logo from '@/components/brand/Logo'
 
 const NAV_SECTIONS = [
   {
@@ -95,8 +93,7 @@ export default function IosSidebar({ mobile, onClose }: AppSidebarProps) {
           onClick={onClose}
           className="flex items-center gap-2.5"
         >
-          <Image src="/icon_BIGT.png" alt="BIGT" width={32} height={32} className="w-8 h-8 rounded-lg" />
-          <span className="text-base font-bold text-white tracking-tight">BIGT</span>
+          <Logo variant="full" invert className="h-7" />
         </Link>
         {mobile && onClose && (
           <button onClick={onClose} className="w-8 h-8 rounded-lg hover:bg-white/10 flex items-center justify-center flex-shrink-0">

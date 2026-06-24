@@ -2,11 +2,11 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Menu, X } from 'lucide-react'
 import { useI18n } from '@/lib/i18n/context'
 import LanguageToggle from '@/components/LanguageToggle'
+import Logo from '@/components/brand/Logo'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -31,7 +31,7 @@ export default function Navbar() {
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/90 backdrop-blur-xl ${scrolled ? 'shadow-sm border-b border-[#E5EAF2]' : 'border-b border-transparent'}`}>
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <Image src="/logo_BIGT.png" alt="BIGT Logo" width={120} height={40} className="h-9 w-auto" />
+          <Logo variant="full" className="h-9" />
         </Link>
 
         <div className="hidden md:flex items-center gap-6">

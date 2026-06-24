@@ -7,6 +7,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import { Bell, LogOut, User, ChevronDown, Menu } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import LanguageToggle from '@/components/LanguageToggle'
+import Logo from '@/components/brand/Logo'
 
 interface IosNavbarProps {
   onMenuClick: () => void
@@ -74,7 +75,7 @@ export default function IosNavbar({ onMenuClick }: IosNavbarProps) {
             <Menu className="w-5 h-5 text-[#1C1C1E]" />
           </button>
           <div className="flex items-center gap-2">
-            <span className="hidden lg:block text-sm font-semibold text-[#007AFF]">BIGT</span>
+            <Logo variant="mark" className="h-6 w-6 lg:hidden" />
             {getBreadcrumb() && (
               <>
                 <span className="text-sm text-[#C7C7CC] hidden lg:block">/</span>

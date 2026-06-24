@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef } from 'react'
 import { useTestStore } from '@/store/testStore'
 import { ShieldCheck, Maximize2, Minimize2, Flag, Clock, AlertTriangle } from 'lucide-react'
 import { useI18n } from '@/lib/i18n/context'
+import Logo from '@/components/brand/Logo'
 
 function formatTime(seconds: number): string {
   const m = Math.floor(seconds / 60)
@@ -79,12 +80,9 @@ export default function TestHeader() {
     <header className="fixed top-0 left-0 right-0 z-50 h-16 bg-[#0A1428]/90 backdrop-blur-xl border-b border-white/[0.06]">
       <div className="h-full max-w-screen-2xl mx-auto px-4 lg:px-6 flex items-center justify-between gap-4">
         <div className="flex items-center gap-3 min-w-0">
-          <div className="flex items-center gap-2.5 flex-shrink-0">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center shadow-lg shadow-[#10B981]/20">
-              <ShieldCheck className="w-4 h-4 text-white" />
+            <div className="flex items-center gap-2.5 flex-shrink-0">
+              <Logo variant="mark" className="h-7 w-7 opacity-80" />
             </div>
-            <span className="hidden sm:block font-[family-name:var(--font-playfair)] text-sm font-bold text-white/80">BIGT</span>
-          </div>
           <div className="hidden md:block w-px h-6 bg-white/[0.08]" />
           <div className="hidden md:flex items-center gap-2">
             <span className="text-xs text-white/40">{t('testRunner.adaptiveTest')}</span>

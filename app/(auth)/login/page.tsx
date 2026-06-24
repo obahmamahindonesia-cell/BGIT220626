@@ -8,10 +8,10 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import Link from 'next/link'
 import { toast } from 'sonner'
-import Image from 'next/image'
 import { Globe, Sparkles, ShieldCheck, BarChart3, ArrowLeft } from 'lucide-react'
 import PageMeta from '@/components/PageMeta'
 import { useI18n } from '@/lib/i18n/context'
+import Logo from '@/components/brand/Logo'
 
 function LoginForm() {
   const [email, setEmail] = useState('')
@@ -62,7 +62,7 @@ function LoginForm() {
         </div>
         <div className="flex-1 flex items-center justify-center -mt-16">
           <Link href="/" className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-xl px-8 py-5 border border-white/10">
-            <Image src="/logo_BIGT.png" alt="BIGT Logo" width={260} height={80} className="h-14 w-auto brightness-0 invert opacity-90" />
+            <Logo variant="full" invert className="h-14 opacity-90" />
           </Link>
         </div>
         <div className="relative z-10">

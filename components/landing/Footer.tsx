@@ -1,8 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
 import { useI18n } from '@/lib/i18n/context'
+import Logo from '@/components/brand/Logo'
 
 export default function Footer() {
   const { t } = useI18n()
@@ -12,7 +12,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div className="md:col-span-1">
             <div className="flex items-center gap-3 mb-5">
-              <Image src="/logo_BIGT.png" alt="BIGT Logo" width={200} height={64} className="h-10 w-auto brightness-0 invert opacity-90" />
+              <Logo variant="full" invert className="h-10 opacity-90" />
             </div>
             <p className="text-white/50 text-sm leading-relaxed">{t('footer.description')}</p>
           </div>

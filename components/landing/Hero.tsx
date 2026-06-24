@@ -1,11 +1,11 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { Sparkles, ArrowRight } from 'lucide-react'
 import { useI18n } from '@/lib/i18n/context'
+import Logo from '@/components/brand/Logo'
 
 const LEVELS = [
   { code: 'A1', color: '#64748B', label: 'Pemula' },
@@ -35,14 +35,7 @@ export default function Hero() {
 
       <div className="max-w-4xl mx-auto relative z-10">
         <div className="mb-8 flex justify-center">
-          <Image
-            src="/logo_BIGT.png"
-            alt="BIGT — Bahasa Indonesia Global Test"
-            width={560}
-            height={160}
-            className="h-28 md:h-36 w-auto brightness-0 invert"
-            priority
-          />
+          <Logo variant="full" invert className="h-28 md:h-36" priority />
         </div>
 
         <div className="inline-flex items-center gap-2 bg-[#C9A227]/15 border border-[#C9A227]/30 text-[#C9A227] text-xs font-medium tracking-wider px-4 py-1.5 rounded-full uppercase mb-6">

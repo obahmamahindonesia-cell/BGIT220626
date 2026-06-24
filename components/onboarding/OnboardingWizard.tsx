@@ -22,6 +22,7 @@ import {
   Users,
   Monitor,
 } from 'lucide-react';
+import Logo from '@/components/brand/Logo';
 
 const onboardingSchema = z.object({
   fullName: z.string().min(2, 'Nama harus diisi'),
@@ -457,12 +458,7 @@ export default function OnboardingWizard() {
         <div className="bg-white px-8 pt-6 pb-4 border-b border-[#E5E5EA]">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 bg-[#007AFF] rounded-xl flex items-center justify-center">
-                <span className="text-white font-bold text-lg">B</span>
-              </div>
-              <div>
-                <h1 className="font-semibold text-xl text-[#1C1C1E]">BIGT</h1>
-              </div>
+              <Logo variant="mark" className="h-8 w-8" />
             </div>
             <StepIndicator current={currentStep - 1} total={steps.length} />
           </div>
