@@ -194,7 +194,7 @@ export default function SettingsPage() {
 
         <SectionCard title="Notifikasi" icon={Bell}>
           <div className="space-y-3">
-            <Toggle value={emailNotifications} onChange={setEmailNotifications} label="Email notifikasi" />
+            <Toggle value={emailNotifications} onChange={setEmailNotifications} label="Notifikasi Email" />
             <Toggle value={productUpdates} onChange={setProductUpdates} label="Pembaruan produk" />
             <div className="pt-2">
               <Button onClick={handleSaveNotifications} disabled={saving === 'notifications'} className="w-full rounded-xl bg-[#007AFF] hover:bg-[#0066CC] h-10 text-xs">
@@ -215,7 +215,7 @@ export default function SettingsPage() {
                 className="w-full h-11 rounded-xl border border-[#E5E5EA] bg-white px-3 text-sm text-[#1C1C1E] outline-none focus:border-[#007AFF] appearance-none"
               >
                 <option value="id">Bahasa Indonesia</option>
-                <option value="en">English</option>
+                <option value="en">Bahasa Inggris</option>
               </select>
             </div>
             <div className="space-y-1.5">

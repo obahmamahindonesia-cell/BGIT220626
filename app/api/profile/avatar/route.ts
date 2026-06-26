@@ -1,7 +1,30 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createServerClient } from '@supabase/ssr'
+import { createClient } from '@supabase/supabase-js'
 import { cookies } from 'next/headers'
 import { prisma } from '@/lib/prisma'
+
+export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
+
+function getStorageAdmin() {
+  return createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SECRET_KEY!,
+    { auth: { persistSession: false } },
+  ).storage
+}
+
+async function ensureBucketPublic(storage: ReturnType<typeof getStorageAdmin>) {
+  try {
+    await storage.updateBucket('avatars', { public: true })
+  } catch {
+    // bucket might not exist yet — create it
+    try {
+      await storage.createBucket('avatars', { public: true, fileSizeLimit: 2097152, allowedMimeTypes: ['image/jpeg', 'image/png', 'image/webp'] })
+    } catch {}
+  }
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -45,30 +68,30 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: false, error: 'Format foto harus JPG, PNG, atau WEBP.' }, { status: 400 })
     }
 
+    const storage = getStorageAdmin()
+    await ensureBucketPublic(storage)
+
     const ext = file.type === 'image/jpeg' ? 'jpg' : file.type === 'image/png' ? 'png' : 'webp'
     const fileName = `${authUser.id}/${Date.now()}.${ext}`
 
-    // Clean up old avatar files before uploading new one
-    const { data: existingFiles } = await supabase.storage
-      .from('avatars')
-      .list(authUser.id)
+    const { data: existingFiles } = await storage.from('avatars').list(authUser.id)
     if (existingFiles && existingFiles.length > 0) {
       const oldPaths = existingFiles.map(f => `${authUser.id}/${f.name}`)
-      await supabase.storage.from('avatars').remove(oldPaths)
+      await storage.from('avatars').remove(oldPaths)
     }
 
     const buffer = Buffer.from(await file.arrayBuffer())
 
-    const { data: uploadData, error: uploadError } = await supabase.storage
+    const { data: uploadData, error: uploadError } = await storage
       .from('avatars')
-      .upload(fileName, buffer, { contentType: file.type })
+      .upload(fileName, buffer, { contentType: file.type, upsert: true })
 
     if (uploadError) {
       console.error('Upload error:', uploadError)
       return NextResponse.json({ success: false, error: 'Gagal mengunggah foto.' }, { status: 500 })
     }
 
-    const { data: urlData } = supabase.storage.from('avatars').getPublicUrl(fileName)
+    const { data: urlData } = storage.from('avatars').getPublicUrl(fileName)
     const avatarUrl = urlData?.publicUrl || null
 
     await prisma.userProfile.upsert({
@@ -111,14 +134,13 @@ export async function DELETE() {
       return NextResponse.json({ success: false, error: 'User not found' }, { status: 404 })
     }
 
-    // Remove avatar files from storage
-    const { data: files } = await supabase.storage
-      .from('avatars')
-      .list(authUser.id)
+    const storage = getStorageAdmin()
+
+    const { data: files } = await storage.from('avatars').list(authUser.id)
 
     if (files && files.length > 0) {
       const filePaths = files.map(f => `${authUser.id}/${f.name}`)
-      await supabase.storage.from('avatars').remove(filePaths)
+      await storage.from('avatars').remove(filePaths)
     }
 
     await prisma.userProfile.update({

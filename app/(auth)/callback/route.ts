@@ -11,7 +11,7 @@ export async function GET(request: Request) {
     const supabase = createClient()
     const { data, error } = await supabase.auth.exchangeCodeForSession(code)
     if (!error && data.user) {
-      await prisma.user.upsert({
+      const dbUser = await prisma.user.upsert({
         where: { supabaseId: data.user.id },
         update: { email: data.user.email!, name: data.user.user_metadata?.name || null },
         create: {
@@ -19,6 +19,9 @@ export async function GET(request: Request) {
           email: data.user.email!,
           name: data.user.user_metadata?.name || null,
         },
+      })
+      await prisma.loginHistory.create({
+        data: { userId: dbUser.id },
       })
       return NextResponse.redirect(`${origin}${next}`)
     }

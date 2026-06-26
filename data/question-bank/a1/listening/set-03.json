@@ -1,0 +1,1276 @@
+{
+  "setId": "BIGT-A1-LS-S03",
+  "cefr": "A1",
+  "skill": "listening",
+  "title": "A1 Listening Set 03",
+  "version": "1.0.0",
+  "status": "draft",
+  "itemsCount": 40,
+  "audioBasePath": "/audio/listening/a1/set-03/",
+  "items": [
+    {
+      "questionId": "BIGT-A1-LS-S03-Q001",
+      "type": "multiple_choice",
+      "topic": "canteen",
+      "subskill": "specific_information",
+      "difficulty": 0.12,
+      "audioId": "BIGT-A1-LS-S03-A001",
+      "audioFile": "BIGT-A1-LS-S03-A001.mp3",
+      "transcript": "Penjaga: Minumannya ada air mineral, teh manis, dan jus jeruk. Harganya tiga ribu sampai lima ribu.",
+      "speaker": "female_01",
+      "speed": "slow",
+      "durationSeconds": 8,
+      "prompt": "Apa minuman yang tersedia di kantin?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Air mineral, teh manis, jus jeruk"
+        },
+        {
+          "key": "B",
+          "text": "Kopi, susu, teh"
+        },
+        {
+          "key": "C",
+          "text": "Jus apel, soda, air"
+        },
+        {
+          "key": "D",
+          "text": "Susu, kopi, jus mangga"
+        }
+      ],
+      "answer": "A",
+      "explanation": "Penjaga menyebut air mineral, teh manis, dan jus jeruk.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A1-LS-S03-Q002",
+      "type": "multiple_choice",
+      "topic": "classroom",
+      "subskill": "specific_information",
+      "difficulty": 0.12,
+      "audioId": "BIGT-A1-LS-S03-A002",
+      "audioFile": "BIGT-A1-LS-S03-A002.mp3",
+      "transcript": "Guru: Bu Ayu adalah guru matematika. Kelas matematika ada di ruang dua belas.",
+      "speaker": "female_02",
+      "speed": "slow",
+      "durationSeconds": 6,
+      "prompt": "Siapa guru matematika?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Bu Sari"
+        },
+        {
+          "key": "B",
+          "text": "Bu Ayu"
+        },
+        {
+          "key": "C",
+          "text": "Pak Budi"
+        },
+        {
+          "key": "D",
+          "text": "Pak Tono"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Guru menyebut Bu Ayu sebagai guru matematika.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A1-LS-S03-Q003",
+      "type": "multiple_choice",
+      "topic": "time",
+      "subskill": "number_time_recognition",
+      "difficulty": 0.13,
+      "audioId": "BIGT-A1-LS-S03-A003",
+      "audioFile": "BIGT-A1-LS-S03-A003.mp3",
+      "transcript": "Ani: Jam berapa sekarang? Budi: Sekarang jam setengah delapan pagi.",
+      "speaker": "female_01_male_01",
+      "speed": "slow",
+      "durationSeconds": 6,
+      "prompt": "Jam berapa sekarang?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Jam tujuh"
+        },
+        {
+          "key": "B",
+          "text": "Jam delapan"
+        },
+        {
+          "key": "C",
+          "text": "Jam setengah delapan"
+        },
+        {
+          "key": "D",
+          "text": "Jam setengah tujuh"
+        }
+      ],
+      "answer": "C",
+      "explanation": "Budi mengatakan jam setengah delapan pagi.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A1-LS-S03-Q004",
+      "type": "multiple_choice",
+      "topic": "direction",
+      "subskill": "location_recognition",
+      "difficulty": 0.13,
+      "audioId": "BIGT-A1-LS-S03-A004",
+      "audioFile": "BIGT-A1-LS-S03-A004.mp3",
+      "transcript": "Rina: Permisi, ruang kelas satu di mana? Penjaga: Ruang kelas satu ada di lantai dua, dekat tangga.",
+      "speaker": "female_02_male_01",
+      "speed": "slow",
+      "durationSeconds": 8,
+      "prompt": "Di mana ruang kelas satu?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Di lantai satu"
+        },
+        {
+          "key": "B",
+          "text": "Di dekat kantin"
+        },
+        {
+          "key": "C",
+          "text": "Di lantai dua dekat tangga"
+        },
+        {
+          "key": "D",
+          "text": "Di sebelah toilet"
+        }
+      ],
+      "answer": "C",
+      "explanation": "Penjaga mengatakan ruang kelas satu di lantai dua dekat tangga.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A1-LS-S03-Q005",
+      "type": "multiple_choice",
+      "topic": "fruit_price",
+      "subskill": "specific_information",
+      "difficulty": 0.12,
+      "audioId": "BIGT-A1-LS-S03-A005",
+      "audioFile": "BIGT-A1-LS-S03-A005.mp3",
+      "transcript": "Penjual: Buah hari ini ada apel, jeruk, dan pisang. Harga apel dua belas ribu per kilo.",
+      "speaker": "male_01",
+      "speed": "slow",
+      "durationSeconds": 8,
+      "prompt": "Berapa harga apel per kilo?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Sepuluh ribu"
+        },
+        {
+          "key": "B",
+          "text": "Dua belas ribu"
+        },
+        {
+          "key": "C",
+          "text": "Lima belas ribu"
+        },
+        {
+          "key": "D",
+          "text": "Dua puluh ribu"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Penjual menyebut harga apel dua belas ribu.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A1-LS-S03-Q006",
+      "type": "multiple_choice",
+      "topic": "house_number",
+      "subskill": "number_time_recognition",
+      "difficulty": 0.14,
+      "audioId": "BIGT-A1-LS-S03-A006",
+      "audioFile": "BIGT-A1-LS-S03-A006.mp3",
+      "transcript": "Doni: Rumahku di Jalan Mawar nomor dua puluh tujuh, dekat dengan taman.",
+      "speaker": "male_02",
+      "speed": "slow",
+      "durationSeconds": 8,
+      "prompt": "Berapa nomor rumah Doni?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Nomor dua belas"
+        },
+        {
+          "key": "B",
+          "text": "Nomor dua puluh"
+        },
+        {
+          "key": "C",
+          "text": "Nomor dua puluh tujuh"
+        },
+        {
+          "key": "D",
+          "text": "Nomor dua puluh dua"
+        }
+      ],
+      "answer": "C",
+      "explanation": "Doni mengatakan rumahnya nomor dua puluh tujuh.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A1-LS-S03-Q007",
+      "type": "multiple_choice",
+      "topic": "weather",
+      "subskill": "main_gist",
+      "difficulty": 0.14,
+      "audioId": "BIGT-A1-LS-S03-A007",
+      "audioFile": "BIGT-A1-LS-S03-A007.mp3",
+      "transcript": "Ibu: Hari ini cuaca cerah. Kamu bisa bermain di luar. Bawa topi ya.",
+      "speaker": "female_01",
+      "speed": "slow",
+      "durationSeconds": 7,
+      "prompt": "Apa cuaca hari ini?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Cerah"
+        },
+        {
+          "key": "B",
+          "text": "Hujan"
+        },
+        {
+          "key": "C",
+          "text": "Berawan"
+        },
+        {
+          "key": "D",
+          "text": "Dingin"
+        }
+      ],
+      "answer": "A",
+      "explanation": "Ibu mengatakan cuaca hari ini cerah.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A1-LS-S03-Q008",
+      "type": "multiple_choice",
+      "topic": "direction",
+      "subskill": "location_recognition",
+      "difficulty": 0.15,
+      "audioId": "BIGT-A1-LS-S03-A008",
+      "audioFile": "BIGT-A1-LS-S03-A008.mp3",
+      "transcript": "Rina: Toilet di mana? Siska: Toilet ada di ujung koridor, dekat perpustakaan.",
+      "speaker": "female_01_female_02",
+      "speed": "slow",
+      "durationSeconds": 7,
+      "prompt": "Di mana toilet?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Di dekat kantin"
+        },
+        {
+          "key": "B",
+          "text": "Di ujung koridor dekat perpustakaan"
+        },
+        {
+          "key": "C",
+          "text": "Di lantai dua"
+        },
+        {
+          "key": "D",
+          "text": "Di samping kelas"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Siska mengatakan toilet di ujung koridor dekat perpustakaan.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A1-LS-S03-Q009",
+      "type": "multiple_choice",
+      "topic": "class_schedule",
+      "subskill": "specific_information",
+      "difficulty": 0.13,
+      "audioId": "BIGT-A1-LS-S03-A009",
+      "audioFile": "BIGT-A1-LS-S03-A009.mp3",
+      "transcript": "Guru: Besok tidak ada kelas. Hari libur nasional. Senin belajar lagi seperti biasa.",
+      "speaker": "female_02",
+      "speed": "slow",
+      "durationSeconds": 7,
+      "prompt": "Kenapa besok tidak ada kelas?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Karena guru sakit"
+        },
+        {
+          "key": "B",
+          "text": "Karena hari libur nasional"
+        },
+        {
+          "key": "C",
+          "text": "Karena hujan"
+        },
+        {
+          "key": "D",
+          "text": "Karena listrik mati"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Guru mengatakan hari libur nasional.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A1-LS-S03-Q010",
+      "type": "multiple_choice",
+      "topic": "age",
+      "subskill": "number_time_recognition",
+      "difficulty": 0.14,
+      "audioId": "BIGT-A1-LS-S03-A010",
+      "audioFile": "BIGT-A1-LS-S03-A010.mp3",
+      "transcript": "Rina: Halo, nama saya Rina. Umur saya sepuluh tahun. Saya duduk di kelas empat.",
+      "speaker": "female_02",
+      "speed": "slow",
+      "durationSeconds": 8,
+      "prompt": "Berapa umur Rina?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Sepuluh tahun"
+        },
+        {
+          "key": "B",
+          "text": "Sembilan tahun"
+        },
+        {
+          "key": "C",
+          "text": "Sebelas tahun"
+        },
+        {
+          "key": "D",
+          "text": "Dua belas tahun"
+        }
+      ],
+      "answer": "A",
+      "explanation": "Rina mengatakan umurnya sepuluh tahun.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A1-LS-S03-Q011",
+      "type": "multiple_choice",
+      "topic": "instruction",
+      "subskill": "simple_instruction",
+      "difficulty": 0.15,
+      "audioId": "BIGT-A1-LS-S03-A011",
+      "audioFile": "BIGT-A1-LS-S03-A011.mp3",
+      "transcript": "Guru: Anak-anak, keluarkan buku gambar dan pensil warna. Kita akan menggambar pemandangan.",
+      "speaker": "female_01",
+      "speed": "slow",
+      "durationSeconds": 7,
+      "prompt": "Apa yang harus dikeluarkan?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Buku tulis dan pulpen"
+        },
+        {
+          "key": "B",
+          "text": "Penggaris dan penghapus"
+        },
+        {
+          "key": "C",
+          "text": "Buku gambar dan pensil warna"
+        },
+        {
+          "key": "D",
+          "text": "Gunting dan lem"
+        }
+      ],
+      "answer": "C",
+      "explanation": "Guru menyuruh mengeluarkan buku gambar dan pensil warna.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A1-LS-S03-Q012",
+      "type": "multiple_choice",
+      "topic": "entry_ticket",
+      "subskill": "specific_information",
+      "difficulty": 0.14,
+      "audioId": "BIGT-A1-LS-S03-A012",
+      "audioFile": "BIGT-A1-LS-S03-A012.mp3",
+      "transcript": "Petugas: Tiket masuk museum sepuluh ribu untuk anak-anak dan dua puluh ribu untuk dewasa.",
+      "speaker": "male_01",
+      "speed": "slow",
+      "durationSeconds": 8,
+      "prompt": "Berapa tiket masuk museum untuk dewasa?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Lima ribu"
+        },
+        {
+          "key": "B",
+          "text": "Sepuluh ribu"
+        },
+        {
+          "key": "C",
+          "text": "Lima belas ribu"
+        },
+        {
+          "key": "D",
+          "text": "Dua puluh ribu"
+        }
+      ],
+      "answer": "D",
+      "explanation": "Petugas mengatakan tiket dewasa dua puluh ribu.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A1-LS-S03-Q013",
+      "type": "multiple_choice",
+      "topic": "food",
+      "subskill": "specific_information",
+      "difficulty": 0.12,
+      "audioId": "BIGT-A1-LS-S03-A013",
+      "audioFile": "BIGT-A1-LS-S03-A013.mp3",
+      "transcript": "Ibu: Untuk makan siang ada nasi, ayam goreng, dan sup. Jangan lupa minum ya.",
+      "speaker": "female_02",
+      "speed": "slow",
+      "durationSeconds": 8,
+      "prompt": "Apa saja menu makan siang?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Nasi, ayam goreng, sup"
+        },
+        {
+          "key": "B",
+          "text": "Nasi, ikan, sayur"
+        },
+        {
+          "key": "C",
+          "text": "Mie, telur, soto"
+        },
+        {
+          "key": "D",
+          "text": "Nasi goreng, sate, jus"
+        }
+      ],
+      "answer": "A",
+      "explanation": "Ibu menyebut nasi, ayam goreng, dan sup.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A1-LS-S03-Q014",
+      "type": "multiple_choice",
+      "topic": "birthday",
+      "subskill": "number_time_recognition",
+      "difficulty": 0.13,
+      "audioId": "BIGT-A1-LS-S03-A014",
+      "audioFile": "BIGT-A1-LS-S03-A014.mp3",
+      "transcript": "Rina: Hari ulang tahunku tanggal dua belas Agustus. Aku akan mengadakan pesta kecil di rumah.",
+      "speaker": "female_01",
+      "speed": "slow",
+      "durationSeconds": 8,
+      "prompt": "Kapan ulang tahun Rina?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Tanggal dua Agustus"
+        },
+        {
+          "key": "B",
+          "text": "Tanggal dua puluh Agustus"
+        },
+        {
+          "key": "C",
+          "text": "Tanggal dua belas Agustus"
+        },
+        {
+          "key": "D",
+          "text": "Tanggal dua puluh satu Agustus"
+        }
+      ],
+      "answer": "C",
+      "explanation": "Rina mengatakan ulang tahunnya tanggal dua belas Agustus.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A1-LS-S03-Q015",
+      "type": "multiple_choice",
+      "topic": "library",
+      "subskill": "specific_information",
+      "difficulty": 0.23,
+      "audioId": "BIGT-A1-LS-S03-A015",
+      "audioFile": "BIGT-A1-LS-S03-A015.mp3",
+      "transcript": "Petugas: Perpustakaan buka dari jam delapan pagi sampai jam tiga sore. Hari Minggu tutup.",
+      "speaker": "male_02",
+      "speed": "slow",
+      "durationSeconds": 8,
+      "prompt": "Sampai jam berapa perpustakaan buka?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Jam dua sore"
+        },
+        {
+          "key": "B",
+          "text": "Jam tiga sore"
+        },
+        {
+          "key": "C",
+          "text": "Jam empat sore"
+        },
+        {
+          "key": "D",
+          "text": "Jam lima sore"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Petugas mengatakan perpustakaan buka sampai jam tiga sore.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A1-LS-S03-Q016",
+      "type": "multiple_choice",
+      "topic": "bus_stop",
+      "subskill": "location_recognition",
+      "difficulty": 0.17,
+      "audioId": "BIGT-A1-LS-S03-A016",
+      "audioFile": "BIGT-A1-LS-S03-A016.mp3",
+      "transcript": "Anto: Halte bus di depan sekolah. Kamu bisa naik bus nomor lima belas ke pasar.",
+      "speaker": "male_01",
+      "speed": "slow",
+      "durationSeconds": 8,
+      "prompt": "Di mana halte bus?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Di depan sekolah"
+        },
+        {
+          "key": "B",
+          "text": "Di belakang pasar"
+        },
+        {
+          "key": "C",
+          "text": "Di samping rumah sakit"
+        },
+        {
+          "key": "D",
+          "text": "Di dekat stasiun"
+        }
+      ],
+      "answer": "A",
+      "explanation": "Anto mengatakan halte bus di depan sekolah.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A1-LS-S03-Q017",
+      "type": "multiple_choice",
+      "topic": "teacher_name",
+      "subskill": "specific_information",
+      "difficulty": 0.16,
+      "audioId": "BIGT-A1-LS-S03-A017",
+      "audioFile": "BIGT-A1-LS-S03-A017.mp3",
+      "transcript": "Siswa: Bu, nama ibu guru siapa? Guru: Nama ibu guru Dewi. Ibu mengajar bahasa Indonesia.",
+      "speaker": "female_01_female_02",
+      "speed": "slow",
+      "durationSeconds": 8,
+      "prompt": "Siapa nama guru bahasa Indonesia?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Bu Dewi"
+        },
+        {
+          "key": "B",
+          "text": "Bu Sari"
+        },
+        {
+          "key": "C",
+          "text": "Bu Rina"
+        },
+        {
+          "key": "D",
+          "text": "Bu Ayu"
+        }
+      ],
+      "answer": "A",
+      "explanation": "Guru mengatakan namanya Bu Dewi dan mengajar bahasa Indonesia.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A1-LS-S03-Q018",
+      "type": "multiple_choice",
+      "topic": "classroom_instruction",
+      "subskill": "simple_instruction",
+      "difficulty": 0.17,
+      "audioId": "BIGT-A1-LS-S03-A018",
+      "audioFile": "BIGT-A1-LS-S03-A018.mp3",
+      "transcript": "Guru: Tolong buka buku halaman lima. Bacalah teksnya lalu kerjakan soal nomor satu sampai tiga.",
+      "speaker": "female_01",
+      "speed": "slow",
+      "durationSeconds": 8,
+      "prompt": "Halaman berapa yang harus dibuka?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Halaman tiga"
+        },
+        {
+          "key": "B",
+          "text": "Halaman empat"
+        },
+        {
+          "key": "C",
+          "text": "Halaman lima"
+        },
+        {
+          "key": "D",
+          "text": "Halaman enam"
+        }
+      ],
+      "answer": "C",
+      "explanation": "Guru menyuruh membuka buku halaman lima.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A1-LS-S03-Q019",
+      "type": "multiple_choice",
+      "topic": "afternoon_activity",
+      "subskill": "main_gist",
+      "difficulty": 0.16,
+      "audioId": "BIGT-A1-LS-S03-A019",
+      "audioFile": "BIGT-A1-LS-S03-A019.mp3",
+      "transcript": "Budi: Setiap sore aku bermain sepak bola di lapangan. Aku pergi dengan teman-temanku.",
+      "speaker": "male_02",
+      "speed": "slow",
+      "durationSeconds": 7,
+      "prompt": "Apa yang dilakukan Budi setiap sore?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Berenang"
+        },
+        {
+          "key": "B",
+          "text": "Bermain sepak bola"
+        },
+        {
+          "key": "C",
+          "text": "Belajar"
+        },
+        {
+          "key": "D",
+          "text": "Menonton TV"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Budi mengatakan bermain sepak bola di lapangan.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A1-LS-S03-Q020",
+      "type": "multiple_choice",
+      "topic": "phone_number",
+      "subskill": "specific_information",
+      "difficulty": 0.25,
+      "audioId": "BIGT-A1-LS-S03-A020",
+      "audioFile": "BIGT-A1-LS-S03-A020.mp3",
+      "transcript": "Dina: Nomor telepon rumahku 021 555 7890. Kamu bisa menghubungi ibu kalau ada perlu.",
+      "speaker": "female_02",
+      "speed": "slow",
+      "durationSeconds": 8,
+      "prompt": "Apa nomor telepon rumah Dina?",
+      "options": [
+        {
+          "key": "A",
+          "text": "021 555 1234"
+        },
+        {
+          "key": "B",
+          "text": "021 555 6789"
+        },
+        {
+          "key": "C",
+          "text": "021 555 4567"
+        },
+        {
+          "key": "D",
+          "text": "021 555 7890"
+        }
+      ],
+      "answer": "D",
+      "explanation": "Dina menyebut nomor 021 555 7890.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A1-LS-S03-Q021",
+      "type": "multiple_choice",
+      "topic": "borrow_book",
+      "subskill": "specific_information",
+      "difficulty": 0.17,
+      "audioId": "BIGT-A1-LS-S03-A021",
+      "audioFile": "BIGT-A1-LS-S03-A021.mp3",
+      "transcript": "Rina: Boleh pinjam buku ceritamu? Aku mau baca di perpustakaan. Nanti aku kembalikan besok.",
+      "speaker": "female_01",
+      "speed": "slow",
+      "durationSeconds": 8,
+      "prompt": "Apa yang ingin dilakukan Rina?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Membeli buku"
+        },
+        {
+          "key": "B",
+          "text": "Meminjam buku"
+        },
+        {
+          "key": "C",
+          "text": "Mengembalikan buku"
+        },
+        {
+          "key": "D",
+          "text": "Menukar buku"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Rina ingin meminjam buku cerita.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A1-LS-S03-Q022",
+      "type": "multiple_choice",
+      "topic": "store_hours",
+      "subskill": "number_time_recognition",
+      "difficulty": 0.27,
+      "audioId": "BIGT-A1-LS-S03-A022",
+      "audioFile": "BIGT-A1-LS-S03-A022.mp3",
+      "transcript": "Penjaga: Toko buka dari jam sembilan pagi sampai jam sembilan malam. Hari Minggu tutup lebih awal jam lima sore.",
+      "speaker": "male_01",
+      "speed": "slow",
+      "durationSeconds": 10,
+      "prompt": "Sampai jam berapa toko buka di hari biasa?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Jam lima sore"
+        },
+        {
+          "key": "B",
+          "text": "Jam tujuh malam"
+        },
+        {
+          "key": "C",
+          "text": "Jam sembilan malam"
+        },
+        {
+          "key": "D",
+          "text": "Jam sepuluh malam"
+        }
+      ],
+      "answer": "C",
+      "explanation": "Penjaga mengatakan toko buka sampai jam sembilan malam.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A1-LS-S03-Q023",
+      "type": "multiple_choice",
+      "topic": "bus_schedule",
+      "subskill": "number_time_recognition",
+      "difficulty": 0.26,
+      "audioId": "BIGT-A1-LS-S03-A023",
+      "audioFile": "BIGT-A1-LS-S03-A023.mp3",
+      "transcript": "Petugas: Bus sekolah datang jam setengah tujuh pagi. Jangan terlambat. Bus akan menunggu lima menit.",
+      "speaker": "male_02",
+      "speed": "slow",
+      "durationSeconds": 8,
+      "prompt": "Jam berapa bus sekolah datang?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Jam setengah tujuh"
+        },
+        {
+          "key": "B",
+          "text": "Jam tujuh"
+        },
+        {
+          "key": "C",
+          "text": "Jam setengah delapan"
+        },
+        {
+          "key": "D",
+          "text": "Jam delapan"
+        }
+      ],
+      "answer": "A",
+      "explanation": "Petugas mengatakan bus sekolah datang jam setengah tujuh pagi.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A1-LS-S03-Q024",
+      "type": "multiple_choice",
+      "topic": "medicine",
+      "subskill": "specific_information",
+      "difficulty": 0.24,
+      "audioId": "BIGT-A1-LS-S03-A024",
+      "audioFile": "BIGT-A1-LS-S03-A024.mp3",
+      "transcript": "Apoteker: Obat ini untuk demam. Minum satu sendok tiga kali sehari. Jangan minum sebelum makan.",
+      "speaker": "female_01",
+      "speed": "slow",
+      "durationSeconds": 8,
+      "prompt": "Berapa kali sehari obat harus diminum?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Satu kali"
+        },
+        {
+          "key": "B",
+          "text": "Dua kali"
+        },
+        {
+          "key": "C",
+          "text": "Tiga kali"
+        },
+        {
+          "key": "D",
+          "text": "Empat kali"
+        }
+      ],
+      "answer": "C",
+      "explanation": "Apoteker mengatakan minum tiga kali sehari.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A1-LS-S03-Q025",
+      "type": "multiple_choice",
+      "topic": "invitation",
+      "subskill": "speaker_intent",
+      "difficulty": 0.27,
+      "audioId": "BIGT-A1-LS-S03-A025",
+      "audioFile": "BIGT-A1-LS-S03-A025.mp3",
+      "transcript": "Sari: Hai, besok aku main ke rumahmu boleh? Aku ingin lihat kucing barumu.",
+      "speaker": "female_02",
+      "speed": "slow",
+      "durationSeconds": 7,
+      "prompt": "Apa yang ingin dilakukan Sari?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Main ke rumah teman"
+        },
+        {
+          "key": "B",
+          "text": "Membeli kucing"
+        },
+        {
+          "key": "C",
+          "text": "Ke sekolah"
+        },
+        {
+          "key": "D",
+          "text": "Ke toko hewan"
+        }
+      ],
+      "answer": "A",
+      "explanation": "Sari ingin main ke rumah dan melihat kucing baru.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A1-LS-S03-Q026",
+      "type": "multiple_choice",
+      "topic": "color_object",
+      "subskill": "location_recognition",
+      "difficulty": 0.23,
+      "audioId": "BIGT-A1-LS-S03-A026",
+      "audioFile": "BIGT-A1-LS-S03-A026.mp3",
+      "transcript": "Ibu: Buku berwarna merah itu punya adik. Buku biru punya kakak. Buku hijau punya ibu.",
+      "speaker": "female_01",
+      "speed": "slow",
+      "durationSeconds": 9,
+      "prompt": "Buku siapa yang berwarna merah?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Milik ibu"
+        },
+        {
+          "key": "B",
+          "text": "Milik adik"
+        },
+        {
+          "key": "C",
+          "text": "Milik kakak"
+        },
+        {
+          "key": "D",
+          "text": "Milik ayah"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Ibu mengatakan buku merah milik adik.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A1-LS-S03-Q027",
+      "type": "multiple_choice",
+      "topic": "message",
+      "subskill": "speaker_intent",
+      "difficulty": 0.28,
+      "audioId": "BIGT-A1-LS-S03-A027",
+      "audioFile": "BIGT-A1-LS-S03-A027.mp3",
+      "transcript": "Pesan dari Andi: Rina, ayo kita pergi ke toko buku setelah pulang sekolah nanti.",
+      "speaker": "male_01",
+      "speed": "slow",
+      "durationSeconds": 7,
+      "prompt": "Apa isi pesan Andi?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Mengajak ke kantin"
+        },
+        {
+          "key": "B",
+          "text": "Mengajak ke toko buku"
+        },
+        {
+          "key": "C",
+          "text": "Mengajak ke rumah"
+        },
+        {
+          "key": "D",
+          "text": "Mengajak ke taman"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Andi mengajak pergi ke toko buku setelah sekolah.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A1-LS-S03-Q028",
+      "type": "multiple_choice",
+      "topic": "announcement",
+      "subskill": "main_gist",
+      "difficulty": 0.24,
+      "audioId": "BIGT-A1-LS-S03-A028",
+      "audioFile": "BIGT-A1-LS-S03-A028.mp3",
+      "transcript": "Pengumuman: Toko buku Merdeka hari ini tutup lebih awal. Buka lagi besok jam sembilan pagi.",
+      "speaker": "announcer_01",
+      "speed": "slow",
+      "durationSeconds": 8,
+      "prompt": "Informasi apa yang disampaikan?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Toko buku tutup lebih awal"
+        },
+        {
+          "key": "B",
+          "text": "Toko buku diskon besar"
+        },
+        {
+          "key": "C",
+          "text": "Toko buku pindah lokasi"
+        },
+        {
+          "key": "D",
+          "text": "Toko buku buka hari Minggu"
+        }
+      ],
+      "answer": "A",
+      "explanation": "Pengumuman mengatakan toko buku tutup lebih awal hari ini.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A1-LS-S03-Q029",
+      "type": "true_false",
+      "topic": "canteen",
+      "subskill": "specific_information",
+      "difficulty": 0.11,
+      "audioId": "BIGT-A1-LS-S03-A029",
+      "audioFile": "BIGT-A1-LS-S03-A029.mp3",
+      "transcript": "Penjaga kantin: Nasi goreng harganya tujuh ribu. Es teh harganya tiga ribu.",
+      "speaker": "male_01",
+      "speed": "slow",
+      "durationSeconds": 7,
+      "prompt": "Harga nasi goreng adalah tujuh ribu.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Benar"
+        },
+        {
+          "key": "B",
+          "text": "Salah"
+        }
+      ],
+      "answer": "A",
+      "explanation": "Penjaga mengatakan nasi goreng tujuh ribu.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A1-LS-S03-Q030",
+      "type": "true_false",
+      "topic": "direction",
+      "subskill": "location_recognition",
+      "difficulty": 0.12,
+      "audioId": "BIGT-A1-LS-S03-A030",
+      "audioFile": "BIGT-A1-LS-S03-A030.mp3",
+      "transcript": "Tono: Rumah sakit ada di jalan ini. Di sebelah kiri ada bank.",
+      "speaker": "male_02",
+      "speed": "slow",
+      "durationSeconds": 6,
+      "prompt": "Bank terletak di sebelah kanan rumah sakit.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Benar"
+        },
+        {
+          "key": "B",
+          "text": "Salah"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Tono mengatakan bank di sebelah kiri.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A1-LS-S03-Q031",
+      "type": "true_false",
+      "topic": "number_time_recognition",
+      "subskill": "number_time_recognition",
+      "difficulty": 0.13,
+      "audioId": "BIGT-A1-LS-S03-A031",
+      "audioFile": "BIGT-A1-LS-S03-A031.mp3",
+      "transcript": "Linda: Saya punya dua kakak perempuan dan satu adik laki-laki.",
+      "speaker": "female_01",
+      "speed": "slow",
+      "durationSeconds": 6,
+      "prompt": "Linda punya satu adik laki-laki.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Benar"
+        },
+        {
+          "key": "B",
+          "text": "Salah"
+        }
+      ],
+      "answer": "A",
+      "explanation": "Linda mengatakan punya satu adik laki-laki.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A1-LS-S03-Q032",
+      "type": "true_false",
+      "topic": "simple_instruction",
+      "subskill": "simple_instruction",
+      "difficulty": 0.14,
+      "audioId": "BIGT-A1-LS-S03-A032",
+      "audioFile": "BIGT-A1-LS-S03-A032.mp3",
+      "transcript": "Guru: Jangan lupa bawa buku PR besok. Nanti dikumpulkan.",
+      "speaker": "female_02",
+      "speed": "slow",
+      "durationSeconds": 6,
+      "prompt": "PR harus dikumpulkan besok.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Benar"
+        },
+        {
+          "key": "B",
+          "text": "Salah"
+        }
+      ],
+      "answer": "A",
+      "explanation": "Guru mengatakan PR dikumpulkan besok.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A1-LS-S03-Q033",
+      "type": "true_false",
+      "topic": "station",
+      "subskill": "location_recognition",
+      "difficulty": 0.15,
+      "audioId": "BIGT-A1-LS-S03-A033",
+      "audioFile": "BIGT-A1-LS-S03-A033.mp3",
+      "transcript": "Petugas: Stasiun kereta ada di Jalan Merdeka. Dari sini naik angkot jurusan Pasar Baru.",
+      "speaker": "male_01",
+      "speed": "slow",
+      "durationSeconds": 8,
+      "prompt": "Stasiun kereta ada di Jalan Merdeka.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Benar"
+        },
+        {
+          "key": "B",
+          "text": "Salah"
+        }
+      ],
+      "answer": "A",
+      "explanation": "Petugas mengatakan stasiun kereta ada di Jalan Merdeka.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A1-LS-S03-Q034",
+      "type": "true_false",
+      "topic": "number_time",
+      "subskill": "number_time_recognition",
+      "difficulty": 0.14,
+      "audioId": "BIGT-A1-LS-S03-A034",
+      "audioFile": "BIGT-A1-LS-S03-A034.mp3",
+      "transcript": "Rina: Harga pensil dua ribu. Harga penghapus seribu lima ratus.",
+      "speaker": "female_02",
+      "speed": "slow",
+      "durationSeconds": 6,
+      "prompt": "Harga penghapus lebih mahal dari pensil.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Benar"
+        },
+        {
+          "key": "B",
+          "text": "Salah"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Pensil dua ribu, penghapus seribu lima ratus. Penghapus lebih murah.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A1-LS-S03-Q035",
+      "type": "true_false",
+      "topic": "daily_routine",
+      "subskill": "specific_information",
+      "difficulty": 0.25,
+      "audioId": "BIGT-A1-LS-S03-A035",
+      "audioFile": "BIGT-A1-LS-S03-A035.mp3",
+      "transcript": "Budi: Setiap pagi aku mandi jam lima, sarapan jam setengah enam, lalu berangkat sekolah jam enam.",
+      "speaker": "male_01",
+      "speed": "slow",
+      "durationSeconds": 8,
+      "prompt": "Budi berangkat sekolah jam setengah enam.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Benar"
+        },
+        {
+          "key": "B",
+          "text": "Salah"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Budi berangkat sekolah jam enam, bukan setengah enam.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A1-LS-S03-Q036",
+      "type": "true_false",
+      "topic": "fruit",
+      "subskill": "specific_information",
+      "difficulty": 0.15,
+      "audioId": "BIGT-A1-LS-S03-A036",
+      "audioFile": "BIGT-A1-LS-S03-A036.mp3",
+      "transcript": "Penjual: Mangga manis harganya dua puluh lima ribu per kilo. Anggur merah tiga puluh ribu per kilo.",
+      "speaker": "male_02",
+      "speed": "slow",
+      "durationSeconds": 8,
+      "prompt": "Anggur merah harganya tiga puluh ribu per kilo.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Benar"
+        },
+        {
+          "key": "B",
+          "text": "Salah"
+        }
+      ],
+      "answer": "A",
+      "explanation": "Penjual mengatakan anggur merah tiga puluh ribu per kilo.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A1-LS-S03-Q037",
+      "type": "short_answer",
+      "topic": "color",
+      "subskill": "specific_information",
+      "difficulty": 0.13,
+      "audioId": "BIGT-A1-LS-S03-A037",
+      "audioFile": "BIGT-A1-LS-S03-A037.mp3",
+      "transcript": "Ibu: Belikan ibu telur satu kilo dan gula setengah kilo di toko.",
+      "speaker": "female_02",
+      "speed": "slow",
+      "durationSeconds": 7,
+      "prompt": "Apa yang harus dibeli di toko?",
+      "answer": "telur dan gula",
+      "explanation": "Ibu menyuruh membeli telur dan gula.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A1-LS-S03-Q038",
+      "type": "short_answer",
+      "topic": "time",
+      "subskill": "number_time_recognition",
+      "difficulty": 0.16,
+      "audioId": "BIGT-A1-LS-S03-A038",
+      "audioFile": "BIGT-A1-LS-S03-A038.mp3",
+      "transcript": "Guru: Besok upacara bendera jam setengah tujuh pagi. Pakai seragam putih merah semua.",
+      "speaker": "female_01",
+      "speed": "slow",
+      "durationSeconds": 8,
+      "prompt": "Jam berapa upacara bendera besok?",
+      "answer": "setengah tujuh pagi",
+      "explanation": "Guru mengatakan upacara jam setengah tujuh pagi.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A1-LS-S03-Q039",
+      "type": "short_answer",
+      "topic": "hobby",
+      "subskill": "simple_instruction",
+      "difficulty": 0.18,
+      "audioId": "BIGT-A1-LS-S03-A039",
+      "audioFile": "BIGT-A1-LS-S03-A039.mp3",
+      "transcript": "Ibu: Tolong bantu ibu. Sapu lantai ruang tamu, lalu lap meja makan.",
+      "speaker": "female_01",
+      "speed": "slow",
+      "durationSeconds": 8,
+      "prompt": "Apa yang harus dilakukan setelah menyapu?",
+      "answer": "lap meja makan",
+      "explanation": "Ibu mengatakan lap meja makan setelah menyapu.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A1-LS-S03-Q040",
+      "type": "short_answer",
+      "topic": "direction",
+      "subskill": "location_recognition",
+      "difficulty": 0.17,
+      "audioId": "BIGT-A1-LS-S03-A040",
+      "audioFile": "BIGT-A1-LS-S03-A040.mp3",
+      "transcript": "Rina: Rumah Reno ada di Jalan Kenanga nomor lima belas, samping masjid.",
+      "speaker": "female_02",
+      "speed": "slow",
+      "durationSeconds": 8,
+      "prompt": "Di mana rumah Reno?",
+      "answer": "Jalan Kenanga nomor lima belas",
+      "explanation": "Rina menyebut alamat rumah Reno di Jalan Kenanga nomor lima belas.",
+      "points": 1
+    }
+  ]
+}

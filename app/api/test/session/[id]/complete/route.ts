@@ -2,13 +2,20 @@ import { NextRequest, NextResponse } from 'next/server'
 import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 import { prisma } from '@/lib/prisma'
+import { resolveBigtLevel, mapToTestResultData } from '@/lib/test-scoring/resolveBigtLevel'
+import { resolveLevelExamResult, mapLevelToTestResultData } from '@/lib/test-scoring/resolveLevelExamResult'
+import type { ScoredItem } from '@/lib/test-scoring/resolveBigtLevel'
+import type { BlueprintId } from '@/lib/test-blueprint/bigtBlueprint'
+
+export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
 
 const CEFR_SCORE_THRESHOLDS = [
   { level: 'C2', minScore: 90 },
   { level: 'C1', minScore: 75 },
   { level: 'B2', minScore: 60 },
   { level: 'B1', minScore: 45 },
-  { level: 'A2', minScore: 25 },
+  { level: 'A2', minScore: 30 },
   { level: 'A1', minScore: 0 },
 ]
 
@@ -41,7 +48,7 @@ export async function POST(
         sessionItems: {
           include: {
             answer: true,
-            question: { select: { id: true, dimension: true } },
+            question: { select: { id: true, dimension: true, code: true, level: true } },
           },
         },
       },
@@ -63,14 +70,167 @@ export async function POST(
     const body = await request.json().catch(() => ({}))
     const durationSeconds = body.durationSeconds || null
 
-    // Calculate scores
+    const completedAt = new Date()
+
+    // === BLUEPRINT-BASED SCORING ===
+    const metadata = session.metadata as any
+    const blueprintId = metadata?.blueprintId as string | undefined
+
+    const isLevelBlueprint = blueprintId && ['A1_LEVEL_EXAM', 'A2_LEVEL_EXAM', 'A1_A2_PLACEMENT', 'QUICK_PLACEMENT'].includes(blueprintId)
+
+    if (isLevelBlueprint) {
+      const scoredItems: ScoredItem[] = session.sessionItems.map(item => {
+        const snapshot = item.questionSnapshot as any
+        const code = item.question?.code || ''
+        const isCorrect = item.answer?.isCorrect ?? false
+        return {
+          questionId: code,
+          cefr: item.question?.level || snapshot?.cefr || (code.startsWith('BIGT-A1') ? 'A1' : 'A2'),
+          skill: item.dimension === 'READING' ? 'reading' : 'listening',
+          subskill: snapshot?.subskill || '',
+          difficulty: item.difficulty || 5,
+          isCorrect,
+          score: item.answer?.score || 0,
+          maxScore: item.maxScore || 10,
+        }
+      })
+
+      const result = resolveLevelExamResult(session.id, blueprintId, scoredItems)
+      const testResultData = mapLevelToTestResultData(result)
+
+      await prisma.testSession.update({
+        where: { id: session.id },
+        data: {
+          status: 'COMPLETED',
+          completedAt,
+          durationSeconds,
+          totalScore: result.percentage,
+          cefrLevel: result.resultLevel,
+        },
+      })
+
+      const testResult = await prisma.testResult.create({
+        data: {
+          sessionId: session.id,
+          overallLevel: result.resultLevel as any,
+          overallScore: result.percentage,
+          listeningScore: result.listeningTotal > 0 ? (result.listeningScore / result.listeningTotal) * 100 : null,
+          readingScore: result.readingTotal > 0 ? (result.readingScore / result.readingTotal) * 100 : null,
+          recommendations: testResultData.recommendations as any,
+        },
+      })
+
+      await prisma.userProfile.updateMany({
+        where: { userId: dbUser.id },
+        data: { currentLevel: result.resultLevel },
+      })
+
+      return NextResponse.json({
+        success: true,
+        data: {
+          sessionId: result.sessionId,
+          blueprintId: result.blueprintId,
+          targetLevel: result.targetLevel,
+          totalScore: result.totalScore,
+          totalItems: result.totalItems,
+          percentage: result.percentage,
+          resultLevel: result.resultLevel,
+          resultLabel: result.resultLabel,
+          readingScore: result.readingScore,
+          readingTotal: result.readingTotal,
+          listeningScore: result.listeningScore,
+          listeningTotal: result.listeningTotal,
+          levelBreakdown: result.levelBreakdown,
+          skillBreakdown: result.skillBreakdown,
+          recommendation: result.recommendation,
+          canProceedTo: result.canProceedTo,
+          skillFloorHit: result.skillFloorHit,
+          resultId: testResult.id,
+        },
+      })
+    }
+
+    if (blueprintId && isBlueprintId(blueprintId)) {
+      const scoredItems: ScoredItem[] = session.sessionItems.map(item => {
+        const snapshot = item.questionSnapshot as any
+        const code = item.question?.code || ''
+        const isCorrect = item.answer?.isCorrect ?? false
+        return {
+          questionId: code,
+          cefr: item.question?.level || snapshot?.cefr || (code.startsWith('BIGT-A1') ? 'A1' : 'A2'),
+          skill: item.dimension === 'READING' ? 'reading' : 'listening',
+          subskill: snapshot?.subskill || '',
+          difficulty: item.difficulty || 5,
+          isCorrect,
+          score: item.answer?.score || 0,
+          maxScore: item.maxScore || 10,
+        }
+      })
+
+      const result = resolveBigtLevel(session.id, blueprintId as BlueprintId, scoredItems)
+      const testResultData = mapToTestResultData(result)
+
+      // Update session
+      await prisma.testSession.update({
+        where: { id: session.id },
+        data: {
+          status: 'COMPLETED',
+          completedAt,
+          durationSeconds,
+          totalScore: result.percentage,
+          cefrLevel: result.resultLevel,
+        },
+      })
+
+      // Create TestResult
+      const testResult = await prisma.testResult.create({
+        data: {
+          sessionId: session.id,
+          overallLevel: result.resultLevel as any,
+          overallScore: result.percentage,
+          listeningScore: result.listeningTotal > 0 ? (result.listeningScore / result.listeningTotal) * 100 : null,
+          readingScore: result.readingTotal > 0 ? (result.readingScore / result.readingTotal) * 100 : null,
+          recommendations: testResultData.recommendations as any,
+        },
+      })
+
+      // Sync UserProfile.currentLevel
+      await prisma.userProfile.updateMany({
+        where: { userId: dbUser.id },
+        data: { currentLevel: result.resultLevel },
+      })
+
+      return NextResponse.json({
+        success: true,
+        data: {
+          sessionId: result.sessionId,
+          blueprintId: result.blueprintId,
+          totalScore: result.totalScore,
+          totalItems: result.totalItems,
+          percentage: result.percentage,
+          resultLevel: result.resultLevel,
+          resultLabel: result.resultLabel,
+          readingScore: result.readingScore,
+          readingTotal: result.readingTotal,
+          listeningScore: result.listeningScore,
+          listeningTotal: result.listeningTotal,
+          levelBreakdown: result.levelBreakdown,
+          skillBreakdown: result.skillBreakdown,
+          recommendation: result.recommendation,
+          canProceedTo: result.canProceedTo,
+          skillFloorHit: result.skillFloorHit,
+          resultId: testResult.id,
+        },
+      })
+    }
+
+    // === LEGACY SCORING (non-blueprint) ===
     const answeredItems = session.sessionItems.filter(item => item.answer)
     const totalItems = session.sessionItems.length
     const totalScore = answeredItems.reduce((sum, item) => sum + (item.answer?.score || 0), 0)
     const maxPossibleScore = totalItems * 10
     const scorePercent = maxPossibleScore > 0 ? (totalScore / maxPossibleScore) * 100 : 0
 
-    // Determine CEFR level
     let cefrLevel = 'A1'
     for (const threshold of CEFR_SCORE_THRESHOLDS) {
       if (scorePercent >= threshold.minScore) {
@@ -79,10 +239,10 @@ export async function POST(
       }
     }
 
-    // Calculate per-dimension scores
     const dimScores: Record<string, number[]> = {}
     for (const item of answeredItems) {
-      const dim = item.question.dimension
+      const dim = (item.question?.dimension || item.dimension || (item.questionSnapshot as any)?.dimension) as string | null
+      if (!dim) continue
       if (!dimScores[dim]) dimScores[dim] = []
       dimScores[dim].push(item.answer?.score || 0)
     }
@@ -92,8 +252,6 @@ export async function POST(
       dimAverages[dim] = scores.reduce((a, b) => a + b, 0) / scores.length
     }
 
-    // Update session
-    const completedAt = new Date()
     await prisma.testSession.update({
       where: { id: session.id },
       data: {
@@ -105,7 +263,6 @@ export async function POST(
       },
     })
 
-    // Create TestResult
     const result = await prisma.testResult.create({
       data: {
         sessionId: session.id,
@@ -118,6 +275,11 @@ export async function POST(
         mediationScore: dimAverages['MEDIATION'] || null,
         integratedScore: dimAverages['INTEGRATED'] || null,
       },
+    })
+
+    await prisma.userProfile.updateMany({
+      where: { userId: dbUser.id },
+      data: { currentLevel: cefrLevel },
     })
 
     return NextResponse.json({
@@ -137,4 +299,8 @@ export async function POST(
     console.error('Error completing session:', err)
     return NextResponse.json({ success: false, error: 'Gagal menyelesaikan sesi.' }, { status: 500 })
   }
+}
+
+function isBlueprintId(id: string): id is BlueprintId {
+  return ['A1_DIAGNOSTIC', 'A2_DIAGNOSTIC', 'A1_A2_PLACEMENT', 'QUICK_PLACEMENT'].includes(id)
 }

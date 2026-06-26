@@ -180,7 +180,7 @@ const canDoDescriptors: CanDoData[] = [
   { level: 'C2', skill: 'INTEGRATED', category: 'Combined Skills', descriptor: 'Dapat menggabungkan semua keterampilan dengan mahir untuk menghasilkan output yang sangat sophisticated dalam konteks akademis, profesional, dan kreatif' },
 ]
 
-async function main() {
+async function seedCanDo() {
   console.log('Seeding can-do descriptors...')
 
   for (const descriptor of canDoDescriptors) {
@@ -192,11 +192,16 @@ async function main() {
   console.log(`Seeded ${canDoDescriptors.length} can-do descriptors successfully!`)
 }
 
-main()
-  .catch((e) => {
-    console.error(e)
-    process.exit(1)
-  })
-  .finally(async () => {
-    await prisma.$disconnect()
-  })
+export { canDoDescriptors, seedCanDo }
+
+const isMain = process.argv[1]?.endsWith('seed-can-do.ts')
+if (isMain) {
+  seedCanDo()
+    .catch((e) => {
+      console.error(e)
+      process.exit(1)
+    })
+    .finally(async () => {
+      await prisma.$disconnect()
+    })
+}

@@ -6,7 +6,13 @@
     "dev": "next dev",
     "build": "prisma generate && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "seed:can-do": "npx tsx prisma/seed-can-do.ts",
+    "validate:questions": "npx tsx scripts/validate-question-bank.ts",
+    "audit:questions": "npx tsx scripts/audit-question-bank.ts",
+    "audio:generate": "npx tsx scripts/generate-listening-audio.ts",
+    "audio:validate": "npx tsx scripts/validate-listening-audio.ts",
+    "audit:test-assembly": "npx tsx scripts/audit-test-assembly.ts"
   },
   "prisma": {
     "seed": "npx tsx prisma/seed.ts"
@@ -21,6 +27,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.40.0",
+    "google-auth-library": "^10.9.0",
     "lucide-react": "^1.21.0",
     "next": "14.2.35",
     "next-themes": "^0.4.6",

@@ -1,0 +1,1276 @@
+{
+  "setId": "BIGT-A2-LS-S04",
+  "cefr": "A2",
+  "skill": "listening",
+  "title": "A2 Listening Set 04",
+  "version": "1.0.0",
+  "status": "draft",
+  "itemsCount": 40,
+  "audioBasePath": "/audio/listening/a2/set-04/",
+  "items": [
+    {
+      "questionId": "BIGT-A2-LS-S04-Q001",
+      "type": "multiple_choice",
+      "topic": "jadwal_bioskop",
+      "subskill": "main_gist",
+      "difficulty": 0.28,
+      "audioId": "BIGT-A2-LS-S04-A001",
+      "audioFile": "BIGT-A2-LS-S04-A001.mp3",
+      "transcript": "Petugas bioskop: Selamat malam, film yang Anda pesan jam tujuh malam terpaksa diganti jam setengah sembilan karena ada masalah teknis di ruang bioskop. Kami minta maaf. Tiket tetap berlaku untuk jadwal yang baru.",
+      "speaker": "male_01",
+      "speed": "normal",
+      "durationSeconds": 16,
+      "prompt": "Mengapa jadwal film berubah?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Film tidak jadi tayang"
+        },
+        {
+          "key": "B",
+          "text": "Masalah teknis di ruang bioskop"
+        },
+        {
+          "key": "C",
+          "text": "Penonton tidak datang"
+        },
+        {
+          "key": "D",
+          "text": "Tiket sudah habis"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Petugas mengatakan ada masalah teknis di ruang bioskop.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A2-LS-S04-Q002",
+      "type": "multiple_choice",
+      "topic": "pengiriman_paket",
+      "subskill": "specific_information",
+      "difficulty": 0.28,
+      "audioId": "BIGT-A2-LS-S04-A002",
+      "audioFile": "BIGT-A2-LS-S04-A002.mp3",
+      "transcript": "Kurir: Selamat siang, paket dari Toko Elektronik Jaya. Nama penerima Bu Maya. Alamat di Jalan Anggrek nomor lima belas. Apakah benar? Bu Maya: Iya benar.",
+      "speaker": "male_01_female_01",
+      "speed": "normal",
+      "durationSeconds": 16,
+      "prompt": "Siapa penerima paket?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Bu Sari"
+        },
+        {
+          "key": "B",
+          "text": "Bu Maya"
+        },
+        {
+          "key": "C",
+          "text": "Bu Rina"
+        },
+        {
+          "key": "D",
+          "text": "Bu Dewi"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Kurir menyebut nama penerima Bu Maya.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A2-LS-S04-Q003",
+      "type": "multiple_choice",
+      "topic": "jadwal_dokter",
+      "subskill": "number_time_recognition",
+      "difficulty": 0.3,
+      "audioId": "BIGT-A2-LS-S04-A003",
+      "audioFile": "BIGT-A2-LS-S04-A003.mp3",
+      "transcript": "Resepsionis: Dokter spesialis anak praktik hari Selasa dan Kamis, jam sembilan pagi sampai jam dua belas siang. Hari ini kebetulan dokter sedang ada seminar, jadi praktik hanya sampai jam sebelas.",
+      "speaker": "female_02",
+      "speed": "normal",
+      "durationSeconds": 18,
+      "prompt": "Sampai jam berapa dokter praktik hari ini?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Jam dua belas"
+        },
+        {
+          "key": "B",
+          "text": "Jam sebelas"
+        },
+        {
+          "key": "C",
+          "text": "Jam sepuluh"
+        },
+        {
+          "key": "D",
+          "text": "Jam satu siang"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Resepsionis mengatakan hari ini praktik sampai jam sebelas.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A2-LS-S04-Q004",
+      "type": "multiple_choice",
+      "topic": "pesan_kafe",
+      "subskill": "specific_information",
+      "difficulty": 0.28,
+      "audioId": "BIGT-A2-LS-S04-A004",
+      "audioFile": "BIGT-A2-LS-S04-A004.mp3",
+      "transcript": "Pelayan: Selamat siang, mau pesan apa? Pengunjung: Nasi goreng satu dan es jeruk satu. Pelayan: Baik, nasi goreng dua puluh ribu, es jeruk delapan ribu. Totalnya dua puluh delapan ribu.",
+      "speaker": "male_01_male_01",
+      "speed": "normal",
+      "durationSeconds": 16,
+      "prompt": "Berapa total pesanan?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Dua puluh ribu"
+        },
+        {
+          "key": "B",
+          "text": "Dua puluh lima ribu"
+        },
+        {
+          "key": "C",
+          "text": "Dua puluh delapan ribu"
+        },
+        {
+          "key": "D",
+          "text": "Tiga puluh ribu"
+        }
+      ],
+      "answer": "C",
+      "explanation": "Pelayan menyebut total dua puluh delapan ribu.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A2-LS-S04-Q005",
+      "type": "multiple_choice",
+      "topic": "pengelola_kos",
+      "subskill": "simple_instruction",
+      "difficulty": 0.3,
+      "audioId": "BIGT-A2-LS-S04-A005",
+      "audioFile": "BIGT-A2-LS-S04-A005.mp3",
+      "transcript": "Pesan dari pengelola kos: Kepada semua penghuni, besok mulai jam sembilan pagi akan ada pembersihan tangki air. Harap tampung air sebelum jam sembilan. Pembersihan selesai jam satu siang.",
+      "speaker": "male_01",
+      "speed": "normal",
+      "durationSeconds": 17,
+      "prompt": "Apa yang harus dilakukan penghuni?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Pindah kos sementara"
+        },
+        {
+          "key": "B",
+          "text": "Bayar iuran tambahan"
+        },
+        {
+          "key": "C",
+          "text": "Matikan keran air"
+        },
+        {
+          "key": "D",
+          "text": "Menampung air sebelum jam sembilan"
+        }
+      ],
+      "answer": "D",
+      "explanation": "Pengelola menyuruh menampung air sebelum jam sembilan.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A2-LS-S04-Q006",
+      "type": "multiple_choice",
+      "topic": "halte_bus",
+      "subskill": "speaker_intent",
+      "difficulty": 0.32,
+      "audioId": "BIGT-A2-LS-S04-A006",
+      "audioFile": "BIGT-A2-LS-S04-A006.mp3",
+      "transcript": "Petugas halte: Penumpang tujuan Pasar Senen, bus nomor dua belas akan datang lima menit lagi. Harap siapkan kartu atau uang pas. Bus berikutnya tujuan Kota Tua akan tiba pukul tiga sore.",
+      "speaker": "male_01",
+      "speed": "normal",
+      "durationSeconds": 18,
+      "prompt": "Apa yang disampaikan petugas?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Info bus dan persiapan penumpang"
+        },
+        {
+          "key": "B",
+          "text": "Bus tujuan Pasar Senen mogok"
+        },
+        {
+          "key": "C",
+          "text": "Penundaan semua bus"
+        },
+        {
+          "key": "D",
+          "text": "Rute bus berubah"
+        }
+      ],
+      "answer": "A",
+      "explanation": "Petugas memberi info kedatangan bus dan persiapan penumpang.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A2-LS-S04-Q007",
+      "type": "multiple_choice",
+      "topic": "kelas_daring",
+      "subskill": "specific_information",
+      "difficulty": 0.3,
+      "audioId": "BIGT-A2-LS-S04-A007",
+      "audioFile": "BIGT-A2-LS-S04-A007.mp3",
+      "transcript": "Sari: Ra, besok kelas daring jam berapa? Rara: Jam sepuluh pagi. Tapi besok pakai Google Meet, bukan Zoom. Link-nya sudah dikirim Bu guru di grup.",
+      "speaker": "female_01_female_02",
+      "speed": "normal",
+      "durationSeconds": 14,
+      "prompt": "Aplikasi apa yang dipakai untuk kelas daring besok?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Zoom"
+        },
+        {
+          "key": "B",
+          "text": "WhatsApp"
+        },
+        {
+          "key": "C",
+          "text": "Google Meet"
+        },
+        {
+          "key": "D",
+          "text": "Microsoft Teams"
+        }
+      ],
+      "answer": "C",
+      "explanation": "Rara mengatakan besok pakai Google Meet.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A2-LS-S04-Q008",
+      "type": "multiple_choice",
+      "topic": "tiket_wisata",
+      "subskill": "main_gist",
+      "difficulty": 0.32,
+      "audioId": "BIGT-A2-LS-S04-A008",
+      "audioFile": "BIGT-A2-LS-S04-A008.mp3",
+      "transcript": "Petugas: Selamat datang di objek wisata Air Terjun Indah. Tiket masuk untuk dewasa tiga puluh ribu, anak-anak lima belas ribu. Tiket sudah termasuk asuransi dan akses ke area kolam renang alam.",
+      "speaker": "female_02",
+      "speed": "normal",
+      "durationSeconds": 17,
+      "prompt": "Informasi apa yang diberikan petugas?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Jam buka objek wisata"
+        },
+        {
+          "key": "B",
+          "text": "Harga tiket dan fasilitas"
+        },
+        {
+          "key": "C",
+          "text": "Lokasi parkir"
+        },
+        {
+          "key": "D",
+          "text": "Jadwal pertunjukan"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Petugas memberikan info harga tiket dan fasilitas.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A2-LS-S04-Q009",
+      "type": "multiple_choice",
+      "topic": "reservasi_restoran",
+      "subskill": "number_time_recognition",
+      "difficulty": 0.32,
+      "audioId": "BIGT-A2-LS-S04-A009",
+      "audioFile": "BIGT-A2-LS-S04-A009.mp3",
+      "transcript": "Restoran: Kami konfirmasi reservasi atas nama Ibu Sari untuk makan malam hari Sabtu, jam tujuh malam, untuk empat orang. Mohon konfirmasi ulang satu jam sebelum kedatangan.",
+      "speaker": "female_02",
+      "speed": "normal",
+      "durationSeconds": 17,
+      "prompt": "Untuk berapa orang reservasi Ibu Sari?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Dua orang"
+        },
+        {
+          "key": "B",
+          "text": "Tiga orang"
+        },
+        {
+          "key": "C",
+          "text": "Empat orang"
+        },
+        {
+          "key": "D",
+          "text": "Lima orang"
+        }
+      ],
+      "answer": "C",
+      "explanation": "Pesan menyatakan untuk empat orang.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A2-LS-S04-Q010",
+      "type": "multiple_choice",
+      "topic": "kegiatan_relawan",
+      "subskill": "simple_instruction",
+      "difficulty": 0.32,
+      "audioId": "BIGT-A2-LS-S04-A010",
+      "audioFile": "BIGT-A2-LS-S04-A010.mp3",
+      "transcript": "Ketua: Relawan yang ikut bakti sosial besok, tolong kumpul di kantor yayasan jam setengah tujuh pagi. Bawa perlengkapan sendiri seperti sarung tangan, masker, dan air minum.",
+      "speaker": "male_02",
+      "speed": "normal",
+      "durationSeconds": 17,
+      "prompt": "Apa yang harus dibawa relawan?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Buku dan pulpen"
+        },
+        {
+          "key": "B",
+          "text": "Makanan dan minuman"
+        },
+        {
+          "key": "C",
+          "text": "Topi dan payung"
+        },
+        {
+          "key": "D",
+          "text": "Sarung tangan, masker, air minum"
+        }
+      ],
+      "answer": "D",
+      "explanation": "Ketua menyebut bawa sarung tangan, masker, dan air minum.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A2-LS-S04-Q011",
+      "type": "multiple_choice",
+      "topic": "latihan_musik",
+      "subskill": "specific_information",
+      "difficulty": 0.32,
+      "audioId": "BIGT-A2-LS-S04-A011",
+      "audioFile": "BIGT-A2-LS-S04-A011.mp3",
+      "transcript": "Pelatih: Latihan band besok hari Sabtu jam dua siang di ruang musik lantai dua. Jangan lupa bawa alat musik masing-masing. Latihan sampai jam lima sore.",
+      "speaker": "male_01",
+      "speed": "normal",
+      "durationSeconds": 16,
+      "prompt": "Di mana latihan band dilaksanakan?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Di aula"
+        },
+        {
+          "key": "B",
+          "text": "Di lapangan"
+        },
+        {
+          "key": "C",
+          "text": "Di ruang musik lantai dua"
+        },
+        {
+          "key": "D",
+          "text": "Di studio"
+        }
+      ],
+      "answer": "C",
+      "explanation": "Pelatih mengatakan di ruang musik lantai dua.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A2-LS-S04-Q012",
+      "type": "multiple_choice",
+      "topic": "ruang_rapat",
+      "subskill": "location_recognition",
+      "difficulty": 0.3,
+      "audioId": "BIGT-A2-LS-S04-A012",
+      "audioFile": "BIGT-A2-LS-S04-A012.mp3",
+      "transcript": "Pesan dari Pak Guru: Rapat orang tua wali yang seharusnya di ruang serbaguna, besok pindah ke perpustakaan lantai dua karena ruang serbaguna dipakai untuk lomba. Rapat tetap jam setengah sembilan pagi.",
+      "speaker": "male_02",
+      "speed": "normal",
+      "durationSeconds": 18,
+      "prompt": "Di mana rapat orang tua dilaksanakan?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Ruang serbaguna"
+        },
+        {
+          "key": "B",
+          "text": "Kelas tiga"
+        },
+        {
+          "key": "C",
+          "text": "Perpustakaan lantai dua"
+        },
+        {
+          "key": "D",
+          "text": "Aula"
+        }
+      ],
+      "answer": "C",
+      "explanation": "Pesan menyatakan rapat pindah ke perpustakaan lantai dua.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A2-LS-S04-Q013",
+      "type": "multiple_choice",
+      "topic": "barang_tertinggal",
+      "subskill": "location_recognition",
+      "difficulty": 0.32,
+      "audioId": "BIGT-A2-LS-S04-A013",
+      "audioFile": "BIGT-A2-LS-S04-A013.mp3",
+      "transcript": "Petugas stasiun: Selamat siang, ada penumpang yang meninggalkan jaket biru di kereta jurusan Bekasi. Jaket ditemukan di kursi nomor tujuh gerbong tiga. Silakan ke kantor informasi untuk pengambilan.",
+      "speaker": "male_01",
+      "speed": "normal",
+      "durationSeconds": 18,
+      "prompt": "Di mana jaket ditemukan?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Di kursi nomor tujuh gerbong tiga"
+        },
+        {
+          "key": "B",
+          "text": "Di kantor informasi"
+        },
+        {
+          "key": "C",
+          "text": "Di pintu keluar"
+        },
+        {
+          "key": "D",
+          "text": "Di loker penitipan"
+        }
+      ],
+      "answer": "A",
+      "explanation": "Petugas mengatakan jaket ditemukan di kursi nomor tujuh gerbong tiga.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A2-LS-S04-Q014",
+      "type": "multiple_choice",
+      "topic": "minimarket",
+      "subskill": "specific_information",
+      "difficulty": 0.34,
+      "audioId": "BIGT-A2-LS-S04-A014",
+      "audioFile": "BIGT-A2-LS-S04-A014.mp3",
+      "transcript": "Pembeli: Mas, saya mencari susu untuk anak umur satu tahun. Ada? Karyawan: Ada, Bu. Ada susu formula untuk usia satu hingga tiga tahun. Ada rasa vanila dan madu. Harganya empat puluh lima ribu.",
+      "speaker": "female_01_male_01",
+      "speed": "normal",
+      "durationSeconds": 17,
+      "prompt": "Apa yang dibeli pembeli?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Susu formula"
+        },
+        {
+          "key": "B",
+          "text": "Roti"
+        },
+        {
+          "key": "C",
+          "text": "Popok"
+        },
+        {
+          "key": "D",
+          "text": "Biskuit"
+        }
+      ],
+      "answer": "A",
+      "explanation": "Pembeli mencari susu untuk anak usia satu tahun.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A2-LS-S04-Q015",
+      "type": "multiple_choice",
+      "topic": "fotokopi",
+      "subskill": "simple_instruction",
+      "difficulty": 0.34,
+      "audioId": "BIGT-A2-LS-S04-A015",
+      "audioFile": "BIGT-A2-LS-S04-A015.mp3",
+      "transcript": "Karyawan fotokopi: Untuk fotokopi, harga seratus rupiah per lembar hitam putih, lima ratus rupiah per lembar warna. Kalau jilid, tambah tiga ribu. Selesai dalam satu jam.",
+      "speaker": "male_02",
+      "speed": "normal",
+      "durationSeconds": 16,
+      "prompt": "Berapa harga fotokopi berwarna per lembar?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Seratus rupiah"
+        },
+        {
+          "key": "B",
+          "text": "Dua ratus rupiah"
+        },
+        {
+          "key": "C",
+          "text": "Tiga ratus rupiah"
+        },
+        {
+          "key": "D",
+          "text": "Lima ratus rupiah"
+        }
+      ],
+      "answer": "D",
+      "explanation": "Karyawan menyebut lima ratus rupiah per lembar warna.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A2-LS-S04-Q016",
+      "type": "multiple_choice",
+      "topic": "instruksi_loker",
+      "subskill": "simple_instruction",
+      "difficulty": 0.34,
+      "audioId": "BIGT-A2-LS-S04-A016",
+      "audioFile": "BIGT-A2-LS-S04-A016.mp3",
+      "transcript": "Petugas: Untuk menggunakan loker, masukkan barang, tutup pintu, lalu masukkan koin lima ratus. Putar kunci ke kanan dan simpan kuncinya. Buka dengan cara yang sama.",
+      "speaker": "male_01",
+      "speed": "normal",
+      "durationSeconds": 18,
+      "prompt": "Langkah pertama menggunakan loker adalah?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Memutar kunci"
+        },
+        {
+          "key": "B",
+          "text": "Masukkan barang dan tutup pintu"
+        },
+        {
+          "key": "C",
+          "text": "Masukkan koin"
+        },
+        {
+          "key": "D",
+          "text": "Membuka kunci"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Petugas menyebut langkah pertama masukkan barang, lalu tutup pintu.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A2-LS-S04-Q017",
+      "type": "multiple_choice",
+      "topic": "jam_perpustakaan",
+      "subskill": "speaker_intent",
+      "difficulty": 0.36,
+      "audioId": "BIGT-A2-LS-S04-A017",
+      "audioFile": "BIGT-A2-LS-S04-A017.mp3",
+      "transcript": "Pengumuman: Perpustakaan kota akan buka lebih awal mulai bulan depan. Jam buka berubah menjadi jam setengah delapan pagi sampai jam lima sore. Khusus hari Jumat, perpustakaan buka jam satu siang.",
+      "speaker": "announcer_01",
+      "speed": "normal",
+      "durationSeconds": 17,
+      "prompt": "Apa yang diumumkan?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Perubahan jam buka perpustakaan"
+        },
+        {
+          "key": "B",
+          "text": "Perpustakaan tutup permanen"
+        },
+        {
+          "key": "C",
+          "text": "Pendaftaran anggota baru"
+        },
+        {
+          "key": "D",
+          "text": "Acara diskusi buku"
+        }
+      ],
+      "answer": "A",
+      "explanation": "Pengumuman tentang perubahan jam buka perpustakaan.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A2-LS-S04-Q018",
+      "type": "multiple_choice",
+      "topic": "rencana_taman",
+      "subskill": "main_gist",
+      "difficulty": 0.36,
+      "audioId": "BIGT-A2-LS-S04-A018",
+      "audioFile": "BIGT-A2-LS-S04-A018.mp3",
+      "transcript": "Ibu: Hari ini cuaca cerah. Ayo kita pergi ke taman kota. Bawa bekal dan tikar. Kita bisa piknik di sana. Ayah dan kakak sudah siap. Berangkat jam sembilan.",
+      "speaker": "female_01",
+      "speed": "normal",
+      "durationSeconds": 16,
+      "prompt": "Apa rencana keluarga hari ini?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Piknik ke taman kota"
+        },
+        {
+          "key": "B",
+          "text": "Makan di restoran"
+        },
+        {
+          "key": "C",
+          "text": "Jalan ke mal"
+        },
+        {
+          "key": "D",
+          "text": "Berkunjung ke nenek"
+        }
+      ],
+      "answer": "A",
+      "explanation": "Ibu mengajak piknik ke taman kota.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A2-LS-S04-Q019",
+      "type": "multiple_choice",
+      "topic": "obat_apotek",
+      "subskill": "specific_information",
+      "difficulty": 0.36,
+      "audioId": "BIGT-A2-LS-S04-A019",
+      "audioFile": "BIGT-A2-LS-S04-A019.mp3",
+      "transcript": "Apoteker: Obat ini untuk alergi. Minum satu tablet sehari setelah makan. Efek sampingnya bisa menyebabkan kantuk, jadi jangan mengemudi setelah minum obat. Harga obat ini tiga puluh ribu.",
+      "speaker": "female_02",
+      "speed": "normal",
+      "durationSeconds": 18,
+      "prompt": "Berapa kali sehari obat alergi diminum?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Dua kali sehari"
+        },
+        {
+          "key": "B",
+          "text": "Satu kali sehari"
+        },
+        {
+          "key": "C",
+          "text": "Tiga kali sehari"
+        },
+        {
+          "key": "D",
+          "text": "Setiap jam"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Apoteker mengatakan minum satu tablet sehari.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A2-LS-S04-Q020",
+      "type": "multiple_choice",
+      "topic": "jadwal_kursus",
+      "subskill": "location_recognition",
+      "difficulty": 0.36,
+      "audioId": "BIGT-A2-LS-S04-A020",
+      "audioFile": "BIGT-A2-LS-S04-A020.mp3",
+      "transcript": "Staf kursus: Untuk kelas bahasa Inggris, tersedia jadwal pagi jam delapan sampai jam sepuluh di ruang A, atau jadwal sore jam empat sampai jam enam di ruang C. Jadwal pagi sudah penuh.",
+      "speaker": "female_02",
+      "speed": "normal",
+      "durationSeconds": 17,
+      "prompt": "Di ruang mana kelas bahasa Inggris sore?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Ruang A"
+        },
+        {
+          "key": "B",
+          "text": "Ruang B"
+        },
+        {
+          "key": "C",
+          "text": "Ruang C"
+        },
+        {
+          "key": "D",
+          "text": "Ruang D"
+        }
+      ],
+      "answer": "C",
+      "explanation": "Staf mengatakan kelas sore di ruang C.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A2-LS-S04-Q021",
+      "type": "multiple_choice",
+      "topic": "tugas_kelompok",
+      "subskill": "number_time_recognition",
+      "difficulty": 0.38,
+      "audioId": "BIGT-A2-LS-S04-A021",
+      "audioFile": "BIGT-A2-LS-S04-A021.mp3",
+      "transcript": "Pesan suara dari Andi: Putri, tugas kelompok kita dikumpulkan hari Jumat. Aku sudah selesai bagian satu sampai tiga. Kamu yang bagian empat dan lima. Ayo dikerjakan biar selesai sebelum Kamis malam.",
+      "speaker": "male_02",
+      "speed": "normal",
+      "durationSeconds": 18,
+      "prompt": "Kapan batas terakhir tugas kelompok dikerjakan?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Hari Jumat siang"
+        },
+        {
+          "key": "B",
+          "text": "Hari Rabu malam"
+        },
+        {
+          "key": "C",
+          "text": "Sebelum Kamis malam"
+        },
+        {
+          "key": "D",
+          "text": "Hari Sabtu pagi"
+        }
+      ],
+      "answer": "C",
+      "explanation": "Andi mengatakan dikerjakan sebelum Kamis malam.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A2-LS-S04-Q022",
+      "type": "multiple_choice",
+      "topic": "lomba_sekolah",
+      "subskill": "simple_inference",
+      "difficulty": 0.38,
+      "audioId": "BIGT-A2-LS-S04-A022",
+      "audioFile": "BIGT-A2-LS-S04-A022.mp3",
+      "transcript": "Guru: Pengumuman! Lomba cerdas cermat antar kelas akan diadakan hari Selasa, 20 November. Setiap kelas mengirim tiga orang. Pendaftaran ditutup hari Jumat ini. Juara mendapatkan trofi dan uang pembinaan.",
+      "speaker": "female_01",
+      "speed": "normal",
+      "durationSeconds": 18,
+      "prompt": "Apa yang harus dilakukan setiap kelas untuk mengikuti lomba?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Belajar kelompok"
+        },
+        {
+          "key": "B",
+          "text": "Mendaftar dan mengirim tiga wakil"
+        },
+        {
+          "key": "C",
+          "text": "Membeli buku"
+        },
+        {
+          "key": "D",
+          "text": "Latihan setiap hari"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Guru mengatakan setiap kelas mengirim tiga orang dan mendaftar sebelum Jumat.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A2-LS-S04-Q023",
+      "type": "multiple_choice",
+      "topic": "fasilitas_kos",
+      "subskill": "simple_inference",
+      "difficulty": 0.4,
+      "audioId": "BIGT-A2-LS-S04-A023",
+      "audioFile": "BIGT-A2-LS-S04-A023.mp3",
+      "transcript": "Calon penghuni: Permisi, fasilitas di kos ini apa saja? Pemilik: Ada WiFi di semua lantai, dapur bersama, dan parkir motor. Untuk kamar mandi ada di dalam setiap kamar. Listrik dan air sudah termasuk biaya sewa.",
+      "speaker": "male_01_male_02",
+      "speed": "normal",
+      "durationSeconds": 18,
+      "prompt": "Apa yang sudah termasuk dalam biaya sewa?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Makanan dan minuman"
+        },
+        {
+          "key": "B",
+          "text": "WiFi dan parkir"
+        },
+        {
+          "key": "C",
+          "text": "Listrik dan air"
+        },
+        {
+          "key": "D",
+          "text": "Laundry dan kebersihan"
+        }
+      ],
+      "answer": "C",
+      "explanation": "Pemilik menyatakan listrik dan air sudah termasuk.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A2-LS-S04-Q024",
+      "type": "multiple_choice",
+      "topic": "janji_puskesmas",
+      "subskill": "main_gist",
+      "difficulty": 0.4,
+      "audioId": "BIGT-A2-LS-S04-A024",
+      "audioFile": "BIGT-A2-LS-S04-A024.mp3",
+      "transcript": "Staf puskesmas: Selamat pagi, untuk membuat janji dengan dokter umum, silakan isi formulir di loket satu. Janji tersedia hari Senin sampai Jumat. Besok pagi jam sembilan masih ada slot kosong.",
+      "speaker": "female_02",
+      "speed": "normal",
+      "durationSeconds": 17,
+      "prompt": "Informasi apa yang diberikan staf?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Jam besuk pasien"
+        },
+        {
+          "key": "B",
+          "text": "Cara membuat janji dokter umum"
+        },
+        {
+          "key": "C",
+          "text": "Biaya administrasi"
+        },
+        {
+          "key": "D",
+          "text": "Fasilitas puskesmas"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Staf menjelaskan cara membuat janji dengan dokter umum.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A2-LS-S04-Q025",
+      "type": "true_false",
+      "topic": "info_cuaca",
+      "subskill": "specific_information",
+      "difficulty": 0.28,
+      "audioId": "BIGT-A2-LS-S04-A025",
+      "audioFile": "BIGT-A2-LS-S04-A025.mp3",
+      "transcript": "Penyiar: Prakiraan cuaca hari ini, Jakarta cerah berawan dengan suhu dua puluh lima hingga tiga puluh satu derajat. Hujan ringan diperkirakan terjadi pada malam hari.",
+      "speaker": "male_01",
+      "speed": "normal",
+      "durationSeconds": 16,
+      "prompt": "Cuaca hari ini di Jakarta diperkirakan hujan sepanjang hari.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Benar"
+        },
+        {
+          "key": "B",
+          "text": "Salah"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Penyiar mengatakan cuaca cerah berawan dengan hujan ringan di malam hari.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A2-LS-S04-Q026",
+      "type": "true_false",
+      "topic": "ongkos_bus",
+      "subskill": "number_time_recognition",
+      "difficulty": 0.3,
+      "audioId": "BIGT-A2-LS-S04-A026",
+      "audioFile": "BIGT-A2-LS-S04-A026.mp3",
+      "transcript": "Petugas: Tarif bus listrik dari terminal ke stasiun Rp5.000, dari stasiun ke mal Rp3.000. Untuk pelajar mendapat diskon lima puluh persen dengan menunjukkan kartu pelajar.",
+      "speaker": "male_01",
+      "speed": "normal",
+      "durationSeconds": 16,
+      "prompt": "Tarif bus listrik dari stasiun ke mal adalah Rp5.000.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Benar"
+        },
+        {
+          "key": "B",
+          "text": "Salah"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Petugas menyebut tarif dari stasiun ke mal Rp3.000.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A2-LS-S04-Q027",
+      "type": "true_false",
+      "topic": "toko_buku",
+      "subskill": "location_recognition",
+      "difficulty": 0.3,
+      "audioId": "BIGT-A2-LS-S04-A027",
+      "audioFile": "BIGT-A2-LS-S04-A027.mp3",
+      "transcript": "Rina: Toko Buku Pustaka ada di sebelah kiri setelah lampu merah. Sebelumnya ada toko roti. Tampaknya toko buku sedang tutup karena hari Minggu.",
+      "speaker": "female_01",
+      "speed": "normal",
+      "durationSeconds": 16,
+      "prompt": "Toko roti terletak setelah lampu merah sebelum toko buku.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Benar"
+        },
+        {
+          "key": "B",
+          "text": "Salah"
+        }
+      ],
+      "answer": "A",
+      "explanation": "Rina mengatakan toko buku di sebelah kiri setelah lampu merah, sebelumnya ada toko roti.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A2-LS-S04-Q028",
+      "type": "true_false",
+      "topic": "pendaftaran_lomba",
+      "subskill": "specific_information",
+      "difficulty": 0.32,
+      "audioId": "BIGT-A2-LS-S04-A028",
+      "audioFile": "BIGT-A2-LS-S04-A028.mp3",
+      "transcript": "Pengumuman: Lomba melukis untuk anak usia lima sampai dua belas tahun. Pendaftaran sampai tanggal 10 Desember. Biaya pendaftaran Rp50.000. Hadiah utama berupa sepeda dan perlengkapan seni.",
+      "speaker": "female_02",
+      "speed": "normal",
+      "durationSeconds": 17,
+      "prompt": "Pendaftaran lomba melukis gratis.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Benar"
+        },
+        {
+          "key": "B",
+          "text": "Salah"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Pengumuman menyatakan biaya pendaftaran Rp50.000.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A2-LS-S04-Q029",
+      "type": "true_false",
+      "topic": "waktu_pertemuan",
+      "subskill": "number_time_recognition",
+      "difficulty": 0.34,
+      "audioId": "BIGT-A2-LS-S04-A029",
+      "audioFile": "BIGT-A2-LS-S04-A029.mp3",
+      "transcript": "Pesan: Pertemuan orang tua akan diadakan hari Sabtu, 25 November pukul setengah sembilan pagi di aula sekolah. Acara selesai pukul dua belas siang. Hadir tepat waktu.",
+      "speaker": "announcer_01",
+      "speed": "normal",
+      "durationSeconds": 17,
+      "prompt": "Pertemuan orang tua diadakan hari Sabtu pukul setengah sembilan pagi.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Benar"
+        },
+        {
+          "key": "B",
+          "text": "Salah"
+        }
+      ],
+      "answer": "A",
+      "explanation": "Pesan menyatakan hari Sabtu pukul setengah sembilan pagi.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A2-LS-S04-Q030",
+      "type": "true_false",
+      "topic": "kegiatan_pagi",
+      "subskill": "specific_information",
+      "difficulty": 0.34,
+      "audioId": "BIGT-A2-LS-S04-A030",
+      "audioFile": "BIGT-A2-LS-S04-A030.mp3",
+      "transcript": "Ibu: Setiap pagi aku bangun jam setengah lima, lalu memasak sarapan untuk keluarga. Jam setengah enam aku bangunkan anak-anak. Jam tujuh mereka berangkat sekolah.",
+      "speaker": "female_01",
+      "speed": "normal",
+      "durationSeconds": 16,
+      "prompt": "Ibu memasak sarapan setiap pagi.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Benar"
+        },
+        {
+          "key": "B",
+          "text": "Salah"
+        }
+      ],
+      "answer": "A",
+      "explanation": "Ibu mengatakan setiap pagi memasak sarapan untuk keluarga.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A2-LS-S04-Q031",
+      "type": "true_false",
+      "topic": "kerja_sama",
+      "subskill": "simple_inference",
+      "difficulty": 0.36,
+      "audioId": "BIGT-A2-LS-S04-A031",
+      "audioFile": "BIGT-A2-LS-S04-A031.mp3",
+      "transcript": "Anton: Tugas kita ini harus dikerjakan bersama. Kamu jangan kerja sendiri. Ayo kita bagi tugas biar cepat selesai. Aku ambil bagian pertama.",
+      "speaker": "male_01",
+      "speed": "normal",
+      "durationSeconds": 16,
+      "prompt": "Anton mengerjakan tugas sendirian.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Benar"
+        },
+        {
+          "key": "B",
+          "text": "Salah"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Anton mengajak bekerja sama dan membagi tugas, bukan sendiri.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A2-LS-S04-Q032",
+      "type": "true_false",
+      "topic": "ajakan_menonton",
+      "subskill": "speaker_intent",
+      "difficulty": 0.38,
+      "audioId": "BIGT-A2-LS-S04-A032",
+      "audioFile": "BIGT-A2-LS-S04-A032.mp3",
+      "transcript": "Sari: Ayo kita nonton film baru di bioskop hari Minggu. Katanya filmnya lucu banget. Aku sudah lihat trailernya. Rina: Boleh, aku mau.",
+      "speaker": "female_01_female_02",
+      "speed": "normal",
+      "durationSeconds": 15,
+      "prompt": "Sari mengajak Rina menonton film ke bioskop.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Benar"
+        },
+        {
+          "key": "B",
+          "text": "Salah"
+        }
+      ],
+      "answer": "A",
+      "explanation": "Sari mengajak nonton film baru di bioskop hari Minggu.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A2-LS-S04-Q033",
+      "type": "short_answer",
+      "topic": "pengumuman_halte",
+      "subskill": "specific_information",
+      "difficulty": 0.32,
+      "audioId": "BIGT-A2-LS-S04-A033",
+      "audioFile": "BIGT-A2-LS-S04-A033.mp3",
+      "transcript": "Petugas halte: Bus jurusan Kota Tua akan berangkat dari jalur dua. Bus nomor lima belas. Penumpang mohon bersiap di area tunggu.",
+      "speaker": "male_01",
+      "speed": "normal",
+      "durationSeconds": 15,
+      "prompt": "Bus nomor berapa jurusan Kota Tua?",
+      "answer": "lima belas",
+      "explanation": "Petugas menyebut bus nomor lima belas.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A2-LS-S04-Q034",
+      "type": "short_answer",
+      "topic": "brosur_kursus",
+      "subskill": "specific_information",
+      "difficulty": 0.36,
+      "audioId": "BIGT-A2-LS-S04-A034",
+      "audioFile": "BIGT-A2-LS-S04-A034.mp3",
+      "transcript": "Staf kursus: Program kursus kami ada tiga: bahasa Inggris, komputer, dan menjahit. Biaya pendaftaran per program Rp250.000. Diskon 20% untuk pendaftaran dua program sekaligus.",
+      "speaker": "female_02",
+      "speed": "normal",
+      "durationSeconds": 17,
+      "prompt": "Program kursus apa saja yang tersedia?",
+      "answer": "bahasa Inggris, komputer, menjahit",
+      "explanation": "Staf menyebut bahasa Inggris, komputer, dan menjahit.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A2-LS-S04-Q035",
+      "type": "short_answer",
+      "topic": "pengumuman_museum",
+      "subskill": "main_gist",
+      "difficulty": 0.38,
+      "audioId": "BIGT-A2-LS-S04-A035",
+      "audioFile": "BIGT-A2-LS-S04-A035.mp3",
+      "transcript": "Pengumuman: Museum Nasional akan tutup sementara selama satu minggu mulai tanggal 5 Desember untuk renovasi. Museum akan dibuka kembali tanggal 12 Desember. Kami mohon maaf.",
+      "speaker": "announcer_01",
+      "speed": "normal",
+      "durationSeconds": 17,
+      "prompt": "Mengapa museum tutup sementara?",
+      "answer": "renovasi",
+      "explanation": "Museum ditutup untuk renovasi.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A2-LS-S04-Q036",
+      "type": "short_answer",
+      "topic": "info_pelatihan",
+      "subskill": "number_time_recognition",
+      "difficulty": 0.4,
+      "audioId": "BIGT-A2-LS-S04-A036",
+      "audioFile": "BIGT-A2-LS-S04-A036.mp3",
+      "transcript": "Staf: Pelatihan kepemimpinan akan diadakan tanggal 15 sampai 17 Desember di aula hotel. Pendaftaran dibuka sampai 1 Desember. Biaya pelatihan Rp350.000 termasuk makan siang dan sertifikat.",
+      "speaker": "male_02",
+      "speed": "normal",
+      "durationSeconds": 18,
+      "prompt": "Tanggal berapa pelatihan kepemimpinan dimulai?",
+      "answer": "15 Desember",
+      "explanation": "Staf menyatakan pelatihan tanggal 15 sampai 17 Desember.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A2-LS-S04-Q037",
+      "type": "matching",
+      "topic": "layanan_fotokopi",
+      "subskill": "specific_information",
+      "difficulty": 0.34,
+      "audioId": "BIGT-A2-LS-S04-A037",
+      "audioFile": "BIGT-A2-LS-S04-A037.mp3",
+      "transcript": "Karyawan: Pelayanan di sini fotokopi, scan, dan print. Fotokopi seratus per lembar, print lima ratus rupiah per lembar. Scan gratis untuk pelanggan fotokopi minimal sepuluh lembar.",
+      "speaker": "male_02",
+      "speed": "normal",
+      "durationSeconds": 17,
+      "prompt": "Berapa biaya print per lembar?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Seratus rupiah"
+        },
+        {
+          "key": "B",
+          "text": "Tiga ratus rupiah"
+        },
+        {
+          "key": "C",
+          "text": "Lima ratus rupiah"
+        },
+        {
+          "key": "D",
+          "text": "Seribu rupiah"
+        }
+      ],
+      "answer": "C",
+      "explanation": "Karyawan menyebut print lima ratus rupiah per lembar.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A2-LS-S04-Q038",
+      "type": "matching",
+      "topic": "barang_hilang",
+      "subskill": "location_recognition",
+      "difficulty": 0.36,
+      "audioId": "BIGT-A2-LS-S04-A038",
+      "audioFile": "BIGT-A2-LS-S04-A038.mp3",
+      "transcript": "Petugas keamanan: Barang hilang ditemukan di area parkir. Satu dompet coklat berisi KTP dan uang tunai. Silakan datang ke pos keamanan untuk mengambil. Bawa bukti identitas.",
+      "speaker": "male_01",
+      "speed": "normal",
+      "durationSeconds": 17,
+      "prompt": "Di mana barang hilang ditemukan?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Di dalam mal"
+        },
+        {
+          "key": "B",
+          "text": "Di area parkir"
+        },
+        {
+          "key": "C",
+          "text": "Di stasiun"
+        },
+        {
+          "key": "D",
+          "text": "Di halte bus"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Petugas mengatakan barang ditemukan di area parkir.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A2-LS-S04-Q039",
+      "type": "matching",
+      "topic": "jadwal_olahraga",
+      "subskill": "number_time_recognition",
+      "difficulty": 0.4,
+      "audioId": "BIGT-A2-LS-S04-A039",
+      "audioFile": "BIGT-A2-LS-S04-A039.mp3",
+      "transcript": "Pelatih: Untuk jadwal akhir pekan ini, hari Sabtu kita latihan sepak bola jam setengah tujuh pagi. Hari Minggu ada pertandingan persahabatan jam setengah delapan pagi di lapangan yang sama.",
+      "speaker": "male_01",
+      "speed": "normal",
+      "durationSeconds": 17,
+      "prompt": "Jam berapa pertandingan hari Minggu?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Jam setengah tujuh"
+        },
+        {
+          "key": "B",
+          "text": "Jam tujuh"
+        },
+        {
+          "key": "C",
+          "text": "Jam setengah delapan"
+        },
+        {
+          "key": "D",
+          "text": "Jam delapan"
+        }
+      ],
+      "answer": "C",
+      "explanation": "Pelatih mengatakan pertandingan hari Minggu jam setengah delapan.",
+      "points": 1
+    },
+    {
+      "questionId": "BIGT-A2-LS-S04-Q040",
+      "type": "matching",
+      "topic": "info_perjalanan",
+      "subskill": "main_gist",
+      "difficulty": 0.42,
+      "audioId": "BIGT-A2-LS-S04-A040",
+      "audioFile": "BIGT-A2-LS-S04-A040.mp3",
+      "transcript": "Penyiar: Bagi yang akan bepergian ke Puncak hari ini, waspada kabut tebal di jalur pendakian. Suhu diperkirakan lima belas hingga delapan belas derajat. Disarankan membawa jaket tebal.",
+      "speaker": "male_01",
+      "speed": "normal",
+      "durationSeconds": 17,
+      "prompt": "Apa yang perlu diwaspadai di jalur Puncak?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Hujan deras"
+        },
+        {
+          "key": "B",
+          "text": "Kabut tebal"
+        },
+        {
+          "key": "C",
+          "text": "Angin kencang"
+        },
+        {
+          "key": "D",
+          "text": "Macet panjang"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Penyiar memperingatkan kabut tebal di jalur pendakian.",
+      "points": 1
+    }
+  ]
+}

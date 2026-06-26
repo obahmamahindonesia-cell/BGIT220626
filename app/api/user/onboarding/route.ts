@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { prisma } from '@/lib/prisma'
 
+export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
+
 export async function GET() {
   try {
     const supabase = createClient()
@@ -35,18 +38,20 @@ export async function POST(request: NextRequest) {
 
     const body = await request.json()
 
-    if (!body.age || !body.profession) {
+    const fullName = body.name ?? body.fullName ?? body.nama ?? user.user_metadata?.name ?? null
+
+    if (body.age === undefined || body.age === null || !body.profession) {
       return NextResponse.json({ success: false, error: 'Data onboarding belum lengkap.' }, { status: 400 })
     }
 
     // Ensure User row exists (create if missing — handles new registrations)
     const dbUser = await prisma.user.upsert({
       where: { supabaseId: user.id },
-      update: { email: user.email!, name: body.name || user.user_metadata?.name || null },
+      update: { email: user.email!, name: fullName },
       create: {
         supabaseId: user.id,
         email: user.email!,
-        name: body.name || user.user_metadata?.name || null,
+        name: fullName,
       },
     })
 
@@ -87,12 +92,17 @@ export async function POST(request: NextRequest) {
 
     // Also update supabase user metadata
     await supabase.auth.updateUser({
-      data: { name: body.name || dbUser.name, onboardingCompleted: true },
+      data: { name: fullName, onboardingCompleted: true },
     }).catch(() => {})
 
     return NextResponse.json({
       success: true,
-      profile: { onboardingCompleted: profile.onboardingCompleted },
+      profile: {
+        fullName,
+        age: profile.age,
+        profession: profile.profession,
+        onboardingCompleted: profile.onboardingCompleted,
+      },
       redirectTo: '/dashboard',
     })
   } catch {

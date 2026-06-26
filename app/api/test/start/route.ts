@@ -4,7 +4,21 @@ import { cookies } from 'next/headers'
 import { prisma } from '@/lib/prisma'
 import { selectQuestions } from '@/lib/assessment/question-selector'
 import { runAdaptivePlacement } from '@/lib/assessment/adaptive-lite'
-import { getBlueprint, distributeQuestions } from '@/lib/blueprints'
+import { selectItemsForBlueprint } from '@/lib/test-assembly/selectTestItems'
+import { selectLevelExamItems } from '@/lib/test-assembly/selectLevelExamItems'
+import { getBlueprint } from '@/lib/test-blueprint/bigtBlueprint'
+import { getLevelBlueprint, findBlueprintByTargetLevel, type LevelBlueprintId } from '@/lib/test-blueprint/bigtLevelBlueprint'
+import { syncQuestionItem } from '@/lib/question-bank/syncQuestionItem'
+import type { BlueprintId } from '@/lib/test-blueprint/bigtBlueprint'
+import type { SanitizedQuestion } from '@/types/question-bank'
+
+export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
+
+const SKILL_TO_DIMENSION: Record<string, 'LISTENING' | 'READING'> = {
+  listening: 'LISTENING',
+  reading: 'READING',
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -35,40 +49,216 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json()
-    const { product, dimensions, targetLevel, questionCount: customCount } = body
+    const { blueprintId, targetLevel } = body
 
-    if (!product) {
-      return NextResponse.json({ success: false, error: 'Produk tes wajib diisi.' }, { status: 400 })
+    // Resolve blueprintId from targetLevel shorthand
+    let resolvedBlueprintId = blueprintId
+    let levelBlueprint = null
+    let legacyBlueprint = null
+
+    if (!resolvedBlueprintId && targetLevel) {
+      levelBlueprint = findBlueprintByTargetLevel(targetLevel)
+      if (levelBlueprint) {
+        resolvedBlueprintId = levelBlueprint.id
+      }
     }
 
-    const blueprint = getBlueprint(product.toUpperCase())
-    const questionCount = customCount || blueprint?.defaultQuestionCount || 25
+    if (resolvedBlueprintId) {
+      // Check new level blueprints first
+      levelBlueprint = getLevelBlueprint(resolvedBlueprintId)
+      if (!levelBlueprint) {
+        legacyBlueprint = getBlueprint(resolvedBlueprintId)
+      }
+
+      if (!levelBlueprint && !legacyBlueprint) {
+        return NextResponse.json({ success: false, error: `Blueprint "${resolvedBlueprintId}" tidak ditemukan.` }, { status: 400 })
+      }
+
+      // === NEW LEVEL-BASED BLUEPRINT FLOW ===
+      if (levelBlueprint) {
+        const assembly = selectLevelExamItems(levelBlueprint)
+        if (!assembly.success || assembly.items.length === 0) {
+          return NextResponse.json({ success: false, error: 'Gagal menyusun tes: ' + (assembly.error || 'tidak ada soal tersedia.') }, { status: 422 })
+        }
+
+        const session = await prisma.testSession.create({
+          data: {
+            userId: dbUser.id,
+            product: resolvedBlueprintId,
+            targetLevel: levelBlueprint.targetLevel,
+            status: 'IN_PROGRESS',
+            questionCount: assembly.items.length,
+            metadata: {
+              blueprintId: resolvedBlueprintId,
+              durationMinutes: levelBlueprint.estimatedDurationMinutes,
+              sections: levelBlueprint.sections.map(s => ({ skill: s.skill, count: s.totalItems })),
+              warnings: assembly.log.warnings,
+            },
+          },
+        })
+
+        for (let i = 0; i < assembly.items.length; i++) {
+          const q = assembly.items[i]
+          const prismaId = await syncQuestionItem(q.questionId)
+
+          if (!prismaId) {
+            console.warn(`Could not sync question ${q.questionId}, skipping`)
+            continue
+          }
+
+          const dimMap: Record<string, string> = {
+            reading: 'READING', listening: 'LISTENING',
+            writing: 'WRITING', speaking: 'SPEAKING', integrated: 'INTEGRATED',
+          }
+
+          const sectionForItem = assembly.sections.find(s => s.items.find(i => i.questionId === q.questionId))
+          const cefrGuess = q.questionId?.startsWith('BIGT-A1') ? 'A1' : q.questionId?.startsWith('BIGT-A2') ? 'A2' : 'A1'
+
+          await prisma.testSessionItem.create({
+            data: {
+              sessionId: session.id,
+              questionId: prismaId,
+              order: i + 1,
+              dimension: (dimMap[sectionForItem?.skill || 'reading'] || 'READING') as any,
+              level: cefrGuess as any,
+              difficulty: Math.max(1, Math.round((q.difficulty || 0.3) * 18)),
+              questionSnapshot: q as any,
+              maxScore: 10,
+            },
+          })
+        }
+
+        const finalItems = await prisma.testSessionItem.count({ where: { sessionId: session.id } })
+        if (finalItems === 0) {
+          await prisma.testSession.delete({ where: { id: session.id } })
+          return NextResponse.json({ success: false, error: 'Gagal menyinkronkan soal ke database.' }, { status: 500 })
+        }
+
+        return NextResponse.json({
+          success: true,
+          data: {
+            sessionId: session.id,
+            blueprintId: resolvedBlueprintId,
+            targetLevel: levelBlueprint.targetLevel,
+            totalItems: finalItems,
+            estimatedDurationMinutes: levelBlueprint.estimatedDurationMinutes,
+            sections: assembly.sections.map(s => ({
+              skill: s.skill,
+              count: s.items.length,
+              items: s.items,
+            })),
+            questions: assembly.items,
+          },
+        })
+      }
+
+      // === LEGACY BLUEPRINT FLOW (backward compat) ===
+      if (legacyBlueprint) {
+        const assembly = selectItemsForBlueprint(legacyBlueprint)
+        if (!assembly.success || assembly.items.length === 0) {
+          return NextResponse.json({ success: false, error: 'Gagal menyusun tes: ' + (assembly.error || 'tidak ada soal tersedia.') }, { status: 422 })
+        }
+
+        const session = await prisma.testSession.create({
+          data: {
+            userId: dbUser.id,
+            product: resolvedBlueprintId,
+            targetLevel: null,
+            status: 'IN_PROGRESS',
+            questionCount: assembly.items.length,
+            metadata: {
+              blueprintId: resolvedBlueprintId,
+              durationMinutes: legacyBlueprint.estimatedDurationMinutes,
+              sections: legacyBlueprint.sections.map(s => ({ skill: s.skill, count: s.count })),
+              warnings: assembly.log.warnings,
+            },
+          },
+        })
+
+        for (let i = 0; i < assembly.items.length; i++) {
+          const q = assembly.items[i]
+          const prismaId = await syncQuestionItem(q.questionId)
+
+          if (!prismaId) {
+            console.warn(`Could not sync question ${q.questionId}, skipping`)
+            continue
+          }
+
+          const dimMap: Record<string, string> = {
+            reading: 'READING', listening: 'LISTENING',
+            writing: 'WRITING', speaking: 'SPEAKING', integrated: 'INTEGRATED',
+          }
+
+          const sectionForItem = assembly.sections.find(s => s.items.find(i => i.questionId === q.questionId))
+          const cefrGuess = q.questionId?.startsWith('BIGT-A1') ? 'A1' : q.questionId?.startsWith('BIGT-A2') ? 'A2' : 'A1'
+
+          await prisma.testSessionItem.create({
+            data: {
+              sessionId: session.id,
+              questionId: prismaId,
+              order: i + 1,
+              dimension: (dimMap[sectionForItem?.skill || 'reading'] || 'READING') as any,
+              level: cefrGuess as any,
+              difficulty: Math.max(1, Math.round((q.difficulty || 0.3) * 18)),
+              questionSnapshot: q as any,
+              maxScore: 10,
+            },
+          })
+        }
+
+        const finalItems = await prisma.testSessionItem.count({ where: { sessionId: session.id } })
+        if (finalItems === 0) {
+          await prisma.testSession.delete({ where: { id: session.id } })
+          return NextResponse.json({ success: false, error: 'Gagal menyinkronkan soal ke database.' }, { status: 500 })
+        }
+
+        return NextResponse.json({
+          success: true,
+          data: {
+            sessionId: session.id,
+            blueprintId: resolvedBlueprintId,
+            totalItems: finalItems,
+            estimatedDurationMinutes: legacyBlueprint.estimatedDurationMinutes,
+            sections: assembly.sections.map(s => ({
+              skill: s.skill,
+              count: s.items.length,
+              items: s.items,
+            })),
+            questions: assembly.items,
+          },
+        })
+      }
+    }
+
+    // === LEGACY PRODUCT-BASED FLOW (DB) ===
+    const product = body.product
+    const dimensions = body.dimensions
+
+    if (!product) {
+      return NextResponse.json({ success: false, error: 'Produk tes atau blueprintId wajib diisi.' }, { status: 400 })
+    }
+
     const productCode = product.toUpperCase()
 
     let selectedQuestions: any[] = []
     let metadata: any = {}
 
     if (productCode === 'PLACEMENT') {
-      // Adaptive-lite placement
       const recentIds = await getRecentQuestionIds(dbUser.id, 30)
       const adaptiveResult = await runAdaptivePlacement(dbUser.id, dimensions || [], recentIds)
       selectedQuestions = adaptiveResult.questions
     } else {
       const dims = dimensions && dimensions.length > 0
         ? dimensions
-        : (blueprint?.dimensions || ['LISTENING', 'READING', 'SPEAKING', 'WRITING', 'MEDIATION', 'INTEGRATED'])
+        : ['LISTENING', 'READING']
 
       const level = targetLevel || dbUser.profile?.targetLevel || 'B1'
 
-      // Distribute questions across dimensions
-      const dimDistribution = blueprint
-        ? distributeQuestions(questionCount, blueprint.dimensionWeights, dims)
-        : Object.fromEntries(dims.map((d: string) => [d, Math.floor(questionCount / dims.length)]))
+      const dimDistribution = Object.fromEntries(dims.map((d: string) => [d, Math.floor(25 / dims.length)]))
 
-      // Correct rounding
       const dimTotal = Object.values(dimDistribution).reduce((a: number, b: number) => a + b, 0)
-      if (dimTotal < questionCount && dims.length > 0) {
-        dimDistribution[dims[0]] = (dimDistribution[dims[0]] || 0) + (questionCount - dimTotal)
+      if (dimTotal < 25 && dims.length > 0) {
+        dimDistribution[dims[0]] = (dimDistribution[dims[0]] || 0) + (25 - dimTotal)
       }
 
       const recentIds = await getRecentQuestionIds(dbUser.id, 30)
@@ -98,7 +288,7 @@ export async function POST(request: NextRequest) {
         metadata = result.metadata
       }
 
-      selectedQuestions = allQuestions.slice(0, questionCount)
+      selectedQuestions = allQuestions.slice(0, 25)
     }
 
     if (selectedQuestions.length === 0) {
@@ -108,8 +298,6 @@ export async function POST(request: NextRequest) {
       }, { status: 422 })
     }
 
-    // Create TestSession
-    const blueprintDuration = blueprint?.durationMinutes || Math.max(30, Math.round(selectedQuestions.length * 1.5))
     const session = await prisma.testSession.create({
       data: {
         userId: dbUser.id,
@@ -119,12 +307,11 @@ export async function POST(request: NextRequest) {
         questionCount: selectedQuestions.length,
         metadata: {
           dimensions: dimensions || null,
-          durationMinutes: blueprintDuration,
+          durationMinutes: 30,
         },
       },
     })
 
-    // Create TestSessionItems with snapshots
     for (let i = 0; i < selectedQuestions.length; i++) {
       const q = selectedQuestions[i]
       const snapshot = {
@@ -154,7 +341,6 @@ export async function POST(request: NextRequest) {
       })
     }
 
-    // Update exposureCount
     for (const q of selectedQuestions) {
       await prisma.questionItem.update({
         where: { id: q.id },

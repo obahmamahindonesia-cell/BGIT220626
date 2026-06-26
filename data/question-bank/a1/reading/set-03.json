@@ -1,0 +1,746 @@
+{
+  "setId": "BIGT-A1-RD-S03",
+  "cefr": "A1",
+  "skill": "reading",
+  "title": "A1 Reading Set 03",
+  "version": "1.0.0",
+  "status": "draft",
+  "itemsCount": 40,
+  "passages": [
+    {
+      "passageId": "BIGT-A1-RD-S03-P001",
+      "title": "Pesan ke Toko Buku",
+      "text": "Halo Rina! Besok kita jadi ke toko buku? Aku tunggu di depan jam 10 pagi. Jawab ya!",
+      "topic": "shopping",
+      "wordCount": 15,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S03-Q001",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.1,
+          "prompt": "Apa tujuan pesan ini?",
+          "options": [
+            { "key": "A", "text": "Mengajak pergi ke toko buku" },
+            { "key": "B", "text": "Membatalkan janji" },
+            { "key": "C", "text": "Menanyakan kabar" },
+            { "key": "D", "text": "Memberi alamat rumah" }
+          ],
+          "answer": "A",
+          "explanation": "Pesan mengajak Rina pergi ke toko buku besok.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S03-Q002",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.1,
+          "prompt": "Andi menunggu di belakang toko buku.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "B",
+          "explanation": "Pesan mengatakan 'Aku tunggu di depan'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S03-Q003",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.12,
+          "prompt": "Andi akan menunggu jam berapa?",
+          "options": [
+            { "key": "A", "text": "Jam 8 pagi" },
+            { "key": "B", "text": "Jam 9 pagi" },
+            { "key": "C", "text": "Jam 10 pagi" },
+            { "key": "D", "text": "Jam 11 pagi" }
+          ],
+          "answer": "C",
+          "explanation": "Pesan menyatakan 'Aku tunggu di depan jam 10 pagi'.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S03-P002",
+      "title": "Catatan Akhir Pekan",
+      "text": "Catatan akhir pekan: Sabtu bersih-bersih rumah. Minggu pagi pergi ke rumah nenek. Jangan lupa bawa kue.",
+      "topic": "family",
+      "wordCount": 16,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S03-Q004",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.12,
+          "prompt": "Apa isi catatan tersebut?",
+          "options": [
+            { "key": "A", "text": "Jadwal kegiatan akhir pekan" },
+            { "key": "B", "text": "Resep membuat kue" },
+            { "key": "C", "text": "Daftar belanja bulanan" },
+            { "key": "D", "text": "Jadwal pelajaran sekolah" }
+          ],
+          "answer": "A",
+          "explanation": "Catatan berisi kegiatan Sabtu dan Minggu.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S03-Q005",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.12,
+          "prompt": "Hari Minggu pergi ke rumah nenek.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "A",
+          "explanation": "Catatan menyatakan 'Minggu pagi pergi ke rumah nenek'.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S03-P003",
+      "title": "Pengumuman di Halte",
+      "text": "PENGUMUMAN. Bus jurusan Pasar Baru akan datang dalam 5 menit. Pintu masuk dari depan. Harap siapkan uang pas.",
+      "topic": "transportation",
+      "wordCount": 18,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S03-Q006",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.1,
+          "prompt": "Bus akan datang dalam waktu?",
+          "options": [
+            { "key": "A", "text": "3 menit" },
+            { "key": "B", "text": "5 menit" },
+            { "key": "C", "text": "10 menit" },
+            { "key": "D", "text": "15 menit" }
+          ],
+          "answer": "B",
+          "explanation": "Pengumuman menyatakan 'datang dalam 5 menit'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S03-Q007",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.1,
+          "prompt": "Penumpang diminta menyiapkan uang pas.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "A",
+          "explanation": "Pengumuman menyatakan 'Harap siapkan uang pas'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S03-Q008",
+          "type": "short_answer",
+          "subskill": "specific_information",
+          "difficulty": 0.15,
+          "prompt": "Penumpang masuk bus dari mana?",
+          "answer": "depan",
+          "explanation": "Pengumuman menyatakan 'Pintu masuk dari depan'.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S03-P004",
+      "title": "Tiket Kereta",
+      "text": "TIKET KERETA API. Nama: Budi Santoso. Kereta: Jayabaya. Tujuan: Surabaya. Tanggal: 15 Maret. Jam: 07.30. Gerbong: 3. Kursi: 14A.",
+      "topic": "transportation",
+      "wordCount": 18,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S03-Q009",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.1,
+          "prompt": "Ke mana tujuan kereta Budi?",
+          "options": [
+            { "key": "A", "text": "Jakarta" },
+            { "key": "B", "text": "Bandung" },
+            { "key": "C", "text": "Surabaya" },
+            { "key": "D", "text": "Yogyakarta" }
+          ],
+          "answer": "C",
+          "explanation": "Tiket menyatakan tujuan Surabaya.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S03-Q010",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.1,
+          "prompt": "Tiket kereta atas nama Budi Santoso.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "A",
+          "explanation": "Tiket bertuliskan 'Nama: Budi Santoso'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S03-Q011",
+          "type": "matching",
+          "subskill": "matching_information",
+          "difficulty": 0.14,
+          "prompt": "Nomor kursi Budi di kereta adalah?",
+          "options": [
+            { "key": "A", "text": "12A" },
+            { "key": "B", "text": "13A" },
+            { "key": "C", "text": "14A" },
+            { "key": "D", "text": "15A" }
+          ],
+          "answer": "C",
+          "explanation": "Tiket menyatakan 'Kursi: 14A'.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S03-P005",
+      "title": "Label Minuman",
+      "text": "Jus Segar. Bahan: jeruk asli, gula, air. Tidak mengandung pengawet. Simpan di lemari es setelah dibuka. Baik sebelum: 20 Juni 2026.",
+      "topic": "daily life",
+      "wordCount": 19,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S03-Q012",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.1,
+          "prompt": "Bahan utama Jus Segar adalah?",
+          "options": [
+            { "key": "A", "text": "Mangga" },
+            { "key": "B", "text": "Jeruk" },
+            { "key": "C", "text": "Apel" },
+            { "key": "D", "text": "Anggur" }
+          ],
+          "answer": "B",
+          "explanation": "Label menyatakan 'Bahan: jeruk asli, gula, air'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S03-Q013",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.1,
+          "prompt": "Jus Segar mengandung pengawet.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "B",
+          "explanation": "Label menyatakan 'Tidak mengandung pengawet'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S03-Q014",
+          "type": "matching",
+          "subskill": "vocabulary_in_context",
+          "difficulty": 0.2,
+          "prompt": "Apa arti 'pengawet' pada label?",
+          "options": [
+            { "key": "A", "text": "Bahan pewarna" },
+            { "key": "B", "text": "Bahan pemanis" },
+            { "key": "C", "text": "Bahan agar tahan lama" },
+            { "key": "D", "text": "Bahan perasa" }
+          ],
+          "answer": "C",
+          "explanation": "'Pengawet' adalah bahan yang membuat makanan tahan lama.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S03-P006",
+      "title": "Kartu Perpustakaan",
+      "text": "KARTU ANGGOTA PERPUSTAKAAN KOTA. Nama: Dewi Lestari. Nomor anggota: 45892. Masa berlaku: 2024–2026. Alamat: Jl. Merpati No. 5, Jakarta.",
+      "topic": "school",
+      "wordCount": 20,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S03-Q015",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.1,
+          "prompt": "Siapa pemilik kartu perpustakaan?",
+          "options": [
+            { "key": "A", "text": "Dewi Lestari" },
+            { "key": "B", "text": "Sari Indah" },
+            { "key": "C", "text": "Rina Ayu" },
+            { "key": "D", "text": "Dewi Sartika" }
+          ],
+          "answer": "A",
+          "explanation": "Kartu bertuliskan 'Nama: Dewi Lestari'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S03-Q016",
+          "type": "matching",
+          "subskill": "vocabulary_in_context",
+          "difficulty": 0.2,
+          "prompt": "Apa arti 'berlaku' pada kartu perpustakaan?",
+          "options": [
+            { "key": "A", "text": "Masa pemakaian" },
+            { "key": "B", "text": "Nomor pendaftaran" },
+            { "key": "C", "text": "Tempat tinggal" },
+            { "key": "D", "text": "Jenis kelamin" }
+          ],
+          "answer": "A",
+          "explanation": "'Berlaku' berarti masa pemakaian yang sah, dalam hal ini 2024–2026.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S03-Q017",
+          "type": "short_answer",
+          "subskill": "specific_information",
+          "difficulty": 0.15,
+          "prompt": "Di kota mana Dewi tinggal?",
+          "answer": "Jakarta",
+          "explanation": "Kartu menyatakan 'Alamat: Jl. Merpati No. 5, Jakarta'.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S03-P007",
+      "title": "Brosur Puskesmas",
+      "text": "PUSKESMAS MELATI. Pelayanan: Cek kesehatan gratis setiap hari Sabtu. Jam: 08.00–12.00. Pendaftaran di loket 1. Bawa KTP.",
+      "topic": "health",
+      "wordCount": 17,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S03-Q018",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.12,
+          "prompt": "Apa informasi utama dari brosur?",
+          "options": [
+            { "key": "A", "text": "Cek kesehatan gratis di Puskesmas" },
+            { "key": "B", "text": "Jam buka puskesmas setiap hari" },
+            { "key": "C", "text": "Alamat puskesmas baru" },
+            { "key": "D", "text": "Daftar dokter di puskesmas" }
+          ],
+          "answer": "A",
+          "explanation": "Brosur memberitahu tentang cek kesehatan gratis setiap Sabtu.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S03-Q019",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.1,
+          "prompt": "Pendaftaran cek kesehatan dilakukan di loket 1.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "A",
+          "explanation": "Brosur menyatakan 'Pendaftaran di loket 1'.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S03-P008",
+      "title": "Aturan Minum Obat",
+      "text": "Aturan Pakai: 1 tablet, 3 kali sehari. Sesudah makan. Jangan melebihi 3 tablet dalam 24 jam. Hentikan jika ada alergi.",
+      "topic": "health",
+      "wordCount": 20,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S03-Q020",
+          "type": "multiple_choice",
+          "subskill": "vocabulary_in_context",
+          "difficulty": 0.12,
+          "prompt": "Apa arti kata 'melebihi' dalam aturan ini?",
+          "options": [
+            { "key": "A", "text": "Kurang dari" },
+            { "key": "B", "text": "Sama dengan" },
+            { "key": "C", "text": "Lebih dari" },
+            { "key": "D", "text": "Tidak peduli" }
+          ],
+          "answer": "C",
+          "explanation": "'Melebihi' berarti lebih dari jumlah yang ditentukan.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S03-Q021",
+          "type": "true_false",
+          "subskill": "simple_inference",
+          "difficulty": 0.18,
+          "prompt": "Obat diminum sebelum makan.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "B",
+          "explanation": "Aturan menyatakan 'Sesudah makan', jadi tidak diminum sebelum makan.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S03-Q022",
+          "type": "matching",
+          "subskill": "vocabulary_in_context",
+          "difficulty": 0.2,
+          "prompt": "Apa arti 'alergi' dalam aturan ini?",
+          "options": [
+            { "key": "A", "text": "Rasa kantuk" },
+            { "key": "B", "text": "Reaksi tubuh terhadap obat" },
+            { "key": "C", "text": "Sakit kepala" },
+            { "key": "D", "text": "Rasa lapar" }
+          ],
+          "answer": "B",
+          "explanation": "'Alergi' adalah reaksi tidak biasa dari tubuh terhadap obat.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S03-P009",
+      "title": "Poster Pentas Seni",
+      "text": "ACARA: Pentas Seni Kelas 3A. Hari: Sabtu, 12 Juni. Jam: 09.00–12.00. Tempat: Aula Sekolah. Tiket: Rp5.000. Acara: menyanyi, menari, drama.",
+      "topic": "school",
+      "wordCount": 20,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S03-Q023",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.1,
+          "prompt": "Apa acara yang diumumkan dalam poster?",
+          "options": [
+            { "key": "A", "text": "Pentas seni" },
+            { "key": "B", "text": "Lomba olahraga" },
+            { "key": "C", "text": "Pameran buku" },
+            { "key": "D", "text": "Ujian sekolah" }
+          ],
+          "answer": "A",
+          "explanation": "Poster mengumumkan 'Pentas Seni Kelas 3A'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S03-Q024",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.12,
+          "prompt": "Berapa harga tiket pentas seni?",
+          "options": [
+            { "key": "A", "text": "Rp3.000" },
+            { "key": "B", "text": "Rp5.000" },
+            { "key": "C", "text": "Rp7.000" },
+            { "key": "D", "text": "Rp10.000" }
+          ],
+          "answer": "B",
+          "explanation": "Poster menyatakan 'Tiket: Rp5.000'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S03-Q025",
+          "type": "short_answer",
+          "subskill": "matching_information",
+          "difficulty": 0.15,
+          "prompt": "Di mana pentas seni diadakan?",
+          "answer": "Aula Sekolah",
+          "explanation": "Poster menyatakan 'Tempat: Aula Sekolah'.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S03-P010",
+      "title": "Iklan Kos",
+      "text": "DIKOSKAN: Kamar kos untuk mahasiswa. Jl. Anggrek No. 10. Harga Rp800.000/bulan. Termasuk listrik dan air. Hubungi: Bu Rita (0812-3456-7890).",
+      "topic": "daily life",
+      "wordCount": 21,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S03-Q026",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.12,
+          "prompt": "Berapa harga sewa kamar kos per bulan?",
+          "options": [
+            { "key": "A", "text": "Rp600.000" },
+            { "key": "B", "text": "Rp700.000" },
+            { "key": "C", "text": "Rp800.000" },
+            { "key": "D", "text": "Rp900.000" }
+          ],
+          "answer": "C",
+          "explanation": "Iklan menyatakan 'Harga Rp800.000/bulan'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S03-Q027",
+          "type": "multiple_choice",
+          "subskill": "simple_inference",
+          "difficulty": 0.2,
+          "prompt": "Siapa yang paling cocok menyewa kamar kos ini?",
+          "options": [
+            { "key": "A", "text": "Anak SD" },
+            { "key": "B", "text": "Mahasiswa" },
+            { "key": "C", "text": "Balita" },
+            { "key": "D", "text": "Lansia" }
+          ],
+          "answer": "B",
+          "explanation": "Iklan menyatakan 'Kamar kos untuk mahasiswa'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S03-Q028",
+          "type": "short_answer",
+          "subskill": "specific_information",
+          "difficulty": 0.15,
+          "prompt": "Siapa yang bisa dihubungi untuk sewa kos?",
+          "answer": "Bu Rita",
+          "explanation": "Iklan menyatakan 'Hubungi: Bu Rita'.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S03-P011",
+      "title": "Papan Informasi Taman",
+      "text": "SELAMAT DATANG DI TAMAN KOTA. Buka setiap hari: 06.00–18.00. Dilarang membuang sampah sembarangan. Dilarang membawa hewan peliharaan. Nikmati taman dengan bersih.",
+      "topic": "public places",
+      "wordCount": 24,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S03-Q029",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.12,
+          "prompt": "Apa isi papan informasi tersebut?",
+          "options": [
+            { "key": "A", "text": "Peraturan di taman kota" },
+            { "key": "B", "text": "Sejarah taman kota" },
+            { "key": "C", "text": "Jadwal acara di taman" },
+            { "key": "D", "text": "Nama tanaman di taman" }
+          ],
+          "answer": "A",
+          "explanation": "Papan berisi peraturan tentang jam buka dan larangan di taman.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S03-Q030",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.12,
+          "prompt": "Taman kota buka dari jam 06.00 pagi.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "A",
+          "explanation": "Papan menyatakan 'Buka setiap hari: 06.00–18.00'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S03-Q031",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.12,
+          "prompt": "Apa yang dilarang di taman kota?",
+          "options": [
+            { "key": "A", "text": "Membawa makanan" },
+            { "key": "B", "text": "Membawa hewan peliharaan" },
+            { "key": "C", "text": "Membawa mainan" },
+            { "key": "D", "text": "Membawa buku" }
+          ],
+          "answer": "B",
+          "explanation": "Papan menyatakan 'Dilarang membawa hewan peliharaan'.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S03-P012",
+      "title": "Menu Rumah Makan",
+      "text": "MENU MAKAN SIANG. Nasi ayam goreng Rp15.000. Nasi ikan bakar Rp18.000. Mie goreng Rp12.000. Es campur Rp8.000. Jus alpukat Rp10.000. Buka: Senin–Sabtu, 09.00–20.00.",
+      "topic": "daily life",
+      "wordCount": 25,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S03-Q032",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.1,
+          "prompt": "Berapa harga mie goreng?",
+          "options": [
+            { "key": "A", "text": "Rp10.000" },
+            { "key": "B", "text": "Rp12.000" },
+            { "key": "C", "text": "Rp15.000" },
+            { "key": "D", "text": "Rp18.000" }
+          ],
+          "answer": "B",
+          "explanation": "Menu menyatakan 'Mie goreng Rp12.000'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S03-Q033",
+          "type": "matching",
+          "subskill": "matching_information",
+          "difficulty": 0.18,
+          "prompt": "Sampai jam berapa rumah makan buka?",
+          "options": [
+            { "key": "A", "text": "18.00" },
+            { "key": "B", "text": "19.00" },
+            { "key": "C", "text": "20.00" },
+            { "key": "D", "text": "21.00" }
+          ],
+          "answer": "C",
+          "explanation": "Menu menyatakan 'Buka: Senin–Sabtu, 09.00–20.00'.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S03-P013",
+      "title": "Janji di Klinik",
+      "text": "KLINIK SEHAT. Janji temu pasien: Nama: Ahmad. Dokter: Dr. Dewi. Tanggal: 5 April. Jam: 14.30. Harap datang 15 menit lebih awal.",
+      "topic": "health",
+      "wordCount": 18,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S03-Q034",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.1,
+          "prompt": "Siapa dokter yang memeriksa Ahmad?",
+          "options": [
+            { "key": "A", "text": "Dr. Anita" },
+            { "key": "B", "text": "Dr. Dewi" },
+            { "key": "C", "text": "Dr. Sari" },
+            { "key": "D", "text": "Dr. Budi" }
+          ],
+          "answer": "B",
+          "explanation": "Kartu janji menyatakan 'Dokter: Dr. Dewi'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S03-Q035",
+          "type": "matching",
+          "subskill": "matching_information",
+          "difficulty": 0.16,
+          "prompt": "Jam berapa janji temu Ahmad?",
+          "options": [
+            { "key": "A", "text": "13.30" },
+            { "key": "B", "text": "14.00" },
+            { "key": "C", "text": "14.30" },
+            { "key": "D", "text": "15.00" }
+          ],
+          "answer": "C",
+          "explanation": "Kartu janji menyatakan 'Jam: 14.30'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S03-Q036",
+          "type": "matching",
+          "subskill": "simple_inference",
+          "difficulty": 0.22,
+          "prompt": "Jika janji jam 14.30, jam berapa Ahmad harus datang?",
+          "options": [
+            { "key": "A", "text": "14.00" },
+            { "key": "B", "text": "14.15" },
+            { "key": "C", "text": "14.30" },
+            { "key": "D", "text": "14.45" }
+          ],
+          "answer": "B",
+          "explanation": "Kartu menyatakan 'Harap datang 15 menit lebih awal', jadi 14.30 - 15 menit = 14.15.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S03-P014",
+      "title": "Promo Toko Buku",
+      "text": "TOKO BUKU ILMU. Diskon 20% untuk semua buku anak. Promo berlaku sampai 30 April. Alamat: Jl. Pendidikan No. 15. Info: 021-5559876.",
+      "topic": "shopping",
+      "wordCount": 20,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S03-Q037",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.12,
+          "prompt": "Apa informasi utama dari pengumuman ini?",
+          "options": [
+            { "key": "A", "text": "Diskon buku anak 20%" },
+            { "key": "B", "text": "Buku pelajaran baru" },
+            { "key": "C", "text": "Jam buka toko" },
+            { "key": "D", "text": "Lomba membaca" }
+          ],
+          "answer": "A",
+          "explanation": "Pengumuman memberitahu tentang diskon 20% untuk buku anak.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S03-Q038",
+          "type": "matching",
+          "subskill": "vocabulary_in_context",
+          "difficulty": 0.22,
+          "prompt": "Apa arti kata 'diskon'?",
+          "options": [
+            { "key": "A", "text": "Potongan harga" },
+            { "key": "B", "text": "Harga asli" },
+            { "key": "C", "text": "Harga khusus" },
+            { "key": "D", "text": "Bonus barang" }
+          ],
+          "answer": "A",
+          "explanation": "'Diskon' berarti potongan harga dari harga biasa.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S03-Q039",
+          "type": "multiple_choice",
+          "subskill": "matching_information",
+          "difficulty": 0.14,
+          "prompt": "Pasangan informasi yang benar adalah?",
+          "options": [
+            { "key": "A", "text": "Alamat toko: Jl. Pendidikan No. 15" },
+            { "key": "B", "text": "Diskon: 30%" },
+            { "key": "C", "text": "Promo sampai: 20 April" },
+            { "key": "D", "text": "Info: 021-5551234" }
+          ],
+          "answer": "A",
+          "explanation": "Alamat toko adalah Jl. Pendidikan No. 15 sesuai pengumuman.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S03-P015",
+      "title": "Prakiraan Cuaca",
+      "text": "Prakiraan cuaca akhir pekan: Sabtu cerah dengan suhu 28\u00b0C. Minggu hujan ringan. Jangan lupa bawa payung.",
+      "topic": "daily life",
+      "wordCount": 16,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S03-Q040",
+          "type": "multiple_choice",
+          "subskill": "simple_inference",
+          "difficulty": 0.24,
+          "prompt": "Apa yang mungkin terjadi pada hari Minggu?",
+          "options": [
+            { "key": "A", "text": "Hujan ringan" },
+            { "key": "B", "text": "Cuaca cerah" },
+            { "key": "C", "text": "Angin kencang" },
+            { "key": "D", "text": "Salju" }
+          ],
+          "answer": "A",
+          "explanation": "Prakiraan menyatakan Minggu hujan ringan.",
+          "points": 1
+        }
+      ]
+    }
+  ]
+}

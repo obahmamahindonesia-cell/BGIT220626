@@ -1,0 +1,1098 @@
+{
+  "setId": "BIGT-A2-RD-S03",
+  "cefr": "A2",
+  "skill": "reading",
+  "title": "A2 Reading Set 03",
+  "version": "1.0.0",
+  "status": "draft",
+  "itemsCount": 40,
+  "passages": [
+    {
+      "passageId": "BIGT-A2-RD-S03-P001",
+      "title": "Email Konfirmasi Kursus Bahasa",
+      "text": "Dari: Lembaga Bahasa Cerdas\nUntuk: Andi Pratama\n\nTerima kasih telah mendaftar kursus Bahasa Indonesia di Lembaga Bahasa Cerdas. Kelas Anda dimulai pada hari Senin, 12 Agustus 2024, pukul 18.00–20.00 WIB di ruang 302. Harap membawa buku tulis dan kamus. Biaya pendaftaran sebesar Rp150.000 sudah termasuk modul belajar. Jika ada pertanyaan, silakan hubungi nomor 0812-3456-7890.",
+      "topic": "kursus_bahasa",
+      "wordCount": 54,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S03-Q001",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.35,
+          "prompt": "Kapan kelas kursus Bahasa Indonesia dimulai?",
+          "answer": "A",
+          "explanation": "Teks menyatakan kelas dimulai Senin, 12 Agustus 2024.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Senin, 12 Agustus 2024"
+            },
+            {
+              "key": "B",
+              "text": "Selasa, 13 Agustus 2024"
+            },
+            {
+              "key": "C",
+              "text": "Rabu, 14 Agustus 2024"
+            },
+            {
+              "key": "D",
+              "text": "Kamis, 15 Agustus 2024"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S03-Q003",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.32,
+          "prompt": "Peserta kursus harus membawa buku tulis dan kamus.",
+          "answer": "A",
+          "explanation": "Teks menyatakan 'Harap membawa buku tulis dan kamus'.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Buku tulis dan kamus"
+            },
+            {
+              "key": "B",
+              "text": "Buku dan pensil"
+            },
+            {
+              "key": "C",
+              "text": "Kertas dan penggaris"
+            },
+            {
+              "key": "D",
+              "text": "Tidak perlu membawa apa pun"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S03-Q004",
+          "type": "short_answer",
+          "subskill": "specific_information",
+          "difficulty": 0.4,
+          "prompt": "Di ruang berapa kelas kursus dilaksanakan?",
+          "answer": "302",
+          "explanation": "Teks menyatakan 'di ruang 302'.",
+          "points": 1,
+          "options": []
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A2-RD-S03-P002",
+      "title": "Jadwal Kegiatan Komunitas Sehat Bersama",
+      "text": "Komunitas Sehat Bersama mengadakan kegiatan rutin setiap bulan. Berikut jadwal untuk bulan September:\n\n1. Senam pagi — Minggu, 8 September, pukul 06.00–07.30 di Taman Kota.\n2. Penyuluhan gizi — Sabtu, 14 September, pukul 09.00–11.00 di Balai RW.\n3. Jalan santai — Minggu, 22 September, pukul 06.30–08.00, start dari Taman Kota.\n4. Cek kesehatan gratis — Sabtu, 28 September, pukul 08.00–12.00 di Puskesmas.\n\nPendaftaran untuk setiap kegiatan dilakukan melalui WhatsApp admin. Semua kegiatan gratis untuk anggota.",
+      "topic": "kegiatan_komunitas",
+      "wordCount": 75,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S03-Q005",
+          "type": "matching",
+          "subskill": "matching_information",
+          "difficulty": 0.32,
+          "prompt": "Kegiatan apa yang diadakan pada tanggal 14 September?",
+          "answer": "B",
+          "explanation": "Teks menyatakan 'Penyuluhan gizi — Sabtu, 14 September'.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Senam pagi"
+            },
+            {
+              "key": "B",
+              "text": "Penyuluhan gizi"
+            },
+            {
+              "key": "C",
+              "text": "Jalan santai"
+            },
+            {
+              "key": "D",
+              "text": "Cek kesehatan gratis"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S03-Q006",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.35,
+          "prompt": "Di mana cek kesehatan gratis dilaksanakan?",
+          "answer": "C",
+          "explanation": "Teks menyatakan cek kesehatan gratis di Puskesmas.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Di Taman Kota"
+            },
+            {
+              "key": "B",
+              "text": "Di Balai RW"
+            },
+            {
+              "key": "C",
+              "text": "Di Puskesmas"
+            },
+            {
+              "key": "D",
+              "text": "Di kantor komunitas"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S03-Q007",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.32,
+          "prompt": "Semua kegiatan Komunitas Sehat Bersama gratis untuk anggota.",
+          "answer": "A",
+          "explanation": "Teks menyatakan 'Semua kegiatan gratis untuk anggota'.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Benar"
+            },
+            {
+              "key": "B",
+              "text": "Salah"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S03-Q008",
+          "type": "short_answer",
+          "subskill": "main_purpose",
+          "difficulty": 0.35,
+          "prompt": "Jam berapa jalan santai dimulai?",
+          "answer": "06.30",
+          "explanation": "Teks menyatakan 'pukul 06.30–08.00'.",
+          "points": 1,
+          "options": []
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A2-RD-S03-P003",
+      "title": "Email Rencana Perjalanan ke Bandung",
+      "text": "Dari: Rina\nUntuk: Sari\n\nHai Sari, bagaimana kalau akhir pekan ini kita pergi ke Bandung? Aku sudah mencari informasi. Kita bisa naik kereta dari Stasiun Gambir jam 07.00 dan tiba di Bandung jam 09.30. Rencananya kita akan mengunjungi Kebun Binatang dan Factory Outlet. Aku juga sudah pesan penginapan di dekat Jalan Riau, dua malam. Biaya penginapan Rp350.000 per malam. Kamu setuju? Balas ya!",
+      "topic": "rencana_perjalanan",
+      "wordCount": 63,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S03-Q009",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.43,
+          "prompt": "Apa tujuan utama Rina mengirim email kepada Sari?",
+          "answer": "A",
+          "explanation": "Rina mengajak Sari pergi ke Bandung dan meminta persetujuan.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Mengajak Sari ke Bandung"
+            },
+            {
+              "key": "B",
+              "text": "Memberi tahu jadwal kereta"
+            },
+            {
+              "key": "C",
+              "text": "Memesan penginapan"
+            },
+            {
+              "key": "D",
+              "text": "Menanyakan alamat"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S03-Q010",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.32,
+          "prompt": "Berapa biaya penginapan per malam?",
+          "answer": "B",
+          "explanation": "Teks menyatakan 'Biaya penginapan Rp350.000 per malam'.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Rp250.000"
+            },
+            {
+              "key": "B",
+              "text": "Rp350.000"
+            },
+            {
+              "key": "C",
+              "text": "Rp450.000"
+            },
+            {
+              "key": "D",
+              "text": "Rp550.000"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S03-Q011",
+          "type": "matching",
+          "subskill": "matching_information",
+          "difficulty": 0.34,
+          "prompt": "Jam berapa kereta tiba di Bandung?",
+          "answer": "C",
+          "explanation": "Teks menyatakan 'tiba di Bandung jam 09.30'.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "07.00"
+            },
+            {
+              "key": "B",
+              "text": "08.30"
+            },
+            {
+              "key": "C",
+              "text": "09.30"
+            },
+            {
+              "key": "D",
+              "text": "10.00"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S03-Q012",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.35,
+          "prompt": "Rina sudah memesan penginapan selama dua malam.",
+          "answer": "A",
+          "explanation": "Teks menyatakan 'sudah pesan penginapan... dua malam'.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Benar"
+            },
+            {
+              "key": "B",
+              "text": "Salah"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A2-RD-S03-P004",
+      "title": "Pengumuman Perubahan Jadwal Kelas",
+      "text": "Diberitahukan kepada seluruh siswa kelas 3A dan 3B, bahwa jadwal pelajaran mengalami perubahan mulai minggu depan. Pelajaran Matematika yang biasanya hari Selasa pukul 08.00, dipindahkan ke hari Rabu pukul 09.00. Pelajaran Bahasa Inggris tetap hari Kamis pukul 10.00–12.00 tetapi ruang berubah dari 205 ke 301. Pelajaran Olahraga dari hari Jumat pagi pindah ke hari Jumat siang pukul 13.00–15.00. Harap perhatikan jadwal baru yang sudah ditempel di papan pengumuman.",
+      "topic": "jadwal_kelas",
+      "wordCount": 68,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S03-Q014",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.44,
+          "prompt": "Ke ruang berapa pelajaran Bahasa Inggris dipindahkan?",
+          "answer": "C",
+          "explanation": "Teks menyatakan ruang berubah dari 205 ke 301.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "205"
+            },
+            {
+              "key": "B",
+              "text": "208"
+            },
+            {
+              "key": "C",
+              "text": "301"
+            },
+            {
+              "key": "D",
+              "text": "305"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S03-Q015",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.32,
+          "prompt": "Pelajaran Olahraga tetap di hari Jumat tapi jamnya berubah.",
+          "answer": "A",
+          "explanation": "Olahraga dari Jumat pagi pindah ke Jumat siang.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Benar"
+            },
+            {
+              "key": "B",
+              "text": "Salah"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S03-Q016",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.36,
+          "prompt": "Apa yang harus dilakukan siswa untuk mengetahui jadwal lengkap?",
+          "answer": "D",
+          "explanation": "Teks menyatakan jadwal baru ditempel di papan pengumuman.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Menunggu email guru"
+            },
+            {
+              "key": "B",
+              "text": "Bertanya teman"
+            },
+            {
+              "key": "C",
+              "text": "Cek website"
+            },
+            {
+              "key": "D",
+              "text": "Lihat papan pengumuman"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A2-RD-S03-P005",
+      "title": "Brosur Layanan Puskesmas Sehat",
+      "text": "Puskesmas Sehat melayani:\n\n• Cek kesehatan umum: Senin–Jumat, 08.00–15.00. Layanan ini meliputi tensi darah dan berat badan.\n• Imunisasi anak: Selasa dan Kamis, 09.00–12.00.\n• Konsultasi gizi: Rabu, 10.00–14.00.\n• Cek gigi: Sabtu pertama, 08.00–12.00.\n\nPendaftaran di loket 1. Bawa kartu identitas. Biaya administrasi Rp5.000 per layanan. Peserta BPJS gratis.",
+      "topic": "puskesmas",
+      "wordCount": 50,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S03-Q017",
+          "type": "matching",
+          "subskill": "specific_information",
+          "difficulty": 0.3,
+          "prompt": "Layanan apa yang tersedia setiap hari Rabu?",
+          "answer": "B",
+          "explanation": "Teks menyatakan konsultasi gizi setiap Rabu.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Imunisasi anak"
+            },
+            {
+              "key": "B",
+              "text": "Konsultasi gizi"
+            },
+            {
+              "key": "C",
+              "text": "Cek gigi"
+            },
+            {
+              "key": "D",
+              "text": "Cek kesehatan umum"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S03-Q018",
+          "type": "multiple_choice",
+          "subskill": "vocabulary_in_context",
+          "difficulty": 0.32,
+          "prompt": "Berapa biaya administrasi untuk setiap layanan?",
+          "answer": "A",
+          "explanation": "Teks menyatakan 'Biaya administrasi Rp5.000'.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Rp5.000"
+            },
+            {
+              "key": "B",
+              "text": "Rp10.000"
+            },
+            {
+              "key": "C",
+              "text": "Rp15.000"
+            },
+            {
+              "key": "D",
+              "text": "Rp20.000"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S03-Q019",
+          "type": "multiple_choice",
+          "subskill": "simple_inference",
+          "difficulty": 0.32,
+          "prompt": "Peserta BPJS tidak perlu membayar biaya administrasi.",
+          "answer": "A",
+          "explanation": "Teks menyatakan 'Peserta BPJS gratis'.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Peserta BPJS tidak perlu bayar administrasi"
+            },
+            {
+              "key": "B",
+              "text": "Peserta BPJS bayar setengah"
+            },
+            {
+              "key": "C",
+              "text": "Peserta BPJS bayar lebih mahal"
+            },
+            {
+              "key": "D",
+              "text": "Peserta BPJS tidak boleh daftar"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S03-Q020",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.36,
+          "prompt": "Jika ingin imunisasi anak, hari apa harus datang?",
+          "answer": "C",
+          "explanation": "Imunisasi anak setiap Selasa dan Kamis.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Senin atau Rabu"
+            },
+            {
+              "key": "B",
+              "text": "Rabu atau Jumat"
+            },
+            {
+              "key": "C",
+              "text": "Selasa atau Kamis"
+            },
+            {
+              "key": "D",
+              "text": "Kamis atau Sabtu"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A2-RD-S03-P006",
+      "title": "Rute Bus Trans Kota",
+      "text": "Bus Trans Kota melayani tiga rute:\n\nRute Merah: Terminal A – Pasar Induk – RS Kota – Universitas Jaya – Terminal B. 05.00–22.00. Tarif Rp4.000.\n\nRute Biru: Stasiun KA – Mal Kota – Kantor Pos – Perumahan Griya – Terminal A. 06.00–21.00. Tarif Rp3.500.\n\nRute Hijau: Terminal B – Bandara – Hotel Grand – Museum Kota – Stasiun KA. 05.30–20.00. Tarif Rp5.000.\n\nPembayaran via kartu elektronik atau uang pas. Diskon 20% untuk pelajar dan lansia.",
+      "topic": "transportasi",
+      "wordCount": 75,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S03-Q021",
+          "type": "multiple_choice",
+          "subskill": "matching_information",
+          "difficulty": 0.3,
+          "prompt": "Rute bus apa yang melewati Mal Kota?",
+          "answer": "B",
+          "explanation": "Rute Biru: Stasiun KA – Mal Kota – ...",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Rute Merah"
+            },
+            {
+              "key": "B",
+              "text": "Rute Biru"
+            },
+            {
+              "key": "C",
+              "text": "Rute Hijau"
+            },
+            {
+              "key": "D",
+              "text": "Semua rute"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S03-Q022",
+          "type": "multiple_choice",
+          "subskill": "matching_information",
+          "difficulty": 0.4,
+          "prompt": "Berapa tarif Rute Hijau?",
+          "answer": "D",
+          "explanation": "Teks menyatakan Rute Hijau tarif Rp5.000.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Rp3.500"
+            },
+            {
+              "key": "B",
+              "text": "Rp4.000"
+            },
+            {
+              "key": "C",
+              "text": "Rp4.500"
+            },
+            {
+              "key": "D",
+              "text": "Rp5.000"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S03-Q023",
+          "type": "true_false",
+          "subskill": "simple_inference",
+          "difficulty": 0.28,
+          "prompt": "Bus Trans Kota menerima pembayaran kartu elektronik.",
+          "answer": "A",
+          "explanation": "Teks menyatakan 'Pembayaran via kartu elektronik atau uang pas'.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Benar"
+            },
+            {
+              "key": "B",
+              "text": "Salah"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S03-Q024",
+          "type": "short_answer",
+          "subskill": "main_purpose",
+          "difficulty": 0.38,
+          "prompt": "Tujuan teks ini adalah untuk?",
+          "answer": "B",
+          "explanation": "Teks bertujuan memberi tahu rute, tarif, dan jadwal bus.",
+          "points": 1,
+          "options": []
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A2-RD-S03-P007",
+      "title": "Iklan Kos Tersedia",
+      "text": "Disediakan kamar kos untuk pria atau wanita di Cihapit, dekat kampus dan pasar. Dua tipe:\n\nTipe A: Kamar mandi dalam, 4×4 m, AC, lemari, meja kursi. Rp1.200.000/bulan. Listrik dan air termasuk.\n\nTipe B: Kamar mandi luar, 3×4 m, kipas angin, lemari. Rp750.000/bulan. Listrik dan air belum termasuk.\n\nFasilitas umum: dapur bersama, WiFi, parkir motor. Minimal sewa 3 bulan. Deposit Rp500.000. Hubungi Bu Dewi: 0821-1234-5678.",
+      "topic": "iklan_kos",
+      "wordCount": 64,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S03-Q025",
+          "type": "multiple_choice",
+          "subskill": "vocabulary_in_context",
+          "difficulty": 0.34,
+          "prompt": "Apa arti 'deposit' dalam iklan ini?",
+          "answer": "C",
+          "explanation": "'Deposit' adalah uang jaminan yang bisa dikembalikan.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Uang tambahan"
+            },
+            {
+              "key": "B",
+              "text": "Biaya perpanjangan"
+            },
+            {
+              "key": "C",
+              "text": "Uang jaminan"
+            },
+            {
+              "key": "D",
+              "text": "Diskon khusus"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S03-Q026",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.41,
+          "prompt": "Berapa harga sewa Tipe B per bulan?",
+          "answer": "C",
+          "explanation": "Teks menyatakan Tipe B Rp750.000 per bulan.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Rp500.000"
+            },
+            {
+              "key": "B",
+              "text": "Rp600.000"
+            },
+            {
+              "key": "C",
+              "text": "Rp750.000"
+            },
+            {
+              "key": "D",
+              "text": "Rp1.200.000"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S03-Q027",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.28,
+          "prompt": "Listrik dan air sudah termasuk untuk Tipe B.",
+          "answer": "A",
+          "explanation": "Teks menyatakan listrik dan air belum termasuk Tipe B.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Tidak termasuk"
+            },
+            {
+              "key": "B",
+              "text": "Termasuk sebagian"
+            },
+            {
+              "key": "C",
+              "text": "Termasuk semua"
+            },
+            {
+              "key": "D",
+              "text": "Gratis"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S03-Q028",
+          "type": "multiple_choice",
+          "subskill": "simple_inference",
+          "difficulty": 0.4,
+          "prompt": "Apa perbedaan utama Tipe A dan Tipe B?",
+          "answer": "A",
+          "explanation": "Tipe A kamar mandi dalam dan AC, Tipe B kamar mandi luar dan kipas angin.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Tipe A ada kamar mandi dalam dan AC"
+            },
+            {
+              "key": "B",
+              "text": "Tipe A lebih murah"
+            },
+            {
+              "key": "C",
+              "text": "Tipe B ada AC"
+            },
+            {
+              "key": "D",
+              "text": "Tipe B lebih luas"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A2-RD-S03-P008",
+      "title": "Ulasan Warung Makan Bu Tini",
+      "text": "Oleh: Dinda\n\nKemarin saya makan siang di Warung Makan Bu Tini, dekat alun-alun. Warung buka 08.00–21.00. Suasana bersih dan nyaman. Saya pesan nasi goreng dan es teh manis. Nasi goreng enak, bumbunya pas. Nasi goreng Rp15.000, es teh Rp4.000. Pelayanan cepat. Sayang parkir agak sempit. Tapi secara keseluruhan, recommended banget untuk makan siang.",
+      "topic": "ulasan_makanan",
+      "wordCount": 53,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S03-Q029",
+          "type": "matching",
+          "subskill": "main_purpose",
+          "difficulty": 0.3,
+          "prompt": "Apa tujuan Dinda menulis ulasan ini?",
+          "answer": "C",
+          "explanation": "Dinda menceritakan pengalaman makannya dan memberi pendapat.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Mengeluh harga"
+            },
+            {
+              "key": "B",
+              "text": "Menanyakan menu"
+            },
+            {
+              "key": "C",
+              "text": "Memberi pendapat tentang warung"
+            },
+            {
+              "key": "D",
+              "text": "Mencari teman makan"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S03-Q030",
+          "type": "multiple_choice",
+          "subskill": "matching_information",
+          "difficulty": 0.32,
+          "prompt": "Apa arti 'recommended' dalam konteks ini?",
+          "answer": "B",
+          "explanation": "'Recommended' berarti layak atau bagus untuk dicoba.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Mahal"
+            },
+            {
+              "key": "B",
+              "text": "Layak dicoba"
+            },
+            {
+              "key": "C",
+              "text": "Tidak enak"
+            },
+            {
+              "key": "D",
+              "text": "Jauh"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S03-Q031",
+          "type": "true_false",
+          "subskill": "simple_inference",
+          "difficulty": 0.3,
+          "prompt": "Kata 'recommended' berarti tempat itu tidak layak dikunjungi.",
+          "answer": "B",
+          "explanation": "'Recommended' berarti layak dikunjungi.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Benar"
+            },
+            {
+              "key": "B",
+              "text": "Salah"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S03-Q032",
+          "type": "multiple_choice",
+          "subskill": "simple_inference",
+          "difficulty": 0.38,
+          "prompt": "Apa kekurangan warung ini menurut Dinda?",
+          "answer": "C",
+          "explanation": "Teks menyatakan 'parkir agak sempit'.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Makanan tidak enak"
+            },
+            {
+              "key": "B",
+              "text": "Harga mahal"
+            },
+            {
+              "key": "C",
+              "text": "Parkir sempit"
+            },
+            {
+              "key": "D",
+              "text": "Pelayanan lambat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A2-RD-S03-P009",
+      "title": "Informasi Perpustakaan Kota",
+      "text": "Perpustakaan Kota membuka pendaftaran anggota baru setiap bulan. Syarat: fotokopi KTP dan pas foto 3×4. Keuntungan: pinjam hingga 3 buku selama 14 hari. Denda Rp500 per hari per buku. Fasilitas: ruang baca ber-AC, internet gratis, dan area anak. Jam buka: Selasa–Sabtu 08.00–18.00, Minggu 09.00–15.00. Senin dan hari libur nasional tutup.",
+      "topic": "perpustakaan",
+      "wordCount": 50,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S03-Q033",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.3,
+          "prompt": "Berapa banyak buku yang bisa dipinjam anggota?",
+          "answer": "C",
+          "explanation": "Teks menyatakan pinjam hingga 3 buku.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "1 buku"
+            },
+            {
+              "key": "B",
+              "text": "2 buku"
+            },
+            {
+              "key": "C",
+              "text": "3 buku"
+            },
+            {
+              "key": "D",
+              "text": "5 buku"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S03-Q035",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.28,
+          "prompt": "Perpustakaan buka pada hari Senin.",
+          "answer": "B",
+          "explanation": "Teks menyatakan 'Senin dan hari libur tutup'.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Benar"
+            },
+            {
+              "key": "B",
+              "text": "Salah"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S03-Q036",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.44,
+          "prompt": "Tujuan teks ini adalah?",
+          "answer": "A",
+          "explanation": "Teks memberi informasi tentang pendaftaran anggota dan layanan.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Memberi info pendaftaran anggota"
+            },
+            {
+              "key": "B",
+              "text": "Mengumumkan peminjaman buku"
+            },
+            {
+              "key": "C",
+              "text": "Menawarkan buku baru"
+            },
+            {
+              "key": "D",
+              "text": "Menjelaskan denda"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A2-RD-S03-P010",
+      "title": "Konfirmasi Belanja Online",
+      "text": "Hai Rina,\n\nTerima kasih sudah berbelanja di Toko Bunga Segar.\n\n1. Buket mawar merah — Rp85.000 × 1\n2. Vas bunga kaca — Rp35.000 × 1\n3. Kardus hadiah — Rp10.000 × 1\n\nSubtotal: Rp130.000\nOngkos kirim: Rp15.000\nTotal: Rp145.000\n\nPesanan dikirim 2–3 hari ke Jalan Anggrek No. 45. Pembayaran via transfer BNI.",
+      "topic": "belanja_online",
+      "wordCount": 53,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S03-Q038",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.28,
+          "prompt": "Pesanan akan dikirim dalam 1–2 hari kerja.",
+          "answer": "B",
+          "explanation": "Teks menyatakan '2–3 hari'.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Benar"
+            },
+            {
+              "key": "B",
+              "text": "Salah"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S03-Q039",
+          "type": "matching",
+          "subskill": "vocabulary_in_context",
+          "difficulty": 0.32,
+          "prompt": "Apa arti 'subtotal' dalam konteks ini?",
+          "answer": "C",
+          "explanation": "'Subtotal' adalah jumlah harga barang sebelum ongkos kirim.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Total akhir"
+            },
+            {
+              "key": "B",
+              "text": "Ongkos kirim"
+            },
+            {
+              "key": "C",
+              "text": "Jumlah harga barang"
+            },
+            {
+              "key": "D",
+              "text": "Diskon belanja"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S03-Q040",
+          "type": "short_answer",
+          "subskill": "vocabulary_in_context",
+          "difficulty": 0.42,
+          "prompt": "Ke mana pesanan Rina akan dikirim?",
+          "answer": "B",
+          "explanation": "Teks menyatakan 'ke Jalan Anggrek No. 45'.",
+          "points": 1,
+          "options": []
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A2-RD-S03-P011",
+      "title": "Lowongan Pekerjaan Paruh Waktu",
+      "text": "Dibutuhkan asisten administrasi untuk toko buku. Kualifikasi: pria/wanita, min 18 tahun, bisa MS Word dan Excel, jujur, rapi. Jam kerja: Senin–Sabtu 14.00–18.00. Gaji Rp1.500.000/bulan + bonus. Kirim lamaran ke Toko Buku Ilmu, Jalan Merdeka No. 88 atau email tokobukuilmu@email.com. Batas akhir 30 Juni 2024. Hanya pelamar lolos seleksi yang dihubungi.",
+      "topic": "lowongan_kerja",
+      "wordCount": 50,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S03-Q041",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.3,
+          "prompt": "Berapa gaji per bulan untuk posisi ini?",
+          "answer": "A",
+          "explanation": "Teks menyatakan gaji Rp1.500.000 per bulan.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Rp1.500.000"
+            },
+            {
+              "key": "B",
+              "text": "Rp2.000.000"
+            },
+            {
+              "key": "C",
+              "text": "Rp2.500.000"
+            },
+            {
+              "key": "D",
+              "text": "Rp3.000.000"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S03-Q042",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.39,
+          "prompt": "Lamaran bisa dikirim melalui email.",
+          "answer": "A",
+          "explanation": "Teks menyatakan 'email ke tokobukuilmu@email.com'.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Benar"
+            },
+            {
+              "key": "B",
+              "text": "Salah"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S03-Q043",
+          "type": "multiple_choice",
+          "subskill": "vocabulary_in_context",
+          "difficulty": 0.42,
+          "prompt": "Tujuan teks ini adalah?",
+          "answer": "B",
+          "explanation": "Teks bertujuan mencari karyawan untuk posisi asisten administrasi.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Mengiklankan toko buku"
+            },
+            {
+              "key": "B",
+              "text": "Mencari asisten administrasi"
+            },
+            {
+              "key": "C",
+              "text": "Memberi info gaji"
+            },
+            {
+              "key": "D",
+              "text": "Menawarkan pelatihan"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S03-Q044",
+          "type": "matching",
+          "subskill": "vocabulary_in_context",
+          "difficulty": 0.36,
+          "prompt": "Apa arti 'kualifikasi' dalam iklan ini?",
+          "answer": "A",
+          "explanation": "'Kualifikasi' adalah syarat atau kemampuan yang harus dimiliki.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Syarat yang harus dipenuhi"
+            },
+            {
+              "key": "B",
+              "text": "Gaji yang ditawarkan"
+            },
+            {
+              "key": "C",
+              "text": "Jam kerja"
+            },
+            {
+              "key": "D",
+              "text": "Alamat kantor"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

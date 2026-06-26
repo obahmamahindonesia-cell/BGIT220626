@@ -47,6 +47,11 @@ const config: Config = {
         cream: "#F8F6F1",
         red: "#C8102E",
         gold: "#C9A84C",
+        'bigt-bg': 'var(--bigt-bg)',
+        'bigt-surface': 'var(--bigt-surface)',
+        'bigt-border': 'var(--bigt-border)',
+        'bigt-text': 'var(--bigt-text)',
+        'bigt-muted': 'var(--bigt-muted)',
       },
       borderRadius: {
         lg: "var(--radius)",

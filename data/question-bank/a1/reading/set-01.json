@@ -1,0 +1,198 @@
+{
+  "setId": "BIGT-A1-RD-S01",
+  "cefr": "A1",
+  "skill": "reading",
+  "title": "A1 Reading Set 01 — Kehidupan Sehari-hari",
+  "version": "1.0.0",
+  "status": "draft",
+  "itemsCount": 10,
+  "passages": [
+    {
+      "passageId": "BIGT-A1-RD-S01-P001",
+      "title": "Jam Buka Perpustakaan",
+      "text": "Halo! Perpustakaan kota buka setiap hari. Hari Senin sampai Jumat buka pukul 08.00 pagi sampai pukul 16.00 sore. Hari Sabtu dan Minggu buka pukul 09.00 pagi sampai pukul 14.00 sore. Perpustakaan tutup pada hari libur nasional.",
+      "topic": "daily life",
+      "wordCount": 37,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S01-Q001",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.1,
+          "prompt": "Pada hari Senin, perpustakaan buka pukul berapa?",
+          "options": [
+            { "key": "A", "text": "07.00" },
+            { "key": "B", "text": "08.00" },
+            { "key": "C", "text": "09.00" },
+            { "key": "D", "text": "10.00" }
+          ],
+          "answer": "B",
+          "explanation": "Teks menyatakan: 'Hari Senin sampai Jumat buka pukul 08.00 pagi.'",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S01-Q002",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.15,
+          "prompt": "Pada hari Sabtu, perpustakaan tutup pukul berapa?",
+          "options": [
+            { "key": "A", "text": "14.00" },
+            { "key": "B", "text": "15.00" },
+            { "key": "C", "text": "16.00" },
+            { "key": "D", "text": "17.00" }
+          ],
+          "answer": "A",
+          "explanation": "Teks menyatakan: 'Hari Sabtu dan Minggu buka pukul 09.00 pagi sampai pukul 14.00 sore.'",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S01-Q003",
+          "type": "multiple_choice",
+          "subskill": "detail_comprehension",
+          "difficulty": 0.2,
+          "prompt": "Kapan perpustakaan tutup?",
+          "options": [
+            { "key": "A", "text": "Setiap hari Senin" },
+            { "key": "B", "text": "Pada hari libur nasional" },
+            { "key": "C", "text": "Setiap hari Sabtu" },
+            { "key": "D", "text": "Pada hari Minggu" }
+          ],
+          "answer": "B",
+          "explanation": "Teks menyatakan: 'Perpustakaan tutup pada hari libur nasional.'",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S01-P002",
+      "title": "Keluarga Saya",
+      "text": "Nama saya Budi. Saya tinggal di Jakarta. Keluarga saya ada empat orang. Ayah saya bernama Pak Andi. Ibu saya bernama Bu Sari. Saya punya satu adik perempuan. Namanya Dina. Kami tinggal di rumah yang nyaman.",
+      "topic": "family",
+      "wordCount": 42,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S01-Q004",
+          "type": "multiple_choice",
+          "subskill": "main_idea",
+          "difficulty": 0.1,
+          "prompt": "Teks ini menceritakan tentang apa?",
+          "options": [
+            { "key": "A", "text": "Rumah Budi" },
+            { "key": "B", "text": "Keluarga Budi" },
+            { "key": "C", "text": "Sekolah Budi" },
+            { "key": "D", "text": "Teman Budi" }
+          ],
+          "answer": "B",
+          "explanation": "Teks memperkenalkan anggota keluarga Budi.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S01-Q005",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.1,
+          "prompt": "Siapa nama ayah Budi?",
+          "options": [
+            { "key": "A", "text": "Pak Budi" },
+            { "key": "B", "text": "Pak Andi" },
+            { "key": "C", "text": "Pak Sari" },
+            { "key": "D", "text": "Pak Dina" }
+          ],
+          "answer": "B",
+          "explanation": "Teks menyatakan: 'Ayah saya bernama Pak Andi.'",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S01-Q006",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.15,
+          "prompt": "Berapa jumlah anggota keluarga Budi?",
+          "options": [
+            { "key": "A", "text": "Tiga orang" },
+            { "key": "B", "text": "Empat orang" },
+            { "key": "C", "text": "Lima orang" },
+            { "key": "D", "text": "Enam orang" }
+          ],
+          "answer": "B",
+          "explanation": "Teks menyatakan: 'Keluarga saya ada empat orang.'",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S01-Q007",
+          "type": "multiple_choice",
+          "subskill": "detail_comprehension",
+          "difficulty": 0.2,
+          "prompt": "Siapa Dina?",
+          "options": [
+            { "key": "A", "text": "Ibu Budi" },
+            { "key": "B", "text": "Kakak Budi" },
+            { "key": "C", "text": "Adik Budi" },
+            { "key": "D", "text": "Teman Budi" }
+          ],
+          "answer": "C",
+          "explanation": "Teks menyatakan: 'Saya punya satu adik perempuan. Namanya Dina.'",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S01-P003",
+      "title": "Jadwal Harian",
+      "text": "Setiap hari, saya bangun pukul 05.00 pagi. Saya mandi dan sarapan. Saya pergi ke sekolah pukul 06.30. Sekolah mulai pukul 07.00. Saya pulang sekolah pukul 13.00. Saya makan siang dan bermain. Malam hari, saya belajar dan tidur pukul 21.00.",
+      "topic": "daily routine",
+      "wordCount": 50,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S01-Q008",
+          "type": "multiple_choice",
+          "subskill": "sequence",
+          "difficulty": 0.15,
+          "prompt": "Apa yang dilakukan setelah bangun tidur?",
+          "options": [
+            { "key": "A", "text": "Sarapan" },
+            { "key": "B", "text": "Mandi dan sarapan" },
+            { "key": "C", "text": "Pergi ke sekolah" },
+            { "key": "D", "text": "Belajar" }
+          ],
+          "answer": "B",
+          "explanation": "Teks menyatakan: 'Saya mandi dan sarapan.'",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S01-Q009",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.1,
+          "prompt": "Pukul berapa sekolah mulai?",
+          "options": [
+            { "key": "A", "text": "06.30" },
+            { "key": "B", "text": "07.00" },
+            { "key": "C", "text": "13.00" },
+            { "key": "D", "text": "21.00" }
+          ],
+          "answer": "B",
+          "explanation": "Teks menyatakan: 'Sekolah mulai pukul 07.00.'",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S01-Q010",
+          "type": "multiple_choice",
+          "subskill": "detail_comprehension",
+          "difficulty": 0.15,
+          "prompt": "Pukul berapa saya tidur?",
+          "options": [
+            { "key": "A", "text": "20.00" },
+            { "key": "B", "text": "21.00" },
+            { "key": "C", "text": "22.00" },
+            { "key": "D", "text": "23.00" }
+          ],
+          "answer": "B",
+          "explanation": "Teks menyatakan: 'saya belajar dan tidur pukul 21.00.'",
+          "points": 1
+        }
+      ]
+    }
+  ]
+}

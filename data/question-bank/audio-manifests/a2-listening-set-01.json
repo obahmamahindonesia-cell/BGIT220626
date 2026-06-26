@@ -1,0 +1,129 @@
+{
+  "setId": "BIGT-A2-LS-S01",
+  "cefr": "A2",
+  "skill": "listening",
+  "provider": "google",
+  "generatedAt": "2026-06-25T17:38:16.070Z",
+  "items": [
+    {
+      "questionId": "BIGT-A2-LS-S01-Q001",
+      "audioId": "BIGT-A2-LS-S01-A001",
+      "audioFile": "BIGT-A2-LS-S01-A001.mp3",
+      "audioPath": "/audio/listening/a2/set-01/BIGT-A2-LS-S01-A001.mp3",
+      "speaker": "female_01",
+      "voiceId": "id-ID-Standard-A",
+      "status": "generated",
+      "fileSizeBytes": 70080,
+      "transcriptHash": "d9f176247a8208318ce4b215cfe686b0981bce584267e8a9522d31ea9188ba03",
+      "generatedAt": "2026-06-25T17:38:08.800Z"
+    },
+    {
+      "questionId": "BIGT-A2-LS-S01-Q002",
+      "audioId": "BIGT-A2-LS-S01-A002",
+      "audioFile": "BIGT-A2-LS-S01-A002.mp3",
+      "audioPath": "/audio/listening/a2/set-01/BIGT-A2-LS-S01-A002.mp3",
+      "speaker": "male_01_female_02",
+      "voiceId": "id-ID-Standard-A",
+      "status": "generated",
+      "fileSizeBytes": 85824,
+      "transcriptHash": "2ca95a774db828cdd8edc7f56e1ed35fdd9a5c709f2b15fdb9689736d92deace",
+      "generatedAt": "2026-06-25T17:38:09.444Z"
+    },
+    {
+      "questionId": "BIGT-A2-LS-S01-Q003",
+      "audioId": "BIGT-A2-LS-S01-A003",
+      "audioFile": "BIGT-A2-LS-S01-A003.mp3",
+      "audioPath": "/audio/listening/a2/set-01/BIGT-A2-LS-S01-A003.mp3",
+      "speaker": "male_01",
+      "voiceId": "id-ID-Standard-D",
+      "status": "generated",
+      "fileSizeBytes": 69120,
+      "transcriptHash": "2f3375143c3e104810a947111b34dd9eacb78b4a99c0c432dde59c71bca010bf",
+      "generatedAt": "2026-06-25T17:38:10.036Z"
+    },
+    {
+      "questionId": "BIGT-A2-LS-S01-Q004",
+      "audioId": "BIGT-A2-LS-S01-A004",
+      "audioFile": "BIGT-A2-LS-S01-A004.mp3",
+      "audioPath": "/audio/listening/a2/set-01/BIGT-A2-LS-S01-A004.mp3",
+      "speaker": "male_02",
+      "voiceId": "id-ID-Standard-D",
+      "status": "generated",
+      "fileSizeBytes": 69888,
+      "transcriptHash": "4d303c5b9170d23c7cc7f05ccfb8e87e8009749bd2cf4f37698c683b8a3603f1",
+      "generatedAt": "2026-06-25T17:38:10.941Z"
+    },
+    {
+      "questionId": "BIGT-A2-LS-S01-Q005",
+      "audioId": "BIGT-A2-LS-S01-A005",
+      "audioFile": "BIGT-A2-LS-S01-A005.mp3",
+      "audioPath": "/audio/listening/a2/set-01/BIGT-A2-LS-S01-A005.mp3",
+      "speaker": "female_01",
+      "voiceId": "id-ID-Standard-A",
+      "status": "generated",
+      "fileSizeBytes": 86400,
+      "transcriptHash": "2fc216e3cb6cebde215d311a5132d3f53bfca0ff2616fe8be27e3564d98272eb",
+      "generatedAt": "2026-06-25T17:38:12.718Z"
+    },
+    {
+      "questionId": "BIGT-A2-LS-S01-Q006",
+      "audioId": "BIGT-A2-LS-S01-A006",
+      "audioFile": "BIGT-A2-LS-S01-A006.mp3",
+      "audioPath": "/audio/listening/a2/set-01/BIGT-A2-LS-S01-A006.mp3",
+      "speaker": "male_01",
+      "voiceId": "id-ID-Standard-D",
+      "status": "generated",
+      "fileSizeBytes": 67200,
+      "transcriptHash": "0a6947a3d87516aeb27fa8e774bb5d0fcf204d5e42dc905ce61b1e50590956a9",
+      "generatedAt": "2026-06-25T17:38:13.835Z"
+    },
+    {
+      "questionId": "BIGT-A2-LS-S01-Q007",
+      "audioId": "BIGT-A2-LS-S01-A007",
+      "audioFile": "BIGT-A2-LS-S01-A007.mp3",
+      "audioPath": "/audio/listening/a2/set-01/BIGT-A2-LS-S01-A007.mp3",
+      "speaker": "female_02",
+      "voiceId": "id-ID-Standard-A",
+      "status": "generated",
+      "fileSizeBytes": 91392,
+      "transcriptHash": "1e771741226789b36b9ec23d7e5eee1d7ba9b3e69c4439b4a734a5f56c07abc2",
+      "generatedAt": "2026-06-25T17:38:14.418Z"
+    },
+    {
+      "questionId": "BIGT-A2-LS-S01-Q008",
+      "audioId": "BIGT-A2-LS-S01-A008",
+      "audioFile": "BIGT-A2-LS-S01-A008.mp3",
+      "audioPath": "/audio/listening/a2/set-01/BIGT-A2-LS-S01-A008.mp3",
+      "speaker": "female_01",
+      "voiceId": "id-ID-Standard-A",
+      "status": "generated",
+      "fileSizeBytes": 78336,
+      "transcriptHash": "3a4cd7972bbe95d8afc10ea533a655ece667848a4efe7a723fec96cc463a3c44",
+      "generatedAt": "2026-06-25T17:38:14.961Z"
+    },
+    {
+      "questionId": "BIGT-A2-LS-S01-Q009",
+      "audioId": "BIGT-A2-LS-S01-A009",
+      "audioFile": "BIGT-A2-LS-S01-A009.mp3",
+      "audioPath": "/audio/listening/a2/set-01/BIGT-A2-LS-S01-A009.mp3",
+      "speaker": "male_02",
+      "voiceId": "id-ID-Standard-D",
+      "status": "generated",
+      "fileSizeBytes": 77760,
+      "transcriptHash": "3c80952ffb27f6ceda4f07ea12440d6ebad0d648f054c9ade8fb63859d6240a3",
+      "generatedAt": "2026-06-25T17:38:15.293Z"
+    },
+    {
+      "questionId": "BIGT-A2-LS-S01-Q010",
+      "audioId": "BIGT-A2-LS-S01-A010",
+      "audioFile": "BIGT-A2-LS-S01-A010.mp3",
+      "audioPath": "/audio/listening/a2/set-01/BIGT-A2-LS-S01-A010.mp3",
+      "speaker": "female_01",
+      "voiceId": "id-ID-Standard-A",
+      "status": "generated",
+      "fileSizeBytes": 99648,
+      "transcriptHash": "e91c5e5f24a7dacd803de92ed8861fb0cbe63d7cf855de39b8d21a2f221b05a5",
+      "generatedAt": "2026-06-25T17:38:16.070Z"
+    }
+  ]
+}

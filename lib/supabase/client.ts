@@ -6,21 +6,19 @@ export const createClient = () =>
     process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
     {
       cookies: {
-        get(name: string) {
-          const cookie = document.cookie
-            .split('; ')
-            .find((row) => row.startsWith(`${name}=`))
-          return cookie ? cookie.split('=')[1] : null
+        getAll() {
+          if (typeof document === 'undefined') return []
+          const cookies = document.cookie.split('; ').filter(Boolean)
+          return cookies.map(c => {
+            const eq = c.indexOf('=')
+            return { name: c.slice(0, eq), value: c.slice(eq + 1) }
+          })
         },
-        set(name: string, value: string, options: Record<string, unknown>) {
-          let cookie = `${name}=${value}; path=/; max-age=${options?.maxAge ?? 3600}; samesite=lax`
-          if (options?.domain) cookie += `; domain=${options.domain}`
-          if (options?.secure) cookie += '; secure'
-          if (options?.httpOnly) return
-          document.cookie = cookie
-        },
-        remove(name: string) {
-          document.cookie = `${name}=; path=/; max-age=0`
+        setAll(cookiesToSet) {
+          if (typeof document === 'undefined') return
+          cookiesToSet.forEach(({ name, value, options }) => {
+            document.cookie = `${name}=${value}; path=/; max-age=${options?.maxAge ?? 34560000}; samesite=lax${options?.secure ? '; secure' : ''}${options?.domain ? `; domain=${options.domain}` : ''}`
+          })
         },
       },
     }

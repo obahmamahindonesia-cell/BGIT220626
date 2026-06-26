@@ -3,12 +3,13 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Button } from '@/components/ui/button'
-import { LayoutDashboard, PenSquare, ClipboardList, Award, ArrowLeft, Upload } from 'lucide-react'
+import { LayoutDashboard, PenSquare, ClipboardList, Award, ArrowLeft, Upload, FileText } from 'lucide-react'
 
 const NAV_ITEMS = [
   { href: '/admin', label: 'Dasbor', icon: LayoutDashboard },
-  { href: '/admin/questions', label: 'Bank Soal', icon: PenSquare },
+  { href: '/admin/questions', label: 'Bank Soal (DB)', icon: PenSquare },
   { href: '/admin/questions/upload', label: 'Unggah Soal', icon: Upload },
+  { href: '/admin/question-bank', label: 'Bank Soal (File)', icon: FileText },
   { href: '/admin/waitlist', label: 'Daftar Tunggu', icon: ClipboardList },
   { href: '/admin/certificates', label: 'Sertifikat', icon: Award },
 ]

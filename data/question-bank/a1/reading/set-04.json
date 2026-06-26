@@ -1,0 +1,746 @@
+{
+  "setId": "BIGT-A1-RD-S04",
+  "cefr": "A1",
+  "skill": "reading",
+  "title": "A1 Reading Set 04",
+  "version": "1.0.0",
+  "status": "draft",
+  "itemsCount": 40,
+  "passages": [
+    {
+      "passageId": "BIGT-A1-RD-S04-P001",
+      "title": "Jam Buka Kantor Pos",
+      "text": "PENGUMUMAN. Kantor Pos buka Senin\u2013Jumat jam 08.00\u201316.00. Sabtu jam 08.00\u201312.00. Minggu tutup.",
+      "topic": "public places",
+      "wordCount": 15,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S04-Q001",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.1,
+          "prompt": "Apa isi pengumuman tersebut?",
+          "options": [
+            { "key": "A", "text": "Jam buka kantor pos" },
+            { "key": "B", "text": "Harga perangko" },
+            { "key": "C", "text": "Alamat kantor pos baru" },
+            { "key": "D", "text": "Layanan kantor pos" }
+          ],
+          "answer": "A",
+          "explanation": "Pengumuman berisi jam buka kantor pos setiap hari.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S04-Q002",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.1,
+          "prompt": "Kantor Pos buka pada hari Minggu.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "B",
+          "explanation": "Pengumuman menyatakan 'Minggu tutup'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S04-Q003",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.12,
+          "prompt": "Sampai jam berapa Kantor Pos buka pada hari Senin?",
+          "options": [
+            { "key": "A", "text": "14.00" },
+            { "key": "B", "text": "15.00" },
+            { "key": "C", "text": "16.00" },
+            { "key": "D", "text": "17.00" }
+          ],
+          "answer": "C",
+          "explanation": "Pengumuman menyatakan 'Senin\u2013Jumat jam 08.00\u201316.00'.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S04-P002",
+      "title": "Jadwal Les Bahasa Inggris",
+      "text": "JADWAL LES BAHASA INGGRIS. Kelas A: Senin & Rabu, jam 15.00\u201316.30. Kelas B: Selasa & Kamis, jam 15.00\u201316.30. Biaya: Rp200.000/bulan.",
+      "topic": "school",
+      "wordCount": 21,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S04-Q004",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.12,
+          "prompt": "Apa informasi utama dalam jadwal ini?",
+          "options": [
+            { "key": "A", "text": "Jadwal dan biaya les Inggris" },
+            { "key": "B", "text": "Buku pelajaran les" },
+            { "key": "C", "text": "Nama guru les" },
+            { "key": "D", "text": "Alamat tempat les" }
+          ],
+          "answer": "A",
+          "explanation": "Jadwal berisi hari, jam, dan biaya les Bahasa Inggris.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S04-Q005",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.12,
+          "prompt": "Kelas A belajar pada hari Senin dan Rabu.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "A",
+          "explanation": "Jadwal menyatakan 'Kelas A: Senin & Rabu'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S04-Q006",
+          "type": "multiple_choice",
+          "subskill": "vocabulary_in_context",
+          "difficulty": 0.14,
+          "prompt": "Apa arti kata 'biaya' dalam jadwal ini?",
+          "options": [
+            { "key": "A", "text": "Waktu belajar" },
+            { "key": "B", "text": "Harga yang harus dibayar" },
+            { "key": "C", "text": "Nama pelajaran" },
+            { "key": "D", "text": "Tempat les" }
+          ],
+          "answer": "B",
+          "explanation": "'Biaya' berarti sejumlah uang yang harus dibayar.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S04-P003",
+      "title": "Daftar Belanja",
+      "text": "Daftar belanja: 1. Telur 1 kg. 2. Beras 5 kg. 3. Gula 1 kg. 4. Minyak goreng 2 liter. 5. Sabun mandi 2. Jangan lupa beli di pasar pagi.",
+      "topic": "daily life",
+      "wordCount": 22,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S04-Q007",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.1,
+          "prompt": "Berapa kilogram telur yang harus dibeli?",
+          "options": [
+            { "key": "A", "text": "1 kg" },
+            { "key": "B", "text": "2 kg" },
+            { "key": "C", "text": "3 kg" },
+            { "key": "D", "text": "5 kg" }
+          ],
+          "answer": "A",
+          "explanation": "Daftar belanja menyebutkan 'Telur 1 kg'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S04-Q008",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.1,
+          "prompt": "Gula yang harus dibeli 2 kg.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "B",
+          "explanation": "Daftar belanja menyebutkan 'Gula 1 kg'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S04-Q009",
+          "type": "short_answer",
+          "subskill": "specific_information",
+          "difficulty": 0.15,
+          "prompt": "Di mana harus berbelanja?",
+          "answer": "pasar pagi",
+          "explanation": "Daftar belanja menyatakan 'beli di pasar pagi'.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S04-P004",
+      "title": "Informasi Kolam Renang",
+      "text": "KOLAM RENANG TIRTA INDAH. Tiket: Dewasa Rp25.000, Anak Rp15.000. Buka Selasa\u2013Minggu jam 07.00\u201317.00. Senin tutup. Sewa pelampung Rp5.000.",
+      "topic": "sports",
+      "wordCount": 20,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S04-Q010",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.1,
+          "prompt": "Berapa harga tiket dewasa?",
+          "options": [
+            { "key": "A", "text": "Rp15.000" },
+            { "key": "B", "text": "Rp20.000" },
+            { "key": "C", "text": "Rp25.000" },
+            { "key": "D", "text": "Rp30.000" }
+          ],
+          "answer": "C",
+          "explanation": "Info menyatakan 'Tiket: Dewasa Rp25.000'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S04-Q011",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.12,
+          "prompt": "Kolam renang tutup pada hari Senin.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "A",
+          "explanation": "Info menyatakan 'Senin tutup'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S04-Q012",
+          "type": "matching",
+          "subskill": "vocabulary_in_context",
+          "difficulty": 0.2,
+          "prompt": "Apa arti 'pelampung'?",
+          "options": [
+            { "key": "A", "text": "Alat bantu renang" },
+            { "key": "B", "text": "Alat membersihkan kolam" },
+            { "key": "C", "text": "Mainan air" },
+            { "key": "D", "text": "Pakaian renang" }
+          ],
+          "answer": "A",
+          "explanation": "'Pelampung' adalah alat yang membantu orang mengapung di air.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S04-P005",
+      "title": "Iklan Laundry",
+      "text": "LAUNDRY MURAH. Cuci + setrika Rp8.000/kg. Buka setiap hari jam 08.00\u201320.00. Gratis antar-jemput untuk minimal 5 kg. Hubungi: 0856-7890-5678.",
+      "topic": "daily life",
+      "wordCount": 19,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S04-Q013",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.1,
+          "prompt": "Berapa harga cuci dan setrika per kg?",
+          "options": [
+            { "key": "A", "text": "Rp6.000" },
+            { "key": "B", "text": "Rp8.000" },
+            { "key": "C", "text": "Rp10.000" },
+            { "key": "D", "text": "Rp12.000" }
+          ],
+          "answer": "B",
+          "explanation": "Iklan menyatakan 'Cuci + setrika Rp8.000/kg'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S04-Q014",
+          "type": "matching",
+          "subskill": "simple_inference",
+          "difficulty": 0.18,
+          "prompt": "Laundry buka sampai jam berapa?",
+          "options": [
+            { "key": "A", "text": "18.00" },
+            { "key": "B", "text": "19.00" },
+            { "key": "C", "text": "20.00" },
+            { "key": "D", "text": "21.00" }
+          ],
+          "answer": "C",
+          "explanation": "Iklan menyatakan 'Buka setiap hari jam 08.00\u201320.00'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S04-Q015",
+          "type": "multiple_choice",
+          "subskill": "vocabulary_in_context",
+          "difficulty": 0.14,
+          "prompt": "Apa arti 'antar-jemput' dalam iklan?",
+          "options": [
+            { "key": "A", "text": "Mengirim dan mengambil barang" },
+            { "key": "B", "text": "Menjemput teman" },
+            { "key": "C", "text": "Membeli barang baru" },
+            { "key": "D", "text": "Menunggu di tempat" }
+          ],
+          "answer": "A",
+          "explanation": "'Antar-jemput' berarti mengirim ke rumah dan mengambil kembali.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S04-P006",
+      "title": "Pengumuman Museum",
+      "text": "MUSEUM SEJARAH KOTA. Tiket masuk: Pelajar Rp5.000, Umum Rp10.000. Buka Selasa\u2013Minggu jam 09.00\u201315.00. Senin tutup.",
+      "topic": "public places",
+      "wordCount": 17,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S04-Q016",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.12,
+          "prompt": "Apa isi pengumuman tersebut?",
+          "options": [
+            { "key": "A", "text": "Informasi tiket dan jam buka museum" },
+            { "key": "B", "text": "Sejarah museum kota" },
+            { "key": "C", "text": "Nama pameran di museum" },
+            { "key": "D", "text": "Alamat museum" }
+          ],
+          "answer": "A",
+          "explanation": "Pengumuman berisi harga tiket dan jam buka museum.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S04-Q017",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.1,
+          "prompt": "Tiket untuk pelajar Rp5.000.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "A",
+          "explanation": "Info menyatakan 'Tiket masuk: Pelajar Rp5.000'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S04-Q018",
+          "type": "matching",
+          "subskill": "matching_information",
+          "difficulty": 0.16,
+          "prompt": "Jam berapa museum buka?",
+          "options": [
+            { "key": "A", "text": "08.00\u201314.00" },
+            { "key": "B", "text": "08.00\u201315.00" },
+            { "key": "C", "text": "09.00\u201315.00" },
+            { "key": "D", "text": "09.00\u201316.00" }
+          ],
+          "answer": "C",
+          "explanation": "Info menyatakan 'Buka Selasa\u2013Minggu jam 09.00\u201315.00'.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S04-P007",
+      "title": "Pesan Antar Makanan",
+      "text": "Pesan dari Warung Mbak Sari: Nasi goreng 2, Mie ayam 1, Es teh 2. Total Rp56.000. Pesanan siap 30 menit. Alamat: Jl. Mawar No. 3.",
+      "topic": "daily life",
+      "wordCount": 21,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S04-Q019",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.1,
+          "prompt": "Berapa porsi mie ayam yang dipesan?",
+          "options": [
+            { "key": "A", "text": "1" },
+            { "key": "B", "text": "2" },
+            { "key": "C", "text": "3" },
+            { "key": "D", "text": "4" }
+          ],
+          "answer": "A",
+          "explanation": "Pesan menyebutkan 'Mie ayam 1'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S04-Q020",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.12,
+          "prompt": "Pesanan siap dalam 30 menit.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "A",
+          "explanation": "Pesan menyatakan 'Pesanan siap 30 menit'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S04-Q021",
+          "type": "short_answer",
+          "subskill": "specific_information",
+          "difficulty": 0.15,
+          "prompt": "Ke mana pesanan diantar?",
+          "answer": "Jl. Mawar No. 3",
+          "explanation": "Pesan menyatakan 'Alamat: Jl. Mawar No. 3'.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S04-P008",
+      "title": "Toko Roti",
+      "text": "TOKO ROTI MATAHARI. Roti tawar Rp15.000. Roti cokelat Rp18.000. Donat Rp5.000/pcs. Kue bolu Rp25.000. Buka Senin\u2013Sabtu jam 07.00\u201319.00. Minggu jam 08.00\u201314.00.",
+      "topic": "shopping",
+      "wordCount": 22,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S04-Q022",
+          "type": "multiple_choice",
+          "subskill": "vocabulary_in_context",
+          "difficulty": 0.12,
+          "prompt": "Apa arti 'tawar' pada 'roti tawar'?",
+          "options": [
+            { "key": "A", "text": "Tidak ada rasa" },
+            { "key": "B", "text": "Harga murah" },
+            { "key": "C", "text": "Roti yang manis" },
+            { "key": "D", "text": "Roti ukuran kecil" }
+          ],
+          "answer": "A",
+          "explanation": "'Roti tawar' adalah roti tanpa rasa manis atau isi.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S04-Q023",
+          "type": "matching",
+          "subskill": "matching_information",
+          "difficulty": 0.18,
+          "prompt": "Pada hari apa toko roti buka jam 08.00?",
+          "options": [
+            { "key": "A", "text": "Senin" },
+            { "key": "B", "text": "Sabtu" },
+            { "key": "C", "text": "Minggu" },
+            { "key": "D", "text": "Selasa" }
+          ],
+          "answer": "C",
+          "explanation": "Info menyatakan 'Minggu jam 08.00\u201314.00'.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S04-P009",
+      "title": "Formulir Kursus Komputer",
+      "text": "FORMULIR PENDAFTARAN KURSUS KOMPUTER. Nama: ________. Umur: ________. Alamat: ________. Program: ________. Biaya pendaftaran: Rp50.000. Foto 3x4: 2 lembar.",
+      "topic": "school",
+      "wordCount": 18,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S04-Q024",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.12,
+          "prompt": "Untuk apa formulir ini digunakan?",
+          "options": [
+            { "key": "A", "text": "Mendaftar kursus komputer" },
+            { "key": "B", "text": "Mendaftar lomba" },
+            { "key": "C", "text": "Memesan komputer" },
+            { "key": "D", "text": "Membeli buku komputer" }
+          ],
+          "answer": "A",
+          "explanation": "Formulir untuk pendaftaran kursus komputer.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S04-Q025",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.14,
+          "prompt": "Biaya pendaftaran kursus adalah Rp50.000.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "A",
+          "explanation": "Formulir menyatakan 'Biaya pendaftaran: Rp50.000'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S04-Q026",
+          "type": "multiple_choice",
+          "subskill": "matching_information",
+          "difficulty": 0.14,
+          "prompt": "Pasangan yang benar pada formulir adalah?",
+          "options": [
+            { "key": "A", "text": "Biaya pendaftaran: Rp50.000" },
+            { "key": "B", "text": "Foto 3x4: 3 lembar" },
+            { "key": "C", "text": "Program: Rp50.000" },
+            { "key": "D", "text": "Biaya: Rp25.000" }
+          ],
+          "answer": "A",
+          "explanation": "Formulir menyatakan 'Biaya pendaftaran: Rp50.000'.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S04-P010",
+      "title": "Pengumuman Ulangan",
+      "text": "PENGUMUMAN. Besok ada ulangan Matematika. Jangan lupa bawa kalkulator dan penggaris. Belajar dari bab 1 sampai bab 5.",
+      "topic": "school",
+      "wordCount": 17,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S04-Q027",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.1,
+          "prompt": "Apa isi pengumuman kelas?",
+          "options": [
+            { "key": "A", "text": "Ulangan Matematika besok" },
+            { "key": "B", "text": "Jadwal pelajaran baru" },
+            { "key": "C", "text": "Libur sekolah" },
+            { "key": "D", "text": "Lomba matematika" }
+          ],
+          "answer": "A",
+          "explanation": "Pengumuman memberitahu tentang ulangan Matematika besok.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S04-Q028",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.12,
+          "prompt": "Siswa harus belajar dari bab 1 sampai bab 5.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "A",
+          "explanation": "Pengumuman menyatakan 'Belajar dari bab 1 sampai bab 5'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S04-Q029",
+          "type": "multiple_choice",
+          "subskill": "simple_inference",
+          "difficulty": 0.15,
+          "prompt": "Mengapa siswa harus membawa kalkulator?",
+          "options": [
+            { "key": "A", "text": "Karena ada ulangan Matematika" },
+            { "key": "B", "text": "Karena ada pelajaran Bahasa Indonesia" },
+            { "key": "C", "text": "Karena ada lomba" },
+            { "key": "D", "text": "Karena ada tugas menggambar" }
+          ],
+          "answer": "A",
+          "explanation": "Ulangan Matematika membutuhkan kalkulator untuk menghitung.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S04-P011",
+      "title": "Toko Buah Segar",
+      "text": "TOKO BUAH SEGAR. Harga: Apel Rp20.000/kg, Pisang Rp12.000/kg, Jeruk Rp18.000/kg, Anggur Rp35.000/kg. Diskon 10% untuk pembelian di atas Rp50.000.",
+      "topic": "shopping",
+      "wordCount": 18,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S04-Q030",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.1,
+          "prompt": "Berapa harga apel per kilogram?",
+          "options": [
+            { "key": "A", "text": "Rp12.000" },
+            { "key": "B", "text": "Rp18.000" },
+            { "key": "C", "text": "Rp20.000" },
+            { "key": "D", "text": "Rp35.000" }
+          ],
+          "answer": "C",
+          "explanation": "Info menyatakan 'Apel Rp20.000/kg'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S04-Q031",
+          "type": "short_answer",
+          "subskill": "simple_inference",
+          "difficulty": 0.2,
+          "prompt": "Buah apa yang paling murah di toko ini?",
+          "answer": "Pisang",
+          "explanation": "Pisang Rp12.000/kg adalah yang paling murah dari semua buah.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S04-P012",
+      "title": "Informasi Apotek",
+      "text": "APOTEK SEHAT. Buka 24 jam. Layanan: tebus resep dokter, beli obat bebas, cek tekanan darah gratis. Alamat: Jl. Sehat No. 5. Telp: 021-5554321.",
+      "topic": "health",
+      "wordCount": 22,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S04-Q032",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.1,
+          "prompt": "Layanan apa yang gratis di Apotek Sehat?",
+          "options": [
+            { "key": "A", "text": "Tebus resep dokter" },
+            { "key": "B", "text": "Beli obat bebas" },
+            { "key": "C", "text": "Cek tekanan darah" },
+            { "key": "D", "text": "Konsultasi dokter" }
+          ],
+          "answer": "C",
+          "explanation": "Info menyatakan 'cek tekanan darah gratis'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S04-Q033",
+          "type": "matching",
+          "subskill": "vocabulary_in_context",
+          "difficulty": 0.2,
+          "prompt": "Apa arti 'resep' dalam konteks ini?",
+          "options": [
+            { "key": "A", "text": "Catatan dari dokter untuk membeli obat" },
+            { "key": "B", "text": "Makanan favorit" },
+            { "key": "C", "text": "Buku catatan harian" },
+            { "key": "D", "text": "Alat masak" }
+          ],
+          "answer": "A",
+          "explanation": "'Resep' adalah surat dari dokter untuk mendapatkan obat.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S04-P013",
+      "title": "Tempat Fotokopi",
+      "text": "FOTOKOPI MURAH. Harga: Rp150/lembar hitam putih, Rp500/lembar warna. Jilid Rp5.000\u2013Rp10.000. Scan dokumen Rp2.000/halaman. Buka Senin\u2013Sabtu jam 08.00\u201318.00.",
+      "topic": "daily life",
+      "wordCount": 22,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S04-Q034",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.12,
+          "prompt": "Berapa harga fotokopi hitam putih per lembar?",
+          "options": [
+            { "key": "A", "text": "Rp100" },
+            { "key": "B", "text": "Rp150" },
+            { "key": "C", "text": "Rp200" },
+            { "key": "D", "text": "Rp500" }
+          ],
+          "answer": "B",
+          "explanation": "Info menyatakan 'Rp150/lembar hitam putih'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S04-Q035",
+          "type": "matching",
+          "subskill": "matching_information",
+          "difficulty": 0.16,
+          "prompt": "Sampai jam berapa tempat fotokopi buka?",
+          "options": [
+            { "key": "A", "text": "16.00" },
+            { "key": "B", "text": "17.00" },
+            { "key": "C", "text": "18.00" },
+            { "key": "D", "text": "19.00" }
+          ],
+          "answer": "C",
+          "explanation": "Info menyatakan 'Buka Senin\u2013Sabtu jam 08.00\u201318.00'.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S04-P014",
+      "title": "Undangan Ulang Tahun",
+      "text": "Undangan Ulang Tahun Dinda. Hari: Sabtu, 15 Juli. Jam: 15.00\u201318.00. Tempat: Rumah Dinda, Jl. Kenanga No. 8. Acara: makan bersama, main game, tiup lilin.",
+      "topic": "family",
+      "wordCount": 22,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S04-Q036",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.1,
+          "prompt": "Acara apa yang diundang?",
+          "options": [
+            { "key": "A", "text": "Ulang tahun Dinda" },
+            { "key": "B", "text": "Pernikahan" },
+            { "key": "C", "text": "Wisuda" },
+            { "key": "D", "text": "Reuni" }
+          ],
+          "answer": "A",
+          "explanation": "Undangan untuk acara ulang tahun Dinda.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S04-Q037",
+          "type": "matching",
+          "subskill": "matching_information",
+          "difficulty": 0.16,
+          "prompt": "Jam berapa acara ulang tahun dimulai?",
+          "options": [
+            { "key": "A", "text": "14.00" },
+            { "key": "B", "text": "15.00" },
+            { "key": "C", "text": "16.00" },
+            { "key": "D", "text": "17.00" }
+          ],
+          "answer": "B",
+          "explanation": "Undangan menyatakan 'Jam: 15.00\u201318.00'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S04-Q038",
+          "type": "short_answer",
+          "subskill": "specific_information",
+          "difficulty": 0.15,
+          "prompt": "Di mana acara ulang tahun diadakan?",
+          "answer": "Rumah Dinda",
+          "explanation": "Undangan menyatakan 'Tempat: Rumah Dinda'.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S04-P015",
+      "title": "Kartu Pelajar",
+      "text": "KARTU PELAJAR. Nama: Dito Pratama. Sekolah: SMP Negeri 5. Kelas: 7C. NIS: 2025123. Alamat: Jl. Pahlawan No. 12, Jakarta.",
+      "topic": "school",
+      "wordCount": 20,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S04-Q039",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.1,
+          "prompt": "Di kelas berapa Dito bersekolah?",
+          "options": [
+            { "key": "A", "text": "7A" },
+            { "key": "B", "text": "7B" },
+            { "key": "C", "text": "7C" },
+            { "key": "D", "text": "7D" }
+          ],
+          "answer": "C",
+          "explanation": "Kartu menyatakan 'Kelas: 7C'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S04-Q040",
+          "type": "matching",
+          "subskill": "simple_inference",
+          "difficulty": 0.22,
+          "prompt": "Dari kartu pelajar, kita tahu bahwa Dito adalah?",
+          "options": [
+            { "key": "A", "text": "Siswa SMP" },
+            { "key": "B", "text": "Guru" },
+            { "key": "C", "text": "Kepala sekolah" },
+            { "key": "D", "text": "Orang tua" }
+          ],
+          "answer": "A",
+          "explanation": "Kartu menyatakan 'Sekolah: SMP Negeri 5', berarti Dito siswa SMP.",
+          "points": 1
+        }
+      ]
+    }
+  ]
+}

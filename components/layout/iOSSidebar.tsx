@@ -14,6 +14,8 @@ import {
   X,
   Award,
   Settings,
+  Loader2,
+  ExternalLink,
 } from 'lucide-react'
 import Logo from '@/components/brand/Logo'
 
@@ -45,10 +47,19 @@ const CEFR_LEVELS = [
   { code: 'A1', label: 'Pemula' },
   { code: 'A2', label: 'Dasar' },
   { code: 'B1', label: 'Madya' },
-  { code: 'B2', label: 'Lanjut' },
+  { code: 'B2', label: 'Madya Atas' },
   { code: 'C1', label: 'Mahir' },
   { code: 'C2', label: 'Sangat Mahir' },
 ]
+
+interface LevelData {
+  level: string | null
+  label: string | null
+  progressPercent: number
+  hasTest: boolean
+  hasPendingTest: boolean
+  source: string | null
+}
 
 interface AppSidebarProps {
   mobile?: boolean
@@ -59,7 +70,8 @@ export default function IosSidebar({ mobile, onClose }: AppSidebarProps) {
   const pathname = usePathname()
   const router = useRouter()
   const [userName, setUserName] = useState('')
-  const [userLevel] = useState('A1')
+  const [levelData, setLevelData] = useState<LevelData | null>(null)
+  const [loadingLevel, setLoadingLevel] = useState(true)
 
   useEffect(() => {
     const getUser = async () => {
@@ -71,15 +83,35 @@ export default function IosSidebar({ mobile, onClose }: AppSidebarProps) {
     getUser()
   }, [])
 
+  useEffect(() => {
+    const fetchLevel = async () => {
+      try {
+        const res = await fetch('/api/user/level')
+        if (res.ok) {
+          const data = await res.json()
+          setLevelData(data)
+        }
+      } catch {
+        setLevelData({
+          level: null,
+          label: null,
+          progressPercent: 0,
+          hasTest: false,
+          hasPendingTest: false,
+          source: null,
+        })
+      } finally {
+        setLoadingLevel(false)
+      }
+    }
+    fetchLevel()
+  }, [])
+
   const handleLogout = async () => {
     const supabase = createClient()
     await supabase.auth.signOut()
-    router.push('/login')
-    router.refresh()
+    window.location.href = '/login'
   }
-
-  const levelIndex = CEFR_LEVELS.findIndex(l => l.code === userLevel)
-  const progressPercent = ((levelIndex + 1) / CEFR_LEVELS.length) * 100
 
   const isActive = (href: string) => {
     if (href === '/dashboard') return pathname === '/dashboard'
@@ -89,6 +121,88 @@ export default function IosSidebar({ mobile, onClose }: AppSidebarProps) {
     if (href === '/profile') return pathname.startsWith('/profile')
     if (href === '/settings') return pathname.startsWith('/settings')
     return pathname.startsWith(href)
+  }
+
+  const renderLevelSection = () => {
+    if (loadingLevel) {
+      return (
+        <div className="flex items-center gap-3 mb-3">
+          <div className="w-9 h-9 rounded-lg bg-white/5 flex items-center justify-center">
+            <Loader2 className="w-4 h-4 text-slate-400 animate-spin" />
+          </div>
+          <div className="flex-1 min-w-0">
+            <p className="text-[10px] font-medium uppercase tracking-wider text-slate-500">Level BIGT</p>
+            <p className="text-sm text-slate-400">Memuat...</p>
+          </div>
+        </div>
+      )
+    }
+
+    if (!levelData?.hasTest) {
+      return (
+        <>
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-9 h-9 rounded-lg bg-white/5 flex items-center justify-center">
+              <GraduationCap className="w-4 h-4 text-slate-500" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-[10px] font-medium uppercase tracking-wider text-slate-500">Level BIGT</p>
+              <p className="text-sm text-slate-400">
+                {levelData?.hasPendingTest ? 'Tes belum selesai' : 'Belum ada level'}
+              </p>
+            </div>
+          </div>
+          <div className="w-full bg-white/10 rounded-full h-1.5 mb-1">
+            <div className="bg-slate-500/30 rounded-full h-1.5" style={{ width: '0%' }} />
+          </div>
+          <div className="flex justify-between text-[10px] text-slate-500 mb-3">
+            <span>A1</span>
+            <span>C2</span>
+          </div>
+          {!levelData?.hasPendingTest && (
+            <Link
+              href="/test"
+              onClick={onClose}
+              className="flex items-center justify-center gap-1.5 w-full py-1.5 rounded-lg bg-[#C9A227]/20 text-[#C9A227] text-xs font-medium hover:bg-[#C9A227]/30 transition-colors mb-4"
+            >
+              <ExternalLink className="w-3 h-3" />
+              Mulai tes
+            </Link>
+          )}
+        </>
+      )
+    }
+
+    const progressPercent = levelData?.progressPercent ?? 0
+    const levelLabel = levelData?.level && levelData?.label
+      ? `${levelData.level} ${levelData.label}`
+      : 'Level belum tersedia'
+
+    return (
+      <>
+        <div className="flex items-center gap-3 mb-3">
+          <div className="w-9 h-9 rounded-lg bg-white/5 flex items-center justify-center">
+            <GraduationCap className="w-4 h-4 text-[#C9A227]/70" />
+          </div>
+          <div className="flex-1 min-w-0">
+            <p className="text-[10px] font-medium uppercase tracking-wider text-slate-500">Level BIGT</p>
+            <p className="text-sm font-semibold text-white truncate">
+              {levelLabel}
+            </p>
+          </div>
+        </div>
+        <div className="w-full bg-white/10 rounded-full h-1.5 mb-1">
+          <div className="bg-[#C9A227] rounded-full h-1.5 transition-all duration-500" style={{ width: `${progressPercent}%` }} />
+        </div>
+        <div className="flex justify-between text-[10px] text-slate-500 mb-1">
+          <span>A1</span>
+          <span>C2</span>
+        </div>
+        <p className="text-[10px] text-slate-500/60 mb-4">
+          Berdasarkan hasil tes terakhir
+        </p>
+      </>
+    )
   }
 
   return (
@@ -140,24 +254,7 @@ export default function IosSidebar({ mobile, onClose }: AppSidebarProps) {
       </nav>
 
       <div className="px-5 py-4 border-t border-white/10 flex-shrink-0">
-        <div className="flex items-center gap-3 mb-3">
-          <div className="w-9 h-9 rounded-lg bg-white/5 flex items-center justify-center">
-            <GraduationCap className="w-4 h-4 text-[#C9A227]/70" />
-          </div>
-          <div className="flex-1 min-w-0">
-            <p className="text-[10px] font-medium uppercase tracking-wider text-slate-500">Level BIGT</p>
-            <p className="text-sm font-semibold text-white truncate">
-              {userLevel} {CEFR_LEVELS[levelIndex]?.label || ''}
-            </p>
-          </div>
-        </div>
-        <div className="w-full bg-white/10 rounded-full h-1.5 mb-1">
-          <div className="bg-[#C9A227] rounded-full h-1.5 transition-all duration-500" style={{ width: `${progressPercent}%` }} />
-        </div>
-        <div className="flex justify-between text-[10px] text-slate-500 mb-4">
-          <span>A1</span>
-          <span>C2</span>
-        </div>
+        {renderLevelSection()}
 
         <div className="flex items-center justify-between">
           <p className="text-xs text-slate-400 truncate max-w-[160px]">

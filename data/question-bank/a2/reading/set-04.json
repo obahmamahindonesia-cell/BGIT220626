@@ -1,0 +1,1116 @@
+{
+  "setId": "BIGT-A2-RD-S04",
+  "cefr": "A2",
+  "skill": "reading",
+  "title": "A2 Reading Set 04",
+  "version": "1.0.0",
+  "status": "draft",
+  "itemsCount": 40,
+  "passages": [
+    {
+      "passageId": "BIGT-A2-RD-S04-P001",
+      "title": "Pengumuman Jadwal Kereta",
+      "text": "Penumpang yang terhormat, mulai 1 Oktober terjadi perubahan jadwal beberapa kereta lokal. Kereta Tujuan Bogor yang biasanya berangkat pukul 06.00, akan berangkat pukul 05.30. Kereta Tujuan Depok berubah dari pukul 06.15 menjadi pukul 06.45. Perubahan ini berlaku setiap hari kerja. Untuk libur akhir pekan, jadwal masih sama. Informasi lebih lanjut dapat dilihat di website resmi atau papan pengumuman di stasiun. Mohon maaf atas ketidaknyamanan ini.",
+      "topic": "perubahan_jadwal",
+      "wordCount": 65,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S04-Q001",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.34,
+          "prompt": "Jam berapa kereta tujuan Bogor berangkat setelah perubahan jadwal?",
+          "answer": "B",
+          "explanation": "Teks menyatakan kereta Bogor berangkat pukul 05.30.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "06.00"
+            },
+            {
+              "key": "B",
+              "text": "05.30"
+            },
+            {
+              "key": "C",
+              "text": "06.45"
+            },
+            {
+              "key": "D",
+              "text": "05.45"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S04-Q002",
+          "type": "multiple_choice",
+          "subskill": "vocabulary_in_context",
+          "difficulty": 0.36,
+          "prompt": "Perubahan jadwal berlaku untuk hari apa?",
+          "answer": "A",
+          "explanation": "Teks menyatakan perubahan berlaku setiap hari kerja.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Hari kerja"
+            },
+            {
+              "key": "B",
+              "text": "Setiap hari termasuk akhir pekan"
+            },
+            {
+              "key": "C",
+              "text": "Hanya hari Senin"
+            },
+            {
+              "key": "D",
+              "text": "Hari libur nasional"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S04-Q003",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.31,
+          "prompt": "Jadwal akhir pekan juga mengalami perubahan.",
+          "answer": "B",
+          "explanation": "Teks menyatakan 'Untuk libur akhir pekan, jadwal masih sama'.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Benar"
+            },
+            {
+              "key": "B",
+              "text": "Salah"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S04-Q004",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.32,
+          "prompt": "Jam berapa kereta tujuan Depok berangkat setelah perubahan?",
+          "answer": "C",
+          "explanation": "Teks menyatakan kereta Depok berangkat pukul 06.45.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "06.00"
+            },
+            {
+              "key": "B",
+              "text": "06.15"
+            },
+            {
+              "key": "C",
+              "text": "06.45"
+            },
+            {
+              "key": "D",
+              "text": "05.30"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A2-RD-S04-P002",
+      "title": "Informasi Kelas Daring",
+      "text": "Kepada mahasiswa kelas Bahasa Indonesia, berikut informasi penting. Mulai minggu depan, kelas akan dilaksanakan secara daring melalui aplikasi Zoom karena ruang kelas sedang direnovasi. Link Zoom akan dikirim melalui email setiap hari Senin pukul 07.00. Kelas tetap berlangsung hari Selasa dan Kamis pukul 10.00–12.00. Mahasiswa diharapkan menyiapkan koneksi internet yang stabil. Tugas tetap dikumpulkan melalui Google Classroom seperti biasa. Jika ada masalah teknis, silakan hubungi admin di nomor 0812-9876-5432.",
+      "topic": "kelas_daring",
+      "wordCount": 69,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S04-Q005",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.36,
+          "prompt": "Mengapa kelas dilaksanakan secara daring?",
+          "answer": "B",
+          "explanation": "Teks menyatakan karena ruang kelas sedang direnovasi.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Mahasiswa tidak hadir"
+            },
+            {
+              "key": "B",
+              "text": "Ruang kelas direnovasi"
+            },
+            {
+              "key": "C",
+              "text": "Aplikasi baru"
+            },
+            {
+              "key": "D",
+              "text": "Dosen sedang sakit"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S04-Q006",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.34,
+          "prompt": "Di mana tugas tetap dikumpulkan?",
+          "answer": "C",
+          "explanation": "Teks menyatakan tugas dikumpulkan melalui Google Classroom.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Email"
+            },
+            {
+              "key": "B",
+              "text": "Zoom"
+            },
+            {
+              "key": "C",
+              "text": "Google Classroom"
+            },
+            {
+              "key": "D",
+              "text": "WhatsApp"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S04-Q007",
+          "type": "true_false",
+          "subskill": "main_purpose",
+          "difficulty": 0.31,
+          "prompt": "Link Zoom dikirim setiap hari Senin pukul tujuh pagi.",
+          "answer": "A",
+          "explanation": "Teks menyatakan 'Link Zoom akan dikirim melalui email setiap hari Senin pukul 07.00'.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Benar"
+            },
+            {
+              "key": "B",
+              "text": "Salah"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S04-Q008",
+          "type": "matching",
+          "subskill": "matching_information",
+          "difficulty": 0.4,
+          "prompt": "Tujuan utama teks ini adalah?",
+          "answer": "A",
+          "explanation": "Teks bertujuan memberi informasi tentang perubahan kelas menjadi daring.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Memberi info perubahan kelas"
+            },
+            {
+              "key": "B",
+              "text": "Mengajak diskusi online"
+            },
+            {
+              "key": "C",
+              "text": "Menawarkan kursus baru"
+            },
+            {
+              "key": "D",
+              "text": "Menjelaskan aplikasi Zoom"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A2-RD-S04-P003",
+      "title": "Pesan dari Pengelola Kos",
+      "text": "Penghuni kos yang baik, besok pagi pukul 08.00–12.00 akan ada perbaikan pipa air di lantai dua. Semua kamar di lantai dua tidak akan mendapatkan air selama perbaikan. Kami minta penghuni lantai dua untuk menyiapkan air sebelum pukul 08.00. Penghuni lantai satu tidak terdampak dan tetap bisa menggunakan air seperti biasa. Kamar mandi umum di lantai satu bisa dipakai oleh penghuni lantai dua. Terima kasih atas pengertiannya.",
+      "topic": "pesan_pengelola_kos",
+      "wordCount": 66,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S04-Q009",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.4,
+          "prompt": "Apa yang harus dilakukan penghuni lantai dua sebelum pukul delapan?",
+          "answer": "C",
+          "explanation": "Teks menyuruh menyiapkan air sebelum pukul 08.00.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Pindah ke lantai satu"
+            },
+            {
+              "key": "B",
+              "text": "Menelepon pengelola"
+            },
+            {
+              "key": "C",
+              "text": "Menyiapkan air"
+            },
+            {
+              "key": "D",
+              "text": "Memakai kamar mandi umum"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S04-Q010",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.36,
+          "prompt": "Siapa yang tidak terdampak perbaikan pipa?",
+          "answer": "A",
+          "explanation": "Teks menyatakan Fira bekerja Senin, Rabu, dan Jumat.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Senin, Rabu, Jumat"
+            },
+            {
+              "key": "B",
+              "text": "Selasa, Kamis, Sabtu"
+            },
+            {
+              "key": "C",
+              "text": "Senin, Selasa, Rabu"
+            },
+            {
+              "key": "D",
+              "text": "Rabu, Jumat, Minggu"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S04-Q011",
+          "type": "true_false",
+          "subskill": "main_purpose",
+          "difficulty": 0.31,
+          "prompt": "Perbaikan pipa dilakukan pada pagi hari.",
+          "answer": "A",
+          "explanation": "Teks menyatakan besok pagi pukul 08.00–12.00.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Benar"
+            },
+            {
+              "key": "B",
+              "text": "Salah"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S04-Q012",
+          "type": "multiple_choice",
+          "subskill": "simple_inference",
+          "difficulty": 0.42,
+          "prompt": "Apa yang bisa dilakukan penghuni lantai dua jika membutuhkan air?",
+          "answer": "B",
+          "explanation": "Teks menyatakan 'Untuk libur akhir pekan, jadwal masih sama' — yang berubah hanya hari kerja.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Ada kendala teknis"
+            },
+            {
+              "key": "B",
+              "text": "Pindah ke rumah Pak Guru"
+            },
+            {
+              "key": "C",
+              "text": "Pusat olahraga tutup"
+            },
+            {
+              "key": "D",
+              "text": "Tidak jadi diadakan"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A2-RD-S04-P004",
+      "title": "Pengumuman Pusat Olahraga",
+      "text": "Pusat Olahraga Sehat akan mengadakan promo anggota baru sepanjang bulan ini. Biaya pendaftaran biasanya Rp300.000, sekarang hanya Rp150.000. Fasilitas yang bisa digunakan: kolam renang, lapangan basket, gym, dan ruang yoga. Jam buka Senin–Sabtu pukul 06.00–21.00, hari Minggu pukul 07.00–18.00. Pendaftaran bisa dilakukan langsung di resepsionis atau via WhatsApp. Promo berlaku sampai 31 Oktober 2024. Informasi lebih lanjut hubungi 0811-2222-3333.",
+      "topic": "pusat_olahraga",
+      "wordCount": 59,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S04-Q013",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.34,
+          "prompt": "Berapa biaya pendaftaran promo anggota baru?",
+          "answer": "B",
+          "explanation": "Teks menyatakan biaya pendaftaran promo Rp150.000.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Rp300.000"
+            },
+            {
+              "key": "B",
+              "text": "Rp150.000"
+            },
+            {
+              "key": "C",
+              "text": "Rp200.000"
+            },
+            {
+              "key": "D",
+              "text": "Rp250.000"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S04-Q014",
+          "type": "multiple_choice",
+          "subskill": "matching_information",
+          "difficulty": 0.36,
+          "prompt": "Fasilitas apa saja yang tersedia di pusat olahraga?",
+          "answer": "C",
+          "explanation": "Teks menyebut kolam renang, lapangan basket, gym, dan ruang yoga.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Kolam renang dan sauna"
+            },
+            {
+              "key": "B",
+              "text": "Lapangan basket dan kafe"
+            },
+            {
+              "key": "C",
+              "text": "Kolam renang, basket, gym, yoga"
+            },
+            {
+              "key": "D",
+              "text": "Gym dan restoran"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S04-Q015",
+          "type": "true_false",
+          "subskill": "main_purpose",
+          "difficulty": 0.36,
+          "prompt": "Kata 'promo' berarti diskon khusus dalam waktu terbatas.",
+          "answer": "A",
+          "explanation": "'Promo' berarti penawaran khusus dalam periode tertentu.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Benar"
+            },
+            {
+              "key": "B",
+              "text": "Salah"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S04-Q016",
+          "type": "matching",
+          "subskill": "matching_information",
+          "difficulty": 0.32,
+          "prompt": "Sampai kapan promo anggota baru berlaku?",
+          "answer": "D",
+          "explanation": "Teks menyatakan promo berlaku sampai 31 Oktober 2024.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "30 September"
+            },
+            {
+              "key": "B",
+              "text": "15 Oktober"
+            },
+            {
+              "key": "C",
+              "text": "25 Oktober"
+            },
+            {
+              "key": "D",
+              "text": "31 Oktober"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A2-RD-S04-P005",
+      "title": "Konfirmasi Kerja Paruh Waktu",
+      "text": "Dari: HRD Kafe Harmoni\nUntuk: Dinda Putri\n\nHai Dinda, selamat! Kamu diterima sebagai karyawan paruh waktu di Kafe Harmoni. Jam kerjamu hari Senin, Rabu, dan Jumat pukul 16.00–20.00. Tugasmu membantu barista menyiapkan minuman dan membersihkan meja. Gaji Rp1.800.000 per bulan. Kamu mulai kerja hari Senin, 5 Agustus 2024. Harap datang pukul 15.30 untuk briefing dengan manajer. Bawa fotokopi KTP dan nomor rekening untuk data penggajian.",
+      "topic": "kerja_paruh_waktu",
+      "wordCount": 65,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S04-Q017",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.36,
+          "prompt": "Hari apa saja Dinda bekerja di Kafe Harmoni?",
+          "answer": "B",
+          "explanation": "Teks menyatakan hari Senin, Rabu, dan Jumat.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Senin, Selasa, Jumat"
+            },
+            {
+              "key": "B",
+              "text": "Senin, Rabu, Jumat"
+            },
+            {
+              "key": "C",
+              "text": "Selasa, Kamis, Sabtu"
+            },
+            {
+              "key": "D",
+              "text": "Rabu, Kamis, Jumat"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S04-Q018",
+          "type": "multiple_choice",
+          "subskill": "matching_information",
+          "difficulty": 0.4,
+          "prompt": "Apa arti 'briefing' dalam konteks email ini?",
+          "answer": "C",
+          "explanation": "'Briefing' adalah pertemuan singkat untuk memberi arahan.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Makan malam bersama"
+            },
+            {
+              "key": "B",
+              "text": "Wawancara kerja"
+            },
+            {
+              "key": "C",
+              "text": "Pertemuan singkat untuk arahan"
+            },
+            {
+              "key": "D",
+              "text": "Pelatihan tiga hari"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S04-Q019",
+          "type": "short_answer",
+          "subskill": "specific_information",
+          "difficulty": 0.34,
+          "prompt": "Dinda akan mulai bekerja pada tanggal 5 Agustus 2024.",
+          "answer": "A",
+          "explanation": "Teks menyatakan 'Kamu mulai kerja hari Senin, 5 Agustus 2024'.",
+          "points": 1,
+          "options": []
+        },
+        {
+          "questionId": "BIGT-A2-RD-S04-Q020",
+          "type": "short_answer",
+          "subskill": "specific_information",
+          "difficulty": 0.32,
+          "prompt": "Apa saja yang harus dibawa Dinda untuk data penggajian?",
+          "answer": "fotokopi KTP dan nomor rekening",
+          "explanation": "Teks menyebut bawa fotokopi KTP dan nomor rekening.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Benar"
+            },
+            {
+              "key": "B",
+              "text": "Salah"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A2-RD-S04-P006",
+      "title": "Kegiatan Relawan Akhir Pekan",
+      "text": "Yayasan Peduli Sesama mengajak kamu ikut kegiatan relawan! Berikut kegiatan yang bisa diikuti:\n\n• Sabtu, 12 November: Mengajar anak-anak di panti asuhan. Pukul 09.00–12.00.\n• Minggu, 13 November: Bersih-bersih pantai bersama komunitas. Pukul 06.30–10.00.\n• Sabtu, 19 November: Donor darah di kantor yayasan. Pukul 08.00–14.00.\n• Minggu, 20 November: Membagikan sembako di daerah sekitar. Pukul 07.00–11.00.\n\nPendaftaran melalui Google Form. Semua kegiatan gratis dan akan mendapatkan sertifikat.",
+      "topic": "kegiatan_relawan",
+      "wordCount": 67,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S04-Q021",
+          "type": "multiple_choice",
+          "subskill": "simple_inference",
+          "difficulty": 0.32,
+          "prompt": "Kegiatan apa yang diadakan pada Minggu, 13 November?",
+          "answer": "B",
+          "explanation": "Teks menyatakan Minggu, 13 November ada bersih-bersih pantai.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Mengajar anak-anak"
+            },
+            {
+              "key": "B",
+              "text": "Bersih-bersih pantai"
+            },
+            {
+              "key": "C",
+              "text": "Donor darah"
+            },
+            {
+              "key": "D",
+              "text": "Membagikan sembako"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S04-Q022",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.3,
+          "prompt": "Jam berapa kegiatan donor darah dimulai?",
+          "answer": "A",
+          "explanation": "Teks menyatakan donor darah pukul 08.00–14.00.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Pukul 08.00"
+            },
+            {
+              "key": "B",
+              "text": "Pukul 09.00"
+            },
+            {
+              "key": "C",
+              "text": "Pukul 07.00"
+            },
+            {
+              "key": "D",
+              "text": "Pukul 06.30"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S04-Q023",
+          "type": "true_false",
+          "subskill": "vocabulary_in_context",
+          "difficulty": 0.3,
+          "prompt": "Kata 'sembako' berarti sembilan bahan pokok kebutuhan sehari-hari.",
+          "answer": "A",
+          "explanation": "'Sembako' berarti sembilan bahan pokok.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Benar"
+            },
+            {
+              "key": "B",
+              "text": "Salah"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S04-Q024",
+          "type": "matching",
+          "subskill": "main_purpose",
+          "difficulty": 0.4,
+          "prompt": "Kegiatan apa yang diadakan pada tanggal 19 November?",
+          "answer": "C",
+          "explanation": "Teks menyatakan Sabtu, 19 November ada donor darah.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Bersih-bersih pantai"
+            },
+            {
+              "key": "B",
+              "text": "Mengajar di panti"
+            },
+            {
+              "key": "C",
+              "text": "Donor darah"
+            },
+            {
+              "key": "D",
+              "text": "Bagikan sembako"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A2-RD-S04-P007",
+      "title": "Paket Wisata Akhir Tahun",
+      "text": "Ayo liburan akhir tahun bersama Travel Aman. Tersedia paket wisata ke tiga destinasi menarik:\n\nPaket A: Bandung — 3 hari 2 malam. Mengunjungi Kebun Binatang, Factory Outlet, dan Kawah Putih. Harga Rp750.000 per orang. Termasuk hotel, makan pagi, dan transportasi. Berangkat 25 Desember.\n\nPaket B: Yogyakarta — 4 hari 3 malam. Mengunjungi Candi, Pantai, dan Malioboro. Harga Rp950.000 per orang. Berangkat 27 Desember.\n\nPaket C: Bali — 5 hari 4 malam. Mengunjungi Pantai, Pura, dan Pasar Seni. Harga Rp1.500.000 per orang. Berangkat 28 Desember.\n\nPendaftaran paling lambat 10 Desember. Dapatkan diskon 10% untuk pendaftaran grup minimal 4 orang.",
+      "topic": "paket_wisata",
+      "wordCount": 98,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S04-Q025",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.32,
+          "prompt": "Apa saja tujuan wisata pada Paket A?",
+          "answer": "A",
+          "explanation": "Paket A mengunjungi Kebun Binatang, Factory Outlet, dan Kawah Putih.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Kebun Binatang, Factory Outlet, Kawah Putih"
+            },
+            {
+              "key": "B",
+              "text": "Candi, Pantai, Malioboro"
+            },
+            {
+              "key": "C",
+              "text": "Pantai, Pura, Pasar Seni"
+            },
+            {
+              "key": "D",
+              "text": "Museum, Pantai, Taman"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S04-Q026",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.3,
+          "prompt": "Berapa harga Paket B per orang?",
+          "answer": "C",
+          "explanation": "Teks menyatakan Paket B mengunjungi Candi, Pantai, dan Malioboro.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Kebun Binatang dan Factory Outlet"
+            },
+            {
+              "key": "B",
+              "text": "Candi, Pantai, dan Malioboro"
+            },
+            {
+              "key": "C",
+              "text": "Pantai, Pura, dan Pasar Seni"
+            },
+            {
+              "key": "D",
+              "text": "Museum dan Taman Safari"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S04-Q027",
+          "type": "true_false",
+          "subskill": "vocabulary_in_context",
+          "difficulty": 0.28,
+          "prompt": "Pendaftaran grup minimal 4 orang mendapat diskon 10%.",
+          "answer": "A",
+          "explanation": "Teks menyatakan 'diskon 10% untuk pendaftaran grup minimal 4 orang'.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Benar"
+            },
+            {
+              "key": "B",
+              "text": "Salah"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S04-Q028",
+          "type": "matching",
+          "subskill": "main_purpose",
+          "difficulty": 0.42,
+          "prompt": "Paket mana yang berangkat paling pagi?",
+          "answer": "A",
+          "explanation": "Paket A berangkat 25 Desember, paling awal dari ketiga paket.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Paket A"
+            },
+            {
+              "key": "B",
+              "text": "Paket B"
+            },
+            {
+              "key": "C",
+              "text": "Paket C"
+            },
+            {
+              "key": "D",
+              "text": "Semua sama"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A2-RD-S04-P008",
+      "title": "Ulasan Toko Buku Pustaka",
+      "text": "Oleh: Rina\n\nAkhir pekan lalu saya ke Toko Buku Pustaka di Jalan Kemang. Tokonya besar dan nyaman. Ada banyak buku dari berbagai kategori: novel, buku anak, komik, dan buku pelajaran. Saya beli dua novel seharga Rp85.000 dapat diskon 15% karena sedang promo akhir bulan. Pelayanannya ramah. Ada juga pojok baca gratis dengan sofa empuk. Sayangnya, tempat parkirnya terbatas. Tapi overall, toko ini recommended buat kamu yang suka baca.",
+      "topic": "ulasan_toko_buku",
+      "wordCount": 68,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S04-Q029",
+          "type": "multiple_choice",
+          "subskill": "vocabulary_in_context",
+          "difficulty": 0.4,
+          "prompt": "Apa arti kata 'diskon' dalam konteks ini?",
+          "answer": "B",
+          "explanation": "Teks menyatakan Paket A 3 hari 2 malam, jadi dua malam.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Satu hari"
+            },
+            {
+              "key": "B",
+              "text": "Dua hari"
+            },
+            {
+              "key": "C",
+              "text": "Tiga hari"
+            },
+            {
+              "key": "D",
+              "text": "Empat hari"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S04-Q030",
+          "type": "short_answer",
+          "subskill": "simple_inference",
+          "difficulty": 0.32,
+          "prompt": "Toko Buku Pustaka memiliki tempat parkir yang luas.",
+          "answer": "GoPay, transfer bank, tunai",
+          "explanation": "Teks menyatakan pembayaran bisa melalui GoPay, transfer bank, atau tunai.",
+          "points": 1,
+          "options": []
+        },
+        {
+          "questionId": "BIGT-A2-RD-S04-Q031",
+          "type": "matching",
+          "subskill": "simple_inference",
+          "difficulty": 0.42,
+          "prompt": "Mengapa Rina mendapat diskon 15%?",
+          "answer": "D",
+          "explanation": "Teks menyatakan 'diskon 15% karena sedang promo akhir bulan'.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Karena beli buku banyak"
+            },
+            {
+              "key": "B",
+              "text": "Karena pelajar"
+            },
+            {
+              "key": "C",
+              "text": "Karena anggota toko"
+            },
+            {
+              "key": "D",
+              "text": "Karena promo akhir bulan"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A2-RD-S04-P009",
+      "title": "Notifikasi Pengiriman Pesanan",
+      "text": "Hai Rina, pesanan kamu dari Toko Olahraga Jaya sudah dikirim! Detail pengiriman:\n\nPesanan: Sepatu lari Rp350.000, Tas olahraga Rp120.000.\nKurir: JNE\nNomor resi: JP0123456789\nEstimasi tiba: 3–5 hari kerja\nAlamat: Jalan Cendana No. 12, Jakarta Selatan\n\nKamu bisa melacak pesanan di website JNE menggunakan nomor resi di atas. Jika ada masalah, hubungi customer service Toko Olahraga Jaya di 0800-111-2222.",
+      "topic": "belanja_online",
+      "wordCount": 59,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S04-Q032",
+          "type": "multiple_choice",
+          "subskill": "vocabulary_in_context",
+          "difficulty": 0.3,
+          "prompt": "Apa nomor resi pengiriman pesanan Rina?",
+          "answer": "B",
+          "explanation": "Teks menyatakan nomor resi JP0123456789.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "JP0123456788"
+            },
+            {
+              "key": "B",
+              "text": "JP0123456789"
+            },
+            {
+              "key": "C",
+              "text": "JP0123456790"
+            },
+            {
+              "key": "D",
+              "text": "JP0123456700"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S04-Q033",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.28,
+          "prompt": "Pesanan dikirim menggunakan kurir J&T.",
+          "answer": "B",
+          "explanation": "Teks menyatakan kurir JNE.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Benar"
+            },
+            {
+              "key": "B",
+              "text": "Salah"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S04-Q034",
+          "type": "short_answer",
+          "subskill": "specific_information",
+          "difficulty": 0.32,
+          "prompt": "Apa yang dibeli Rina dari Toko Olahraga Jaya?",
+          "answer": "sepatu lari dan tas olahraga",
+          "explanation": "Teks menyebut sepatu lari Rp350.000 dan tas olahraga Rp120.000.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Benar"
+            },
+            {
+              "key": "B",
+              "text": "Salah"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A2-RD-S04-P010",
+      "title": "Panduan Pakai Aplikasi GoRide",
+      "text": "Selamat datang di GoRide! Berikut cara memesan ojek online:\n\n1. Buka aplikasi GoRide dan login.\n2. Pilih menu GoRide.\n3. Masukkan alamat jemput dan alamat tujuan.\n4. Pilih jenis motor.\n5. Klik 'Pesan Sekarang'.\n6. Tunggu driver menerima pesanan.\n7. Cocokkan plat nomor dengan yang tertera di aplikasi.\n8. Klik 'Konfirmasi Selesai' setelah sampai tujuan.\n\nPembayaran bisa melalui GoPay, transfer bank, atau tunai. GoRide tersedia di Jakarta, Bandung, Surabaya, dan kota besar lainnya.",
+      "topic": "panduan_aplikasi",
+      "wordCount": 73,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S04-Q035",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.3,
+          "prompt": "Langkah apa yang harus dilakukan setelah memilih jenis motor?",
+          "answer": "D",
+          "explanation": "Langkah kelima adalah klik 'Pesan Sekarang'.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Masukkan alamat"
+            },
+            {
+              "key": "B",
+              "text": "Login ke aplikasi"
+            },
+            {
+              "key": "C",
+              "text": "Cocokkan plat nomor"
+            },
+            {
+              "key": "D",
+              "text": "Klik Pesan Sekarang"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S04-Q036",
+          "type": "multiple_choice",
+          "subskill": "vocabulary_in_context",
+          "difficulty": 0.42,
+          "prompt": "Apa arti 'driver' dalam panduan ini?",
+          "answer": "C",
+          "explanation": "'Driver' adalah pengemudi atau sopir ojek online.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Penumpang"
+            },
+            {
+              "key": "B",
+              "text": "Petugas stasiun"
+            },
+            {
+              "key": "C",
+              "text": "Pengemudi ojek"
+            },
+            {
+              "key": "D",
+              "text": "Karyawan toko"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S04-Q037",
+          "type": "true_false",
+          "subskill": "simple_inference",
+          "difficulty": 0.28,
+          "prompt": "Pembayaran GoRide bisa dilakukan melalui GoPay, transfer bank, atau tunai.",
+          "answer": "A",
+          "explanation": "Teks menyatakan 'Pembayaran bisa melalui GoPay, transfer bank, atau tunai'.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Benar"
+            },
+            {
+              "key": "B",
+              "text": "Salah"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A2-RD-S04-P011",
+      "title": "Jadwal Pemeriksaan Kesehatan",
+      "text": "Puskesmas Sehat mengadakan program cek kesehatan gratis untuk warga. Berikut jadwalnya:\n\nSenin, 5 Agustus: Cek gula darah untuk usia di atas 40 tahun.\nSelasa, 6 Agustus: Cek tekanan darah untuk semua usia.\nRabu, 7 Agustus: Cek kolesterol untuk usia di atas 35 tahun.\nKamis, 8 Agustus: Cek mata untuk anak usia sekolah.\nJumat, 9 Agustus: Konsultasi gizi untuk semua usia.\n\nPendaftaran dibuka pukul 07.00–10.00 setiap hari. Wajib membawa KTP. Peserta yang sudah mendaftar akan mendapat nomor antrean.",
+      "topic": "jadwal_kesehatan",
+      "wordCount": 77,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S04-Q038",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.28,
+          "prompt": "Pemeriksaan apa yang diadakan pada hari Selasa?",
+          "answer": "B",
+          "explanation": "Teks menyatakan Selasa ada cek tekanan darah.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Cek gula darah"
+            },
+            {
+              "key": "B",
+              "text": "Cek tekanan darah"
+            },
+            {
+              "key": "C",
+              "text": "Cek kolesterol"
+            },
+            {
+              "key": "D",
+              "text": "Cek mata"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S04-Q039",
+          "type": "matching",
+          "subskill": "matching_information",
+          "difficulty": 0.4,
+          "prompt": "Siapa yang boleh mengikuti cek kolesterol?",
+          "answer": "D",
+          "explanation": "Teks menyatakan cek kolesterol untuk usia di atas 35 tahun.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Semua usia"
+            },
+            {
+              "key": "B",
+              "text": "Anak usia sekolah"
+            },
+            {
+              "key": "C",
+              "text": "Usia di atas 40"
+            },
+            {
+              "key": "D",
+              "text": "Usia di atas 35"
+            }
+          ]
+        },
+        {
+          "questionId": "BIGT-A2-RD-S04-Q040",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.3,
+          "prompt": "Apa yang wajib dibawa saat mendaftar?",
+          "answer": "D",
+          "explanation": "Teks menyatakan cek kolesterol untuk usia di atas 35 tahun.",
+          "points": 1,
+          "options": [
+            {
+              "key": "A",
+              "text": "Usia di atas 35 tahun"
+            },
+            {
+              "key": "B",
+              "text": "Anak usia sekolah"
+            },
+            {
+              "key": "C",
+              "text": "Semua usia"
+            },
+            {
+              "key": "D",
+              "text": "Usia di atas 40 tahun"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

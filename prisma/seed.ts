@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client'
+import { seedCanDo } from './seed-can-do'
 
 const prisma = new PrismaClient()
 
@@ -551,6 +552,9 @@ async function main() {
 
   await seedBlueprints()
   console.log('Blueprint tes dibuat.')
+
+  await seedCanDo()
+  console.log('Can-do descriptors dibuat.')
 
   let createdCount = 0
   for (const q of QUESTIONS) {

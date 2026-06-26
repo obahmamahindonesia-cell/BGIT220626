@@ -4,6 +4,9 @@ import { cookies } from 'next/headers'
 import { prisma } from '@/lib/prisma'
 import { uploadQuestionPdf } from '@/lib/supabase/storage'
 
+export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
+
 export async function POST(request: NextRequest) {
   try {
     const cookieStore = cookies()

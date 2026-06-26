@@ -158,12 +158,12 @@ export async function selectQuestions(input: SelectionInput): Promise<SelectionO
 
   const totalAvailableAll = easyPool.length + targetPool.length + hardPool.length
 
-  if (totalAvailableAll < questionCount) {
+  if (totalAvailableAll === 0) {
     return {
       success: false,
       questions: [],
-      error: 'Bank soal belum cukup untuk konfigurasi ini. Tersedia: ' + totalAvailableAll + ', dibutuhkan: ' + questionCount + '.',
-      metadata: { totalAvailable: totalAvailableAll, totalRequested: questionCount, levelDistribution: {}, dimensionDistribution: {}, neighborLevelsUsed },
+      error: 'Bank soal belum cukup untuk konfigurasi ini.',
+      metadata: { totalAvailable: 0, totalRequested: questionCount, levelDistribution: {}, dimensionDistribution: {}, neighborLevelsUsed },
     }
   }
 

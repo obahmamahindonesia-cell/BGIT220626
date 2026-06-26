@@ -1,0 +1,746 @@
+{
+  "setId": "BIGT-A2-RD-S02",
+  "cefr": "A2",
+  "skill": "reading",
+  "title": "A2 Reading Set 02 — Kehidupan Sehari-hari",
+  "version": "1.0.0",
+  "status": "draft",
+  "itemsCount": 40,
+  "passages": [
+    {
+      "passageId": "BIGT-A2-RD-S02-P001",
+      "title": "Sekolah Baru Saya",
+      "text": "Bulan lalu saya pindah ke sekolah baru. Sekolah ini lebih besar dari sekolah lama saya. Ada lapangan basket, perpustakaan yang besar, dan kantin yang bersih. Guru-gurunya ramah dan teman-teman baru saya baik. Saya suka pelajaran matematika dan bahasa Inggris. Saya tidak suka pelajaran sejarah karena banyak hafalan. Setiap hari Senin saya mengikuti klub basket setelah pulang sekolah.",
+      "topic": "school",
+      "wordCount": 68,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S02-Q001",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.2,
+          "prompt": "Apa yang ada di sekolah baru penulis?",
+          "options": [
+            { "key": "A", "text": "Kolam renang dan lapangan basket" },
+            { "key": "B", "text": "Lapangan basket, perpustakaan besar, dan kantin bersih" },
+            { "key": "C", "text": "Perpustakaan kecil dan kantin" },
+            { "key": "D", "text": "Lapangan sepak bola dan kantin" }
+          ],
+          "answer": "B",
+          "explanation": "Teks menyebutkan: 'Ada lapangan basket, perpustakaan yang besar, dan kantin yang bersih.'",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A2-RD-S02-Q002",
+          "type": "multiple_choice",
+          "subskill": "simple_inference",
+          "difficulty": 0.3,
+          "prompt": "Mengapa penulis tidak suka pelajaran sejarah?",
+          "options": [
+            { "key": "A", "text": "Karena gurunya tidak ramah" },
+            { "key": "B", "text": "Karena banyak hafalan" },
+            { "key": "C", "text": "Karena teman-temannya tidak suka" },
+            { "key": "D", "text": "Karena pelajarannya terlalu mudah" }
+          ],
+          "answer": "B",
+          "explanation": "Teks menyatakan: 'Saya tidak suka pelajaran sejarah karena banyak hafalan.'",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A2-RD-S02-Q003",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.2,
+          "prompt": "Penulis mengikuti klub basket setiap hari.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "B",
+          "explanation": "Teks menyatakan: 'Setiap hari Senin saya mengikuti klub basket', bukan setiap hari.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A2-RD-S02-P002",
+      "title": "Cara Membuat Es Teh Manis",
+      "text": "Es teh manis adalah minuman yang mudah dibuat. Pertama, rebus air sampai mendidih. Kedua, masukkan kantong teh ke dalam air panas dan tunggu tiga menit. Ketiga, angkat kantong teh dan tambahkan gula secukupnya. Aduk sampai gula larut. Keempat, diamkan sampai air teh dingin. Terakhir, tuang air teh ke dalam gelas yang sudah diisi es batu. Es teh manis siap diminum. Anda juga bisa menambahkan irisan lemon untuk rasa yang lebih segar.",
+      "topic": "food and drink",
+      "wordCount": 96,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S02-Q004",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.2,
+          "prompt": "Berapa lama kantong teh harus didiamkan di air panas?",
+          "options": [
+            { "key": "A", "text": "Satu menit" },
+            { "key": "B", "text": "Dua menit" },
+            { "key": "C", "text": "Tiga menit" },
+            { "key": "D", "text": "Empat menit" }
+          ],
+          "answer": "C",
+          "explanation": "Teks menyatakan: 'tunggu tiga menit' setelah memasukkan kantong teh.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A2-RD-S02-Q005",
+          "type": "matching",
+          "subskill": "matching_information",
+          "difficulty": 0.3,
+          "prompt": "Apa yang dilakukan setelah memasukkan kantong teh ke air panas?",
+          "options": [
+            { "key": "A", "text": "Menuang ke gelas berisi es" },
+            { "key": "B", "text": "Menambahkan gula" },
+            { "key": "C", "text": "Tunggu tiga menit lalu angkat kantong teh" },
+            { "key": "D", "text": "Langsung diminum" }
+          ],
+          "answer": "C",
+          "explanation": "Langkah kedua: masukkan kantong teh, tunggu tiga menit. Langkah ketiga: angkat kantong teh dan tambahkan gula.",
+          "points": 2
+        },
+        {
+          "questionId": "BIGT-A2-RD-S02-Q006",
+          "type": "short_answer",
+          "subskill": "specific_information",
+          "difficulty": 0.25,
+          "prompt": "Apa yang bisa ditambahkan ke es teh manis untuk rasa yang lebih segar?",
+          "answer": "irisan lemon",
+          "explanation": "Teks menyatakan: 'Anda juga bisa menambahkan irisan lemon untuk rasa yang lebih segar.'",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A2-RD-S02-P003",
+      "title": "Pindahan ke Rumah Baru",
+      "text": "Hari Sabtu kemarin keluarga Pak Budi pindah ke rumah baru. Rumah baru mereka terletak di perumahan Bukit Indah. Ada tiga kamar tidur, satu ruang tamu, satu dapur, dan dua kamar mandi. Halaman belakang rumah cukup luas. Ada pohon mangga dan beberapa tanaman bunga. Tetangga di kiri dan kanan rumah sangat ramah. Mereka membantu membawa barang-barang. Salah satu tetangga bahkan memberikan kue untuk selamat datang.",
+      "topic": "daily life",
+      "wordCount": 83,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S02-Q007",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.2,
+          "prompt": "Berapa jumlah kamar di rumah baru Pak Budi?",
+          "options": [
+            { "key": "A", "text": "Dua kamar tidur dan satu kamar mandi" },
+            { "key": "B", "text": "Tiga kamar tidur dan dua kamar mandi" },
+            { "key": "C", "text": "Empat kamar tidur dan satu kamar mandi" },
+            { "key": "D", "text": "Tiga kamar tidur dan satu kamar mandi" }
+          ],
+          "answer": "B",
+          "explanation": "Teks menyatakan: 'Ada tiga kamar tidur... dan dua kamar mandi.'",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A2-RD-S02-Q008",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.2,
+          "prompt": "Tetangga kiri dan kanan rumah Pak Budi tidak ramah.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "B",
+          "explanation": "Teks menyatakan: 'Tetangga di kiri dan kanan rumah sangat ramah.'",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A2-RD-S02-Q009",
+          "type": "matching",
+          "subskill": "matching_information",
+          "difficulty": 0.3,
+          "prompt": "Apa yang ada di halaman belakang rumah Pak Budi?",
+          "options": [
+            { "key": "A", "text": "Kolam ikan" },
+            { "key": "B", "text": "Pohon mangga dan tanaman bunga" },
+            { "key": "C", "text": "Garasi mobil" },
+            { "key": "D", "text": "Taman bermain" }
+          ],
+          "answer": "B",
+          "explanation": "Teks menyatakan: 'Halaman belakang rumah cukup luas. Ada pohon mangga dan beberapa tanaman bunga.'",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A2-RD-S02-P004",
+      "title": "Pergi ke Dokter",
+      "text": "Kemarin saya pergi ke dokter karena sakit perut. Dokter memeriksa perut saya dan bertanya tentang makanan yang saya makan. Saya mengatakan bahwa saya makan pedas semalam. Dokter tersenyum dan berkata, \"Mungkin itu penyebabnya.\" Dokter memberikan resep obat yang harus diminum tiga kali sehari. Saya juga disarankan untuk tidak makan pedas selama seminggu dan minum air putih yang banyak. Sekarang perut saya sudah terasa lebih baik.",
+      "topic": "health",
+      "wordCount": 80,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S02-Q010",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.25,
+          "prompt": "Apa tujuan penulis pergi ke dokter?",
+          "options": [
+            { "key": "A", "text": "Memeriksa mata" },
+            { "key": "B", "text": "Sakit perut" },
+            { "key": "C", "text": "Sakit kepala" },
+            { "key": "D", "text": "Cek kesehatan rutin" }
+          ],
+          "answer": "B",
+          "explanation": "Teks menyatakan: 'Saya pergi ke dokter karena sakit perut.'",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A2-RD-S02-Q011",
+          "type": "multiple_choice",
+          "subskill": "simple_inference",
+          "difficulty": 0.35,
+          "prompt": "Menurut dokter, apa yang menyebabkan sakit perut penulis?",
+          "options": [
+            { "key": "A", "text": "Makanan basi" },
+            { "key": "B", "text": "Makan pedas" },
+            { "key": "C", "text": "Minum es" },
+            { "key": "D", "text": "Makan terlalu banyak" }
+          ],
+          "answer": "B",
+          "explanation": "Dokter menyimpulkan bahwa makanan pedas yang dimakan semalam mungkin penyebabnya.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A2-RD-S02-P005",
+      "title": "Kegiatan Akhir Pekan",
+      "text": "Setiap akhir pekan, keluarga kami selalu melakukan kegiatan bersama. Pada hari Sabtu, kami membersihkan rumah bersama. Ayah menyapu halaman, ibu mengepel lantai, dan saya membersihkan kamar. Pada hari Minggu, kami pergi berlibur ke tempat wisata. Kadang-kadang kami pergi ke kebun binatang, taman bermain, atau museum. Minggu lalu kami pergi ke pantai Anyer. Kami berangkat jam enam pagi dan pulang jam lima sore. Kami sangat senang.",
+      "topic": "daily life",
+      "wordCount": 81,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S02-Q012",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.2,
+          "prompt": "Apa yang dilakukan keluarga pada hari Sabtu?",
+          "options": [
+            { "key": "A", "text": "Pergi berlibur" },
+            { "key": "B", "text": "Membersihkan rumah bersama" },
+            { "key": "C", "text": "Mengunjungi nenek" },
+            { "key": "D", "text": "Memasak bersama" }
+          ],
+          "answer": "B",
+          "explanation": "Teks menyatakan: 'Pada hari Sabtu, kami membersihkan rumah bersama.'",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A2-RD-S02-Q013",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.25,
+          "prompt": "Keluarga pergi ke pantai Anyer setiap akhir pekan.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "B",
+          "explanation": "Teks menyatakan 'Minggu lalu kami pergi ke pantai Anyer' — hanya minggu lalu, bukan setiap akhir pekan.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A2-RD-S02-Q014",
+          "type": "matching",
+          "subskill": "specific_information",
+          "difficulty": 0.3,
+          "prompt": "Apa yang dilakukan ayah saat membersihkan rumah?",
+          "options": [
+            { "key": "A", "text": "Mengepel lantai" },
+            { "key": "B", "text": "Membersihkan kamar" },
+            { "key": "C", "text": "Menyapu halaman" },
+            { "key": "D", "text": "Mencuci piring" }
+          ],
+          "answer": "C",
+          "explanation": "Teks menyatakan: 'Ayah menyapu halaman.'",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A2-RD-S02-P006",
+      "title": "Pengumuman Lomba",
+      "text": "Dengan ini kami mengumumkan bahwa SMA Harapan Bangsa akan mengadakan Lomba Cipta Puisi. Lomba terbuka untuk semua siswa kelas X, XI, dan XII. Tema lomba adalah \"Lingkungan Hidup\". Puisi dikirim paling lambat tanggal 15 Maret 2025 ke email lomba@smaharapan.sch.id. Pemenang akan diumumkan pada tanggal 25 Maret 2025. Hadiah utama Rp500.000, hadiah kedua Rp300.000, dan hadiah ketiga Rp200.000. Setiap peserta mendapatkan sertifikat.",
+      "topic": "school",
+      "wordCount": 88,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S02-Q015",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.2,
+          "prompt": "Apa tujuan dari pengumuman tersebut?",
+          "options": [
+            { "key": "A", "text": "Menginformasikan jadwal sekolah" },
+            { "key": "B", "text": "Mengumumkan lomba cipta puisi" },
+            { "key": "C", "text": "Mengundang rapat orang tua" },
+            { "key": "D", "text": "Memberitahu liburan sekolah" }
+          ],
+          "answer": "B",
+          "explanation": "Pengumuman bertujuan menginformasikan tentang Lomba Cipta Puisi.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A2-RD-S02-Q016",
+          "type": "short_answer",
+          "subskill": "specific_information",
+          "difficulty": 0.3,
+          "prompt": "Apa tema lomba cipta puisi tersebut?",
+          "answer": "Lingkungan Hidup",
+          "explanation": "Teks menyatakan: 'Tema lomba adalah \"Lingkungan Hidup\".'",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A2-RD-S02-P007",
+      "title": "Berkunjung ke Yogyakarta",
+      "text": "Liburan sekolah kemarin, saya dan keluarga berkunjung ke Yogyakarta. Kami naik kereta api dari Stasiun Gambir. Perjalanan memakan waktu sekitar delapan jam. Di Yogyakarta, kami mengunjungi Candi Borobudur dan Candi Prambanan. Candi Borobudur sangat besar dan indah. Kami juga mampir ke Malioboro untuk membeli oleh-oleh. Ibu membeli batik, ayah membeli kerajinan perak, dan saya membeli gudeg kalengan. Saya suka Yogyakarta karena udaranya sejuk dan makanannya enak.",
+      "topic": "travel",
+      "wordCount": 91,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S02-Q017",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.2,
+          "prompt": "Naik apa keluarga penulis ke Yogyakarta?",
+          "options": [
+            { "key": "A", "text": "Pesawat" },
+            { "key": "B", "text": "Bus" },
+            { "key": "C", "text": "Kereta api" },
+            { "key": "D", "text": "Mobil" }
+          ],
+          "answer": "C",
+          "explanation": "Teks menyatakan: 'Kami naik kereta api dari Stasiun Gambir.'",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A2-RD-S02-Q018",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.25,
+          "prompt": "Apa yang dibeli penulis di Malioboro?",
+          "options": [
+            { "key": "A", "text": "Batik" },
+            { "key": "B", "text": "Kerajinan perak" },
+            { "key": "C", "text": "Gudeg kalengan" },
+            { "key": "D", "text": "Kaos souvenir" }
+          ],
+          "answer": "C",
+          "explanation": "Teks menyatakan: 'saya membeli gudeg kalengan.'",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A2-RD-S02-Q019",
+          "type": "true_false",
+          "subskill": "simple_inference",
+          "difficulty": 0.3,
+          "prompt": "Perjalanan dari Jakarta ke Yogyakarta memakan waktu kurang dari lima jam.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "B",
+          "explanation": "Teks menyatakan: 'Perjalanan memakan waktu sekitar delapan jam.' Jadi lebih dari lima jam.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A2-RD-S02-Q020",
+          "type": "matching",
+          "subskill": "specific_information",
+          "difficulty": 0.3,
+          "prompt": "Apa yang dibeli ayah di Malioboro?",
+          "options": [
+            { "key": "A", "text": "Batik" },
+            { "key": "B", "text": "Gudeg kalengan" },
+            { "key": "C", "text": "Kerajinan perak" },
+            { "key": "D", "text": "Kaos" }
+          ],
+          "answer": "C",
+          "explanation": "Teks menyatakan: 'ayah membeli kerajinan perak.'",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A2-RD-S02-P008",
+      "title": "Hobi yang Berbeda",
+      "text": "Setiap orang di keluarga saya punya hobi yang berbeda. Ayah suka memancing. Setiap hari Minggu pagi, ayah pergi memancing ke sungai dekat rumah. Ibu suka berkebun. Di halaman belakang, ibu menanam tomat, cabai, dan sayuran lainnya. Kakak perempuan saya suka melukis. Kamarnya penuh dengan lukisan pemandangan. Sedangkan saya suka membaca buku. Saya bisa membaca dua buku dalam seminggu. Hobi kami berbeda, tapi kami tetap bisa melakukan kegiatan bersama.",
+      "topic": "hobbies",
+      "wordCount": 89,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S02-Q021",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.2,
+          "prompt": "Apa topik utama teks tersebut?",
+          "options": [
+            { "key": "A", "text": "Kegiatan keluarga di akhir pekan" },
+            { "key": "B", "text": "Hobi setiap anggota keluarga" },
+            { "key": "C", "text": "Tempat memancing favorit" },
+            { "key": "D", "text": "Cara menanam sayuran" }
+          ],
+          "answer": "B",
+          "explanation": "Teks menjelaskan hobi ayah, ibu, kakak, dan penulis yang berbeda.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A2-RD-S02-Q022",
+          "type": "matching",
+          "subskill": "specific_information",
+          "difficulty": 0.3,
+          "prompt": "Apa hobi kakak perempuan penulis?",
+          "options": [
+            { "key": "A", "text": "Memancing" },
+            { "key": "B", "text": "Berkebun" },
+            { "key": "C", "text": "Melukis" },
+            { "key": "D", "text": "Membaca" }
+          ],
+          "answer": "C",
+          "explanation": "Teks menyatakan: 'Kakak perempuan saya suka melukis.'",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A2-RD-S02-P009",
+      "title": "Mendeskripsikan Sahabat",
+      "text": "Saya punya sahabat bernama Dina. Dia berumur 16 tahun dan duduk di kelas X. Dina bertubuh tinggi dengan rambut panjang ikal. Dia berkulit sawo matang dan memiliki mata bulat yang indah. Dina adalah orang yang ceria dan humoris. Dia selalu membuat saya tertawa. Dina juga pintar, terutama dalam pelajaran biologi. Cita-citanya ingin menjadi dokter. Saya senang berteman dengan Dina karena dia selalu ada saat saya membutuhkan bantuan.",
+      "topic": "daily life",
+      "wordCount": 84,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S02-Q023",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.2,
+          "prompt": "Apa ciri-ciri fisik Dina?",
+          "options": [
+            { "key": "A", "text": "Pendek dengan rambut lurus" },
+            { "key": "B", "text": "Tinggi dengan rambut panjang ikal" },
+            { "key": "C", "text": "Gemuk dengan rambut pendek" },
+            { "key": "D", "text": "Kurus dengan rambut keriting" }
+          ],
+          "answer": "B",
+          "explanation": "Teks menyatakan: 'Dina bertubuh tinggi dengan rambut panjang ikal.'",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A2-RD-S02-Q024",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.2,
+          "prompt": "Cita-cita Dina adalah menjadi guru.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "B",
+          "explanation": "Teks menyatakan: 'Cita-citanya ingin menjadi dokter.'",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A2-RD-S02-P010",
+      "title": "Cuaca dan Musim di Indonesia",
+      "text": "Indonesia memiliki dua musim, yaitu musim hujan dan musim kemarau. Musim hujan biasanya terjadi dari bulan November hingga Maret. Pada musim hujan, hujan turun hampir setiap hari. Kadang-kadang hujan turun deras disertai angin kencang. Musim kemarau terjadi dari bulan April hingga Oktober. Pada musim kemarau, cuaca sangat panas dan jarang turun hujan. Petani mulai menanam padi pada musim hujan dan memanen pada musim kemarau. Masyarakat harus selalu siap menghadapi kedua musim ini.",
+      "topic": "weather",
+      "wordCount": 92,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S02-Q025",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.25,
+          "prompt": "Apa topik utama teks tersebut?",
+          "options": [
+            { "key": "A", "text": "Cara bertani di Indonesia" },
+            { "key": "B", "text": "Musim hujan dan kemarau di Indonesia" },
+            { "key": "C", "text": "Bencana alam di Indonesia" },
+            { "key": "D", "text": "Perubahan iklim global" }
+          ],
+          "answer": "B",
+          "explanation": "Teks menjelaskan tentang dua musim di Indonesia dan karakteristiknya.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A2-RD-S02-Q026",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.2,
+          "prompt": "Musim kemarau di Indonesia terjadi dari November hingga Maret.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "B",
+          "explanation": "Musim kemarau terjadi dari April hingga Oktober, bukan November hingga Maret.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A2-RD-S02-Q027",
+          "type": "multiple_choice",
+          "subskill": "vocabulary_in_context",
+          "difficulty": 0.35,
+          "prompt": "Apa arti kata 'deras' dalam kalimat 'hujan turun deras'?",
+          "options": [
+            { "key": "A", "text": "Lambat" },
+            { "key": "B", "text": "Kencang dan lebat" },
+            { "key": "C", "text": "Ringan" },
+            { "key": "D", "text": "Hangat" }
+          ],
+          "answer": "B",
+          "explanation": "Dalam konteks hujan, 'deras' berarti kencang dan lebat.",
+          "points": 2
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A2-RD-S02-P011",
+      "title": "Belanja di Supermarket",
+      "text": "Hari Sabtu lalu, saya pergi ke supermarket bersama ibu. Kami membeli banyak kebutuhan. Di rak sayuran, ibu memilih bayam, wortel, dan kentang. Harga sayuran di supermarket lebih mahal daripada di pasar tradisional, tetapi kualitasnya lebih terjamin. Saya membantu mendorong kereta belanja. Kami juga membeli susu, telur, roti, dan kecap. Ibu membandingkan harga beberapa merek sebelum memilih yang paling murah. Total belanja kami sebanyak Rp150.000. Ibu membayar menggunakan kartu debit.",
+      "topic": "shopping",
+      "wordCount": 94,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S02-Q028",
+          "type": "multiple_choice",
+          "subskill": "vocabulary_in_context",
+          "difficulty": 0.3,
+          "prompt": "Apa arti 'membandingkan harga' dalam teks?",
+          "options": [
+            { "key": "A", "text": "Menawar harga" },
+            { "key": "B", "text": "Melihat harga beberapa merek" },
+            { "key": "C", "text": "Mengurangi harga" },
+            { "key": "D", "text": "Membayar harga" }
+          ],
+          "answer": "B",
+          "explanation": "'Membandingkan harga' berarti melihat dan mengecek harga dari beberapa merek sebelum memilih.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A2-RD-S02-Q029",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.2,
+          "prompt": "Ibu membayar belanjaan menggunakan uang tunai.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "B",
+          "explanation": "Teks menyatakan: 'Ibu membayar menggunakan kartu debit.'",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A2-RD-S02-P012",
+      "title": "Persiapan Acara Ulang Tahun",
+      "text": "Dua minggu lagi saya akan merayakan ulang tahun ke-17. Saya berencana mengadakan pesta kecil di rumah. Saya akan mengundang sepuluh teman dekat. Ibu membantu menyiapkan makanan. Kami akan membuat nasi kuning, ayam goreng, dan es buah. Ayah membantu mendekorasi ruang tamu dengan balon dan pita. Saya sudah menyiapkan daftar lagu untuk diputar. Setelah pesta, saya berencana mengunjungi panti asuhan untuk berbagi kebahagiaan. Saya ingin ulang tahun saya bermakna.",
+      "topic": "daily life",
+      "wordCount": 95,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S02-Q030",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.25,
+          "prompt": "Apa yang direncanakan penulis untuk ulang tahunnya?",
+          "options": [
+            { "key": "A", "text": "Liburan ke luar kota" },
+            { "key": "B", "text": "Pesta kecil di rumah" },
+            { "key": "C", "text": "Berkemah bersama teman" },
+            { "key": "D", "text": "Makan malam di restoran" }
+          ],
+          "answer": "B",
+          "explanation": "Teks menyatakan: 'Saya berencana mengadakan pesta kecil di rumah.'",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A2-RD-S02-Q031",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.2,
+          "prompt": "Berapa teman yang akan diundang?",
+          "options": [
+            { "key": "A", "text": "Lima teman" },
+            { "key": "B", "text": "Sepuluh teman" },
+            { "key": "C", "text": "Lima belas teman" },
+            { "key": "D", "text": "Dua puluh teman" }
+          ],
+          "answer": "B",
+          "explanation": "Teks menyatakan: 'Saya akan mengundang sepuluh teman dekat.'",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A2-RD-S02-Q032",
+          "type": "matching",
+          "subskill": "specific_information",
+          "difficulty": 0.3,
+          "prompt": "Apa yang dilakukan ayah untuk persiapan pesta?",
+          "options": [
+            { "key": "A", "text": "Menyiapkan makanan" },
+            { "key": "B", "text": "Mendekorasi ruang tamu" },
+            { "key": "C", "text": "Menyiapkan daftar lagu" },
+            { "key": "D", "text": "Membeli kado" }
+          ],
+          "answer": "B",
+          "explanation": "Teks menyatakan: 'Ayah membantu mendekorasi ruang tamu dengan balon dan pita.'",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A2-RD-S02-P013",
+      "title": "Belajar Naik Sepeda",
+      "text": "Dua tahun lalu, saya belajar naik sepeda. Awalnya saya sangat takut. Sepeda saya memiliki dua roda tambahan di belakang. Setiap sore ayah mengajari saya di lapangan dekat rumah. Ayah memegang setang sepeda sambil saya mengayuh. Perlahan-lahan saya mulai bisa menjaga keseimbangan. Setelah satu bulan, ayah melepas roda tambahan. Saya jatuh beberapa kali, tapi ayah selalu mengatakan, \"Jangan menyerah.\" Sekarang saya bisa naik sepeda dengan lancar. Saya bersepeda ke sekolah setiap hari.",
+      "topic": "hobbies",
+      "wordCount": 95,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S02-Q033",
+          "type": "multiple_choice",
+          "subskill": "simple_inference",
+          "difficulty": 0.3,
+          "prompt": "Mengapa penulis bisa naik sepeda sekarang?",
+          "options": [
+            { "key": "A", "text": "Karena sepedanya baru" },
+            { "key": "B", "text": "Karena terus berlatih dan tidak menyerah" },
+            { "key": "C", "text": "Karena roda tambahan masih dipasang" },
+            { "key": "D", "text": "Karena lapangannya dekat rumah" }
+          ],
+          "answer": "B",
+          "explanation": "Penulis terus berlatih setiap sore selama satu bulan dan ayahnya mendorong untuk tidak menyerah.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A2-RD-S02-Q034",
+          "type": "short_answer",
+          "subskill": "specific_information",
+          "difficulty": 0.25,
+          "prompt": "Di mana penulis belajar naik sepeda?",
+          "answer": "di lapangan dekat rumah",
+          "explanation": "Teks menyatakan: 'Setiap sore ayah mengajari saya di lapangan dekat rumah.'",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A2-RD-S02-P014",
+      "title": "Jadwal Kereta Api",
+      "text": "Berikut adalah jadwal kereta api dari Stasiun Senen tujuan Cirebon. Kereta Api Tegal Bahari berangkat pukul 06.15 dan tiba pukul 09.45. Harga tiket Rp85.000. Kereta Api Cirebon Ekspres berangkat pukul 08.30 dan tiba pukul 11.30. Harga tiket Rp95.000. Kereta Api Gunung Jati berangkat pukul 14.00 dan tiba pukul 17.45. Harga tiket Rp75.000. Penumpang diharapkan datang 30 menit sebelum keberangkatan. Tiket dapat dibeli secara online atau di loket stasiun.",
+      "topic": "transportation",
+      "wordCount": 91,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S02-Q035",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.2,
+          "prompt": "Kereta Api Cirebon Ekspres adalah kereta yang paling mahal.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "A",
+          "explanation": "Harga tiket Cirebon Ekspres Rp95.000, lebih mahal dari Tegal Bahari (Rp85.000) dan Gunung Jati (Rp75.000).",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A2-RD-S02-Q036",
+          "type": "multiple_choice",
+          "subskill": "simple_inference",
+          "difficulty": 0.35,
+          "prompt": "Kereta mana yang perjalanannya paling cepat?",
+          "options": [
+            { "key": "A", "text": "Tegal Bahari" },
+            { "key": "B", "text": "Cirebon Ekspres" },
+            { "key": "C", "text": "Gunung Jati" },
+            { "key": "D", "text": "Semua sama cepat" }
+          ],
+          "answer": "B",
+          "explanation": "Cirebon Ekspres: 08.30-11.30 (3 jam). Tegal Bahari: 06.15-09.45 (3 jam 30 menit). Gunung Jati: 14.00-17.45 (3 jam 45 menit). Cirebon Ekspres paling cepat.",
+          "points": 2
+        },
+        {
+          "questionId": "BIGT-A2-RD-S02-Q037",
+          "type": "matching",
+          "subskill": "specific_information",
+          "difficulty": 0.3,
+          "prompt": "Pukul berapa Kereta Api Gunung Jati berangkat?",
+          "options": [
+            { "key": "A", "text": "06.15" },
+            { "key": "B", "text": "08.30" },
+            { "key": "C", "text": "14.00" },
+            { "key": "D", "text": "17.45" }
+          ],
+          "answer": "C",
+          "explanation": "Teks menyatakan: 'Kereta Api Gunung Jati berangkat pukul 14.00.'",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A2-RD-S02-P015",
+      "title": "Peringatan Hari Kemerdekaan",
+      "text": "Setiap tanggal 17 Agustus, desa saya mengadakan berbagai lomba untuk merayakan Hari Kemerdekaan. Tahun ini ada lomba makan kerupuk, balap karung, panjat pinang, dan tarik tambang. Saya ikut lomba balap karung tahun lalu dan mendapat juara kedua. Hadiahnya adalah tas sekolah. Adik saya suka lomba makan kerupuk. Persiapan lomba sudah dimulai dari awal Agustus. Warga bergotong royong membersihkan lapangan dan memasang bendera merah putih di sepanjang jalan. Suasana sangat meriah.",
+      "topic": "daily life",
+      "wordCount": 96,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S02-Q038",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.2,
+          "prompt": "Apa yang dirayakan di desa penulis setiap tanggal 17 Agustus?",
+          "options": [
+            { "key": "A", "text": "Tahun Baru" },
+            { "key": "B", "text": "Hari Kemerdekaan" },
+            { "key": "C", "text": "Hari Raya" },
+            { "key": "D", "text": "Ulang Tahun Desa" }
+          ],
+          "answer": "B",
+          "explanation": "Teks menyatakan: 'merayakan Hari Kemerdekaan.'",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A2-RD-S02-Q039",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.25,
+          "prompt": "Apa hadiah juara kedua lomba balap karung?",
+          "options": [
+            { "key": "A", "text": "Tas sekolah" },
+            { "key": "B", "text": "Sepatu baru" },
+            { "key": "C", "text": "Buku tulis" },
+            { "key": "D", "text": "Baju baru" }
+          ],
+          "answer": "A",
+          "explanation": "Teks menyatakan: 'Saya ikut lomba balap karung tahun lalu dan mendapat juara kedua. Hadiahnya adalah tas sekolah.'",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A2-RD-S02-Q040",
+          "type": "short_answer",
+          "subskill": "vocabulary_in_context",
+          "difficulty": 0.35,
+          "prompt": "Apa arti 'bergotong royong' dalam teks tersebut?",
+          "answer": "bekerja sama",
+          "explanation": "'Bergotong royong' berarti bekerja bersama-sama untuk mencapai tujuan bersama.",
+          "points": 2
+        }
+      ]
+    }
+  ]
+}

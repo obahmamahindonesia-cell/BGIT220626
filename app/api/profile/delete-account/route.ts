@@ -4,6 +4,9 @@ import { cookies } from 'next/headers'
 import { prisma } from '@/lib/prisma'
 import { createClient } from '@supabase/supabase-js'
 
+export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
+
 export async function POST() {
   try {
     const cookieStore = cookies()

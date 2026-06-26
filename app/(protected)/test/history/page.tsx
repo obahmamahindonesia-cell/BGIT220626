@@ -83,7 +83,7 @@ export default function TestHistoryPage() {
     try {
       const params = new URLSearchParams()
       if (filter !== 'ALL') params.set('status', filter)
-      const res = await fetch(`/api/test/history?${params.toString()}`)
+      const res = await fetch(`/api/test/history?${params.toString()}`, { cache: 'no-store' })
       if (res.status === 401) {
         router.replace('/login')
         return

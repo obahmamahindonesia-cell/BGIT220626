@@ -3,11 +3,9 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import {
   ArrowRight,
@@ -28,18 +26,15 @@ import Logo from '@/components/brand/Logo';
 const onboardingSchema = z.object({
   fullName: z
     .string()
-    .transform(val => val.trim())
-    .pipe(
-      z.string()
-        .min(2, 'Nama minimal 2 karakter.')
-        .max(50, 'Nama maksimal 50 karakter.')
-    ),
+    .trim()
+    .min(2, 'Nama minimal 2 karakter.')
+    .max(80, 'Nama maksimal 80 karakter.')
+    .regex(/^[A-Za-zÀ-ÖØ-öø-ÿĀ-ɮ\s.'-]+$/, 'Nama hanya boleh berisi huruf, spasi, titik, apostrof, atau tanda hubung.'),
   age: z
     .string()
-    .refine(val => val.trim() !== '', { message: 'Umur belum diisi.' })
-    .refine(val => !Number.isNaN(Number(val.trim())), { message: 'Umur harus berupa angka.' })
-    .refine(val => Number(val.trim()) >= 3, { message: 'Umur minimal 3 tahun.' })
-    .refine(val => Number(val.trim()) <= 12, { message: 'Umur maksimal 12 tahun.' }),
+    .min(1, 'Umur belum diisi.')
+    .regex(/^\d+$/, 'Umur harus berupa angka.')
+    .regex(/^(1[0-9]|[2-9][0-9]|100)$/, 'Umur harus antara 10-100 tahun.'),
   profession: z.enum(['mahasiswa', 'guru', 'profesional', 'pelajar', 'bipa', 'lainnya']),
   goals: z.array(z.string()).min(1, 'Pilih minimal satu tujuan.'),
   experience: z.string(),
@@ -110,7 +105,6 @@ export default function OnboardingWizard() {
   const [saveError, setSaveError] = useState<string | null>(null);
 
   const form = useForm<OnboardingForm>({
-    resolver: zodResolver(onboardingSchema),
     defaultValues: {
       fullName: '',
       age: '',
@@ -122,30 +116,66 @@ export default function OnboardingWizard() {
     },
   });
 
-  const { register, handleSubmit, watch, setValue, trigger, formState: { errors } } = form;
+  const { register, handleSubmit, watch, getValues, setValue, setError, clearErrors, formState: { errors } } = form;
   const values = watch();
 
-  const nextStep = async () => {
+  const validateStep = (step: number): boolean => {
+    clearErrors();
+    const v = getValues()
+    if (step === 2) {
+      const name = (v.fullName || '').trim()
+      if (name.length < 2) {
+        setError('fullName', { message: 'Nama minimal 2 karakter.' })
+        return false
+      }
+      if (name.length > 80) {
+        setError('fullName', { message: 'Nama maksimal 80 karakter.' })
+        return false
+      }
+      const age = (v.age || '').trim()
+      if (!age) {
+        setError('age', { message: 'Umur belum diisi.' })
+        return false
+      }
+      if (!/^\d+$/.test(age)) {
+        setError('age', { message: 'Umur harus berupa angka.' })
+        return false
+      }
+      const n = parseInt(age, 10)
+      if (n < 10) {
+        setError('age', { message: 'Umur minimal 10 tahun.' })
+        return false
+      }
+      if (n > 100) {
+        setError('age', { message: 'Umur maksimal 100 tahun.' })
+        return false
+      }
+    }
+    if (step === 3) {
+      if (!v.goals || v.goals.length === 0) {
+        setError('goals', { message: 'Pilih minimal satu tujuan.' })
+        return false
+      }
+    }
+    if (step === 4) {
+      if (!v.experience) {
+        setError('experience', { message: 'Pilih pengalaman Anda.' })
+        return false
+      }
+    }
+    return true
+  }
+
+  const nextStep = () => {
     setSaveError(null);
-    const fields = getStepFields(currentStep);
-    const isValid = fields ? await trigger(fields) : true;
-    if (isValid && currentStep < steps.length) {
+    if (currentStep >= steps.length) return;
+    if (validateStep(currentStep)) {
       setCurrentStep(currentStep + 1);
     }
   };
 
   const prevStep = () => {
     if (currentStep > 1) setCurrentStep(currentStep - 1);
-  };
-
-  const getStepFields = (step: number): (keyof OnboardingForm)[] | undefined => {
-    switch (step) {
-      case 2: return ['fullName', 'age', 'profession'];
-      case 3: return ['goals'];
-      case 4: return ['experience'];
-      case 5: return ['preferredDuration'];
-      default: return undefined;
-    }
   };
 
   const toggleGoal = (goal: string) => {
@@ -163,11 +193,13 @@ export default function OnboardingWizard() {
     try {
       localStorage.setItem('bigt_onboarding', JSON.stringify(data));
 
+      const name = data.fullName.trim()
       const res = await fetch('/api/user/onboarding', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          age: parseInt(data.age, 10),
+          name,
+          age: Number(data.age),
           profession: data.profession,
           testGoals: data.goals,
           hasPreviousTest: true,
@@ -184,16 +216,11 @@ export default function OnboardingWizard() {
         throw new Error(errData.error || 'Gagal menyimpan profil. Silakan coba lagi.');
       }
 
-      const profileRes = await fetch('/api/profile', {
+      await fetch('/api/profile', {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: data.fullName }),
-      });
-
-      if (!profileRes.ok) {
-        const errData = await profileRes.json().catch(() => ({}));
-        throw new Error(errData.error || 'Gagal menyimpan nama.');
-      }
+        body: JSON.stringify({ name }),
+      }).catch(() => {});
 
       router.replace('/dashboard');
     } catch (error: any) {
@@ -237,12 +264,12 @@ export default function OnboardingWizard() {
               <Label htmlFor="fullName" className="text-sm font-medium text-[#1C1C1E]">
                 Nama Lengkap
               </Label>
-              <Input
+              <input
                 id="fullName"
                 {...register('fullName')}
                 placeholder="Masukkan nama Anda"
-                className={`rounded-xl border h-12 px-4 text-base ${
-                  errors.fullName ? 'border-red-400 focus-visible:ring-red-400' : 'border-[#E5E5EA]'
+                className={`w-full rounded-xl border h-12 px-4 text-base bg-white ${
+                  errors.fullName ? 'border-red-400' : 'border-[#E5E5EA]'
                 }`}
               />
               {errors.fullName && (
@@ -257,16 +284,14 @@ export default function OnboardingWizard() {
               <Label htmlFor="age" className="text-sm font-medium text-[#1C1C1E]">
                 Usia
               </Label>
-              <Input
+              <input
                 id="age"
-                type="number"
+                type="text"
                 inputMode="numeric"
-                min={3}
-                max={12}
                 {...register('age')}
                 placeholder="Masukkan usia Anda"
-                className={`rounded-xl border h-12 px-4 text-base ${
-                  errors.age ? 'border-red-400 focus-visible:ring-red-400' : 'border-[#E5E5EA]'
+                className={`w-full rounded-xl border h-12 px-4 text-base bg-white ${
+                  errors.age ? 'border-red-400' : 'border-[#E5E5EA]'
                 }`}
               />
               {errors.age && (

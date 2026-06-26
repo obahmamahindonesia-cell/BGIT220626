@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { Loader2 } from 'lucide-react'
 
@@ -14,21 +14,23 @@ export default function ProtectedLayout({ children }: { children: React.ReactNod
   const [loading, setLoading] = useState(true)
   const [authenticated, setAuthenticated] = useState(false)
   const pathname = usePathname()
-  const router = useRouter()
 
   useEffect(() => {
+    let cancelled = false
     const checkAuth = async () => {
       const supabase = createClient()
-      const { data: { session } } = await supabase.auth.getSession()
-      if (!session) {
-        router.replace('/login')
+      const { data: { user } } = await supabase.auth.getUser()
+      if (cancelled) return
+      if (!user) {
+        window.location.href = '/login'
         return
       }
       setAuthenticated(true)
       setLoading(false)
     }
     checkAuth()
-  }, [router])
+    return () => { cancelled = true }
+  }, [])
 
   useEffect(() => {
     setMobileOpen(false)
@@ -40,10 +42,10 @@ export default function ProtectedLayout({ children }: { children: React.ReactNod
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#F8F9FA]">
+      <div className="min-h-screen flex items-center justify-center bg-bigt-bg">
         <div className="flex flex-col items-center gap-3">
           <Loader2 className="w-8 h-8 text-[#007AFF] animate-spin" />
-          <p className="text-sm text-[#8E8E93]">Memuat...</p>
+          <p className="text-sm text-bigt-muted">Memuat...</p>
         </div>
       </div>
     )
@@ -56,7 +58,7 @@ export default function ProtectedLayout({ children }: { children: React.ReactNod
   }
 
   return (
-    <div className="min-h-screen bg-[#F7F9FC]">
+    <div className="min-h-screen bg-bigt-bg text-bigt-text">
       <aside className="hidden lg:flex fixed left-0 top-0 z-40 h-screen w-[280px]">
         <IosSidebar />
       </aside>

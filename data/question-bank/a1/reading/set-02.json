@@ -1,0 +1,735 @@
+{
+  "setId": "BIGT-A1-RD-S02",
+  "cefr": "A1",
+  "skill": "reading",
+  "title": "A1 Reading Set 02 — Teks Pendek Sehari-hari",
+  "version": "1.0.0",
+  "status": "draft",
+  "itemsCount": 40,
+  "passages": [
+    {
+      "passageId": "BIGT-A1-RD-S02-P001",
+      "title": "Label Obat Batuk",
+      "text": "OBAT BATUK. Anak 6–12 tahun: 1 sendok teh, 3 kali sehari. Dewasa: 2 sendok teh, 3 kali sehari. Simpan di tempat sejuk.",
+      "topic": "health",
+      "wordCount": 22,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S02-Q001",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.1,
+          "prompt": "Berapa kali obat diminum dalam sehari?",
+          "options": [
+            { "key": "A", "text": "1 kali" },
+            { "key": "B", "text": "2 kali" },
+            { "key": "C", "text": "3 kali" },
+            { "key": "D", "text": "4 kali" }
+          ],
+          "answer": "C",
+          "explanation": "Label menyatakan '3 kali sehari'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S02-Q002",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.1,
+          "prompt": "Obat harus disimpan di tempat sejuk.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "A",
+          "explanation": "Label menyatakan 'Simpan di tempat sejuk'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S02-Q003",
+          "type": "matching",
+          "subskill": "vocabulary_in_context",
+          "difficulty": 0.2,
+          "prompt": "Apa arti 'dewasa' pada label obat?",
+          "options": [
+            { "key": "A", "text": "Orang tua" },
+            { "key": "B", "text": "Orang yang sudah besar" },
+            { "key": "C", "text": "Anak-anak" },
+            { "key": "D", "text": "Bayi" }
+          ],
+          "answer": "B",
+          "explanation": "'Dewasa' berarti orang yang sudah besar atau sudah berusia 18 tahun ke atas.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S02-P002",
+      "title": "Pengumuman Lomba",
+      "text": "Diberitahukan kepada semua siswa. Akan diadakan lomba mewarnai. Hari: Sabtu, 10 Mei. Tempat: Aula sekolah. Pendaftaran gratis.",
+      "topic": "school",
+      "wordCount": 23,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S02-Q004",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.12,
+          "prompt": "Apa tujuan pengumuman di atas?",
+          "options": [
+            { "key": "A", "text": "Memberi tahu tentang lomba mewarnai" },
+            { "key": "B", "text": "Mengajak siswa beli buku" },
+            { "key": "C", "text": "Memberi informasi tentang ujian" },
+            { "key": "D", "text": "Mengumumkan liburan sekolah" }
+          ],
+          "answer": "A",
+          "explanation": "Pengumuman memberitahu tentang lomba mewarnai di sekolah.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S02-Q005",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.12,
+          "prompt": "Pendaftaran lomba mewarnai tidak gratis.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "B",
+          "explanation": "Pengumuman menyatakan 'Pendaftaran gratis'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S02-Q006",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.14,
+          "prompt": "Di mana lomba diadakan?",
+          "options": [
+            { "key": "A", "text": "Di kelas" },
+            { "key": "B", "text": "Di aula sekolah" },
+            { "key": "C", "text": "Di taman" },
+            { "key": "D", "text": "Di perpustakaan" }
+          ],
+          "answer": "B",
+          "explanation": "Pengumuman menyatakan 'Tempat: Aula sekolah'.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S02-P003",
+      "title": "Jadwal Pelajaran",
+      "text": "Senin: Matematika, Bahasa Indonesia, IPA. Selasa: Bahasa Inggris, Olahraga, Seni Budaya. Rabu: Matematika, IPS, Agama.",
+      "topic": "school",
+      "wordCount": 17,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S02-Q007",
+          "type": "matching",
+          "subskill": "matching_information",
+          "difficulty": 0.2,
+          "prompt": "Pada hari apa ada pelajaran Olahraga?",
+          "options": [
+            { "key": "A", "text": "Senin" },
+            { "key": "B", "text": "Selasa" },
+            { "key": "C", "text": "Rabu" },
+            { "key": "D", "text": "Kamis" }
+          ],
+          "answer": "B",
+          "explanation": "Jadwal Selasa: Bahasa Inggris, Olahraga, Seni Budaya.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S02-Q008",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.12,
+          "prompt": "Mata pelajaran apa yang ada setiap hari Senin?",
+          "options": [
+            { "key": "A", "text": "Bahasa Inggris dan Olahraga" },
+            { "key": "B", "text": "Matematika, Bahasa Indonesia, IPA" },
+            { "key": "C", "text": "Matematika, IPS, Agama" },
+            { "key": "D", "text": "Seni Budaya dan Agama" }
+          ],
+          "answer": "B",
+          "explanation": "Jadwal Senin: Matematika, Bahasa Indonesia, IPA.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S02-Q009",
+          "type": "short_answer",
+          "subskill": "specific_information",
+          "difficulty": 0.2,
+          "prompt": "Sebutkan satu mata pelajaran yang ada pada hari Rabu.",
+          "answer": "Matematika",
+          "explanation": "Jadwal Rabu: Matematika, IPS, Agama. Matematika adalah salah satunya.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S02-P004",
+      "title": "Pesan dari Ibu",
+      "text": "Nak, Ibu pergi ke pasar. Ada uang di meja. Tolong beli telur dan minyak goreng. Ibu pulang jam 11. Makan siang ada di kulkas.",
+      "topic": "family",
+      "wordCount": 25,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S02-Q010",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.12,
+          "prompt": "Apa isi pesan Ibu?",
+          "options": [
+            { "key": "A", "text": "Ibu minta tolong beli telur dan minyak goreng" },
+            { "key": "B", "text": "Ibu minta jemput di pasar" },
+            { "key": "C", "text": "Ibu memberitahu jadwal belanja" },
+            { "key": "D", "text": "Ibu mengajak pergi ke pasar" }
+          ],
+          "answer": "A",
+          "explanation": "Ibu minta tolong beli telur dan minyak goreng.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S02-Q011",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.12,
+          "prompt": "Ibu pulang jam 12 siang.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "B",
+          "explanation": "Ibu mengatakan 'Ibu pulang jam 11'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S02-Q012",
+          "type": "multiple_choice",
+          "subskill": "vocabulary_in_context",
+          "difficulty": 0.2,
+          "prompt": "Apa arti kata 'kulkas' dalam pesan di atas?",
+          "options": [
+            { "key": "A", "text": "Kompor" },
+            { "key": "B", "text": "Lemari es" },
+            { "key": "C", "text": "Meja" },
+            { "key": "D", "text": "Kursi" }
+          ],
+          "answer": "B",
+          "explanation": "'Kulkas' adalah lemari es untuk menyimpan makanan.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S02-P005",
+      "title": "Pesan dari Sinta",
+      "text": "Halo Rina! Besok aku ulang tahun. Kamu diundang ke rumahku jam 3 sore. Aku buat kue cokelat. Sampai ketemu ya!",
+      "topic": "family",
+      "wordCount": 22,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S02-Q013",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.12,
+          "prompt": "Mengapa Sinta mengirim pesan kepada Rina?",
+          "options": [
+            { "key": "A", "text": "Mengundang Rina ke ulang tahunnya" },
+            { "key": "B", "text": "Menanyakan kabar Rina" },
+            { "key": "C", "text": "Mengajak Rina belajar" },
+            { "key": "D", "text": "Memberi tahu resep kue" }
+          ],
+          "answer": "A",
+          "explanation": "Sinta mengundang Rina ke pesta ulang tahunnya.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S02-Q014",
+          "type": "matching",
+          "subskill": "matching_information",
+          "difficulty": 0.2,
+          "prompt": "Jam berapa Rina diundang datang?",
+          "options": [
+            { "key": "A", "text": "Jam 2 sore" },
+            { "key": "B", "text": "Jam 3 sore" },
+            { "key": "C", "text": "Jam 4 sore" },
+            { "key": "D", "text": "Jam 5 sore" }
+          ],
+          "answer": "B",
+          "explanation": "Sinta menulis 'Kamu diundang ke rumahku jam 3 sore'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S02-Q015",
+          "type": "true_false",
+          "subskill": "simple_inference",
+          "difficulty": 0.2,
+          "prompt": "Rina adalah teman Sinta.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "A",
+          "explanation": "Sinta mengundang Rina ke pesta, berarti mereka berteman.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S02-P006",
+      "title": "Menu Kantin",
+      "text": "MENU KANTIN SEHAT. Nasi goreng Rp10.000. Mie ayam Rp12.000. Soto ayam Rp15.000. Es teh manis Rp3.000. Air mineral Rp2.000. Buka Senin–Jumat jam 07.00–15.00.",
+      "topic": "daily life",
+      "wordCount": 26,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S02-Q016",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.1,
+          "prompt": "Berapa harga nasi goreng di kantin?",
+          "options": [
+            { "key": "A", "text": "Rp10.000" },
+            { "key": "B", "text": "Rp12.000" },
+            { "key": "C", "text": "Rp15.000" },
+            { "key": "D", "text": "Rp3.000" }
+          ],
+          "answer": "A",
+          "explanation": "Menu menunjukkan 'Nasi goreng Rp10.000'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S02-Q017",
+          "type": "matching",
+          "subskill": "matching_information",
+          "difficulty": 0.2,
+          "prompt": "Pasangkan harga dengan minuman yang sesuai.",
+          "options": [
+            { "key": "A", "text": "Es teh manis – Rp3.000" },
+            { "key": "B", "text": "Es teh manis – Rp2.000" },
+            { "key": "C", "text": "Air mineral – Rp3.000" },
+            { "key": "D", "text": "Soto ayam – Rp10.000" }
+          ],
+          "answer": "A",
+          "explanation": "Menu menunjukkan 'Es teh manis Rp3.000'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S02-Q018",
+          "type": "short_answer",
+          "subskill": "specific_information",
+          "difficulty": 0.15,
+          "prompt": "Jam berapa kantin buka pada hari Senin?",
+          "answer": "07.00",
+          "explanation": "Menu menyatakan 'Buka Senin–Jumat jam 07.00–15.00'.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S02-P007",
+      "title": "Kartu Nama",
+      "text": "Dr. SARI WIJAYA, Sp.A. Dokter Spesialis Anak. Praktik: RS Harapan Bunda. Jl. Merdeka No. 10, Jakarta. Telp: 021-5551234.",
+      "topic": "public places",
+      "wordCount": 18,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S02-Q019",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.1,
+          "prompt": "Siapa nama dokter pada kartu nama?",
+          "options": [
+            { "key": "A", "text": "Sari Wijaya" },
+            { "key": "B", "text": "Harapan Bunda" },
+            { "key": "C", "text": "Merdeka" },
+            { "key": "D", "text": "Jakarta" }
+          ],
+          "answer": "A",
+          "explanation": "Kartu nama bertuliskan 'Dr. SARI WIJAYA, Sp.A'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S02-Q020",
+          "type": "true_false",
+          "subskill": "simple_inference",
+          "difficulty": 0.15,
+          "prompt": "Dr. Sari adalah dokter gigi.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "B",
+          "explanation": "Kartu nama menyatakan 'Dokter Spesialis Anak', bukan dokter gigi.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S02-P008",
+      "title": "Formulir Pendaftaran",
+      "text": "FORMULIR PENDAFTARAN. Nama: ________. Umur: ________. Alamat: ________. Kelas: ________. Asal Sekolah: ________. Tanda tangan orang tua: ________.",
+      "topic": "school",
+      "wordCount": 15,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S02-Q021",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.12,
+          "prompt": "Informasi apa yang harus diisi selain nama dan umur?",
+          "options": [
+            { "key": "A", "text": "Nomor telepon dan email" },
+            { "key": "B", "text": "Alamat, kelas, dan asal sekolah" },
+            { "key": "C", "text": "Pekerjaan dan hobi" },
+            { "key": "D", "text": "Agama dan jenis kelamin" }
+          ],
+          "answer": "B",
+          "explanation": "Formulir meminta alamat, kelas, dan asal sekolah.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S02-Q022",
+          "type": "matching",
+          "subskill": "vocabulary_in_context",
+          "difficulty": 0.2,
+          "prompt": "Apa yang dimaksud dengan 'tanda tangan'?",
+          "options": [
+            { "key": "A", "text": "Nama yang ditulis dengan gaya khusus" },
+            { "key": "B", "text": "Cap jari" },
+            { "key": "C", "text": "Foto" },
+            { "key": "D", "text": "Stempel" }
+          ],
+          "answer": "A",
+          "explanation": "'Tanda tangan' adalah nama yang ditulis dengan gaya khas seseorang.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S02-Q023",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.12,
+          "prompt": "Untuk apa formulir ini digunakan?",
+          "options": [
+            { "key": "A", "text": "Mendaftar menjadi siswa" },
+            { "key": "B", "text": "Memesan makanan" },
+            { "key": "C", "text": "Mengajukan pinjaman" },
+            { "key": "D", "text": "Mendaftar lomba" }
+          ],
+          "answer": "A",
+          "explanation": "Formulir ini untuk pendaftaran siswa baru.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S02-P009",
+      "title": "Posker Kegiatan",
+      "text": "LOMBA CERDAS CERMAT TINGKAT SD. Tanggal: 20 Juni. Waktu: Pukul 08.00–12.00. Tempat: Gedung Serbaguna. Pendaftaran: Hubungi Bu Dewi. Info: 0856-7890-1234.",
+      "topic": "school",
+      "wordCount": 24,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S02-Q024",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.1,
+          "prompt": "Apa kegiatan yang diumumkan dalam poster?",
+          "options": [
+            { "key": "A", "text": "Lomba menyanyi" },
+            { "key": "B", "text": "Lomba cerdas cermat" },
+            { "key": "C", "text": "Pameran buku" },
+            { "key": "D", "text": "Pentas seni" }
+          ],
+          "answer": "B",
+          "explanation": "Poster mengumumkan 'LOMBA CERDAS CERMAT TINGKAT SD'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S02-Q025",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.1,
+          "prompt": "Lomba dimulai pukul 08.00 pagi.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "A",
+          "explanation": "Poster menyatakan 'Waktu: Pukul 08.00–12.00'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S02-Q026",
+          "type": "short_answer",
+          "subskill": "specific_information",
+          "difficulty": 0.2,
+          "prompt": "Siapa yang bisa dihubungi untuk pendaftaran?",
+          "answer": "Bu Dewi",
+          "explanation": "Poster menyatakan 'Pendaftaran: Hubungi Bu Dewi'.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S02-P010",
+      "title": "Email dari Guru",
+      "text": "Yth. Orang tua siswa. Besok ada pertemuan orang tua di kelas 3A. Acara mulai pukul 09.00. Mohon datang tepat waktu. Terima kasih. – Bu Ani, Wali Kelas 3A.",
+      "topic": "school",
+      "wordCount": 29,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S02-Q027",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.1,
+          "prompt": "Apa tujuan email dari Bu Ani?",
+          "options": [
+            { "key": "A", "text": "Mengundang orang tua ke pertemuan kelas" },
+            { "key": "B", "text": "Memberi tahu jadwal ujian" },
+            { "key": "C", "text": "Mengumumkan liburan" },
+            { "key": "D", "text": "Meminta sumbangan" }
+          ],
+          "answer": "A",
+          "explanation": "Bu Ani mengundang orang tua ke pertemuan di kelas 3A.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S02-Q028",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.12,
+          "prompt": "Pertemuan orang tua diadakan di kelas 3A.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "A",
+          "explanation": "Email menyatakan 'di kelas 3A'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S02-Q029",
+          "type": "multiple_choice",
+          "subskill": "simple_inference",
+          "difficulty": 0.2,
+          "prompt": "Siapa Bu Ani?",
+          "options": [
+            { "key": "A", "text": "Kepala sekolah" },
+            { "key": "B", "text": "Wali kelas 3A" },
+            { "key": "C", "text": "Guru olahraga" },
+            { "key": "D", "text": "Petugas perpustakaan" }
+          ],
+          "answer": "B",
+          "explanation": "Email menyatakan '– Bu Ani, Wali Kelas 3A'.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S02-P011",
+      "title": "Aturan Perpustakaan",
+      "text": "PERATURAN PERPUSTAKAAN. 1. Jaga ketenangan. 2. Buku dipinjam maksimal 7 hari. 3. Denda Rp500 per hari jika terlambat. 4. Kembalikan buku tepat waktu.",
+      "topic": "school",
+      "wordCount": 23,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S02-Q030",
+          "type": "matching",
+          "subskill": "matching_information",
+          "difficulty": 0.2,
+          "prompt": "Berapa lama maksimal buku bisa dipinjam?",
+          "options": [
+            { "key": "A", "text": "3 hari" },
+            { "key": "B", "text": "5 hari" },
+            { "key": "C", "text": "7 hari" },
+            { "key": "D", "text": "10 hari" }
+          ],
+          "answer": "C",
+          "explanation": "Aturan menyatakan 'Buku dipinjam maksimal 7 hari'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S02-Q031",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.15,
+          "prompt": "Berapa denda jika terlambat mengembalikan buku?",
+          "options": [
+            { "key": "A", "text": "Rp200 per hari" },
+            { "key": "B", "text": "Rp500 per hari" },
+            { "key": "C", "text": "Rp1.000 per hari" },
+            { "key": "D", "text": "Rp2.000 per hari" }
+          ],
+          "answer": "B",
+          "explanation": "Aturan menyatakan 'Denda Rp500 per hari jika terlambat'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S02-Q032",
+          "type": "short_answer",
+          "subskill": "specific_information",
+          "difficulty": 0.2,
+          "prompt": "Apa yang harus dijaga di perpustakaan?",
+          "answer": "Ketenangan",
+          "explanation": "Aturan pertama menyatakan 'Jaga ketenangan'.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S02-P012",
+      "title": "Petunjuk Arah",
+      "text": "Dari stasiun, jalan lurus 200 meter. Sampai di lampu merah, belok kiri. Masjid Raya ada di sebelah kanan, setelah kantor pos.",
+      "topic": "transportation",
+      "wordCount": 26,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S02-Q033",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.15,
+          "prompt": "Setelah sampai di lampu merah, ke mana harus belok?",
+          "options": [
+            { "key": "A", "text": "Belok kanan" },
+            { "key": "B", "text": "Belok kiri" },
+            { "key": "C", "text": "Jalan lurus" },
+            { "key": "D", "text": "Putar balik" }
+          ],
+          "answer": "B",
+          "explanation": "Petunjuk menyatakan 'sampai di lampu merah, belok kiri'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S02-Q034",
+          "type": "true_false",
+          "subskill": "simple_inference",
+          "difficulty": 0.2,
+          "prompt": "Masjid Raya terletak di sebelah kiri setelah kantor pos.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "B",
+          "explanation": "Petunjuk menyatakan 'Masjid Raya ada di sebelah kanan, setelah kantor pos'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S02-Q035",
+          "type": "matching",
+          "subskill": "vocabulary_in_context",
+          "difficulty": 0.2,
+          "prompt": "Apa arti kata 'stasiun' dalam petunjuk di atas?",
+          "options": [
+            { "key": "A", "text": "Tempat naik kereta api" },
+            { "key": "B", "text": "Tempat belanja" },
+            { "key": "C", "text": "Tempat ibadah" },
+            { "key": "D", "text": "Tempat sekolah" }
+          ],
+          "answer": "A",
+          "explanation": "'Stasiun' adalah tempat untuk naik dan turun kereta api.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S02-P013",
+      "title": "Pengumuman Stasiun",
+      "text": "PERHATIAN! Kereta api tujuan Yogyakarta akan berangkat dari jalur 3. Kereta berangkat pukul 14.30. Penumpang diminta naik kereta sekarang.",
+      "topic": "transportation",
+      "wordCount": 23,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S02-Q036",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.1,
+          "prompt": "Apa isi pengumuman di stasiun?",
+          "options": [
+            { "key": "A", "text": "Kereta tujuan Yogyakarta akan berangkat" },
+            { "key": "B", "text": "Stasiun akan tutup" },
+            { "key": "C", "text": "Tiket kereta habis" },
+            { "key": "D", "text": "Jadwal kereta berubah" }
+          ],
+          "answer": "A",
+          "explanation": "Pengumuman memberitahu bahwa kereta tujuan Yogyakarta akan berangkat.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S02-Q037",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.12,
+          "prompt": "Kereta berangkat dari jalur 3.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "A",
+          "explanation": "Pengumuman menyatakan 'akan berangkat dari jalur 3'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S02-Q038",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.1,
+          "prompt": "Pukul berapa kereta berangkat?",
+          "options": [
+            { "key": "A", "text": "13.30" },
+            { "key": "B", "text": "14.00" },
+            { "key": "C", "text": "14.30" },
+            { "key": "D", "text": "15.00" }
+          ],
+          "answer": "C",
+          "explanation": "Pengumuman menyatakan 'Kereta berangkat pukul 14.30'.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S02-P014",
+      "title": "Instruksi Cuci Tangan",
+      "text": "CARA CUCI TANGAN YANG BAIK. 1. Basahi tangan dengan air mengalir. 2. Gunakan sabun. 3. Gosok telapak dan punggung tangan. 4. Bilas dengan air bersih. 5. Keringkan dengan handuk bersih.",
+      "topic": "health",
+      "wordCount": 30,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S02-Q039",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.12,
+          "prompt": "Apa yang dilakukan setelah menggunakan sabun?",
+          "options": [
+            { "key": "A", "text": "Basahi tangan" },
+            { "key": "B", "text": "Gosok telapak dan punggung tangan" },
+            { "key": "C", "text": "Keringkan tangan" },
+            { "key": "D", "text": "Bilas dengan air" }
+          ],
+          "answer": "B",
+          "explanation": "Langkah 3: 'Gosok telapak dan punggung tangan' setelah menggunakan sabun.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S02-Q040",
+          "type": "matching",
+          "subskill": "matching_information",
+          "difficulty": 0.25,
+          "prompt": "Apa langkah terakhir dalam cara cuci tangan?",
+          "options": [
+            { "key": "A", "text": "Bilas dengan air bersih" },
+            { "key": "B", "text": "Keringkan dengan handuk bersih" },
+            { "key": "C", "text": "Gunakan sabun" },
+            { "key": "D", "text": "Basahi tangan" }
+          ],
+          "answer": "B",
+          "explanation": "Langkah ke-5: 'Keringkan dengan handuk bersih' adalah langkah terakhir.",
+          "points": 1
+        }
+      ]
+    }
+  ]
+}

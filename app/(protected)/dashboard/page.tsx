@@ -195,10 +195,16 @@ export default function DashboardPage() {
 
   useEffect(() => {
     const supabase = createClient()
+    let cancelled = false
     supabase.auth.getUser().then(({ data: { user } }) => {
+      if (cancelled) return
       if (!user) { window.location.href = '/login'; return }
       fetchData()
+    }).catch(() => {
+      if (cancelled) return
+      window.location.href = '/login'
     })
+    return () => { cancelled = true }
   }, [])
 
   if (loading) {
@@ -216,7 +222,7 @@ export default function DashboardPage() {
           Coba Lagi
         </button>
         <a href="/login" className="text-xs text-[#8E8E93] hover:text-[#1C1C1E] transition-colors">
-          Kembali ke Login
+          Kembali ke Masuk
         </a>
       </div>
     )

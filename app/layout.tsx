@@ -117,7 +117,7 @@ export default function RootLayout({
   return (
     <html lang="id" className={cn(inter.variable, playfair.variable)} suppressHydrationWarning>
       <body className="font-sans antialiased">
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true}>
           <I18nProvider>
             {children}
             <Toaster />

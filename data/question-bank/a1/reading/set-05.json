@@ -1,0 +1,746 @@
+{
+  "setId": "BIGT-A1-RD-S05",
+  "cefr": "A1",
+  "skill": "reading",
+  "title": "A1 Reading Set 05",
+  "version": "1.0.0",
+  "status": "draft",
+  "itemsCount": 40,
+  "passages": [
+    {
+      "passageId": "BIGT-A1-RD-S05-P001",
+      "title": "Perpustakaan Kota",
+      "text": "PERPUSTAKAAN KOTA. Buka Senin\u2013Jumat jam 08.00\u201318.00. Sabtu jam 08.00\u201314.00. Minggu dan hari libur tutup. Pinjam buku maksimal 14 hari.",
+      "topic": "school",
+      "wordCount": 20,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S05-Q001",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.12,
+          "prompt": "Apa isi informasi tersebut?",
+          "options": [
+            { "key": "A", "text": "Jam buka perpustakaan kota" },
+            { "key": "B", "text": "Harga buku di perpustakaan" },
+            { "key": "C", "text": "Alamat perpustakaan" },
+            { "key": "D", "text": "Daftar buku baru" }
+          ],
+          "answer": "A",
+          "explanation": "Informasi berisi jam buka perpustakaan setiap hari.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S05-Q002",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.22,
+          "prompt": "Perpustakaan buka pada hari Minggu.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "B",
+          "explanation": "Info menyatakan 'Minggu dan hari libur tutup'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S05-Q003",
+          "type": "multiple_choice",
+          "subskill": "vocabulary_in_context",
+          "difficulty": 0.16,
+          "prompt": "Apa arti kata 'maksimal' pada peraturan perpustakaan?",
+          "options": [
+            { "key": "A", "text": "Paling banyak" },
+            { "key": "B", "text": "Paling sedikit" },
+            { "key": "C", "text": "Sama dengan" },
+            { "key": "D", "text": "Kurang dari" }
+          ],
+          "answer": "A",
+          "explanation": "'Maksimal' berarti jumlah paling banyak yang diperbolehkan.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S05-P002",
+      "title": "Jadwal Dokter",
+      "text": "JADWAL PRAKTIK DOKTER. Dr. Andi (Umum): Senin\u2013Sabtu jam 08.00\u201312.00. Dr. Sari (Gigi): Senin & Kamis jam 14.00\u201317.00. Pendaftaran dibuka jam 07.00.",
+      "topic": "health",
+      "wordCount": 21,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S05-Q004",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.2,
+          "prompt": "Jam berapa dr. Andi praktik?",
+          "options": [
+            { "key": "A", "text": "07.00\u201312.00" },
+            { "key": "B", "text": "08.00\u201312.00" },
+            { "key": "C", "text": "08.00\u201314.00" },
+            { "key": "D", "text": "14.00\u201317.00" }
+          ],
+          "answer": "B",
+          "explanation": "Jadwal menyatakan 'dr. Andi (Umum): Senin\u2013Sabtu jam 08.00\u201312.00'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S05-Q005",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.22,
+          "prompt": "Dr. Sari adalah dokter gigi.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "A",
+          "explanation": "Jadwal menyatakan 'Dr. Sari (Gigi)'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S05-Q006",
+          "type": "multiple_choice",
+          "subskill": "matching_information",
+          "difficulty": 0.24,
+          "prompt": "Pasangan yang benar sesuai jadwal adalah?",
+          "options": [
+            { "key": "A", "text": "Dr. Sari praktik hari Senin dan Kamis" },
+            { "key": "B", "text": "Dr. Andi praktik hari Senin dan Kamis" },
+            { "key": "C", "text": "Dr. Sari praktik setiap hari" },
+            { "key": "D", "text": "Dr. Andi praktik jam 14.00" }
+          ],
+          "answer": "A",
+          "explanation": "Jadwal menyatakan 'Dr. Sari (Gigi): Senin & Kamis jam 14.00\u201317.00'.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S05-P003",
+      "title": "Sewa Lapangan Futsal",
+      "text": "SEWA LAPANGAN FUTSAL. Harga: Senin\u2013Jumat Rp80.000/jam, Sabtu\u2013Minggu Rp120.000/jam. Termasuk lampu. Buka jam 09.00\u201322.00. Hubungi: 0812-3456-1111.",
+      "topic": "sports",
+      "wordCount": 20,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S05-Q007",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.2,
+          "prompt": "Berapa harga sewa lapangan pada hari Senin?",
+          "options": [
+            { "key": "A", "text": "Rp60.000" },
+            { "key": "B", "text": "Rp80.000" },
+            { "key": "C", "text": "Rp100.000" },
+            { "key": "D", "text": "Rp120.000" }
+          ],
+          "answer": "B",
+          "explanation": "Info menyatakan 'Senin\u2013Jumat Rp80.000/jam'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S05-Q008",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.2,
+          "prompt": "Sewa lapangan tidak termasuk lampu.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "B",
+          "explanation": "Info menyatakan 'Termasuk lampu'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S05-Q009",
+          "type": "short_answer",
+          "subskill": "specific_information",
+          "difficulty": 0.24,
+          "prompt": "Di nomor berapa bisa menghubungi untuk sewa?",
+          "answer": "0812-3456-1111",
+          "explanation": "Info menyatakan 'Hubungi: 0812-3456-1111'.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S05-P004",
+      "title": "Tiket Bioskop",
+      "text": "TIKET BIOSKOP. Film: Petualangan di Rimba. Jam: 14.00 & 19.00. Harga: Dewasa Rp40.000, Anak Rp25.000. Pembelian tiket di loket atau online.",
+      "topic": "daily life",
+      "wordCount": 20,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S05-Q010",
+          "type": "multiple_choice",
+          "subskill": "matching_information",
+          "difficulty": 0.12,
+          "prompt": "Pasangan yang benar adalah?",
+          "options": [
+            { "key": "A", "text": "Tiket dewasa Rp40.000" },
+            { "key": "B", "text": "Tiket anak Rp40.000" },
+            { "key": "C", "text": "Tiket dewasa Rp25.000" },
+            { "key": "D", "text": "Tiket anak Rp50.000" }
+          ],
+          "answer": "A",
+          "explanation": "Info menyatakan 'Dewasa Rp40.000, Anak Rp25.000'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S05-Q011",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.2,
+          "prompt": "Tiket bisa dibeli di loket atau secara online.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "A",
+          "explanation": "Info menyatakan 'Pembelian tiket di loket atau online'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S05-Q012",
+          "type": "matching",
+          "subskill": "matching_information",
+          "difficulty": 0.24,
+          "prompt": "Jam berapa film diputar selain jam 14.00?",
+          "options": [
+            { "key": "A", "text": "16.00" },
+            { "key": "B", "text": "17.00" },
+            { "key": "C", "text": "18.00" },
+            { "key": "D", "text": "19.00" }
+          ],
+          "answer": "D",
+          "explanation": "Info menyatakan 'Jam: 14.00 & 19.00'.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S05-P005",
+      "title": "Toko Pakaian Diskon",
+      "text": "TOKO PAKAIAN MURAH. Diskon besar! Kaos Rp50.000 jadi Rp35.000. Celana Rp120.000 jadi Rp85.000. Jaket Rp200.000 jadi Rp150.000. Promo sampai 31 Juli.",
+      "topic": "shopping",
+      "wordCount": 21,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S05-Q013",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.22,
+          "prompt": "Berapa harga kaos setelah diskon?",
+          "options": [
+            { "key": "A", "text": "Rp25.000" },
+            { "key": "B", "text": "Rp35.000" },
+            { "key": "C", "text": "Rp50.000" },
+            { "key": "D", "text": "Rp85.000" }
+          ],
+          "answer": "B",
+          "explanation": "Info menyatakan 'Kaos Rp50.000 jadi Rp35.000'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S05-Q014",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.22,
+          "prompt": "Promo berlaku sampai 31 Juli.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "A",
+          "explanation": "Info menyatakan 'Promo sampai 31 Juli'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S05-Q015",
+          "type": "multiple_choice",
+          "subskill": "vocabulary_in_context",
+          "difficulty": 0.25,
+          "prompt": "Apa arti kata 'diskon' dalam iklan?",
+          "options": [
+            { "key": "A", "text": "Potongan harga" },
+            { "key": "B", "text": "Harga asli" },
+            { "key": "C", "text": "Barang gratis" },
+            { "key": "D", "text": "Hadiah belanja" }
+          ],
+          "answer": "A",
+          "explanation": "'Diskon' adalah potongan harga dari harga biasa.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S05-P006",
+      "title": "Menu Kafe",
+      "text": "KAFE SENYUM. Menu minuman: Kopi hitam Rp15.000, Kopi susu Rp20.000, Teh tarik Rp18.000, Jus jeruk Rp15.000. Buka setiap hari jam 08.00\u201321.00. WiFi gratis.",
+      "topic": "daily life",
+      "wordCount": 22,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S05-Q016",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.12,
+          "prompt": "Berapa harga teh tarik?",
+          "options": [
+            { "key": "A", "text": "Rp15.000" },
+            { "key": "B", "text": "Rp18.000" },
+            { "key": "C", "text": "Rp20.000" },
+            { "key": "D", "text": "Rp25.000" }
+          ],
+          "answer": "B",
+          "explanation": "Menu menyatakan 'Teh tarik Rp18.000'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S05-Q017",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.22,
+          "prompt": "Kafe buka dari jam 08.00 pagi.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "A",
+          "explanation": "Menu menyatakan 'Buka setiap hari jam 08.00\u201321.00'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S05-Q018",
+          "type": "matching",
+          "subskill": "vocabulary_in_context",
+          "difficulty": 0.26,
+          "prompt": "Apa arti 'WiFi gratis' di kafe?",
+          "options": [
+            { "key": "A", "text": "Internet tanpa bayar" },
+            { "key": "B", "text": "Makanan gratis" },
+            { "key": "C", "text": "Minuman gratis" },
+            { "key": "D", "text": "Diskon khusus" }
+          ],
+          "answer": "A",
+          "explanation": "'WiFi gratis' berarti internet yang bisa dipakai tanpa bayar.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S05-P007",
+      "title": "Informasi Rumah Sakit",
+      "text": "RS HARAPAN SEHAT. Jam besuk: 14.00\u201316.00 & 18.00\u201320.00. Setiap pasien maksimal 2 pengunjung. Dilarang membawa makanan dari luar. Parkir gratis.",
+      "topic": "health",
+      "wordCount": 21,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S05-Q019",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.16,
+          "prompt": "Apa isi informasi rumah sakit?",
+          "options": [
+            { "key": "A", "text": "Aturan menjenguk pasien" },
+            { "key": "B", "text": "Daftar dokter" },
+            { "key": "C", "text": "Harga kamar" },
+            { "key": "D", "text": "Alamat rumah sakit" }
+          ],
+          "answer": "A",
+          "explanation": "Informasi berisi jam besuk dan aturan pengunjung.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S05-Q020",
+          "type": "true_false",
+          "subskill": "specific_information",
+          "difficulty": 0.22,
+          "prompt": "Parkir di RS Harapan Sehat gratis.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "A",
+          "explanation": "Info menyatakan 'Parkir gratis'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S05-Q021",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.2,
+          "prompt": "Maksimal berapa pengunjung setiap pasien?",
+          "options": [
+            { "key": "A", "text": "1 orang" },
+            { "key": "B", "text": "2 orang" },
+            { "key": "C", "text": "3 orang" },
+            { "key": "D", "text": "4 orang" }
+          ],
+          "answer": "B",
+          "explanation": "Info menyatakan 'Setiap pasien maksimal 2 pengunjung'.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S05-P008",
+      "title": "Taman Bermain",
+      "text": "TAMAN BERMAIN CERIA. Tiket: Anak Rp20.000, Dewasa Rp10.000. Buka Selasa\u2013Minggu jam 09.00\u201317.00. Senin tutup. Anak di bawah 5 tahun gratis. Orang tua wajib menemani.",
+      "topic": "public places",
+      "wordCount": 25,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S05-Q022",
+          "type": "multiple_choice",
+          "subskill": "vocabulary_in_context",
+          "difficulty": 0.12,
+          "prompt": "Apa arti 'gratis' pada tiket taman bermain?",
+          "options": [
+            { "key": "A", "text": "Tidak perlu bayar" },
+            { "key": "B", "text": "Harga murah" },
+            { "key": "C", "text": "Diskon besar" },
+            { "key": "D", "text": "Bayar setengah" }
+          ],
+          "answer": "A",
+          "explanation": "'Gratis' berarti tidak perlu membayar.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S05-Q023",
+          "type": "matching",
+          "subskill": "simple_inference",
+          "difficulty": 0.26,
+          "prompt": "Siapa yang tidak perlu membeli tiket?",
+          "options": [
+            { "key": "A", "text": "Anak usia 3 tahun" },
+            { "key": "B", "text": "Anak usia 7 tahun" },
+            { "key": "C", "text": "Dewasa" },
+            { "key": "D", "text": "Remaja" }
+          ],
+          "answer": "A",
+          "explanation": "Anak di bawah 5 tahun gratis, jadi anak 3 tahun tidak bayar.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S05-Q024",
+          "type": "matching",
+          "subskill": "matching_information",
+          "difficulty": 0.26,
+          "prompt": "Pada hari apa taman bermain tutup?",
+          "options": [
+            { "key": "A", "text": "Selasa" },
+            { "key": "B", "text": "Minggu" },
+            { "key": "C", "text": "Senin" },
+            { "key": "D", "text": "Sabtu" }
+          ],
+          "answer": "C",
+          "explanation": "Info menyatakan 'Senin tutup'.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S05-P009",
+      "title": "Kelas Bahasa Jepang",
+      "text": "KELAS BAHASA JEPANG. Pendaftaran dibuka sampai 15 Agustus. Belajar setiap Sabtu jam 09.00\u201312.00. Biaya Rp300.000/bulan. Gratis buku belajar. Info: 0856-1111-2222.",
+      "topic": "school",
+      "wordCount": 22,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S05-Q025",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.2,
+          "prompt": "Apa informasi utama dari brosur?",
+          "options": [
+            { "key": "A", "text": "Pendaftaran kelas bahasa Jepang" },
+            { "key": "B", "text": "Jadwal liburan" },
+            { "key": "C", "text": "Lomba bahasa" },
+            { "key": "D", "text": "Harga buku" }
+          ],
+          "answer": "A",
+          "explanation": "Brosur memberitahu tentang pendaftaran kelas bahasa Jepang.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S05-Q026",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.2,
+          "prompt": "Berapa biaya kelas per bulan?",
+          "options": [
+            { "key": "A", "text": "Rp200.000" },
+            { "key": "B", "text": "Rp250.000" },
+            { "key": "C", "text": "Rp300.000" },
+            { "key": "D", "text": "Rp350.000" }
+          ],
+          "answer": "C",
+          "explanation": "Brosur menyatakan 'Biaya Rp300.000/bulan'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S05-Q027",
+          "type": "matching",
+          "subskill": "simple_inference",
+          "difficulty": 0.24,
+          "prompt": "Kelas bahasa Jepang diadakan setiap hari?",
+          "options": [
+            { "key": "A", "text": "Senin" },
+            { "key": "B", "text": "Rabu" },
+            { "key": "C", "text": "Jumat" },
+            { "key": "D", "text": "Sabtu" }
+          ],
+          "answer": "D",
+          "explanation": "Brosur menyatakan 'Belajar setiap Sabtu', jadi kelas tiap hari Sabtu.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S05-P010",
+      "title": "Agenda Ekstrakurikuler",
+      "text": "AGENDA EKSTRAKURIKULER. Senin: Pramuka (15.00\u201317.00). Rabu: Basket (15.30\u201317.30). Jumat: Paduan Suara (14.00\u201316.00). Semua kegiatan di aula sekolah.",
+      "topic": "school",
+      "wordCount": 21,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S05-Q028",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.22,
+          "prompt": "Apa isi agenda tersebut?",
+          "options": [
+            { "key": "A", "text": "Jadwal kegiatan ekstrakurikuler" },
+            { "key": "B", "text": "Daftar siswa berprestasi" },
+            { "key": "C", "text": "Jadwal ulangan" },
+            { "key": "D", "text": "Aturan sekolah" }
+          ],
+          "answer": "A",
+          "explanation": "Agenda berisi jadwal pramuka, basket, dan paduan suara.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S05-Q029",
+          "type": "true_false",
+          "subskill": "vocabulary_in_context",
+          "difficulty": 0.16,
+          "prompt": "'Paduan suara' artinya kegiatan menyanyi bersama.",
+          "options": [
+            { "key": "A", "text": "Benar" },
+            { "key": "B", "text": "Salah" }
+          ],
+          "answer": "A",
+          "explanation": "'Paduan suara' adalah kegiatan bernyanyi secara berkelompok.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S05-Q030",
+          "type": "matching",
+          "subskill": "simple_inference",
+          "difficulty": 0.26,
+          "prompt": "Jika seorang siswa hanya bisa datang jam 15.30, kegiatan apa yang bisa diikuti?",
+          "options": [
+            { "key": "A", "text": "Pramuka" },
+            { "key": "B", "text": "Basket" },
+            { "key": "C", "text": "Paduan Suara" },
+            { "key": "D", "text": "Tidak ada" }
+          ],
+          "answer": "B",
+          "explanation": "Basket dimulai jam 15.30, pas dengan jam kedatangan siswa.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S05-P011",
+      "title": "Kartu Member Toko",
+      "text": "KARTU MEMBER TOKO MAKMUR. Nama: Maya Putri. Nomor: 885021. Poin: 1.200. Berlaku sampai: Desember 2027. Setiap belanja Rp10.000 dapat 1 poin. Tukar poin minimal 500.",
+      "topic": "shopping",
+      "wordCount": 26,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S05-Q031",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.16,
+          "prompt": "Berapa poin yang dimiliki Maya?",
+          "options": [
+            { "key": "A", "text": "500" },
+            { "key": "B", "text": "1.000" },
+            { "key": "C", "text": "1.200" },
+            { "key": "D", "text": "2.000" }
+          ],
+          "answer": "C",
+          "explanation": "Kartu menyatakan 'Poin: 1.200'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S05-Q032",
+          "type": "matching",
+          "subskill": "vocabulary_in_context",
+          "difficulty": 0.28,
+          "prompt": "Apa arti 'poin' pada kartu member?",
+          "options": [
+            { "key": "A", "text": "Angka yang bisa ditukar hadiah" },
+            { "key": "B", "text": "Harga barang" },
+            { "key": "C", "text": "Diskon belanja" },
+            { "key": "D", "text": "Uang kembalian" }
+          ],
+          "answer": "A",
+          "explanation": "'Poin' adalah angka kumpulan belanja yang bisa ditukar hadiah.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S05-P012",
+      "title": "Pesan dari Guru",
+      "text": "Anak-anak, besok kita belajar di luar kelas. Kumpul di halaman sekolah jam 07.00. Bawa buku catatan dan pensil. Jangan lupa pakai topi. \u2013 Bu Dewi.",
+      "topic": "school",
+      "wordCount": 22,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S05-Q033",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.12,
+          "prompt": "Apa isi pesan Bu Dewi?",
+          "options": [
+            { "key": "A", "text": "Belajar di luar kelas besok" },
+            { "key": "B", "text": "Libur sekolah" },
+            { "key": "C", "text": "Lomba menggambar" },
+            { "key": "D", "text": "Pengumuman nilai" }
+          ],
+          "answer": "A",
+          "explanation": "Bu Dewi memberitahu akan belajar di luar kelas besok.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S05-Q034",
+          "type": "short_answer",
+          "subskill": "simple_inference",
+          "difficulty": 0.24,
+          "prompt": "Di mana siswa harus berkumpul?",
+          "answer": "halaman sekolah",
+          "explanation": "Pesan menyatakan 'Kumpul di halaman sekolah' karena belajar di luar kelas.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S05-Q035",
+          "type": "short_answer",
+          "subskill": "specific_information",
+          "difficulty": 0.22,
+          "prompt": "Sebutkan satu barang yang harus dibawa selain pensil.",
+          "answer": "buku catatan",
+          "explanation": "Pesan menyatakan 'Bawa buku catatan dan pensil'.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S05-P013",
+      "title": "Barang Hilang di Kantin",
+      "text": "PENGUMUMAN. Ditemukan sebuah jam tangan hitam di kantin. Silakan ambil di ruang guru. Harap sebutkan ciri-ciri jam saat mengambil.",
+      "topic": "school",
+      "wordCount": 19,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S05-Q036",
+          "type": "multiple_choice",
+          "subskill": "main_purpose",
+          "difficulty": 0.22,
+          "prompt": "Apa isi pengumuman tersebut?",
+          "options": [
+            { "key": "A", "text": "Barang ditemukan di kantin" },
+            { "key": "B", "text": "Kantin tutup sementara" },
+            { "key": "C", "text": "Jam tangan dijual" },
+            { "key": "D", "text": "Ruang guru pindah" }
+          ],
+          "answer": "A",
+          "explanation": "Pengumuman memberitahu jam tangan hitam ditemukan di kantin.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S05-Q037",
+          "type": "matching",
+          "subskill": "vocabulary_in_context",
+          "difficulty": 0.22,
+          "prompt": "Apa arti 'ciri-ciri' dalam pengumuman?",
+          "options": [
+            { "key": "A", "text": "Tanda khusus suatu barang" },
+            { "key": "B", "text": "Nama pemilik" },
+            { "key": "C", "text": "Alamat rumah" },
+            { "key": "D", "text": "Warna kesukaan" }
+          ],
+          "answer": "A",
+          "explanation": "'Ciri-ciri' adalah tanda atau sifat khusus yang membedakan barang.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S05-P014",
+      "title": "Jadwal Piket Kelas",
+      "text": "JADWAL PIKET KELAS. Senin: Ani, Budi, Citra. Selasa: Dedi, Eka, Fani. Rabu: Galih, Hana, Intan. Tugas: sapu lantai, lap papan tulis, dan atur kursi.",
+      "topic": "school",
+      "wordCount": 23,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S05-Q038",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.22,
+          "prompt": "Siapa saja yang piket hari Senin?",
+          "options": [
+            { "key": "A", "text": "Dedi, Eka, Fani" },
+            { "key": "B", "text": "Ani, Budi, Citra" },
+            { "key": "C", "text": "Galih, Hana, Intan" },
+            { "key": "D", "text": "Ani, Dedi, Galih" }
+          ],
+          "answer": "B",
+          "explanation": "Jadwal menyatakan 'Senin: Ani, Budi, Citra'.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A1-RD-S05-Q039",
+          "type": "short_answer",
+          "subskill": "specific_information",
+          "difficulty": 0.16,
+          "prompt": "Sebutkan satu tugas piket selain menyapu lantai.",
+          "answer": "lap papan tulis",
+          "explanation": "Tugas piket: sapu lantai, lap papan tulis, dan atur kursi.",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A1-RD-S05-P015",
+      "title": "Aturan Parkir",
+      "text": "PERATURAN PARKIR. Parkir mobil Rp5.000/jam, motor Rp2.000/jam. Parkir maksimal 4 jam. Tiket hilang denda Rp50.000. Buka 24 jam.",
+      "topic": "public places",
+      "wordCount": 19,
+      "items": [
+        {
+          "questionId": "BIGT-A1-RD-S05-Q040",
+          "type": "multiple_choice",
+          "subskill": "simple_inference",
+          "difficulty": 0.26,
+          "prompt": "Jika seseorang parkir motor selama 3 jam, berapa yang harus dibayar?",
+          "options": [
+            { "key": "A", "text": "Rp2.000" },
+            { "key": "B", "text": "Rp4.000" },
+            { "key": "C", "text": "Rp6.000" },
+            { "key": "D", "text": "Rp10.000" }
+          ],
+          "answer": "C",
+          "explanation": "Motor Rp2.000/jam. 3 jam x Rp2.000 = Rp6.000.",
+          "points": 1
+        }
+      ]
+    }
+  ]
+}

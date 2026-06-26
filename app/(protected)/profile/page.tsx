@@ -584,8 +584,8 @@ export default function ProfilePage() {
               <div className="space-y-1.5">
                 <Label className="text-xs font-medium text-[#8E8E93]">Bahasa Tampilan</Label>
                 <select value={preferredLanguage} onChange={e => setPreferredLanguage(e.target.value)} className="w-full h-11 rounded-xl border border-[#E5E5EA] bg-white px-3 text-sm text-[#1C1C1E] outline-none focus:border-[#007AFF] focus:ring-1 focus:ring-[#007AFF]/20 appearance-none">
-                  <option value="id">Indonesia</option>
-                  <option value="en">English</option>
+                  <option value="id">Bahasa Indonesia</option>
+                  <option value="en">Bahasa Inggris</option>
                 </select>
               </div>
               <div className="flex justify-end pt-2">
@@ -683,7 +683,7 @@ export default function ProfilePage() {
                   {VISIBILITY_OPTIONS.map(opt => <option key={opt.value} value={opt.value}>{opt.label}</option>)}
                 </select>
               </div>
-              <Toggle value={emailNotifications} onChange={setEmailNotifications} label="Email notifikasi" />
+              <Toggle value={emailNotifications} onChange={setEmailNotifications} label="Notifikasi Email" />
               <Toggle value={productUpdates} onChange={setProductUpdates} label="Pembaruan produk" />
               <div className="pt-2 space-y-2">
                 <Button onClick={handleSavePreferences} disabled={saving === 'preferences'} className="w-full rounded-xl bg-[#007AFF] hover:bg-[#0066CC] h-10 text-xs">

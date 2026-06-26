@@ -4,6 +4,9 @@ import { cookies } from 'next/headers'
 import { prisma } from '@/lib/prisma'
 import { assessAnswer } from '@/lib/assessment/ai-scoring'
 
+export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
+
 export async function POST(
   request: NextRequest,
   { params }: { params: { id: string } }

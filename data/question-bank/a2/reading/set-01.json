@@ -1,0 +1,198 @@
+{
+  "setId": "BIGT-A2-RD-S01",
+  "cefr": "A2",
+  "skill": "reading",
+  "title": "A2 Reading Set 01 — Aktivitas dan Lingkungan",
+  "version": "1.0.0",
+  "status": "draft",
+  "itemsCount": 10,
+  "passages": [
+    {
+      "passageId": "BIGT-A2-RD-S01-P001",
+      "title": "Liburan Akhir Pekan",
+      "text": "Setiap akhir pekan, keluarga saya pergi ke suatu tempat. Kadang-kadang kami pergi ke pantai. Pantai berjarak sekitar dua jam dari rumah. Kami berangkat pagi-pagi sekali. Kami membawa bekal makanan dan minuman. Saya suka bermain pasir dan berenang di laut. Ibu saya suka duduk di bawah payung sambil membaca buku. Ayah saya suka berjalan-jalan di tepi pantai.",
+      "topic": "weekend activities",
+      "wordCount": 68,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S01-Q001",
+          "type": "multiple_choice",
+          "subskill": "main_idea",
+          "difficulty": 0.25,
+          "prompt": "Apa yang dilakukan keluarga ini setiap akhir pekan?",
+          "options": [
+            { "key": "A", "text": "Pergi ke mall" },
+            { "key": "B", "text": "Pergi ke pantai" },
+            { "key": "C", "text": "Pergi ke gunung" },
+            { "key": "D", "text": "Pergi ke taman" }
+          ],
+          "answer": "B",
+          "explanation": "Teks menyatakan bahwa setiap akhir pekan mereka pergi ke pantai.",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A2-RD-S01-Q002",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.25,
+          "prompt": "Berapa lama perjalanan ke pantai?",
+          "options": [
+            { "key": "A", "text": "Satu jam" },
+            { "key": "B", "text": "Dua jam" },
+            { "key": "C", "text": "Tiga jam" },
+            { "key": "D", "text": "Empat jam" }
+          ],
+          "answer": "B",
+          "explanation": "Teks menyatakan: 'Pantai berjarak sekitar dua jam dari rumah.'",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A2-RD-S01-Q003",
+          "type": "multiple_choice",
+          "subskill": "detail_comprehension",
+          "difficulty": 0.3,
+          "prompt": "Apa yang dilakukan ayah di pantai?",
+          "options": [
+            { "key": "A", "text": "Bermain pasir" },
+            { "key": "B", "text": "Membaca buku" },
+            { "key": "C", "text": "Berjalan-jalan di tepi pantai" },
+            { "key": "D", "text": "Berenang di laut" }
+          ],
+          "answer": "C",
+          "explanation": "Teks menyatakan: 'Ayah saya suka berjalan-jalan di tepi pantai.'",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A2-RD-S01-P002",
+      "title": "Pasar Tradisional",
+      "text": "Pasar tradisional adalah tempat yang ramai. Banyak orang berjualan sayur, buah, ikan, dan daging. Harga barang di pasar lebih murah daripada di supermarket. Saya pergi ke pasar setiap hari Minggu pagi. Saya membeli sayuran untuk seminggu. Ibu penjual sayur sangat ramah. Saya suka belanja di pasar karena udaranya segar dan orang-orangnya baik.",
+      "topic": "daily life",
+      "wordCount": 64,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S01-Q004",
+          "type": "multiple_choice",
+          "subskill": "main_idea",
+          "difficulty": 0.25,
+          "prompt": "Apa keuntungan belanja di pasar tradisional?",
+          "options": [
+            { "key": "A", "text": "Harga lebih mahal" },
+            { "key": "B", "text": "Harga lebih murah" },
+            { "key": "C", "text": "Tempatnya sepi" },
+            { "key": "D", "text": "Pilihannya sedikit" }
+          ],
+          "answer": "B",
+          "explanation": "Teks menyatakan: 'Harga barang di pasar lebih murah daripada di supermarket.'",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A2-RD-S01-Q005",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.25,
+          "prompt": "Kapan penulis pergi ke pasar?",
+          "options": [
+            { "key": "A", "text": "Setiap hari Sabtu pagi" },
+            { "key": "B", "text": "Setiap hari Minggu pagi" },
+            { "key": "C", "text": "Setiap hari Senin sore" },
+            { "key": "D", "text": "Setiap hari Jumat sore" }
+          ],
+          "answer": "B",
+          "explanation": "Teks menyatakan: 'Saya pergi ke pasar setiap hari Minggu pagi.'",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A2-RD-S01-Q006",
+          "type": "multiple_choice",
+          "subskill": "inference",
+          "difficulty": 0.35,
+          "prompt": "Mengapa penulis suka belanja di pasar?",
+          "options": [
+            { "key": "A", "text": "Karena dekat dengan rumah" },
+            { "key": "B", "text": "Karena udaranya segar dan orangnya baik" },
+            { "key": "C", "text": "Karena banyak pilihan" },
+            { "key": "D", "text": "Karena ada diskon setiap hari" }
+          ],
+          "answer": "B",
+          "explanation": "Teks menyatakan: 'Saya suka belanja di pasar karena udaranya segar dan orang-orangnya baik.'",
+          "points": 1
+        }
+      ]
+    },
+    {
+      "passageId": "BIGT-A2-RD-S01-P003",
+      "title": "Transportasi Umum",
+      "text": "Di kota besar, transportasi umum sangat penting. Banyak orang menggunakan bus, kereta, dan taksi. Bus adalah transportasi yang paling murah. Kereta lebih cepat tetapi harga tiketnya lebih mahal. Saya naik bus ke sekolah setiap hari. Ayah saya naik kereta ke kantor. Ibu saya lebih suka naik taksi karena lebih nyaman. Pemerintah kota sedang membangun jalur kereta baru untuk mengurangi kemacetan.",
+      "topic": "transportation",
+      "wordCount": 74,
+      "items": [
+        {
+          "questionId": "BIGT-A2-RD-S01-Q007",
+          "type": "multiple_choice",
+          "subskill": "compare_contrast",
+          "difficulty": 0.3,
+          "prompt": "Transportasi apa yang paling murah menurut teks?",
+          "options": [
+            { "key": "A", "text": "Taksi" },
+            { "key": "B", "text": "Kereta" },
+            { "key": "C", "text": "Bus" },
+            { "key": "D", "text": "Pesawat" }
+          ],
+          "answer": "C",
+          "explanation": "Teks menyatakan: 'Bus adalah transportasi yang paling murah.'",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A2-RD-S01-Q008",
+          "type": "multiple_choice",
+          "subskill": "specific_information",
+          "difficulty": 0.25,
+          "prompt": "Mengapa ibu lebih suka naik taksi?",
+          "options": [
+            { "key": "A", "text": "Karena lebih murah" },
+            { "key": "B", "text": "Karena lebih cepat" },
+            { "key": "C", "text": "Karena lebih nyaman" },
+            { "key": "D", "text": "Karena lebih aman" }
+          ],
+          "answer": "C",
+          "explanation": "Teks menyatakan: 'Ibu saya lebih suka naik taksi karena lebih nyaman.'",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A2-RD-S01-Q009",
+          "type": "multiple_choice",
+          "subskill": "inference",
+          "difficulty": 0.35,
+          "prompt": "Apa yang sedang dilakukan pemerintah kota?",
+          "options": [
+            { "key": "A", "text": "Menutup jalan" },
+            { "key": "B", "text": "Membangun jalur kereta baru" },
+            { "key": "C", "text": "Menambah taksi" },
+            { "key": "D", "text": "Menaikkan harga tiket" }
+          ],
+          "answer": "B",
+          "explanation": "Teks menyatakan: 'Pemerintah kota sedang membangun jalur kereta baru untuk mengurangi kemacetan.'",
+          "points": 1
+        },
+        {
+          "questionId": "BIGT-A2-RD-S01-Q010",
+          "type": "multiple_choice",
+          "subskill": "detail_comprehension",
+          "difficulty": 0.3,
+          "prompt": "Apa tujuan pembangunan jalur kereta baru?",
+          "options": [
+            { "key": "A", "text": "Menambah polusi" },
+            { "key": "B", "text": "Mengurangi kemacetan" },
+            { "key": "C", "text": "Menambah pengeluaran" },
+            { "key": "D", "text": "Mengurangi penumpang" }
+          ],
+          "answer": "B",
+          "explanation": "Teks menyatakan: 'membangun jalur kereta baru untuk mengurangi kemacetan.'",
+          "points": 1
+        }
+      ]
+    }
+  ]
+}

@@ -28,32 +28,39 @@ function LoginForm() {
     setLoading(true)
     const { data, error } = await supabase.auth.signInWithPassword({ email, password })
     if (error) { toast.error(error.message); setLoading(false); return }
-    if (data.user) {
-      await fetch('/api/auth/sync', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          supabaseId: data.user.id,
-          email: data.user.email,
-          name: data.user.user_metadata?.name || null,
-        }),
-      })
-      await fetch('/api/profile/login-history', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ userAgent: navigator.userAgent }),
-      })
+
+    // Confirm session is stored before redirecting
+    const { data: { session } } = await supabase.auth.getSession()
+    if (!session) {
+      toast.error('Gagal mendapatkan sesi. Coba lagi.')
+      setLoading(false)
+      return
     }
+
+    await fetch('/api/auth/sync', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        supabaseId: session.user.id,
+        email: session.user.email,
+        name: session.user.user_metadata?.name || null,
+      }),
+    })
+    fetch('/api/profile/login-history', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userAgent: navigator.userAgent }),
+    })
+
     toast.success(t('auth.loginSuccess'))
-    router.push(redirectTo)
-    router.refresh()
+    window.location.href = redirectTo
   }
 
   const handleGoogleLogin = async () => {
     setLoading(true)
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
-      options: { redirectTo: `${window.location.origin}/auth/callback` },
+      options: { redirectTo: `${window.location.origin}/callback` },
     })
     if (error) { toast.error(error.message); setLoading(false) }
   }

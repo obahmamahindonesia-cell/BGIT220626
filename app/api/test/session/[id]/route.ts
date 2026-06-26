@@ -3,6 +3,9 @@ import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 import { prisma } from '@/lib/prisma'
 
+export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
+
 export async function GET(
   _request: NextRequest,
   { params }: { params: { id: string } }
