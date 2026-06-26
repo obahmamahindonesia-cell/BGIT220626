@@ -102,9 +102,16 @@ export type QuestionSet = ReadingSet | ListeningSet
 
 export type QuestionBankMeta = Pick<QuestionSet, 'setId' | 'cefr' | 'skill' | 'title' | 'status' | 'itemsCount'>
 
+export interface SanitizedStimulus {
+  type: 'TEXT' | 'AUDIO' | 'IMAGE'
+  title?: string
+  content?: string
+}
+
 export interface SanitizedQuestion {
   questionId: string
-  type: QuestionType
+  type: string
+  questionType?: string
   subskill: string
   difficulty: number
   prompt: string
@@ -114,4 +121,6 @@ export interface SanitizedQuestion {
   passageTitle?: string
   passageText?: string
   points: number
+  stimulus?: SanitizedStimulus
+  instruction?: string
 }

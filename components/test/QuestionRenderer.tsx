@@ -135,6 +135,20 @@ export default function QuestionRenderer() {
 
   const renderPromptArea = () => (
     <div className="space-y-4">
+      {content.stimulus?.type === 'AUDIO' && content.stimulus?.content && (
+        <div className="p-4 rounded-xl bg-white/[0.03] border border-white/[0.06] lg:hidden">
+          <div className="flex items-center gap-2 mb-2">
+            <svg className="w-4 h-4 text-[#10B981]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+            </svg>
+            <span className="text-[10px] font-medium text-white/40 uppercase tracking-wider">Audio Listening</span>
+          </div>
+          <audio controls src={content.stimulus.content} className="w-full h-9 rounded-lg" style={{ filter: 'invert(1) hue-rotate(180deg)' }}>
+            Browser tidak mendukung pemutar audio.
+          </audio>
+        </div>
+      )}
       <div>
         <h2 className="text-base md:text-lg font-semibold text-white/90 leading-relaxed">
           {content.prompt || t('testRunner.noQuestionText')}
@@ -228,17 +242,14 @@ export default function QuestionRenderer() {
                         <p className="text-[10px] text-white/30">Putar audio untuk mendengarkan</p>
                       </div>
                     </div>
-                    <div className="flex items-center gap-3 p-3 rounded-lg bg-white/[0.04] border border-white/[0.06]">
-                      <button className="w-9 h-9 rounded-full bg-[#10B981] flex items-center justify-center hover:bg-[#10B981]/90 transition-colors flex-shrink-0">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21" /></svg>
-                      </button>
-                      <div className="flex-1">
-                        <div className="h-1.5 rounded-full bg-white/[0.06] overflow-hidden">
-                          <div className="w-0 h-full rounded-full bg-[#10B981] transition-all" />
-                        </div>
-                      </div>
-                      <span className="text-[10px] text-white/30 tabular-nums">0:00 / 0:45</span>
-                    </div>
+                    <audio
+                      controls
+                      src={content.stimulus.content || ''}
+                      className="w-full h-10 rounded-lg"
+                      style={{ filter: 'invert(1) hue-rotate(180deg)' }}
+                    >
+                      Browser tidak mendukung pemutar audio.
+                    </audio>
                   </div>
                 )}
                 {content.stimulus?.type === 'IMAGE' && content.stimulus?.content && (

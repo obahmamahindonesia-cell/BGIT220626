@@ -106,20 +106,32 @@ function shuffleOptions(item: any): any {
 }
 
 function sanitize(item: any): SanitizedQuestion {
+  const qType = item.type === 'short_answer' ? 'SHORT_ANSWER' : 'MCQ'
   const base: SanitizedQuestion = {
     questionId: item.questionId,
-    type: item.type,
+    type: qType,
+    questionType: qType,
     subskill: item.subskill || '',
     difficulty: item.difficulty,
     prompt: item.prompt,
     points: item.points || 1,
+    instruction: item.instruction || '',
   }
   if (item.options) base.options = shuffleArray(item.options.map((o: any) => ({ key: o.key, text: o.text })))
   if (item.topic) base.topic = item.topic
   if (item.passageTitle) base.passageTitle = item.passageTitle
-  if (item.passageText) base.passageText = item.passageText
-  if (item.audioBasePath && item.audioFile) base.audioUrl = `${item.audioBasePath}${item.audioFile}`
-  if (item.audioUrl) base.audioUrl = item.audioUrl
+  if (item.passageText) {
+    base.passageText = item.passageText
+    base.stimulus = { type: 'TEXT', title: item.passageTitle, content: item.passageText }
+  }
+  if (item.audioBasePath && item.audioFile) {
+    base.audioUrl = `${item.audioBasePath}${item.audioFile}`
+    base.stimulus = { type: 'AUDIO', title: 'Audio Listening', content: base.audioUrl }
+  }
+  if (item.audioUrl) {
+    base.audioUrl = item.audioUrl
+    base.stimulus = { type: 'AUDIO', title: 'Audio Listening', content: item.audioUrl }
+  }
   return base
 }
 
