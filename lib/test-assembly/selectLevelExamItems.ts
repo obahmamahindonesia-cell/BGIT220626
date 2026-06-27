@@ -1,7 +1,7 @@
 import * as fs from 'fs'
 import * as path from 'path'
 import type { LevelBlueprint } from '@/lib/test-blueprint/bigtLevelBlueprint'
-import type { ReadingSet, ListeningSet, QuestionSet, SanitizedQuestion, ReadingQuestion, ListeningItem } from '@/types/question-bank'
+import type { ReadingSet, ListeningSet, ConstructedSet, ConstructedResponseItem, QuestionSet, SanitizedQuestion } from '@/types/question-bank'
 
 interface SelectionLog {
   warnings: string[]
@@ -21,12 +21,57 @@ export interface AssemblyResult {
 
 const DATA_DIR = path.resolve(process.cwd(), 'data', 'question-bank')
 
+type LoadedReadingItem = {
+  questionId: string
+  type: string
+  subskill: string
+  difficulty: number
+  prompt: string
+  options?: { key: string; text: string }[]
+  answer?: string
+  explanation?: string
+  instruction?: string
+  points: number
+  passageTitle: string
+  passageText: string
+  cefr: string
+  setId: string
+}
+
+type LoadedListeningItem = {
+  questionId: string
+  type: string
+  subskill: string
+  difficulty: number
+  prompt: string
+  options?: { key: string; text: string }[]
+  answer?: string
+  explanation?: string
+  instruction?: string
+  points: number
+  topic: string
+  audioId: string
+  audioFile: string
+  transcript: string
+  cefr: string
+  audioBasePath: string
+  setId: string
+}
+
+type LoadedConstructedItem = ConstructedResponseItem & {
+  skill: string
+  level: string
+  setId: string
+}
+
 function loadAllItems(): {
-  reading: Map<string, ReadingQuestion & { setId: string; passageTitle: string; passageText: string; cefr: string }>
-  listening: Map<string, ListeningItem & { setId: string; cefr: string; audioBasePath: string }>
+  reading: Map<string, LoadedReadingItem>
+  listening: Map<string, LoadedListeningItem>
+  constructed: Map<string, LoadedConstructedItem>
 } {
-  const readingItems = new Map<any, any>()
-  const listeningItems = new Map<any, any>()
+  const reading = new Map<string, LoadedReadingItem>()
+  const listening = new Map<string, LoadedListeningItem>()
+  const constructed = new Map<string, LoadedConstructedItem>()
 
   function walkDir(dir: string) {
     if (!fs.existsSync(dir)) return
@@ -46,13 +91,14 @@ function loadAllItems(): {
             const rs = set as ReadingSet
             for (const passage of rs.passages) {
               for (const item of passage.items) {
-                if (!readingItems.has(item.questionId)) {
-                  readingItems.set(item.questionId, {
+                if (!reading.has(item.questionId)) {
+                  reading.set(item.questionId, {
                     ...item,
                     setId: set.setId,
                     passageTitle: passage.title,
                     passageText: passage.text,
                     cefr: set.cefr,
+                    points: item.points || 1,
                   })
                 }
               }
@@ -60,12 +106,26 @@ function loadAllItems(): {
           } else if (set.skill === 'listening') {
             const ls = set as ListeningSet
             for (const item of ls.items) {
-              if (!listeningItems.has(item.questionId)) {
-                listeningItems.set(item.questionId, {
+              if (!listening.has(item.questionId)) {
+                listening.set(item.questionId, {
                   ...item,
                   setId: set.setId,
                   cefr: ls.cefr,
                   audioBasePath: ls.audioBasePath,
+                  points: item.points || 1,
+                })
+              }
+            }
+          } else if (['writing', 'speaking'].includes(set.skill)) {
+            const cs = set as ConstructedSet
+            for (const item of cs.items) {
+              const key = item.id
+              if (!constructed.has(key)) {
+                constructed.set(key, {
+                  ...item,
+                  skill: item.skill || set.skill.toUpperCase(),
+                  level: item.level || set.cefr,
+                  setId: set.setId,
                 })
               }
             }
@@ -76,7 +136,7 @@ function loadAllItems(): {
   }
 
   walkDir(DATA_DIR)
-  return { reading: readingItems, listening: listeningItems }
+  return { reading, listening, constructed }
 }
 
 function difficultyBand(difficulty: number, cefr: string): 'low' | 'medium' | 'high' {
@@ -105,7 +165,7 @@ function shuffleOptions(item: any): any {
   return { ...item, options: shuffled }
 }
 
-function sanitize(item: any): SanitizedQuestion {
+function sanitizeMCQ(item: any): SanitizedQuestion {
   const qType = item.type === 'short_answer' ? 'SHORT_ANSWER' : 'MCQ'
   const base: SanitizedQuestion = {
     questionId: item.questionId,
@@ -135,6 +195,43 @@ function sanitize(item: any): SanitizedQuestion {
   return base
 }
 
+function sanitizeConstructed(item: LoadedConstructedItem): SanitizedQuestion {
+  const isAudio = item.responseMode === 'audio' || item.responseMode === 'text_audio'
+  const qType = isAudio ? 'AUDIO_RESPONSE' : 'ESSAY'
+
+  const base: SanitizedQuestion = {
+    questionId: item.id,
+    type: qType as any,
+    questionType: qType,
+    subskill: item.taskType,
+    difficulty: item.difficulty || 0.5,
+    prompt: item.prompt,
+    points: item.maxScore || 25,
+    instruction: item.instructionForCandidate || '',
+    constraints: item.constraints || {},
+    responseMode: item.responseMode,
+  }
+
+  if (item.stimulus) {
+    const s = item.stimulus
+    if (s.type === 'image' && s.imageUrl) {
+      base.stimulus = { type: 'IMAGE' as const, content: s.imageUrl }
+    } else if (s.audioUrl) {
+      base.stimulus = { type: 'AUDIO' as const, content: s.audioUrl }
+    } else if (s.text) {
+      base.stimulus = { type: 'TEXT' as const, content: s.text }
+    }
+    base.constructedStimulus = {
+      type: s.type,
+      ...(s.text ? { text: s.text } : {}),
+      ...(s.imageUrl ? { imageUrl: s.imageUrl } : {}),
+      ...(s.audioUrl ? { audioUrl: s.audioUrl } : {}),
+    }
+  }
+
+  return base
+}
+
 function checkAudioFile(audioUrl: string | undefined): boolean {
   if (!audioUrl) return false
   const audioPath = path.resolve(process.cwd(), 'public', audioUrl.replace(/^\//, ''))
@@ -142,7 +239,7 @@ function checkAudioFile(audioUrl: string | undefined): boolean {
 }
 
 export function selectLevelExamItems(blueprint: LevelBlueprint): AssemblyResult {
-  const { reading, listening } = loadAllItems()
+  const { reading, listening, constructed } = loadAllItems()
   const log: SelectionLog = { warnings: [], setUsage: {}, subskillDistribution: {}, difficultyDistribution: {} }
 
   const selected: SanitizedQuestion[] = []
@@ -153,9 +250,17 @@ export function selectLevelExamItems(blueprint: LevelBlueprint): AssemblyResult 
     const sectionItems: SanitizedQuestion[] = []
 
     for (const sl of section.sourceLevels) {
-      const pool = section.skill === 'reading'
-        ? Array.from(reading.values()).filter(i => i.cefr === sl.cefr)
-        : Array.from(listening.values()).filter(i => i.cefr === sl.cefr)
+      let pool: any[]
+      if (section.skill === 'reading') {
+        pool = Array.from(reading.values()).filter(i => i.cefr === sl.cefr)
+      } else if (section.skill === 'listening') {
+        pool = Array.from(listening.values()).filter(i => i.cefr === sl.cefr)
+      } else if (section.skill === 'writing' || section.skill === 'speaking') {
+        const dim = section.skill === 'writing' ? 'WRITING' : 'SPEAKING'
+        pool = Array.from(constructed.values()).filter(i => i.skill === dim && i.level === sl.cefr)
+      } else {
+        pool = []
+      }
 
       const needed = sl.count
       if (pool.length === 0) {
@@ -163,18 +268,32 @@ export function selectLevelExamItems(blueprint: LevelBlueprint): AssemblyResult 
         continue
       }
 
-      const bandDistribution = distributeDifficulty(pool, blueprint, sl, log)
-      const picked = pickBalanced(bandDistribution, needed, usedIds, section.skill, log, blueprint)
+      if (section.skill === 'writing' || section.skill === 'speaking') {
+        // Constructed items: random pick, no difficulty distribution
+        const available = shuffleArray(pool).filter((i: any) => !usedIds.has(i.id))
+        const picked = available.slice(0, Math.min(needed, available.length))
+        if (picked.length < needed) {
+          log.warnings.push(`${section.skill} ${sl.cefr}: hanya ${picked.length} dari ${needed} tersedia`)
+        }
+        for (const item of picked) {
+          const sanitized = sanitizeConstructed(item)
+          sectionItems.push(sanitized)
+          usedIds.add(item.id)
+        }
+      } else {
+        const bandDistribution = distributeDifficulty(pool, blueprint, sl, log)
+        const picked = pickBalanced(bandDistribution, needed, usedIds, section.skill, log, blueprint)
 
-      for (const item of picked) {
-        const sanitizedItem = sanitize(item)
-        sectionItems.push(sanitizedItem)
-        usedIds.add(item.questionId)
-        log.setUsage[item.setId] = (log.setUsage[item.setId] || 0) + 1
-        const subskill = item.subskill || 'unknown'
-        log.subskillDistribution[subskill] = (log.subskillDistribution[subskill] || 0) + 1
-        const band = difficultyBand(item.difficulty, sl.cefr)
-        log.difficultyDistribution[band] = (log.difficultyDistribution[band] || 0) + 1
+        for (const item of picked) {
+          const sanitizedItem = sanitizeMCQ(item)
+          sectionItems.push(sanitizedItem)
+          usedIds.add(item.questionId)
+          log.setUsage[item.setId] = (log.setUsage[item.setId] || 0) + 1
+          const subskill = item.subskill || 'unknown'
+          log.subskillDistribution[subskill] = (log.subskillDistribution[subskill] || 0) + 1
+          const band = difficultyBand(item.difficulty, sl.cefr)
+          log.difficultyDistribution[band] = (log.difficultyDistribution[band] || 0) + 1
+        }
       }
     }
 
@@ -198,18 +317,9 @@ function distributeDifficulty(
   log: SelectionLog
 ): { low: any[]; medium: any[]; high: any[] } {
   const cefr = sl.cefr
-  const low = pool.filter(i => {
-    const band = difficultyBand(i.difficulty, cefr)
-    return band === 'low'
-  })
-  const medium = pool.filter(i => {
-    const band = difficultyBand(i.difficulty, cefr)
-    return band === 'medium'
-  })
-  const high = pool.filter(i => {
-    const band = difficultyBand(i.difficulty, cefr)
-    return band === 'high'
-  })
+  const low = pool.filter(i => difficultyBand(i.difficulty, cefr) === 'low')
+  const medium = pool.filter(i => difficultyBand(i.difficulty, cefr) === 'medium')
+  const high = pool.filter(i => difficultyBand(i.difficulty, cefr) === 'high')
 
   const total = low.length + medium.length + high.length
   if (total < sl.count) {

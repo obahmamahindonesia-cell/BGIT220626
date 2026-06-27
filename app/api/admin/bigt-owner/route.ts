@@ -34,7 +34,7 @@ export async function GET() {
     const risk = getRiskMetrics(allAnswers || [])
     const trial = await safe(getTrialMetrics())
     const qbank = getQuestionBankMetrics()
-    const alerts = generateOwnerAlerts({ users, sessions, results, constructed, risk, trial: trial || {}, qbank })
+    const alerts = await generateOwnerAlerts({ users, sessions, results, constructed, risk, trial: trial || {}, qbank })
 
     return NextResponse.json({
       success: true,
@@ -361,7 +361,7 @@ function getQuestionBankMetrics() {
   }
 }
 
-function generateOwnerAlerts(metrics: {
+async function generateOwnerAlerts(metrics: {
   users: any; sessions: any; results: any; constructed: any; risk: any; trial: any; qbank: any
 }) {
   const alerts: Array<{
@@ -453,6 +453,28 @@ function generateOwnerAlerts(metrics: {
       severity: 'info',
       title: 'Bank Soal Mencukupi',
       message: `Bank soal berisi ${qbank.total} item. Sudah cukup untuk pilot dan produksi.`,
+    })
+  }
+
+  // Check DB schema health — detect drift between Prisma schema and database
+  try {
+    const colResult = await prisma.$queryRawUnsafe<Array<Record<string, unknown>>>(
+      `SELECT column_name FROM information_schema.columns WHERE table_name = 'UserAnswer' AND column_name = 'updatedAt' LIMIT 1`
+    )
+    if (colResult.length === 0) {
+      alerts.push({
+        severity: 'critical',
+        title: 'DB Schema Drift: UserAnswer.updatedAt Missing',
+        message: 'Kolom updatedAt tidak ditemukan di tabel UserAnswer. Jalankan prisma db push atau migrasi.',
+        actionLabel: 'Cek DB Health',
+        actionHref: '/api/admin/system/db-health',
+      })
+    }
+  } catch {
+    alerts.push({
+      severity: 'warning',
+      title: 'DB Health Check Gagal',
+      message: 'Tidak dapat memeriksa kesehatan database. Mungkin ada masalah koneksi.',
     })
   }
 

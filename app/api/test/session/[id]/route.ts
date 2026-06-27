@@ -17,9 +17,12 @@ export async function GET(
       process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
       {
         cookies: {
-          get(name: string) { return cookieStore.get(name)?.value },
-          set(name: string, value: string, options: any) { cookieStore.set({ name, value, ...options }) },
-          remove(name: string, options: any) { cookieStore.set({ name, value: '', ...options }) },
+          getAll() { return cookieStore.getAll() },
+          setAll(cookiesToSet) {
+            for (const { name, value, options } of cookiesToSet) {
+              cookieStore.set(name, value, options)
+            }
+          },
         },
       }
     )
@@ -37,10 +40,7 @@ export async function GET(
           include: {
             answer: true,
             question: {
-              select: {
-                id: true,
-                correctAnswer: true,
-              },
+              select: { id: true, correctAnswer: true },
             },
           },
         },
@@ -56,80 +56,103 @@ export async function GET(
       return NextResponse.json({ success: false, error: 'Sesi bukan milik Anda.' }, { status: 403 })
     }
 
-    // Return items WITH answer key only if session is completed
     const isComplete = session.status === 'COMPLETED' || session.status === 'SCORED' || session.status === 'SUBMITTED'
 
-    const items = session.sessionItems.map(item => {
-      const base: any = {
-        id: item.id,
-        order: item.order,
-        dimension: item.dimension,
-        level: item.level,
-        difficulty: item.difficulty,
-        question: item.questionSnapshot,
-        maxScore: item.maxScore,
-        stage: item.stage,
-        answer: item.answer
-          ? {
-              id: item.answer.id,
-              answer: item.answer.answer,
-              score: item.answer.score,
-              aiScore: item.answer.aiScore,
-              aiFeedback: item.answer.aiFeedback,
-              isCorrect: item.answer.isCorrect,
-              submittedAt: item.answer.submittedAt,
-              // Constructed response fields (safe — no adminOnly)
-              responseText: item.answer.responseText,
-              responseAudioUrl: null, // Never expose to participant
-              audioDurationSec: item.answer.audioDurationSec,
-              wordCount: item.answer.wordCount,
-              responseStatus: item.answer.responseStatus,
-              feedback: item.answer.feedback,
-              scoreText: item.answer.finalScoreJson
-                ? (item.answer.finalScoreJson as any).band || null
-                : null,
-              scorePercentage: item.answer.finalScoreJson
-                ? (item.answer.finalScoreJson as any).percentage || null
-                : null,
-            }
-          : null,
-      }
-
-      // Only expose correctAnswer when test is complete
-      if (isComplete) {
-        base.question = {
-          ...base.question,
-          correctAnswer: item.question.correctAnswer,
-          explanation: (item.questionSnapshot as any)?.explanation || null,
+    const items = session.sessionItems
+      .filter(item => {
+        if (!item.questionSnapshot) {
+          console.warn(`[test-session:get] item ${item.id} has no questionSnapshot, skipping`)
+          return false
         }
-      }
+        return true
+      })
+      .map(item => {
+        const base: Record<string, unknown> = {
+          id: item.id,
+          order: item.order,
+          dimension: item.dimension || null,
+          level: item.level || null,
+          difficulty: item.difficulty ?? 3,
+          question: item.questionSnapshot,
+          maxScore: item.maxScore ?? 10,
+          stage: item.stage ?? 1,
+          answer: item.answer
+            ? {
+                id: item.answer.id,
+                answer: item.answer.answer ?? null,
+                score: item.answer.score ?? null,
+                aiScore: item.answer.aiScore ?? null,
+                aiFeedback: item.answer.aiFeedback ?? null,
+                isCorrect: item.answer.isCorrect ?? null,
+                submittedAt: item.answer.submittedAt?.toISOString() ?? null,
+                responseText: item.answer.responseText ?? null,
+                responseAudioUrl: null,
+                audioDurationSec: item.answer.audioDurationSec ?? null,
+                wordCount: item.answer.wordCount ?? null,
+                responseStatus: item.answer.responseStatus ?? 'submitted',
+                feedback: item.answer.feedback ?? null,
+                scoreText: null,
+                scorePercentage: null,
+              }
+            : null,
+        }
 
-      return base
-    })
+        if (base.answer && item.answer?.finalScoreJson) {
+          const fjs = item.answer.finalScoreJson as Record<string, unknown>
+          base.answer = {
+            ...base.answer as Record<string, unknown>,
+            scoreText: typeof fjs.band === 'string' ? fjs.band : null,
+            scorePercentage: typeof fjs.percentage === 'number' ? fjs.percentage : null,
+          }
+        }
 
-    const meta = (session.metadata as any) || {}
-    const durationMinutes = meta.durationMinutes ?? Math.max(30, Math.round(session.questionCount * 1.5))
+        // Only expose correctAnswer when test is complete
+        if (isComplete) {
+          const snapshot = (item.questionSnapshot as Record<string, unknown>) || {}
+          base.question = {
+            ...snapshot,
+            correctAnswer: item.question?.correctAnswer ?? null,
+            explanation: snapshot.explanation || null,
+          }
+        }
+
+        return base
+      })
+
+    const meta = (session.metadata as Record<string, unknown>) || {}
+    const durationMinutes = typeof meta.durationMinutes === 'number'
+      ? meta.durationMinutes
+      : Math.max(30, Math.round(session.questionCount * 1.5))
 
     return NextResponse.json({
       success: true,
       data: {
         id: session.id,
-        product: session.product,
-        targetLevel: session.targetLevel,
+        product: session.product ?? null,
+        targetLevel: session.targetLevel ?? null,
         status: session.status,
         questionCount: session.questionCount,
         durationMinutes,
         startedAt: session.startedAt.toISOString(),
-        completedAt: session.completedAt?.toISOString() || null,
-        durationSeconds: session.durationSeconds,
-        totalScore: session.totalScore,
-        cefrLevel: session.cefrLevel,
+        completedAt: session.completedAt?.toISOString() ?? null,
+        durationSeconds: session.durationSeconds ?? null,
+        totalScore: session.totalScore ?? null,
+        cefrLevel: session.cefrLevel ?? null,
         metadata: meta,
         items,
       },
     })
   } catch (err: any) {
-    console.error('Error fetching session:', err)
-    return NextResponse.json({ success: false, error: 'Gagal memuat sesi.' }, { status: 500 })
+    console.error('[test-session:get] failed', {
+      sessionId: params.id,
+      errorName: err?.name,
+      errorMessage: err?.message,
+      errorCode: err?.code,
+    })
+    return NextResponse.json({
+      success: false,
+      error: 'Gagal memuat sesi tes.',
+      code: 'TEST_SESSION_LOAD_FAILED',
+    }, { status: 500 })
   }
 }

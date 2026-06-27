@@ -78,7 +78,7 @@ model User {
   name          String?
   role          UserRole @default(TEST_TAKER)
   createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  updatedAt           DateTime @updatedAt
 
   profile       UserProfile?
   testSessions  TestSession[]

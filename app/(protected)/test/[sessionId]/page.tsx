@@ -1,13 +1,13 @@
 'use client'
 
-import { useEffect, useCallback, useRef } from 'react'
+import { useEffect, useCallback, useRef, useState } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import { useTestStore } from '@/store/testStore'
 import QuestionRenderer from '@/components/test/QuestionRenderer'
 import TestFooter from '@/components/test/TestFooter'
 import { createClient } from '@/lib/supabase/client'
 import TestHeader from '@/components/test/TestHeader'
-import { ShieldCheck } from 'lucide-react'
+import { ShieldCheck, AlertCircle, RefreshCw } from 'lucide-react'
 
 function LoadingSkeleton() {
   return (
@@ -20,6 +20,39 @@ function LoadingSkeleton() {
           <div className="h-4 w-48 bg-white/[0.06] rounded-lg mx-auto animate-pulse" />
           <div className="h-3 w-32 bg-white/[0.04] rounded-lg mx-auto animate-pulse" />
         </div>
+      </div>
+    </div>
+  )
+}
+
+function InitError({ message, onRetry, statusCode }: { message: string; onRetry: () => void; statusCode?: number }) {
+  const isNotFound = statusCode === 404
+  const isForbidden = statusCode === 403
+  const hint = isNotFound
+    ? 'Sesi tes tidak ditemukan.'
+    : isForbidden
+      ? 'Kamu tidak memiliki akses ke sesi ini.'
+      : 'Coba refresh atau mulai tes baru.'
+  const btnText = isNotFound || isForbidden ? 'Mulai Tes Baru' : 'Muat Ulang'
+  const btnAction = isNotFound || isForbidden ? () => window.location.href = '/test/start' : onRetry
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-[#0A1428] via-[#0D1B34] to-[#0A1428] flex items-center justify-center">
+      <div className="text-center space-y-5 max-w-sm mx-auto px-4">
+        <div className="w-16 h-16 rounded-2xl bg-red-500/10 flex items-center justify-center mx-auto">
+          <AlertCircle className="w-8 h-8 text-red-400" />
+        </div>
+        <div className="space-y-2">
+          <p className="text-white/70 text-sm">{message}</p>
+          <p className="text-white/30 text-xs">{hint}</p>
+        </div>
+        <button
+          onClick={btnAction}
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#10B981] text-white text-sm font-semibold hover:bg-[#10B981]/90 active:scale-[0.98] transition-all"
+        >
+          <RefreshCw className="w-4 h-4" />
+          {btnText}
+        </button>
       </div>
     </div>
   )
@@ -59,10 +92,14 @@ export default function TestRunnerPage() {
 
   const timerRef = useRef<NodeJS.Timeout | null>(null)
   const initRef = useRef(false)
+  const [loadError, setLoadError] = useState<string | null>(null)
+  const [errorStatusCode, setErrorStatusCode] = useState<number | undefined>()
 
   const initSession = useCallback(async () => {
     if (initRef.current) return
     initRef.current = true
+    setLoadError(null)
+    setErrorStatusCode(undefined)
 
     try {
       const supabase = createClient()
@@ -73,13 +110,17 @@ export default function TestRunnerPage() {
       }
 
       const res = await fetch(`/api/test/session/${sessionId}`)
-      if (!res.ok) throw new Error('Session not found')
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}))
+        setErrorStatusCode(res.status)
+        throw new Error(body.error || `Gagal memuat sesi (${res.status})`)
+      }
       const json = await res.json()
-      if (!json.success) throw new Error(json.error || 'Session not found')
+      if (!json.success) throw new Error(json.error || 'Gagal memuat sesi')
       const data = json.data
 
       if (!data.items || data.items.length === 0) {
-        return
+        throw new Error('Sesi ini tidak memiliki soal. Mulai tes baru.')
       }
 
       if (data.status !== 'IN_PROGRESS') {
@@ -101,12 +142,16 @@ export default function TestRunnerPage() {
           content: {
             prompt: snapshot.prompt || '',
             instruction: snapshot.instruction || '',
+            instructionForCandidate: snapshot.instructionForCandidate || '',
             options: snapshot.options || [],
             questionType: snapshot.questionType,
             stimulus: snapshot.stimulus || null,
             subskill: snapshot.subskill,
             topic: snapshot.topic,
             tags: snapshot.tags,
+            constraints: snapshot.constraints || null,
+            responseMode: snapshot.responseMode || null,
+            constructedStimulus: snapshot.constructedStimulus || null,
           },
         }
       })
@@ -139,8 +184,10 @@ export default function TestRunnerPage() {
       if (Object.keys(restoredAnswers).length > 0) {
         useTestStore.setState({ answers: restoredAnswers })
       }
-    } catch {
+    } catch (err: any) {
       useTestStore.setState({ questions: [] })
+      setLoadError(err.message || 'Terjadi kesalahan saat memuat soal.')
+      initRef.current = false
     }
   }, [sessionId, setSession, router])
 
@@ -231,6 +278,10 @@ export default function TestRunnerPage() {
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [])
+
+  if (loadError) {
+    return <InitError message={loadError} onRetry={() => { initRef.current = false; initSession() }} statusCode={errorStatusCode} />
+  }
 
   if (storedSessionId !== sessionId && questions.length === 0) {
     return <LoadingSkeleton />

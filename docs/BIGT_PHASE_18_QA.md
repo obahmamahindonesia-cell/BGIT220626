@@ -553,3 +553,86 @@
 - [x] Writing/Speaking still not live default
 - [x] No changes to existing Reading/Listening items
 - [x] No changes to existing live blueprint logic
+
+---
+
+# BIGT Test Session 500 Hotfix QA
+
+## Root Cause
+Missing `updatedAt` column in `UserAnswer` table. The Prisma schema had `updatedAt DateTime @updatedAt` (added during Phase 18B constructed response work), but the database was not managed by Prisma Migrate. When API endpoints used `include: { answer: true }` (SELECT *), Prisma threw because the column didn't exist in PostgreSQL. Affected:
+
+- `GET /api/test/session/[id]` → 500
+- `GET /api/test/history` → 500
+- `GET /api/test/history?limit=...` → 500
+
+## Fixes Applied
+
+### Database (prisma/schema.prisma + raw SQL)
+- [x] `UserAnswer.updatedAt` column added: `ALTER TABLE "UserAnswer" ADD COLUMN "updatedAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL`
+- [x] Prisma schema `@updatedAt` preserved for auto-update behavior
+
+### Session Endpoint (`app/api/test/session/[id]/route.ts`)
+- [x] Fixed deprecated `get`/`set`/`remove` cookies → `getAll`/`setAll`
+- [x] Items with null `questionSnapshot` are filtered out (logged warning)
+- [x] Null-safe access for all answer fields (`?? null`)
+- [x] Null-safe durationMinutes from metadata
+- [x] Safe finalScoreJson parsing (band string / percentage number)
+- [x] `session.question` relation null-safe for correctAnswer
+- [x] All numeric/date fields use optional chaining or nullish coalescing
+
+### History Endpoint (`app/api/test/history/route.ts`)
+- [x] Fixed deprecated `get`/`set`/`remove` cookies → `getAll`/`setAll`
+- [x] Per-row `safeMapSession()` with try-catch — corrupt rows return null, filtered out
+- [x] Null-safe handling for: `result`, `questionCount`, `product`, `totalScore`, `cefrLevel`, `completedAt`, `durationSeconds`, `startedAt`
+- [x] Trial sessions without TestResult → dimensions = []
+- [x] One corrupt session cannot crash entire history list
+
+### Client Page (`app/(protected)/test/[sessionId]/page.tsx`)
+- [x] Differentiated error messages: 404 → "Sesi tes tidak ditemukan", 403 → "Kamu tidak memiliki akses ke sesi ini", 500 → "Terjadi masalah saat memuat sesi"
+- [x] 404/403 → "Mulai Tes Baru" button instead of "Muat Ulang"
+- [x] Error status code tracked and displayed
+
+## Regression Checks
+- [x] Session endpoint no 500
+- [x] History endpoint no 500
+- [x] TypeScript build 0 errors
+- [x] Validator 0 errors
+- [x] Audit 0 critical errors
+- [x] Live default still Reading + Listening
+- [x] Writing/Speaking still not live default
+- [x] No participant leakage
+- [x] Trial does not issue certificate
+
+---
+
+# BIGT DB Migration Safety & Prisma Baseline QA
+
+## Prisma Baseline Migration
+- [x] `prisma/migrations/0_init/migration.sql` created with full schema (480 lines)
+- [x] Migration resolved on production DB: `prisma migrate resolve --applied 0_init`
+- [x] `prisma db push` confirms "Your database is now in sync"
+- [x] `prisma generate` succeeds
+
+## DB Health Check Endpoint
+- [x] `app/api/admin/system/db-health/route.ts` created
+- [x] Admin-only (403 for non-ADMIN)
+- [x] Checks critical tables (User, TestSession, UserAnswer, etc.)
+- [x] Checks critical UserAnswer columns (id, sessionItemId, answer, score, updatedAt, etc.)
+- [x] Checks constructed response columns (responseText, responseAudioUrl, autoScoreJson, finalScoreJson, responseStatus, etc.)
+- [x] Runtime connectivity check
+- [x] Returns structured `{ status, summary, failures, checks }`
+- [x] No stack traces or connection strings leaked to client
+
+## Owner Alert for DB Drift
+- [x] `generateOwnerAlerts()` in bigt-owner/route.ts checks `UserAnswer.updatedAt` existence
+- [x] Missing column → critical alert with "Cek DB Health" action link
+- [x] Query failure → warning "DB Health Check Gagal"
+
+## Documentation
+- [x] `docs/BIGT_DB_MIGRATION_SAFETY.md` created
+- [x] Root cause documented
+- [x] Manual SQL hotfix documented
+- [x] Prisma migration strategy documented (both db push and Prisma Migrate)
+- [x] Deployment checklist documented
+- [x] Rollback notes documented
+- [x] Verification commands documented

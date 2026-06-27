@@ -1,4 +1,4 @@
-import { createClient } from '@/lib/supabase/server'
+import { createServerClient } from '@supabase/ssr'
 import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 
@@ -8,7 +8,29 @@ export async function GET(request: Request) {
   const next = searchParams.get('next') ?? '/dashboard'
 
   if (code) {
-    const supabase = createClient()
+    const pendingCookies: { name: string; value: string; options: Record<string, unknown> }[] = []
+
+    const supabase = createServerClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
+      {
+        cookies: {
+          getAll() {
+            const cookie = request.headers.get('cookie') || ''
+            return cookie.split('; ').filter(Boolean).map(c => {
+              const eq = c.indexOf('=')
+              return { name: c.slice(0, eq), value: c.slice(eq + 1) }
+            })
+          },
+          setAll(cookiesToSet) {
+            for (const { name, value, options } of cookiesToSet) {
+              pendingCookies.push({ name, value, options: options ?? {} })
+            }
+          },
+        },
+      }
+    )
+
     const { data, error } = await supabase.auth.exchangeCodeForSession(code)
     if (!error && data.user) {
       const dbUser = await prisma.user.upsert({
@@ -23,7 +45,14 @@ export async function GET(request: Request) {
       await prisma.loginHistory.create({
         data: { userId: dbUser.id },
       })
-      return NextResponse.redirect(`${origin}${next}`)
+
+      const redirectResponse = NextResponse.redirect(`${origin}${next}`)
+
+      for (const { name, value, options } of pendingCookies) {
+        redirectResponse.cookies.set(name, value, options as Record<string, unknown>)
+      }
+
+      return redirectResponse
     }
   }
 

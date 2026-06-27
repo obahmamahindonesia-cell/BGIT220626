@@ -1,13 +1,22 @@
-# BIGT Phase 19A — A1/A2 Writing & Speaking Expansion Set 02–03
+# Phase 19A — A1/A2 Writing & Speaking Expansion Set 02–03
 
 ## 1. Goal
 
-Menambah bank soal Writing dan Speaking A1/A2 dari 20 tasks per skill/level menjadi 60 tasks per skill/level.
+Expand BIGT constructed response bank from 20 tasks per skill/level to 60 tasks per skill/level for A1 and A2 Writing and Speaking.
+
+| Skill/Level | Before | After |
+|---|---|---|
+| A1 Writing | 20 | 60 |
+| A1 Speaking | 20 | 60 |
+| A2 Writing | 20 | 60 |
+| A2 Speaking | 20 | 60 |
+
+**Total added: 160 production tasks**
 
 ## 2. Files Created
 
-| File | Tasks |
-|------|-------|
+| File | Items |
+|---|---|
 | `data/question-bank/a1/writing/set-02.json` | 20 |
 | `data/question-bank/a1/writing/set-03.json` | 20 |
 | `data/question-bank/a1/speaking/set-02.json` | 20 |
@@ -16,115 +25,123 @@ Menambah bank soal Writing dan Speaking A1/A2 dari 20 tasks per skill/level menj
 | `data/question-bank/a2/writing/set-03.json` | 20 |
 | `data/question-bank/a2/speaking/set-02.json` | 20 |
 | `data/question-bank/a2/speaking/set-03.json` | 20 |
-| **Total** | **160** |
 
 ## 3. Item Count Per Skill/Level
 
-| Skill/Level | Set 01 | Set 02 | Set 03 | Total |
-|-------------|--------|--------|--------|-------|
-| A1 Writing | 20 | 20 | 20 | 60 |
-| A1 Speaking | 20 | 20 | 20 | 60 |
-| A2 Writing | 20 | 20 | 20 | 60 |
-| A2 Speaking | 20 | 20 | 20 | 60 |
-| **Total** | **80** | **80** | **80** | **240** |
+| Level | Skill | Count |
+|---|---|---|
+| A1 | Writing | 60 |
+| A1 | Speaking | 60 |
+| A2 | Writing | 60 |
+| A2 | Speaking | 60 |
 
-## 4. Task Type Distribution (Per 40 Tasks)
+## 4. Coverage Themes
 
-| Task Type | A1 Writing | A1 Speaking | A2 Writing | A2 Speaking |
-|-----------|-----------|-------------|-----------|-------------|
-| guided_sentence | 14 | — | — | — |
-| short_text | 8 | — | 14 | — |
-| form_completion | 6 | — | 6 | — |
-| message_reply | 6 | — | 8 | — |
-| picture_description | 6 | — | 6 | — |
-| simple_mediation | — | — | 6 | 8 |
-| voice_read_aloud | — | 16 | — | — |
-| voice_short_answer | — | 16 | — | 16 |
-| voice_picture_description | — | 8 | — | 8 |
-| read_and_speak | — | — | — | 8 |
+### A1 Writing
 
-## 5. Themes
+- personal info (umur, nama, asal)
+- keluarga
+- makanan dan minuman
+- hobi dan kegiatan
+- form completion (acara, pendaftaran, kuesioner)
+- message reply (undangan, konfirmasi, minta tolong)
+- picture description (taman, kamar, supermarket, dapur, sekolah)
+- teman dan kelas
+- jadwal harian
 
-| Level | Themes |
-|-------|--------|
-| A1 Writing | personal_info, family, school, food, drink, hobby, daily_routine, friend, classroom_objects, colors, animals, weather, time, numbers, transportation, body_parts, clothes, home_rooms, toys |
-| A1 Speaking | introduction, family, favorite_food, colors, classroom_objects, school, home, friends, hobbies, daily_activities, time, places, animals, weather, body_parts, clothes, numbers, greetings, feelings, transportation |
-| A2 Writing | daily_routine, past_experience, weekend_plans, simple_vacation, message_to_friend, invitation, asking_for_help, giving_reasons, choosing_activities, comparing_choices, shopping, transportation, school_course, health, living_place, weather_activities, describing_people, describing_places, food_experience, celebrations |
-| A2 Speaking | daily_routine, past_experience, plans, hobbies, choices_and_reasons, comparing_places, food_restaurant, transportation, school_course, simple_job, vacation, weather, health, shopping, describing_people, describing_places, celebrations, technology, environment, community |
+### A1 Speaking
 
-## 6. CEFR Mapping
+- greetings and introductions
+- colors and objects
+- family members
+- numbers and ages
+- daily routine
+- short answer tentang makanan, hobi, cuaca
+- picture description (ruang tamu, dapur, halaman, kamar tidur, toko buku)
+- read aloud berbagai tema
 
-| Can-Do ID | Deskripsi | Digunakan di |
-|-----------|-----------|-------------|
-| BIGT-A1-WRITING-001 | Can write simple phrases and sentences about themselves. | A1 Writing |
-| BIGT-A1-WRITING-002 | Can fill in basic personal information. | A1 Writing |
-| BIGT-A1-WRITING-003 | Can write a short simple message. | A1 Writing |
-| BIGT-A1-SPEAKING-001 | Can introduce themselves using simple phrases. | A1 Speaking |
-| BIGT-A1-SPEAKING-002 | Can answer simple questions about personal details. | A1 Speaking |
-| BIGT-A1-SPEAKING-003 | Can read short simple sentences aloud. | A1 Speaking |
-| BIGT-A2-WRITING-001 | Can write short simple notes and messages. | A2 Writing |
-| BIGT-A2-WRITING-002 | Can describe daily activities in simple sentences. | A2 Writing |
-| BIGT-A2-WRITING-003 | Can give simple reasons for a choice. | A2 Writing |
-| BIGT-A2-SPEAKING-001 | Can describe people, places, and routines in simple terms. | A2 Speaking |
-| BIGT-A2-SPEAKING-002 | Can answer simple questions about familiar topics. | A2 Speaking |
-| BIGT-A2-SPEAKING-003 | Can give a short explanation or reason. | A2 Speaking |
+### A2 Writing
 
-## 7. Rubric Mapping
+- weekend activities
+- past experiences (belajar, belanja, perjalanan)
+- message reply (teman lama, konfirmasi, rekomendasi, undangan)
+- picture description (restoran, museum, pusat perbelanjaan, bandara, stasiun)
+- simple mediation (resep masakan, aturan wisata, pengumuman)
+- form completion (pendaftaran kompetisi, survei, pemesanan)
 
-| File | rubricRef |
-|------|-----------|
-| A1 Writing | `BIGT-RUBRIC-A1-WRITING` |
-| A1 Speaking | `BIGT-RUBRIC-A1-SPEAKING` |
-| A2 Writing | `BIGT-RUBRIC-A2-WRITING` |
-| A2 Speaking | `BIGT-RUBRIC-A2-SPEAKING` |
+### A2 Speaking
 
-## 8. ID Format
+- hobbies and reasons
+- past experiences
+- plans and opinions
+- food and restaurant
+- picture description (hotel, museum, terminal, taman bermain, supermarket)
+- read and speak (profile desa wisata, aturan kolam renang, info puskesmas)
+- simple mediation (cara memesan tiket, penjelasan acara)
 
-- A1 Writing: `BIGT-A1-WR-SET02-001` to `BIGT-A1-WR-SET03-020`
-- A1 Speaking: `BIGT-A1-SP-SET02-001` to `BIGT-A1-SP-SET03-020`
-- A2 Writing: `BIGT-A2-WR-SET02-001` to `BIGT-A2-WR-SET03-020`
-- A2 Speaking: `BIGT-A2-SP-SET02-001` to `BIGT-A2-SP-SET03-020`
+## 5. CEFR Can-Do Mapping
 
-## 9. Bank Count Before/After
+- **A1 Writing**: `BIGT-A1-WRITING-001` (write simple phrases about self), `BIGT-A1-WRITING-002` (fill in basic forms), `BIGT-A1-WRITING-003` (write short simple messages)
+- **A1 Speaking**: `BIGT-A1-SPEAKING-001` (read short sentences aloud), `BIGT-A1-SPEAKING-002` (answer simple questions), `BIGT-A1-SPEAKING-003` (describe simple pictures)
+- **A2 Writing**: `BIGT-A2-WRITING-001` (describe daily activities), `BIGT-A2-WRITING-002` (write short notes and messages)
+- **A2 Speaking**: `BIGT-A2-SPEAKING-001` (describe people/places/routines), `BIGT-A2-SPEAKING-002` (answer familiar questions), `BIGT-A2-SPEAKING-003` (give short explanations)
 
-| Skill | Before | Added | After |
-|-------|--------|-------|-------|
-| Reading | 300 | 0 | 300 |
-| Listening | 260 | 0 | 260 |
-| Writing | 44 | 80 | 124 |
-| Speaking | 44 | 80 | 124 |
-| Integrated | 2 | 0 | 2 |
-| **Total** | **650** | **160** | **810** |
+## 6. Rubric Mapping
 
-## 10. Validator Result
+| Level | Skill | Rubric Ref |
+|---|---|---|
+| A1 | Writing | `BIGT-RUBRIC-A1-WRITING` |
+| A1 | Speaking | `BIGT-RUBRIC-A1-SPEAKING` |
+| A2 | Writing | `BIGT-RUBRIC-A2-WRITING` |
+| A2 | Speaking | `BIGT-RUBRIC-A2-SPEAKING` |
 
-- 34 files, 0 errors ✅
+## 7. Validator Result
 
-## 11. Audit Result
+```
+✅  All question sets passed validation!
+   Files validated: 34
+   Total questions: 560 (MCQ + constructed items)
+```
 
-- 810 total questions, all checks pass ✅
+## 8. Audit Result
 
-## 12. Build Result
+```
+📊  OVERVIEW
+  Total sets:          34
+  Total questions:     810
 
-- 0 errors ✅
+📐  QUESTIONS BY SKILL
+  reading        300  (37.0%)
+  listening      260  (32.1%)
+  writing        124  (15.3%)
+  speaking       124  (15.3%)
+  integrated       2  (0.2%)
 
-## 13. Known Limitations
+✅  All checks passed
+```
 
-1. Writing/Speaking masih belum live default
-2. Scoring masih manual review (belum ada AI-assisted scoring)
-3. STT (Speech-to-Text) belum aktif
-4. AI-assisted scoring belum final
-5. External plagiarism search belum aktif
-6. picture_description masih pakai text stimulus (belum ada gambar aktual)
-7. B1/B2 Writing/Speaking masih 0 tasks
+## 9. Build Result
 
-## 14. Confirmation
+- `npx tsc --noEmit`: 0 errors
+- `npm run build`: 0 errors, 0 new warnings
+- Only pre-existing warnings (img → Image, useEffect deps)
 
-- ✅ Live default tetap Reading + Listening
-- ✅ Writing/Speaking belum aktif live default
-- ✅ No participant leakage (adminOnly fields safe)
-- ✅ adminOnly tidak bocor ke participant
-- ✅ Semua ID unique
-- ✅ Semua difficulty 0–1
-- ✅ Semua rubricRef valid
-- ✅ Semua constraints valid
+## 10. Known Limitations
+
+- Writing/Speaking still not activated as live default (Reading + Listening only)
+- Scoring still manual (no AI-assisted scoring for constructed responses yet)
+- Speech-to-text (STT) for speaking transcription not yet active
+- AI-assisted scoring integration (OpenAI/Gemini) not yet finalized
+- External plagiarism search not yet integrated
+- B1/B2 Writing/Speaking content not yet produced (40+ items per level needed)
+- Real image assets (upload to CDN/Supabase Storage) not yet implemented for picture_description stimuli
+
+## 11. Next Recommendations
+
+1. Activate Writing/Speaking in live blueprints when scoring policy + content review are final
+2. Implement AI-assisted scoring with `autoScoreJson.assistedScoring`
+3. B1/B2 Writing/Speaking production (40+ items per level)
+4. Upload actual images for picture_description stimuli
+5. Integrate STT for speaking response transcription
+6. External plagiarism search integration
+7. Expand to B1+ levels

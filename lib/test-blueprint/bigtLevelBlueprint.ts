@@ -35,15 +35,17 @@ export const LEVEL_BLUEPRINTS: Record<LevelBlueprintId, LevelBlueprint> = {
   A1_LEVEL_EXAM: {
     id: 'A1_LEVEL_EXAM',
     label: 'A1 Pemula',
-    description: 'Menguji pemahaman dasar dalam situasi sehari-hari.',
+    description: 'Menguji pemahaman dasar dalam situasi sehari-hari — mencakup Membaca, Mendengarkan, Menulis, dan Berbicara.',
     targetLevel: 'A1',
-    totalItems: 60,
-    estimatedDurationMinutes: 45,
-    activeSkills: ['reading', 'listening'],
-    futureSkills: ['writing', 'speaking', 'mediation', 'integrated'],
+    totalItems: 80,
+    estimatedDurationMinutes: 60,
+    activeSkills: ['reading', 'listening', 'writing', 'speaking'],
+    futureSkills: ['mediation', 'integrated'],
     sections: [
       { skill: 'reading', totalItems: 30, sourceLevels: [{ cefr: 'A1', count: 30 }] },
       { skill: 'listening', totalItems: 30, sourceLevels: [{ cefr: 'A1', count: 30 }] },
+      { skill: 'writing', totalItems: 10, sourceLevels: [{ cefr: 'A1', count: 10 }] },
+      { skill: 'speaking', totalItems: 10, sourceLevels: [{ cefr: 'A1', count: 10 }] },
     ],
     difficultyDistribution: { low: 30, medium: 45, high: 25 },
     scoring: {
@@ -62,15 +64,17 @@ export const LEVEL_BLUEPRINTS: Record<LevelBlueprintId, LevelBlueprint> = {
   A2_LEVEL_EXAM: {
     id: 'A2_LEVEL_EXAM',
     label: 'A2 Dasar',
-    description: 'Menguji pemahaman situasi sehari-hari, jadwal, layanan, dan percakapan pendek.',
+    description: 'Menguji pemahaman situasi sehari-hari, jadwal, layanan, dan percakapan pendek — mencakup Membaca, Mendengarkan, Menulis, dan Berbicara.',
     targetLevel: 'A2',
-    totalItems: 60,
-    estimatedDurationMinutes: 50,
-    activeSkills: ['reading', 'listening'],
-    futureSkills: ['writing', 'speaking', 'mediation', 'integrated'],
+    totalItems: 80,
+    estimatedDurationMinutes: 65,
+    activeSkills: ['reading', 'listening', 'writing', 'speaking'],
+    futureSkills: ['mediation', 'integrated'],
     sections: [
       { skill: 'reading', totalItems: 30, sourceLevels: [{ cefr: 'A2', count: 30 }] },
       { skill: 'listening', totalItems: 30, sourceLevels: [{ cefr: 'A2', count: 30 }] },
+      { skill: 'writing', totalItems: 10, sourceLevels: [{ cefr: 'A2', count: 10 }] },
+      { skill: 'speaking', totalItems: 10, sourceLevels: [{ cefr: 'A2', count: 10 }] },
     ],
     difficultyDistribution: { low: 25, medium: 50, high: 25 },
     scoring: {
@@ -89,12 +93,12 @@ export const LEVEL_BLUEPRINTS: Record<LevelBlueprintId, LevelBlueprint> = {
   A1_A2_PLACEMENT: {
     id: 'A1_A2_PLACEMENT',
     label: 'Tes Penempatan A1–A2',
-    description: 'Menentukan level awal pengguna secara otomatis.',
+    description: 'Menentukan level awal pengguna secara otomatis — mencakup Membaca, Mendengarkan, Menulis, dan Berbicara.',
     targetLevel: 'A1_A2',
-    totalItems: 60,
-    estimatedDurationMinutes: 50,
-    activeSkills: ['reading', 'listening'],
-    futureSkills: ['writing', 'speaking'],
+    totalItems: 70,
+    estimatedDurationMinutes: 60,
+    activeSkills: ['reading', 'listening', 'writing', 'speaking'],
+    futureSkills: [],
     sections: [
       {
         skill: 'reading', totalItems: 30,
@@ -103,6 +107,14 @@ export const LEVEL_BLUEPRINTS: Record<LevelBlueprintId, LevelBlueprint> = {
       {
         skill: 'listening', totalItems: 30,
         sourceLevels: [{ cefr: 'A1', count: 15 }, { cefr: 'A2', count: 15 }],
+      },
+      {
+        skill: 'writing', totalItems: 5,
+        sourceLevels: [{ cefr: 'A1', count: 3 }, { cefr: 'A2', count: 2 }],
+      },
+      {
+        skill: 'speaking', totalItems: 5,
+        sourceLevels: [{ cefr: 'A1', count: 3 }, { cefr: 'A2', count: 2 }],
       },
     ],
     difficultyDistribution: { low: 25, medium: 50, high: 25 },

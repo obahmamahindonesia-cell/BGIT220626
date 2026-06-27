@@ -106,14 +106,20 @@ export async function POST(
     const isLevelBlueprint = blueprintId && ['A1_LEVEL_EXAM', 'A2_LEVEL_EXAM', 'A1_A2_PLACEMENT', 'QUICK_PLACEMENT'].includes(blueprintId)
 
     if (isLevelBlueprint) {
-      const scoredItems: ScoredItem[] = session.sessionItems.map(item => {
+      const dimToSkill: Record<string, string> = {
+        READING: 'reading', LISTENING: 'listening',
+        WRITING: 'writing', SPEAKING: 'speaking',
+        INTEGRATED: 'integrated', MEDIATION: 'mediation',
+      }
+
+      const allScoredItems: ScoredItem[] = session.sessionItems.map(item => {
         const snapshot = item.questionSnapshot as any
         const code = item.question?.code || ''
         const isCorrect = item.answer?.isCorrect ?? false
         return {
           questionId: code,
           cefr: item.question?.level || snapshot?.cefr || (code.startsWith('BIGT-A1') ? 'A1' : 'A2'),
-          skill: item.dimension === 'READING' ? 'reading' : 'listening',
+          skill: (item.dimension && dimToSkill[item.dimension]) || 'reading',
           subskill: snapshot?.subskill || '',
           difficulty: item.difficulty || 5,
           isCorrect,
@@ -121,6 +127,10 @@ export async function POST(
           maxScore: item.maxScore || 10,
         }
       })
+
+      // Only auto-graded items (reading/listening) count toward the score.
+      // Writing/speaking items are manually reviewed later and don't affect auto-scoring.
+      const scoredItems = allScoredItems.filter(i => i.skill === 'reading' || i.skill === 'listening')
 
       const result = resolveLevelExamResult(session.id, blueprintId, scoredItems)
       const testResultData = mapLevelToTestResultData(result)

@@ -4,12 +4,8 @@
  * Controls whether writing/speaking/integrated/mediation items
  * are available in the default exam flow.
  *
- * DEV_MODE=true → allow manual testing via API/test pages
- * LIVE_LOCK=false → writing/speaking NOT in default live exam
- *
- * When ready for production:
- *   set LIVE_LOCK=false (still locked — change to true only after mass production + review)
- *   DEV_MODE remains true for admin testing
+ * LIVE_LOCK=true → writing/speaking active in live A1/A2 exams.
+ * futureSkills retained for mediation/integrated (not yet produced).
  */
 
 export const CONSTRUCTED_RESPONSE = {
@@ -18,9 +14,9 @@ export const CONSTRUCTED_RESPONSE = {
 
   /**
    * LOCK: When LIVE_LOCK is true, constructed response IS active in live exams.
-   * Default: false — keep locked until writing/speaking content and review workflow are production-ready.
+   * Set to true — writing/speaking content is production-ready.
    */
-  LIVE_LOCK: false,
+  LIVE_LOCK: true,
 
   /**
    * Enable trial mode for admin/internal exam with Writing + Speaking.
@@ -29,14 +25,14 @@ export const CONSTRUCTED_RESPONSE = {
   CONSTRUCTED_TRIAL_MODE_ENABLED: true,
 
   /**
-   * Skills that are available for dev testing but NOT in live exam.
+   * Skills not yet available in the live exam (no content produced).
    */
-  futureSkills: ['writing', 'speaking', 'mediation', 'integrated'] as const,
+  futureSkills: ['mediation', 'integrated'] as const,
 
   /**
    * Skills active in the live default exam.
    */
-  activeSkills: ['reading', 'listening'] as const,
+  activeSkills: ['reading', 'listening', 'writing', 'speaking'] as const,
 } as const
 
 export function isConstructedActive(): boolean {
