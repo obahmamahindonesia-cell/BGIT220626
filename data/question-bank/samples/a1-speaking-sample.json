@@ -1,0 +1,61 @@
+{
+  "setId": "BIGT-SAMPLE-SP-A1",
+  "cefr": "A1",
+  "skill": "speaking",
+  "title": "[SAMPLE] A1 Speaking — Sample Items for QA",
+  "version": "0.1.0-dev",
+  "status": "draft",
+  "itemsCount": 2,
+  "items": [
+    {
+      "id": "BIGT-A1-SP-S001-Q001",
+      "level": "A1",
+      "skill": "SPEAKING",
+      "taskType": "voice_read_aloud",
+      "responseMode": "audio",
+      "prompt": "Bacalah kalimat berikut dengan suara jelas.",
+      "instructionForCandidate": "Baca kalimat di bawah ini dengan pelafalan yang jelas. Anda punya 15 detik persiapan.",
+      "stimulus": {
+        "type": "text",
+        "text": "Selamat pagi! Nama saya Budi. Saya tinggal di Jakarta. Senang bertemu dengan Anda."
+      },
+      "constraints": {
+        "maxDurationSec": 30,
+        "preparationTimeSec": 15,
+        "responseTimeSec": 30
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-SPEAKING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-SPEAKING-001", "BIGT-A1-SPEAKING-002"],
+      "tags": ["sample", "qa", "read-aloud", "a1-speaking"],
+      "difficulty": 0.15,
+      "adminOnly": {
+        "scoringNotes": "Nilai pelafalan, intonasi, dan kelancaran. Untuk A1, target utama adalah pelafalan yang dapat dipahami."
+      }
+    },
+    {
+      "id": "BIGT-A1-SP-S001-Q002",
+      "level": "A1",
+      "skill": "SPEAKING",
+      "taskType": "voice_short_answer",
+      "responseMode": "audio",
+      "prompt": "Perkenalkan diri Anda.",
+      "instructionForCandidate": "Sebutkan nama, asal, dan satu hal tentang diri Anda. Gunakan kalimat sederhana.",
+      "constraints": {
+        "maxDurationSec": 45,
+        "preparationTimeSec": 20,
+        "responseTimeSec": 45
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-SPEAKING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-SPEAKING-003", "BIGT-A1-SPEAKING-004"],
+      "tags": ["sample", "qa", "self-introduction", "a1-speaking"],
+      "difficulty": 0.25,
+      "adminOnly": {
+        "scoringNotes": "Nilai kemampuan memperkenalkan diri, kosa kata dasar, dan pelafalan."
+      }
+    }
+  ]
+}

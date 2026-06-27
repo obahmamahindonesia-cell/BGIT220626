@@ -1,0 +1,543 @@
+{
+  "setId": "BIGT-A2-WRITING-SET03",
+  "cefr": "A2",
+  "skill": "writing",
+  "title": "A2 Writing — Produksi Terkontrol Set 03",
+  "version": "1.0.0",
+  "status": "review",
+  "itemsCount": 20,
+  "items": [
+    {
+      "id": "BIGT-A2-WR-SET03-001",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "short_text",
+      "responseMode": "text",
+      "prompt": "Ceritakan kegiatan Anda setiap pagi sebelum beraktivitas.",
+      "instructionForCandidate": "Tulis 4-5 kalimat tentang rutinitas pagi Anda. Sebutkan jam, kegiatan, dan urutannya.",
+      "constraints": {
+        "minWords": 25,
+        "maxWords": 70,
+        "responseTimeSec": 420
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-001", "BIGT-A2-WRITING-002"],
+      "tags": ["production", "a2-writing", "short-text", "daily-routine"],
+      "difficulty": 0,
+      "adminOnly": {
+        "sampleResponse": "Setiap pagi saya bangun jam lima. Saya mandi air hangat dan gosok gigi. Lalu saya sarapan nasi dan telur. Setelah itu saya siap-siap pergi ke kantor. Saya berangkat jam setengah tujuh.",
+        "scoringNotes": "Nilai urutan waktu, kosa kata kegiatan pagi, dan penggunaan 'setelah itu', 'lalu'."
+      }
+    },
+    {
+      "id": "BIGT-A2-WR-SET03-002",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "short_text",
+      "responseMode": "text",
+      "prompt": "Ceritakan pengalaman pertama kali Anda pergi ke luar negeri.",
+      "instructionForCandidate": "Tulis 4-5 kalimat tentang pengalaman pertama Anda ke luar negeri. Sebutkan negara, kejutan, dan perasaan Anda.",
+      "constraints": {
+        "minWords": 25,
+        "maxWords": 80,
+        "responseTimeSec": 420
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-001", "BIGT-A2-WRITING-002"],
+      "tags": ["production", "a2-writing", "short-text", "past-experience"],
+      "difficulty": 1,
+      "adminOnly": {
+        "sampleResponse": "Tahun lalu saya pergi ke Malaysia pertama kali. Saya naik pesawat dari Jakarta. Sesampainya di Kuala Lumpur, saya kaget karena udaranya panas. Tapi makanannya enak-enak. Saya senang bisa jalan-jalan ke negara lain.",
+        "scoringNotes": "Nilai kemampuan bercerita tentang pengalaman baru, ekspresi perasaan, dan detail perjalanan."
+      }
+    },
+    {
+      "id": "BIGT-A2-WR-SET03-003",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "short_text",
+      "responseMode": "text",
+      "prompt": "Deskripsikan sahabat Anda sejak kecil.",
+      "instructionForCandidate": "Tulis 4-5 kalimat tentang sahabat Anda. Sebutkan nama, sifat, kenangan bersama, dan mengapa Anda berteman baik.",
+      "constraints": {
+        "minWords": 25,
+        "maxWords": 80,
+        "responseTimeSec": 420
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-001", "BIGT-A2-WRITING-002"],
+      "tags": ["production", "a2-writing", "short-text", "describing-people"],
+      "difficulty": 0,
+      "adminOnly": {
+        "sampleResponse": "Sahabat saya bernama Andi. Kami berteman sejak TK. Andi orangnya jujur dan lucu. Dulu kami sering bermain sepak bola bersama. Sampai sekarang kami masih berteman baik. Andi seperti saudara bagi saya.",
+        "scoringNotes": "Nilai kosa kata sifat positif, penggunaan 'sejak', dan ekspresi kedekatan."
+      }
+    },
+    {
+      "id": "BIGT-A2-WR-SET03-004",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "short_text",
+      "responseMode": "text",
+      "prompt": "Deskripsikan kamar tidur Anda.",
+      "instructionForCandidate": "Tulis 4-5 kalimat mendeskripsikan kamar tidur Anda. Sebutkan ukuran, perabotan, warna, dan suasana kamar.",
+      "constraints": {
+        "minWords": 25,
+        "maxWords": 75,
+        "responseTimeSec": 420
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-001"],
+      "tags": ["production", "a2-writing", "short-text", "describing-places"],
+      "difficulty": 0,
+      "adminOnly": {
+        "sampleResponse": "Kamar tidur saya tidak besar tapi nyaman. Ada tempat tidur, meja belajar, dan lemari baju. Dinding kamar berwarna biru muda. Saya punya tanaman kecil di sudut kamar. Saya suka kamar saya karena rapi dan tenang.",
+        "scoringNotes": "Nilai kosa kata perabotan, warna, dan deskripsi suasana."
+      }
+    },
+    {
+      "id": "BIGT-A2-WR-SET03-005",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "short_text",
+      "responseMode": "text",
+      "prompt": "Ceritakan liburan sekolah yang paling Anda ingat.",
+      "instructionForCandidate": "Tulis 4-5 kalimat tentang liburan sekolah. Sebutkan tempat, kegiatan, dan kenangan yang berkesan.",
+      "constraints": {
+        "minWords": 25,
+        "maxWords": 80,
+        "responseTimeSec": 420
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-001", "BIGT-A2-WRITING-002"],
+      "tags": ["production", "a2-writing", "short-text", "simple-vacation"],
+      "difficulty": 1,
+      "adminOnly": {
+        "sampleResponse": "Liburan sekolah paling berkesan adalah ketika saya ke rumah nenek di desa. Saya membantu nenek memberi makan ayam. Saya juga bermain dengan sepupu-sepupu di sawah. Setiap sore kami mandi di sungai. Saya rindu suasana desa yang tenang.",
+        "scoringNotes": "Nilai kemampuan menceritakan kenangan dengan detail dan ekspresi kerinduan."
+      }
+    },
+    {
+      "id": "BIGT-A2-WR-SET03-006",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "short_text",
+      "responseMode": "text",
+      "prompt": "Ceritakan makanan kesukaan Anda dan bagaimana rasanya.",
+      "instructionForCandidate": "Tulis 4-5 kalimat tentang makanan favorit Anda. Sebutkan nama, rasa, kapan Anda memakannya, dan mengapa Anda suka.",
+      "constraints": {
+        "minWords": 25,
+        "maxWords": 75,
+        "responseTimeSec": 420
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-001", "BIGT-A2-WRITING-003"],
+      "tags": ["production", "a2-writing", "short-text", "food-experience"],
+      "difficulty": 0,
+      "adminOnly": {
+        "sampleResponse": "Makanan kesukaan saya adalah bakso. Bakso adalah daging sapi yang dibentuk bulat. Kuahnya hangat dan gurih. Saya suka makan bakso pakai mie dan pangsit. Biasanya saya makan bakso seminggu sekali karena enak dan murah.",
+        "scoringNotes": "Nilai kosa kata rasa, frekuensi, dan kemampuan memberi alasan."
+      }
+    },
+    {
+      "id": "BIGT-A2-WR-SET03-007",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "short_text",
+      "responseMode": "text",
+      "prompt": "Ceritakan kegiatan favorit Anda saat musim hujan.",
+      "instructionForCandidate": "Tulis 4-5 kalimat tentang kegiatan yang Anda lakukan saat musim hujan. Sebutkan apa yang Anda sukai dan mengapa.",
+      "constraints": {
+        "minWords": 25,
+        "maxWords": 75,
+        "responseTimeSec": 420
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-001", "BIGT-A2-WRITING-003"],
+      "tags": ["production", "a2-writing", "short-text", "weather-activities"],
+      "difficulty": 1,
+      "adminOnly": {
+        "sampleResponse": "Saat musim hujan saya suka berada di rumah. Saya minum teh hangat sambil membaca buku. Kadang-kadang saya menonton film atau memasak sup. Suara hujan membuat saya tenang. Saya suka musim hujan karena udaranya sejuk.",
+        "scoringNotes": "Nilai kosa kata cuaca dan kegiatan di rumah, ekspresi kesukaan dengan 'karena'."
+      }
+    },
+    {
+      "id": "BIGT-A2-WR-SET03-008",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "message_reply",
+      "responseMode": "text",
+      "prompt": "Seorang teman mengirim kabar bahwa dia pindah kota. Balaslah.",
+      "instructionForCandidate": "Baca pesan dari teman. Tulis balasan yang ramah dan beri semangat.",
+      "stimulus": {
+        "type": "text",
+        "text": "Pesan dari Lina:\n\"Halo, kabar baik! Aku mau kasih tahu kalau aku pindah ke Bandung minggu depan. Aku dapat pekerjaan baru di sana. Sedih ninggalin Jakarta, tapi semoga lebih baik di Bandung.\""
+      },
+      "constraints": {
+        "minWords": 25,
+        "maxWords": 70,
+        "responseTimeSec": 360
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-001", "BIGT-A2-WRITING-002"],
+      "tags": ["production", "a2-writing", "message-reply", "message-to-friend"],
+      "difficulty": 0,
+      "adminOnly": {
+        "sampleResponse": "Halo Lina! Wah selamat dapat kerja baru di Bandung! Pasti sedih pindah, tapi Bandung kota yang enak dan udaranya sejuk. Nanti kita masih bisa ketemu kalau aku main ke Bandung. Semoga sukses di kota baru!",
+        "scoringNotes": "Nilai ekspresi selamat, empati, dan semangat."
+      }
+    },
+    {
+      "id": "BIGT-A2-WR-SET03-009",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "message_reply",
+      "responseMode": "text",
+      "prompt": "Teman Anda mengundang nonton film bersama. Balaslah.",
+      "instructionForCandidate": "Baca undangan dari teman. Tulis balasan. Terima atau tolak dengan sopan.",
+      "stimulus": {
+        "type": "text",
+        "text": "Pesan dari Yoga:\n\"Hai! Ada film baru yang bagus, judulnya Petualangan di Raja Ampat. Aku mau nonton hari Minggu jam 3 di Bioskop Grand. Kamu mau ikut? Aku traktir!\""
+      },
+      "constraints": {
+        "minWords": 20,
+        "maxWords": 65,
+        "responseTimeSec": 360
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-001", "BIGT-A2-WRITING-003"],
+      "tags": ["production", "a2-writing", "message-reply", "invitation"],
+      "difficulty": 0,
+      "adminOnly": {
+        "sampleResponse": "Halo Yoga! Aku mau ikut nonton. Terima kasih traktirannya. Aku dengar filmnya bagus. Sampai jumpa hari Minggu di Bioskop Grand. Aku tunggu di depan jam tiga!",
+        "scoringNotes": "Nilai penerimaan undangan dengan antusias dan konfirmasi waktu tempat."
+      }
+    },
+    {
+      "id": "BIGT-A2-WR-SET03-010",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "message_reply",
+      "responseMode": "text",
+      "prompt": "Teman Anda minta tolong menjaga kucingnya saat dia pergi. Balaslah.",
+      "instructionForCandidate": "Baca pesan dari teman. Tulis balasan. Bersedia atau tidak, beri alasan.",
+      "stimulus": {
+        "type": "text",
+        "text": "Pesan dari Wati:\n\"Halo! Maaf tiba-tiba minta tolong. Aku mau pergi ke luar kota selama 3 hari. Kucingku, si Manis, tidak ada yang jaga. Kamu bisa bantu kasih makan kucingku? Tolong banget!\""
+      },
+      "constraints": {
+        "minWords": 25,
+        "maxWords": 70,
+        "responseTimeSec": 360
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-001", "BIGT-A2-WRITING-003"],
+      "tags": ["production", "a2-writing", "message-reply", "asking-for-help"],
+      "difficulty": 1,
+      "adminOnly": {
+        "sampleResponse": "Halo Wati! Tentu aku bisa bantu jaga si Manis. Aku suka kucing. Kasih tahu saja makanan dan jam makannya. Jangan khawatir, si Manis akan aku rawat baik-baik. Selamat jalan!",
+        "scoringNotes": "Nilai kesediaan membantu, pertanyaan detail, dan empati."
+      }
+    },
+    {
+      "id": "BIGT-A2-WR-SET03-011",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "message_reply",
+      "responseMode": "text",
+      "prompt": "Teman Anda bertanya alasan Anda memilih jurusan tertentu. Balaslah.",
+      "instructionForCandidate": "Baca pesan dari teman. Tulis balasan dengan alasan yang jelas.",
+      "stimulus": {
+        "type": "text",
+        "text": "Pesan dari Rian:\n\"Hai! Aku dengar kamu ambil jurusan pariwisata. Kenapa kamu pilih jurusan itu? Apa prospeknya bagus? Aku masih bingung mau ambil jurusan apa.\""
+      },
+      "constraints": {
+        "minWords": 25,
+        "maxWords": 75,
+        "responseTimeSec": 360
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-002", "BIGT-A2-WRITING-003"],
+      "tags": ["production", "a2-writing", "message-reply", "giving-reasons"],
+      "difficulty": 1,
+      "adminOnly": {
+        "sampleResponse": "Halo Rian! Aku ambil pariwisata karena aku suka bertemu orang baru. Indonesia juga banyak tempat wisata yang indah. Lulus nanti bisa kerja di hotel, maskapai, atau agen perjalanan. Kamu harus pilih jurusan yang sesuai dengan minatmu.",
+        "scoringNotes": "Nilai kemampuan memberi alasan dengan 'karena', informasi prospek, dan saran."
+      }
+    },
+    {
+      "id": "BIGT-A2-WR-SET03-012",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "picture_description",
+      "responseMode": "text",
+      "prompt": "Deskripsikan gambar suasana pernikahan adat.",
+      "instructionForCandidate": "Tulis 4-5 kalimat mendeskripsikan gambar. Sebutkan pakaian, dekorasi, dan orang-orangnya.",
+      "stimulus": {
+        "type": "text",
+        "text": "Gambar: Sebuah pesta pernikahan adat Jawa. Pengantin wanita memakai kebaya dan kain batik. Pengantin pria memakai beskap dan blangkon. Keluarga duduk rapi di kursi pelaminan. Hiasan bunga melati di mana-mana. Para tamu memakai pakaian tradisional yang indah."
+      },
+      "constraints": {
+        "minWords": 25,
+        "maxWords": 75,
+        "responseTimeSec": 360
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-001"],
+      "tags": ["production", "a2-writing", "picture-description", "celebrations"],
+      "difficulty": 0,
+      "adminOnly": {
+        "sampleResponse": "Di gambar ada pesta pernikahan adat Jawa. Pengantin wanita memakai kebaya dan batik. Pengantin pria memakai beskap. Keluarga duduk di kursi pelaminan. Ada hiasan bunga melati di ruangan. Tamu-tamu memakai pakaian tradisional yang bagus.",
+        "scoringNotes": "Nilai kosa kata pakaian adat, dekorasi, dan budaya."
+      }
+    },
+    {
+      "id": "BIGT-A2-WR-SET03-013",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "picture_description",
+      "responseMode": "text",
+      "prompt": "Deskripsikan gambar suasana di pusat perbelanjaan.",
+      "instructionForCandidate": "Tulis 4-5 kalimat mendeskripsikan gambar. Sebutkan toko, orang, dan kegiatan.",
+      "stimulus": {
+        "type": "text",
+        "text": "Gambar: Mal atau pusat perbelanjaan yang ramai. Ada toko-toko di kiri dan kanan lorong. Orang-orang berjalan sambil membawa belanjaan. Sebuah eskalator di tengah menghubungkan lantai. Beberapa anak bermain di area bermain. Lampu-lampu terang membuat suasana hidup."
+      },
+      "constraints": {
+        "minWords": 25,
+        "maxWords": 75,
+        "responseTimeSec": 360
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-001"],
+      "tags": ["production", "a2-writing", "picture-description", "shopping"],
+      "difficulty": 1,
+      "adminOnly": {
+        "sampleResponse": "Di gambar ada mal yang ramai. Ada banyak toko di kiri dan kanan. Orang-orang berjalan sambil bawa belanjaan. Ada eskalator di tengah mal. Anak-anak bermain di area bermain. Suasananya hidup dan terang.",
+        "scoringNotes": "Nilai kosa kata tempat umum dan kegiatan berbelanja."
+      }
+    },
+    {
+      "id": "BIGT-A2-WR-SET03-014",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "picture_description",
+      "responseMode": "text",
+      "prompt": "Deskripsikan gambar orang sedang berolahraga.",
+      "instructionForCandidate": "Tulis 4-5 kalimat mendeskripsikan gambar. Sebutkan jenis olahraga, pakaian, dan lingkungan.",
+      "stimulus": {
+        "type": "text",
+        "text": "Gambar: Sebuah taman kota pagi hari. Beberapa orang memakai baju olahraga. Ada yang berlari di jalur jogging. Ada yang bersepeda santai. Sekelompok ibu-ibu melakukan senam di lapangan rumput. Pepohonan rindang di pinggir taman. Udaranya segar."
+      },
+      "constraints": {
+        "minWords": 25,
+        "maxWords": 75,
+        "responseTimeSec": 360
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-001"],
+      "tags": ["production", "a2-writing", "picture-description", "health"],
+      "difficulty": 0,
+      "adminOnly": {
+        "sampleResponse": "Di gambar ada taman kota di pagi hari. Orang-orang memakai baju olahraga. Ada yang lari dan bersepeda. Ibu-ibu senam di lapangan rumput. Pohon-pohon rindang di pinggir taman. Udaranya segar. Suasananya sehat dan bersemangat.",
+        "scoringNotes": "Nilai kosa kata olahraga dan alam."
+      }
+    },
+    {
+      "id": "BIGT-A2-WR-SET03-015",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "simple_mediation",
+      "responseMode": "text",
+      "prompt": "Seorang teman asing mendapat informasi jadwal bus wisata. Jelaskan.",
+      "instructionForCandidate": "Baca informasi di bawah. Jelaskan jadwal dan rute bus dengan sederhana.",
+      "stimulus": {
+        "type": "text",
+        "text": "INFORMASI BUS WISATA KOTA — BUS SURABAYA TOUR\n\nRute: Tunjungan → House of Sampoerna → Kebun Binatang → Pantai Kenjeran\nJam Operasional: 08.00–17.00 setiap hari\nFrekuensi: setiap 30 menit\nHarga Tiket: Rp 20.000 (dewasa), Rp 10.000 (anak)\nTiket bisa dibeli di dalam bus atau di halte"
+      },
+      "constraints": {
+        "minWords": 25,
+        "maxWords": 80,
+        "responseTimeSec": 360
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-001", "BIGT-A2-WRITING-002"],
+      "tags": ["production", "a2-writing", "simple-mediation", "transportation"],
+      "difficulty": 1,
+      "adminOnly": {
+        "sampleResponse": "Ini bus wisata Surabaya. Rutenya dari Tunjungan sampai Pantai Kenjeran. Bus berjalan dari jam delapan pagi sampai jam lima sore. Ada bus setiap 30 menit. Tiket dewasa dua puluh ribu, anak-anak sepuluh ribu. Kamu bisa beli di dalam bus atau di halte.",
+        "scoringNotes": "Nilai kemampuan menyampaikan jadwal, rute, dan harga."
+      }
+    },
+    {
+      "id": "BIGT-A2-WR-SET03-016",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "simple_mediation",
+      "responseMode": "text",
+      "prompt": "Seorang teman asing mendapat pengumuman libur nasional. Jelaskan.",
+      "instructionForCandidate": "Baca pengumuman di bawah. Jelaskan hari libur dan artinya dengan sederhana.",
+      "stimulus": {
+        "type": "text",
+        "text": "PENGUMUMAN HARI LIBUR NASIONAL — JUNI 2026\n\n1 Juni: Hari Lahir Pancasila\n5–6 Juni: Hari Raya Idul Fitri\n17 Juni: Hari Raya Waisak\n\nSemua kantor pemerintah dan sekolah libur. Pusat perbelanjaan dan restoran tetap buka seperti biasa."
+      },
+      "constraints": {
+        "minWords": 25,
+        "maxWords": 75,
+        "responseTimeSec": 360
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-001", "BIGT-A2-WRITING-002"],
+      "tags": ["production", "a2-writing", "simple-mediation", "school-course"],
+      "difficulty": 0,
+      "adminOnly": {
+        "sampleResponse": "Ini pengumuman hari libur nasional bulan Juni. Tanggal 1 Juni libur Hari Lahir Pancasila. Tanggal 5 sampai 6 Juni libur Idul Fitri. Tanggal 17 Juni libur Waisak. Kantor dan sekolah libur. Mal dan restoran tetap buka.",
+        "scoringNotes": "Nilai kemampuan menyampaikan informasi tanggal dan jenis liburan nasional."
+      }
+    },
+    {
+      "id": "BIGT-A2-WR-SET03-017",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "simple_mediation",
+      "responseMode": "text",
+      "prompt": "Seorang tetangga asing mendapat informasi acara kerja bakti. Jelaskan.",
+      "instructionForCandidate": "Baca pengumuman di bawah. Jelaskan kegiatan dengan sederhana untuk tetangga asing.",
+      "stimulus": {
+        "type": "text",
+        "text": "PENGUMUMAN KERJA BAKTI DAN ACARA LINGKUNGAN:\n\nHari: Sabtu, 15 Juli 2026\nKegiatan:\n- 07.00–08.00: Senam bersama\n- 08.00–10.00: Bersih-bersih lingkungan\n- 10.00–11.00: Sarapan bersama\n- 11.00–12.00: Pengumuman lomba 17 Agustusan\n\nTempat: Lapangan RT 03\nBawa: Sapu, kantong sampah, dan makanan ringan"
+      },
+      "constraints": {
+        "minWords": 25,
+        "maxWords": 80,
+        "responseTimeSec": 360
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-001", "BIGT-A2-WRITING-002"],
+      "tags": ["production", "a2-writing", "simple-mediation", "community"],
+      "difficulty": 1,
+      "adminOnly": {
+        "sampleResponse": "Ini acara lingkungan hari Sabtu, 15 Juli. Pagi-pagi kita senam bersama dulu. Lalu bersih-bersih lingkungan. Setelah itu sarapan bersama. Terakhir ada pengumuman lomba. Kamu harus bawa sapu dan kantong sampah. Acaranya di lapangan RT 03.",
+        "scoringNotes": "Nilai kemampuan menyampaikan jadwal kegiatan dengan sederhana."
+      }
+    },
+    {
+      "id": "BIGT-A2-WR-SET03-018",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "form_completion",
+      "responseMode": "text",
+      "prompt": "Isi formulir pendaftaran kelas memasak.",
+      "instructionForCandidate": "Lengkapi formulir pendaftaran kelas memasak dengan informasi Anda.",
+      "stimulus": {
+        "type": "text",
+        "text": "FORMULIR PENDAFTARAN KELAS MEMASAK — DAPUR SERU\n\nNama Lengkap:\nUsia:\nPengalaman Memasak (Pemula / Menengah / Mahir):\nMasakan yang Ingin Dipelajari:\nAlergi Makanan (jika ada):\nJadwal Pilihan (Sabtu pagi / Sabtu siang / Minggu pagi):\nAlasan ingin mengikuti kelas:"
+      },
+      "constraints": {
+        "minWords": 20,
+        "maxWords": 70,
+        "responseTimeSec": 330
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-002"],
+      "tags": ["production", "a2-writing", "form-completion", "choosing-activities"],
+      "difficulty": 0,
+      "adminOnly": {
+        "sampleResponse": "Nama Lengkap: Maya Putri\nUsia: 24 tahun\nPengalaman Memasak: Pemula\nMasakan yang Ingin Dipelajari: Masakan Indonesia seperti rendang dan sate\nAlergi Makanan: Tidak ada\nJadwal Pilihan: Sabtu pagi\nAlasan: Ingin bisa masak makanan Indonesia untuk keluarga",
+        "scoringNotes": "Nilai kelengkapan data dan kosa kata memasak."
+      }
+    },
+    {
+      "id": "BIGT-A2-WR-SET03-019",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "form_completion",
+      "responseMode": "text",
+      "prompt": "Isi formulir pemesanan kamar hotel.",
+      "instructionForCandidate": "Lengkapi formulir pemesanan kamar hotel dengan informasi perjalanan Anda.",
+      "stimulus": {
+        "type": "text",
+        "text": "FORMULIR PEMESANAN KAMAR — HOTEL SEJAHTERA\n\nNama Tamu:\nTanggal Check-in:\nTanggal Check-out:\nTipe Kamar (Standar / Deluxe / Suite):\nJumlah Tamu:\nPermintaan Khusus (misal: bantal tambahan, kamar non-rokok):\nMetode Pembayaran (Tunai / Kartu / Transfer):"
+      },
+      "constraints": {
+        "minWords": 15,
+        "maxWords": 60,
+        "responseTimeSec": 300
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-002"],
+      "tags": ["production", "a2-writing", "form-completion", "comparing-choices"],
+      "difficulty": 0,
+      "adminOnly": {
+        "sampleResponse": "Nama Tamu: Andi Pratama\nTanggal Check-in: 20 Agustus 2026\nTanggal Check-out: 22 Agustus 2026\nTipe Kamar: Deluxe\nJumlah Tamu: 2 orang\nPermintaan Khusus: Kamar non-rokok dan bantal ekstra\nMetode Pembayaran: Kartu kredit",
+        "scoringNotes": "Nilai kosa kata perhotelan dan ketepatan informasi."
+      }
+    },
+    {
+      "id": "BIGT-A2-WR-SET03-020",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "form_completion",
+      "responseMode": "text",
+      "prompt": "Isi formulir permintaan informasi di pusat wisata.",
+      "instructionForCandidate": "Lengkapi formulir permintaan informasi wisata. Tulis dengan jelas.",
+      "stimulus": {
+        "type": "text",
+        "text": "FORMULIR PERMINTAAN INFORMASI — PUSAT INFORMASI WISATA\n\nNama:\nKewarganegaraan:\nBahasa:\nTempat Wisata yang Ingin Dikunjungi:\nTanggal Kunjungan:\nJumlah Orang:\nTransportasi yang Digunakan:\nInformasi Tambahan yang Dibutuhkan (hotel / tiket / pemandu / lainnya):"
+      },
+      "constraints": {
+        "minWords": 15,
+        "maxWords": 65,
+        "responseTimeSec": 300
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-002"],
+      "tags": ["production", "a2-writing", "form-completion", "living-place"],
+      "difficulty": 1,
+      "adminOnly": {
+        "sampleResponse": "Nama: Zhang Wei\nKewarganegaraan: Tiongkok\nBahasa: Mandarin, Inggris\nTempat Wisata: Candi Borobudur dan Malioboro\nTanggal Kunjungan: 5 September 2026\nJumlah Orang: 3\nTransportasi: Bus\nInformasi Tambahan: Perlu pemandu bahasa Mandarin dan rekomendasi hotel",
+        "scoringNotes": "Nilai kosa kata pariwisata dan kemampuan meminta informasi."
+      }
+    }
+  ]
+}

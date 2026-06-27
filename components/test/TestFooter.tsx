@@ -33,12 +33,44 @@ export default function TestFooter() {
     setSubmitting(true)
     try {
       const state = useTestStore.getState()
+      const activeSessionId = state.sessionId
+      if (!activeSessionId) return
 
       // Flush all pending auto-saves by saving unanswered questions
       const savePromises = state.questions.map(q => {
         const answer = state.answers[q.id]
         if (!answer) return Promise.resolve()
-        return fetch(`/api/test/session/${sessionId}/answer`, {
+
+        const responseMode = q.content?.responseMode
+
+        // Constructed response → dedicated endpoint
+        if (responseMode === 'audio' || responseMode === 'text_audio' || (responseMode === 'text' && answer.text)) {
+          if (answer._audioBlob) {
+            const formData = new FormData()
+            formData.append('sessionId', activeSessionId)
+            formData.append('sessionItemId', q.id)
+            formData.append('responseMode', responseMode || 'text')
+            formData.append('responseText', answer.text || '')
+            formData.append('audio', answer._audioBlob, 'recording.webm')
+            formData.append('audioDurationSec', String(answer.audioDuration || 0))
+            return fetch('/api/test/constructed/submit', { method: 'POST', body: formData }).catch(() => {})
+          }
+          return fetch('/api/test/constructed/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              sessionId: activeSessionId,
+              sessionItemId: q.id,
+              responseMode: responseMode || 'text',
+              responseText: answer.text || null,
+              audioUrl: answer.audioUrl || null,
+              audioDurationSec: answer.audioDuration || null,
+            }),
+          }).catch(() => {})
+        }
+
+        // Standard MCQ / short answer
+        return fetch(`/api/test/session/${activeSessionId}/answer`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -51,7 +83,7 @@ export default function TestFooter() {
 
       const durationSeconds = state.durationMinutes * 60 - state.timeRemaining
 
-      const res = await fetch(`/api/test/session/${sessionId}/complete`, {
+      const res = await fetch(`/api/test/session/${activeSessionId}/complete`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ durationSeconds }),
@@ -60,7 +92,7 @@ export default function TestFooter() {
       if (!res.ok) throw new Error('Failed to complete test')
 
       finishTest()
-      router.push(`/test/${sessionId}/results`)
+      router.push(`/test/${activeSessionId}/results`)
     } catch {
       alert('Gagal menyelesaikan tes. Silakan coba lagi.')
     } finally {

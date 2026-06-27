@@ -49,7 +49,7 @@ function loadAllSets(): QuestionSet[] {
     for (const entry of entries) {
       const fullPath = path.join(dir, entry.name)
       if (entry.isDirectory()) {
-        if (entry.name === 'audio-manifests') return
+        if (entry.name === 'audio-manifests') continue
         walkDir(fullPath)
       } else if (entry.isFile() && entry.name.endsWith('.json')) {
         try {
@@ -75,6 +75,23 @@ function collectItems(sets: QuestionSet[]): Item[] {
     }
     if (set.skill === 'listening' && set.items) {
       items.push(...set.items)
+    }
+    if (['writing', 'speaking', 'integrated'].includes(set.skill) && (set as any).items) {
+      const cs = set as any
+      for (const item of cs.items) {
+        items.push({
+          questionId: item.id || item.questionId,
+          type: item.responseMode === 'audio' ? 'audio_response' : 'essay',
+          subskill: item.taskType,
+          difficulty: item.difficulty,
+          prompt: item.prompt,
+          options: undefined,
+          answer: item.adminOnly?.sampleResponse || '',
+          explanation: item.adminOnly?.scoringNotes || '',
+          points: item.maxScore || 10,
+          topic: item.skill || '',
+        })
+      }
     }
   }
   return items
@@ -125,8 +142,12 @@ function main() {
     const pct = items.length > 0 ? ((c / items.length) * 100).toFixed(1) : '0.0'
     console.log(`  ${level.padEnd(6)} ${String(c).padStart(5)}  (${pct}%)`)
     if (c === 0) {
-      hasCriticalIssues = true
-      console.log(`                 ❌  Zero questions for ${level}`)
+      if (['A1', 'A2'].includes(level)) {
+        hasCriticalIssues = true
+        console.log(`                 ❌  Zero questions for ${level}`)
+      } else {
+        console.log(`                 ⚠️  No questions for ${level} (not yet active)`)
+      }
     }
   }
 
@@ -176,6 +197,7 @@ function main() {
   console.log('\n❌  ANSWER VALIDATION')
   let missing = 0
   for (const item of items) {
+    if (['essay', 'audio_response'].includes(item.type)) continue
     if (!item.answer) {
       missing++
       console.log(`  ❌  ${item.questionId}: no answer`)
@@ -229,6 +251,8 @@ function main() {
       for (const p of set.passages) actual += p.items.length
     } else if (set.skill === 'listening' && set.items) {
       actual = set.items.length
+    } else if (['writing', 'speaking', 'integrated'].includes(set.skill) && (set as any).items) {
+      actual = (set as any).items.length
     }
     if (actual !== set.itemsCount) {
       console.log(`  ❌  ${set.setId}: declared ${set.itemsCount}, actual ${actual}`)

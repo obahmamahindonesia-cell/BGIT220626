@@ -1,6 +1,6 @@
 import { prisma } from '@/lib/prisma'
 import { getCorrectAnswer, getExplanation } from '@/lib/question-bank/loadQuestionBank'
-import type { QuestionSet, ReadingSet, ListeningSet } from '@/types/question-bank'
+import type { QuestionSet, ReadingSet, ListeningSet, ConstructedSet, ConstructedResponseItem } from '@/types/question-bank'
 
 const SKILL_TO_DIMENSION: Record<string, 'LISTENING' | 'READING' | 'SPEAKING' | 'WRITING' | 'INTEGRATED'> = {
   listening: 'LISTENING',
@@ -10,11 +10,20 @@ const SKILL_TO_DIMENSION: Record<string, 'LISTENING' | 'READING' | 'SPEAKING' | 
   integrated: 'INTEGRATED',
 }
 
-const TYPE_MAP: Record<string, 'MCQ' | 'SHORT_ANSWER'> = {
+const TYPE_MAP: Record<string, 'MCQ' | 'SHORT_ANSWER' | 'ESSAY' | 'AUDIO_RESPONSE' | 'INTEGRATED_TASK'> = {
   multiple_choice: 'MCQ',
   true_false: 'MCQ',
   matching: 'MCQ',
   short_answer: 'SHORT_ANSWER',
+  essay: 'ESSAY',
+  audio_response: 'AUDIO_RESPONSE',
+  integrated_task: 'INTEGRATED_TASK',
+}
+
+const CONSTRUCTED_TYPE_MAP: Record<string, 'ESSAY' | 'AUDIO_RESPONSE' | 'INTEGRATED_TASK'> = {
+  text: 'ESSAY',
+  audio: 'AUDIO_RESPONSE',
+  text_audio: 'AUDIO_RESPONSE',
 }
 
 const CEFR_MAP: Record<string, 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2'> = {
@@ -76,6 +85,33 @@ export async function syncQuestionItem(questionId: string): Promise<string | nul
 
           return created.id
         }
+      }
+    }
+
+    if (['writing', 'speaking', 'integrated'].includes(set.skill)) {
+      const cs = set as ConstructedSet
+      for (const item of cs.items) {
+        if (item.id !== questionId) continue
+
+        const qType = CONSTRUCTED_TYPE_MAP[item.responseMode] || 'ESSAY'
+        const created = await prisma.questionItem.create({
+          data: {
+            code: item.id,
+            dimension: dim,
+            subskill: item.taskType,
+            questionType: qType,
+            level: cefr,
+            difficulty: Math.max(1, Math.round((item.difficulty || 0.5) * 18)),
+            topic: item.tags?.[0] || '',
+            prompt: item.prompt,
+            correctAnswer: item.adminOnly?.sampleResponse || '',
+            explanation: item.adminOnly?.scoringNotes || '',
+            status: 'DRAFT',
+            tags: ['file-bank', `source:${set.setId}`],
+          },
+        })
+
+        return created.id
       }
     }
 

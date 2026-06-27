@@ -59,13 +59,47 @@ interface ListeningSet {
   items: ListeningItem[]
 }
 
-type QuestionSet = ReadingSet | ListeningSet
+interface ConstructedResponseItem {
+  id: string
+  level: string
+  skill: string
+  taskType: string
+  responseMode: string
+  prompt: string
+  instructionForCandidate: string
+  stimulus?: { type: string; text?: string; imageUrl?: string; audioUrl?: string; transcript?: string }
+  constraints: { minWords?: number; maxWords?: number; minDurationSec?: number; maxDurationSec?: number; preparationTimeSec?: number; responseTimeSec?: number }
+  rubricRef: string
+  maxScore: number
+  scoringMode: string
+  cefrCanDo: string[]
+  tags: string[]
+  difficulty: number
+  adminOnly?: { sampleResponse?: string; explanation?: string; scoringNotes?: string; scoringLogic?: unknown; transcript?: string }
+}
+
+interface ConstructedSet {
+  setId: string
+  cefr: string
+  skill: string
+  title: string
+  version: string
+  status: string
+  itemsCount: number
+  items: ConstructedResponseItem[]
+}
+
+type QuestionSet = ReadingSet | ListeningSet | ConstructedSet
 
 const VALID_CEFR = new Set(['A1', 'A2', 'B1', 'B2', 'C1', 'C2'])
 const VALID_SKILLS = new Set(['reading', 'listening', 'writing', 'speaking', 'integrated'])
 const VALID_TYPES = new Set(['multiple_choice', 'true_false', 'matching', 'short_answer', 'essay', 'audio_response', 'integrated_task'])
 const VALID_STATUSES = new Set(['draft', 'review', 'published', 'retired'])
 const VALID_CEFR_PATTERN = /^A[12]|B[12]|C[12]$/
+const VALID_CONSTRUCTED_SKILLS = new Set(['WRITING', 'SPEAKING', 'INTEGRATED', 'MEDIATION'])
+const VALID_TASK_TYPES = new Set(['short_text', 'form_completion', 'message_reply', 'picture_description', 'guided_sentence', 'voice_read_aloud', 'voice_short_answer', 'voice_picture_description', 'listen_and_write', 'read_and_speak', 'simple_mediation'])
+const VALID_RESPONSE_MODES = new Set(['text', 'audio', 'text_audio'])
+const VALID_SCORING_MODES = new Set(['manual', 'assisted', 'auto_draft'])
 
 interface ValidationError {
   file: string
@@ -250,6 +284,93 @@ function validateListeningSet(file: string, set: ListeningSet) {
   }
 }
 
+function validateConstructedItem(file: string, item: ConstructedResponseItem) {
+  if (!item.id || item.id.trim().length === 0) {
+    addError(file, 'id', 'Constructed item id tidak boleh kosong.')
+  }
+  if (!item.level || !VALID_CEFR.has(item.level)) {
+    addError(file, 'level', `Level "${item.level}" tidak valid.`)
+  }
+  if (!item.skill || !VALID_CONSTRUCTED_SKILLS.has(item.skill)) {
+    addError(file, 'skill', `Skill "${item.skill}" tidak valid. Harus WRITING/SPEAKING/INTEGRATED/MEDIATION.`, item.id)
+  }
+  if (!item.taskType || !VALID_TASK_TYPES.has(item.taskType)) {
+    addError(file, 'taskType', `taskType "${item.taskType}" tidak valid.`, item.id)
+  }
+  if (!item.responseMode || !VALID_RESPONSE_MODES.has(item.responseMode)) {
+    addError(file, 'responseMode', `responseMode "${item.responseMode}" tidak valid.`, item.id)
+  }
+  if (!item.prompt || item.prompt.trim().length === 0) {
+    addError(file, 'prompt', 'prompt tidak boleh kosong.', item.id)
+  }
+  if (!item.instructionForCandidate || item.instructionForCandidate.trim().length === 0) {
+    addError(file, 'instructionForCandidate', 'instructionForCandidate tidak boleh kosong.', item.id)
+  }
+  if (!item.rubricRef || item.rubricRef.trim().length === 0) {
+    addError(file, 'rubricRef', 'rubricRef tidak boleh kosong.', item.id)
+  }
+  if (!item.maxScore || item.maxScore <= 0) {
+    addError(file, 'maxScore', `maxScore harus > 0, mendapat ${item.maxScore}.`, item.id)
+  }
+  if (!item.scoringMode || !VALID_SCORING_MODES.has(item.scoringMode)) {
+    addError(file, 'scoringMode', `scoringMode "${item.scoringMode}" tidak valid.`, item.id)
+  }
+  if (!item.cefrCanDo || item.cefrCanDo.length === 0) {
+    addError(file, 'cefrCanDo', 'cefrCanDo tidak boleh kosong.', item.id)
+  }
+  if (!item.tags || item.tags.length === 0) {
+    addError(file, 'tags', 'tags tidak boleh kosong.', item.id)
+  }
+  if (item.difficulty < 0 || item.difficulty > 1) {
+    addError(file, 'difficulty', `difficulty harus 0–1, mendapat ${item.difficulty}.`, item.id)
+  }
+
+  // Constraints validation
+  const c = item.constraints
+  if (item.responseMode === 'text' || item.responseMode === 'text_audio') {
+    if (c.maxWords && c.maxWords < 5) {
+      addError(file, 'constraints.maxWords', `maxWords terlalu kecil (${c.maxWords}).`, item.id)
+    }
+    if (c.minWords && c.maxWords && c.minWords > c.maxWords) {
+      addError(file, 'constraints.minWords', `minWords (${c.minWords}) > maxWords (${c.maxWords}).`, item.id)
+    }
+  }
+  if (item.responseMode === 'audio' || item.responseMode === 'text_audio') {
+    if (c.maxDurationSec && c.maxDurationSec < 10) {
+      addError(file, 'constraints.maxDurationSec', `maxDurationSec terlalu kecil (${c.maxDurationSec}).`, item.id)
+    }
+    if (c.minDurationSec && c.maxDurationSec && c.minDurationSec > c.maxDurationSec) {
+      addError(file, 'constraints.minDurationSec', `minDurationSec (${c.minDurationSec}) > maxDurationSec (${c.maxDurationSec}).`, item.id)
+    }
+  }
+
+  // Stimulus audio transcript must remain in adminOnly
+  if (item.stimulus?.type === 'audio' && item.stimulus?.transcript) {
+    // Transcript is only for admin review — OK to have here but must not leak to participant
+  }
+
+  // adminOnly checks
+  if (item.adminOnly?.transcript && item.stimulus?.type !== 'audio') {
+    // transcript in adminOnly is fine even without audio stimulus
+  }
+}
+
+function validateConstructedSet(file: string, set: ConstructedSet) {
+  if (!VALID_SKILLS.has(set.skill)) {
+    addError(file, 'skill', `Skill "${set.skill}" tidak sesuai untuk file constructed.`)
+  }
+  if (!set.items || set.items.length === 0) {
+    addError(file, 'items', 'Tidak ada items.')
+    return
+  }
+  for (const item of set.items) {
+    validateConstructedItem(file, item)
+  }
+  if (set.itemsCount !== set.items.length) {
+    addError(file, 'itemsCount', `itemsCount ${set.itemsCount} tidak sesuai jumlah aktual ${set.items.length}.`)
+  }
+}
+
 function validateSet(file: string, set: QuestionSet) {
   // setId
   if (!set.setId || set.setId.trim().length === 0) {
@@ -280,6 +401,8 @@ function validateSet(file: string, set: QuestionSet) {
     validateReadingSet(file, set as ReadingSet)
   } else if (set.skill === 'listening') {
     validateListeningSet(file, set as ListeningSet)
+  } else if (['writing', 'speaking', 'integrated'].includes(set.skill)) {
+    validateConstructedSet(file, set as ConstructedSet)
   } else {
     addError(file, 'skill', `Validasi untuk skill "${set.skill}" belum diimplementasikan.`)
   }
@@ -298,7 +421,7 @@ function main() {
     for (const entry of entries) {
       const fullPath = path.join(dir, entry.name)
       if (entry.isDirectory()) {
-        if (entry.name === 'audio-manifests') return
+        if (entry.name === 'audio-manifests') continue
         walkDir(fullPath)
       } else if (entry.isFile() && entry.name.endsWith('.json')) {
         files.push(fullPath)

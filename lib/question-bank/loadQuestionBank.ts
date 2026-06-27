@@ -24,6 +24,7 @@ function loadAllSets(): Map<string, QuestionSet> {
     for (const entry of entries) {
       const fullPath = path.join(dir, entry.name)
       if (entry.isDirectory()) {
+        if (entry.name === 'audio-manifests') continue
         walkDir(fullPath)
       } else if (entry.isFile() && entry.name.endsWith('.json')) {
         try {

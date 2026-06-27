@@ -3,15 +3,19 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Button } from '@/components/ui/button'
-import { LayoutDashboard, PenSquare, ClipboardList, Award, ArrowLeft, Upload, FileText } from 'lucide-react'
+import { LayoutDashboard, PenSquare, ClipboardList, Award, ArrowLeft, Upload, FileText, MessageSquareText, FlaskConical, Gauge, ShieldCheck } from 'lucide-react'
 
 const NAV_ITEMS = [
   { href: '/admin', label: 'Dasbor', icon: LayoutDashboard },
+  { href: '/admin/bigt-overview', label: 'BIGT Owner', icon: ShieldCheck },
   { href: '/admin/questions', label: 'Bank Soal (DB)', icon: PenSquare },
   { href: '/admin/questions/upload', label: 'Unggah Soal', icon: Upload },
   { href: '/admin/question-bank', label: 'Bank Soal (File)', icon: FileText },
   { href: '/admin/waitlist', label: 'Daftar Tunggu', icon: ClipboardList },
   { href: '/admin/certificates', label: 'Sertifikat', icon: Award },
+  { href: '/admin/constructed-review', label: 'Review Menulis/Bicara', icon: MessageSquareText },
+  { href: '/admin/trial', label: 'Uji Coba', icon: FlaskConical },
+  { href: '/admin/full-skills-readiness', label: 'Kesiapan Full Skills', icon: Gauge },
 ]
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {

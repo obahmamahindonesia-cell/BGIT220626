@@ -1,0 +1,531 @@
+{
+  "setId": "BIGT-A1-SPEAKING-SET02",
+  "cefr": "A1",
+  "skill": "speaking",
+  "title": "A1 Speaking — Produksi Terkontrol Set 02",
+  "version": "1.0.0",
+  "status": "review",
+  "itemsCount": 20,
+  "items": [
+    {
+      "id": "BIGT-A1-SP-SET02-001",
+      "level": "A1",
+      "skill": "SPEAKING",
+      "taskType": "voice_read_aloud",
+      "responseMode": "audio",
+      "prompt": "Bacalah kalimat berikut dengan suara jelas.",
+      "instructionForCandidate": "Baca kalimat tentang sapaan. Baca dengan pelan dan jelas.",
+      "stimulus": {
+        "type": "text",
+        "text": "Selamat pagi! Nama saya Rina. Saya siswa kelas satu. Senang berkenalan dengan Anda."
+      },
+      "constraints": {
+        "maxDurationSec": 20,
+        "preparationTimeSec": 10,
+        "responseTimeSec": 20
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-SPEAKING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-SPEAKING-001"],
+      "tags": ["production", "a1-speaking", "read-aloud", "greeting"],
+      "difficulty": 0,
+      "adminOnly": {
+        "scoringNotes": "Nilai pelafalan salam dan frasa perkenalan sederhana."
+      }
+    },
+    {
+      "id": "BIGT-A1-SP-SET02-002",
+      "level": "A1",
+      "skill": "SPEAKING",
+      "taskType": "voice_read_aloud",
+      "responseMode": "audio",
+      "prompt": "Bacalah kalimat berikut dengan suara jelas.",
+      "instructionForCandidate": "Baca kalimat tentang warna. Perhatikan pelafalan nama warna.",
+      "stimulus": {
+        "type": "text",
+        "text": "Buku saya berwarna biru. Tas saya merah. Saya suka warna hijau dan kuning."
+      },
+      "constraints": {
+        "maxDurationSec": 15,
+        "preparationTimeSec": 10,
+        "responseTimeSec": 15
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-SPEAKING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-SPEAKING-001"],
+      "tags": ["production", "a1-speaking", "read-aloud", "colors"],
+      "difficulty": 0,
+      "adminOnly": {
+        "scoringNotes": "Nilai pelafalan nama warna: biru, merah, hijau, kuning."
+      }
+    },
+    {
+      "id": "BIGT-A1-SP-SET02-003",
+      "level": "A1",
+      "skill": "SPEAKING",
+      "taskType": "voice_read_aloud",
+      "responseMode": "audio",
+      "prompt": "Bacalah kalimat berikut dengan suara jelas.",
+      "instructionForCandidate": "Baca kalimat tentang benda di kelas. Baca dengan jelas.",
+      "stimulus": {
+        "type": "text",
+        "text": "Di kelas ada papan tulis putih. Ada meja dan kursi. Guru sedang mengajar di depan."
+      },
+      "constraints": {
+        "maxDurationSec": 15,
+        "preparationTimeSec": 10,
+        "responseTimeSec": 15
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-SPEAKING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-SPEAKING-001"],
+      "tags": ["production", "a1-speaking", "read-aloud", "classroom-objects"],
+      "difficulty": 0,
+      "adminOnly": {
+        "scoringNotes": "Nilai pelafalan 'papan tulis', 'meja', 'kursi'."
+      }
+    },
+    {
+      "id": "BIGT-A1-SP-SET02-004",
+      "level": "A1",
+      "skill": "SPEAKING",
+      "taskType": "voice_read_aloud",
+      "responseMode": "audio",
+      "prompt": "Bacalah kalimat berikut dengan suara jelas.",
+      "instructionForCandidate": "Baca kalimat tentang binatang. Pelafalan yang benar.",
+      "stimulus": {
+        "type": "text",
+        "text": "Kucing saya lucu. Bulunya putih dan halus. Dia suka tidur di sofa."
+      },
+      "constraints": {
+        "maxDurationSec": 15,
+        "preparationTimeSec": 10,
+        "responseTimeSec": 15
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-SPEAKING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-SPEAKING-001"],
+      "tags": ["production", "a1-speaking", "read-aloud", "animals"],
+      "difficulty": 0,
+      "adminOnly": {
+        "scoringNotes": "Nilai pelafalan 'kucing', 'bulu', 'halus', 'sofa'."
+      }
+    },
+    {
+      "id": "BIGT-A1-SP-SET02-005",
+      "level": "A1",
+      "skill": "SPEAKING",
+      "taskType": "voice_read_aloud",
+      "responseMode": "audio",
+      "prompt": "Bacalah kalimat berikut dengan suara jelas.",
+      "instructionForCandidate": "Baca kalimat tentang anggota tubuh. Baca pelan-pelan dan jelas.",
+      "stimulus": {
+        "type": "text",
+        "text": "Saya punya dua mata. Satu hidung. Dua telinga. Saya bisa melihat dan mendengar."
+      },
+      "constraints": {
+        "maxDurationSec": 15,
+        "preparationTimeSec": 10,
+        "responseTimeSec": 15
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-SPEAKING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-SPEAKING-001"],
+      "tags": ["production", "a1-speaking", "read-aloud", "body-parts"],
+      "difficulty": 0,
+      "adminOnly": {
+        "scoringNotes": "Nilai pelafalan anggota tubuh dan kata kerja 'melihat', 'mendengar'."
+      }
+    },
+    {
+      "id": "BIGT-A1-SP-SET02-006",
+      "level": "A1",
+      "skill": "SPEAKING",
+      "taskType": "voice_read_aloud",
+      "responseMode": "audio",
+      "prompt": "Bacalah kalimat berikut dengan suara jelas.",
+      "instructionForCandidate": "Baca kalimat tentang pakaian. Perhatikan pelafalan.",
+      "stimulus": {
+        "type": "text",
+        "text": "Hari ini saya pakai baju putih dan celana hitam. Saya pakai sepatu olahraga."
+      },
+      "constraints": {
+        "maxDurationSec": 15,
+        "preparationTimeSec": 10,
+        "responseTimeSec": 15
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-SPEAKING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-SPEAKING-001"],
+      "tags": ["production", "a1-speaking", "read-aloud", "clothes"],
+      "difficulty": 0,
+      "adminOnly": {
+        "scoringNotes": "Nilai pelafalan nama pakaian: 'baju', 'celana', 'sepatu'."
+      }
+    },
+    {
+      "id": "BIGT-A1-SP-SET02-007",
+      "level": "A1",
+      "skill": "SPEAKING",
+      "taskType": "voice_read_aloud",
+      "responseMode": "audio",
+      "prompt": "Bacalah kalimat berikut dengan suara jelas.",
+      "instructionForCandidate": "Baca kalimat tentang perasaan. Gunakan intonasi yang tepat.",
+      "stimulus": {
+        "type": "text",
+        "text": "Hari ini saya senang. Saya dapat nilai bagus di sekolah. Ibu saya bangga."
+      },
+      "constraints": {
+        "maxDurationSec": 15,
+        "preparationTimeSec": 10,
+        "responseTimeSec": 15
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-SPEAKING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-SPEAKING-001"],
+      "tags": ["production", "a1-speaking", "read-aloud", "feelings"],
+      "difficulty": 1,
+      "adminOnly": {
+        "scoringNotes": "Nilai intonasi ekspresif untuk kata 'senang' dan 'bangga'."
+      }
+    },
+    {
+      "id": "BIGT-A1-SP-SET02-008",
+      "level": "A1",
+      "skill": "SPEAKING",
+      "taskType": "voice_read_aloud",
+      "responseMode": "audio",
+      "prompt": "Bacalah kalimat berikut dengan suara jelas.",
+      "instructionForCandidate": "Baca kalimat tentang transportasi. Baca dengan jelas.",
+      "stimulus": {
+        "type": "text",
+        "text": "Saya naik sepeda ke sekolah. Jalanan ramai tapi saya hati-hati."
+      },
+      "constraints": {
+        "maxDurationSec": 15,
+        "preparationTimeSec": 10,
+        "responseTimeSec": 15
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-SPEAKING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-SPEAKING-001"],
+      "tags": ["production", "a1-speaking", "read-aloud", "transportation"],
+      "difficulty": 0,
+      "adminOnly": {
+        "scoringNotes": "Nilai pelafalan 'sepeda', 'jalanan', 'hati-hati'."
+      }
+    },
+    {
+      "id": "BIGT-A1-SP-SET02-009",
+      "level": "A1",
+      "skill": "SPEAKING",
+      "taskType": "voice_short_answer",
+      "responseMode": "audio",
+      "prompt": "Siapa teman baik Anda?",
+      "instructionForCandidate": "Jawab dengan 1-2 kalimat. Sebutkan nama teman baik dan mengapa Anda suka bermain dengannya.",
+      "constraints": {
+        "minDurationSec": 5,
+        "maxDurationSec": 20,
+        "preparationTimeSec": 10,
+        "responseTimeSec": 20
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-SPEAKING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-SPEAKING-002", "BIGT-A1-SPEAKING-003"],
+      "tags": ["production", "a1-speaking", "short-answer", "friends"],
+      "difficulty": 0,
+      "adminOnly": {
+        "scoringNotes": "Nilai kemampuan menyebutkan nama teman dan alasan sederhana."
+      }
+    },
+    {
+      "id": "BIGT-A1-SP-SET02-010",
+      "level": "A1",
+      "skill": "SPEAKING",
+      "taskType": "voice_short_answer",
+      "responseMode": "audio",
+      "prompt": "Apa warna favorit Anda?",
+      "instructionForCandidate": "Jawab dengan 1-2 kalimat. Sebutkan warna favorit dan beri contoh benda dengan warna itu.",
+      "constraints": {
+        "minDurationSec": 5,
+        "maxDurationSec": 20,
+        "preparationTimeSec": 10,
+        "responseTimeSec": 20
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-SPEAKING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-SPEAKING-002", "BIGT-A1-SPEAKING-003"],
+      "tags": ["production", "a1-speaking", "short-answer", "colors"],
+      "difficulty": 0,
+      "adminOnly": {
+        "scoringNotes": "Nilai kosa kata warna dan kemampuan memberi contoh benda."
+      }
+    },
+    {
+      "id": "BIGT-A1-SP-SET02-011",
+      "level": "A1",
+      "skill": "SPEAKING",
+      "taskType": "voice_short_answer",
+      "responseMode": "audio",
+      "prompt": "Berapa nomor rumah Anda?",
+      "instructionForCandidate": "Jawab dengan 1 kalimat. Sebutkan nomor rumah Anda dengan benar.",
+      "constraints": {
+        "minDurationSec": 5,
+        "maxDurationSec": 15,
+        "preparationTimeSec": 10,
+        "responseTimeSec": 15
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-SPEAKING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-SPEAKING-002"],
+      "tags": ["production", "a1-speaking", "short-answer", "numbers"],
+      "difficulty": 0,
+      "adminOnly": {
+        "scoringNotes": "Nilai pelafalan angka yang benar."
+      }
+    },
+    {
+      "id": "BIGT-A1-SP-SET02-012",
+      "level": "A1",
+      "skill": "SPEAKING",
+      "taskType": "voice_short_answer",
+      "responseMode": "audio",
+      "prompt": "Apa yang Anda katakan saat bertemu teman di pagi hari?",
+      "instructionForCandidate": "Jawab dengan 1-2 kalimat. Sebutkan sapaan pagi yang biasa Anda ucapkan.",
+      "constraints": {
+        "minDurationSec": 5,
+        "maxDurationSec": 20,
+        "preparationTimeSec": 10,
+        "responseTimeSec": 20
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-SPEAKING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-SPEAKING-002", "BIGT-A1-SPEAKING-003"],
+      "tags": ["production", "a1-speaking", "short-answer", "greetings"],
+      "difficulty": 0,
+      "adminOnly": {
+        "scoringNotes": "Nilai penggunaan salam yang tepat seperti 'selamat pagi' atau 'halo'."
+      }
+    },
+    {
+      "id": "BIGT-A1-SP-SET02-013",
+      "level": "A1",
+      "skill": "SPEAKING",
+      "taskType": "voice_short_answer",
+      "responseMode": "audio",
+      "prompt": "Di sekolah, apa yang paling Anda suka?",
+      "instructionForCandidate": "Jawab dengan 1-2 kalimat. Sebutkan satu hal favorit di sekolah dan alasannya.",
+      "constraints": {
+        "minDurationSec": 5,
+        "maxDurationSec": 25,
+        "preparationTimeSec": 15,
+        "responseTimeSec": 25
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-SPEAKING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-SPEAKING-002", "BIGT-A1-SPEAKING-003"],
+      "tags": ["production", "a1-speaking", "short-answer", "school"],
+      "difficulty": 1,
+      "adminOnly": {
+        "scoringNotes": "Nilai kosa kata tentang sekolah dan alasan sederhana."
+      }
+    },
+    {
+      "id": "BIGT-A1-SP-SET02-014",
+      "level": "A1",
+      "skill": "SPEAKING",
+      "taskType": "voice_short_answer",
+      "responseMode": "audio",
+      "prompt": "Bagaimana cuaca hari ini?",
+      "instructionForCandidate": "Jawab dengan 1-2 kalimat. Sebutkan keadaan cuaca dan apa yang Anda pakai.",
+      "constraints": {
+        "minDurationSec": 5,
+        "maxDurationSec": 20,
+        "preparationTimeSec": 10,
+        "responseTimeSec": 20
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-SPEAKING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-SPEAKING-002", "BIGT-A1-SPEAKING-003"],
+      "tags": ["production", "a1-speaking", "short-answer", "weather"],
+      "difficulty": 0,
+      "adminOnly": {
+        "scoringNotes": "Nilai kosa kata cuaca: 'panas', 'dingin', 'hujan', 'cerah'."
+      }
+    },
+    {
+      "id": "BIGT-A1-SP-SET02-015",
+      "level": "A1",
+      "skill": "SPEAKING",
+      "taskType": "voice_short_answer",
+      "responseMode": "audio",
+      "prompt": "Apakah Anda punya hewan peliharaan?",
+      "instructionForCandidate": "Jawab dengan 1-2 kalimat. Sebutkan hewan peliharaan atau hewan yang Anda suka.",
+      "constraints": {
+        "minDurationSec": 5,
+        "maxDurationSec": 20,
+        "preparationTimeSec": 10,
+        "responseTimeSec": 20
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-SPEAKING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-SPEAKING-002", "BIGT-A1-SPEAKING-003"],
+      "tags": ["production", "a1-speaking", "short-answer", "animals"],
+      "difficulty": 0,
+      "adminOnly": {
+        "scoringNotes": "Nilai kosa kata nama hewan dan frasa kepemilikan."
+      }
+    },
+    {
+      "id": "BIGT-A1-SP-SET02-016",
+      "level": "A1",
+      "skill": "SPEAKING",
+      "taskType": "voice_short_answer",
+      "responseMode": "audio",
+      "prompt": "Jam berapa Anda makan malam?",
+      "instructionForCandidate": "Jawab dengan 1-2 kalimat. Sebutkan jam makan malam dan dengan siapa Anda makan.",
+      "constraints": {
+        "minDurationSec": 5,
+        "maxDurationSec": 20,
+        "preparationTimeSec": 10,
+        "responseTimeSec": 20
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-SPEAKING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-SPEAKING-002", "BIGT-A1-SPEAKING-003"],
+      "tags": ["production", "a1-speaking", "short-answer", "daily-activities"],
+      "difficulty": 1,
+      "adminOnly": {
+        "scoringNotes": "Nilai kemampuan menyebutkan waktu dan kegiatan dengan benar."
+      }
+    },
+    {
+      "id": "BIGT-A1-SP-SET02-017",
+      "level": "A1",
+      "skill": "SPEAKING",
+      "taskType": "voice_picture_description",
+      "responseMode": "audio",
+      "prompt": "Deskripsikan gambar taman bermain berikut.",
+      "instructionForCandidate": "Lihat deskripsi gambar. Sebutkan apa yang ada di taman bermain dan apa yang dilakukan anak-anak.",
+      "stimulus": {
+        "type": "text",
+        "text": "Gambar: Taman bermain yang ramai. Ada ayunan, perosotan, dan jungkat-jungkit. Anak-anak bermain dengan gembira. Seorang ibu duduk di bangku taman sambil mengawasi. Matahari bersinar cerah."
+      },
+      "constraints": {
+        "minDurationSec": 10,
+        "maxDurationSec": 30,
+        "preparationTimeSec": 15,
+        "responseTimeSec": 30
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-SPEAKING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-SPEAKING-001", "BIGT-A1-SPEAKING-003"],
+      "tags": ["production", "a1-speaking", "picture-description", "playground"],
+      "difficulty": 1,
+      "adminOnly": {
+        "scoringNotes": "Nilai kosa kata benda di taman bermain dan kegiatan anak-anak."
+      }
+    },
+    {
+      "id": "BIGT-A1-SP-SET02-018",
+      "level": "A1",
+      "skill": "SPEAKING",
+      "taskType": "voice_picture_description",
+      "responseMode": "audio",
+      "prompt": "Deskripsikan gambar dapur berikut.",
+      "instructionForCandidate": "Lihat deskripsi gambar. Sebutkan benda-benda yang ada di dapur.",
+      "stimulus": {
+        "type": "text",
+        "text": "Gambar: Dapur yang bersih dan rapi. Ada kompor, kulkas, dan wastafel. Seorang ibu sedang memasak. Di meja ada sayuran dan pisau. Piring dan gelas tersusun di rak."
+      },
+      "constraints": {
+        "minDurationSec": 10,
+        "maxDurationSec": 30,
+        "preparationTimeSec": 15,
+        "responseTimeSec": 30
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-SPEAKING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-SPEAKING-001", "BIGT-A1-SPEAKING-003"],
+      "tags": ["production", "a1-speaking", "picture-description", "home"],
+      "difficulty": 1,
+      "adminOnly": {
+        "scoringNotes": "Nilai kosa kata peralatan dapur dan kegiatan memasak."
+      }
+    },
+    {
+      "id": "BIGT-A1-SP-SET02-019",
+      "level": "A1",
+      "skill": "SPEAKING",
+      "taskType": "voice_picture_description",
+      "responseMode": "audio",
+      "prompt": "Deskripsikan gambar pertemuan bersama teman berikut.",
+      "instructionForCandidate": "Lihat deskripsi gambar. Sebutkan siapa yang ada di gambar dan apa yang mereka lakukan.",
+      "stimulus": {
+        "type": "text",
+        "text": "Gambar: Tiga orang teman sedang duduk di kafe. Mereka minum kopi dan tertawa bersama. Ada kue di atas meja. Seorang pelayan datang membawa minuman. Suasana ramah dan santai."
+      },
+      "constraints": {
+        "minDurationSec": 10,
+        "maxDurationSec": 30,
+        "preparationTimeSec": 15,
+        "responseTimeSec": 30
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-SPEAKING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-SPEAKING-001", "BIGT-A1-SPEAKING-003"],
+      "tags": ["production", "a1-speaking", "picture-description", "friends"],
+      "difficulty": 1,
+      "adminOnly": {
+        "scoringNotes": "Nilai deskripsi interaksi sosial sederhana dan suasana."
+      }
+    },
+    {
+      "id": "BIGT-A1-SP-SET02-020",
+      "level": "A1",
+      "skill": "SPEAKING",
+      "taskType": "voice_picture_description",
+      "responseMode": "audio",
+      "prompt": "Deskripsikan gambar jalan raya berikut.",
+      "instructionForCandidate": "Lihat deskripsi gambar. Sebutkan kendaraan dan orang yang Anda lihat.",
+      "stimulus": {
+        "type": "text",
+        "text": "Gambar: Jalan raya yang sibuk. Ada mobil, bus, dan sepeda motor. Lampu lalu lintas menyala merah. Orang-orang menyeberang di zebra cross. Seorang polisi mengatur lalu lintas."
+      },
+      "constraints": {
+        "minDurationSec": 10,
+        "maxDurationSec": 30,
+        "preparationTimeSec": 15,
+        "responseTimeSec": 30
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-SPEAKING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-SPEAKING-001", "BIGT-A1-SPEAKING-003"],
+      "tags": ["production", "a1-speaking", "picture-description", "transportation"],
+      "difficulty": 1,
+      "adminOnly": {
+        "scoringNotes": "Nilai kosa kata kendaraan dan rambu lalu lintas."
+      }
+    }
+  ]
+}

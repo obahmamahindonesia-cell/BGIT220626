@@ -4,6 +4,22 @@ export type QuestionType = 'multiple_choice' | 'true_false' | 'matching' | 'shor
 export type SetStatus = 'draft' | 'review' | 'published' | 'retired'
 export type ReadingSubskill = 'specific_information' | 'main_purpose' | 'vocabulary_in_context' | 'simple_inference' | 'matching_information'
 
+export type BIGTConstructedSkill = 'WRITING' | 'SPEAKING' | 'INTEGRATED' | 'MEDIATION'
+export type BIGTConstructedTaskType =
+  | 'short_text'
+  | 'form_completion'
+  | 'message_reply'
+  | 'picture_description'
+  | 'guided_sentence'
+  | 'voice_read_aloud'
+  | 'voice_short_answer'
+  | 'voice_picture_description'
+  | 'listen_and_write'
+  | 'read_and_speak'
+  | 'simple_mediation'
+export type BIGTResponseMode = 'text' | 'audio' | 'text_audio'
+export type BIGTScoringMode = 'manual' | 'assisted' | 'auto_draft'
+
 export interface QuestionOption {
   key: string
   text: string
@@ -98,7 +114,62 @@ export interface ListeningSet {
   items: ListeningItem[]
 }
 
-export type QuestionSet = ReadingSet | ListeningSet
+export interface ConstructedResponseItem {
+  id: string
+  level: 'A1' | 'A2'
+  skill: 'WRITING' | 'SPEAKING' | 'INTEGRATED' | 'MEDIATION'
+  taskType: BIGTConstructedTaskType
+  responseMode: BIGTResponseMode
+
+  prompt: string
+  instructionForCandidate: string
+
+  stimulus?: {
+    type: 'text' | 'image' | 'audio' | 'mixed'
+    text?: string
+    imageUrl?: string
+    audioUrl?: string
+    transcript?: string
+  }
+
+  constraints: {
+    minWords?: number
+    maxWords?: number
+    minDurationSec?: number
+    maxDurationSec?: number
+    preparationTimeSec?: number
+    responseTimeSec?: number
+  }
+
+  rubricRef: string
+  maxScore: number
+  scoringMode: BIGTScoringMode
+
+  cefrCanDo: string[]
+  tags: string[]
+  difficulty: 1 | 2 | 3 | 4 | 5
+
+  adminOnly?: {
+    sampleResponse?: string
+    explanation?: string
+    scoringNotes?: string
+    scoringLogic?: unknown
+    transcript?: string
+  }
+}
+
+export interface ConstructedSet {
+  setId: string
+  cefr: Cefr
+  skill: 'writing' | 'speaking' | 'integrated'
+  title: string
+  version: string
+  status: SetStatus
+  itemsCount: number
+  items: ConstructedResponseItem[]
+}
+
+export type QuestionSet = ReadingSet | ListeningSet | ConstructedSet
 
 export type QuestionBankMeta = Pick<QuestionSet, 'setId' | 'cefr' | 'skill' | 'title' | 'status' | 'itemsCount'>
 
@@ -123,4 +194,27 @@ export interface SanitizedQuestion {
   points: number
   stimulus?: SanitizedStimulus
   instruction?: string
+
+  // Constructed response fields (only public, never adminOnly)
+  instructionForCandidate?: string
+  responseMode?: BIGTResponseMode
+  taskType?: string
+  maxScore?: number
+  constraints?: {
+    minWords?: number
+    maxWords?: number
+    minDurationSec?: number
+    maxDurationSec?: number
+    preparationTimeSec?: number
+    responseTimeSec?: number
+  }
+  cefrCanDo?: string[]
+  rubricRef?: string
+  scoringMode?: string
+  constructedStimulus?: {
+    type: string
+    text?: string
+    imageUrl?: string
+    audioUrl?: string
+  }
 }

@@ -4,6 +4,7 @@ import { cookies } from 'next/headers'
 import { prisma } from '@/lib/prisma'
 import { resolveBigtLevel, mapToTestResultData } from '@/lib/test-scoring/resolveBigtLevel'
 import { resolveLevelExamResult, mapLevelToTestResultData } from '@/lib/test-scoring/resolveLevelExamResult'
+import { isTrialSession } from '@/lib/features/exam-mode'
 import type { ScoredItem } from '@/lib/test-scoring/resolveBigtLevel'
 import type { BlueprintId } from '@/lib/test-blueprint/bigtBlueprint'
 
@@ -75,6 +76,32 @@ export async function POST(
     // === BLUEPRINT-BASED SCORING ===
     const metadata = session.metadata as any
     const blueprintId = metadata?.blueprintId as string | undefined
+    const examMode = metadata?.examMode as string | undefined
+
+    // Trial mode — mark completed, no scoring, no level update
+    // Check both examMode and product for defense in depth
+    if (isTrialSession(session.product) || examMode === 'trial_constructed' || examMode === 'dev_full') {
+      await prisma.testSession.update({
+        where: { id: session.id },
+        data: {
+          status: 'COMPLETED',
+          completedAt,
+          durationSeconds,
+        },
+      })
+
+      return NextResponse.json({
+        success: true,
+        data: {
+          sessionId: session.id,
+          product: session.product,
+          status: 'COMPLETED',
+          durationSeconds,
+          message: 'Tes uji coba selesai. Writing/Speaking belum dinilai. Silakan review di halaman admin.',
+          examMode,
+        },
+      })
+    }
 
     const isLevelBlueprint = blueprintId && ['A1_LEVEL_EXAM', 'A2_LEVEL_EXAM', 'A1_A2_PLACEMENT', 'QUICK_PLACEMENT'].includes(blueprintId)
 

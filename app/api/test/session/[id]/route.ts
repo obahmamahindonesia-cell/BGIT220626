@@ -78,6 +78,19 @@ export async function GET(
               aiFeedback: item.answer.aiFeedback,
               isCorrect: item.answer.isCorrect,
               submittedAt: item.answer.submittedAt,
+              // Constructed response fields (safe — no adminOnly)
+              responseText: item.answer.responseText,
+              responseAudioUrl: null, // Never expose to participant
+              audioDurationSec: item.answer.audioDurationSec,
+              wordCount: item.answer.wordCount,
+              responseStatus: item.answer.responseStatus,
+              feedback: item.answer.feedback,
+              scoreText: item.answer.finalScoreJson
+                ? (item.answer.finalScoreJson as any).band || null
+                : null,
+              scorePercentage: item.answer.finalScoreJson
+                ? (item.answer.finalScoreJson as any).percentage || null
+                : null,
             }
           : null,
       }
@@ -95,7 +108,7 @@ export async function GET(
     })
 
     const meta = (session.metadata as any) || {}
-    const durationMinutes = meta.durationMinutes || Math.max(30, Math.round(session.questionCount * 1.5))
+    const durationMinutes = meta.durationMinutes ?? Math.max(30, Math.round(session.questionCount * 1.5))
 
     return NextResponse.json({
       success: true,

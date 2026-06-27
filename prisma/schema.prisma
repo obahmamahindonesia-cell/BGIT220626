@@ -282,8 +282,29 @@ model UserAnswer {
   feedback      String?
   submittedAt   DateTime        @default(now())
 
+  // Constructed response fields
+  responseText        String?  // Written answer for writing tasks
+  responseAudioUrl    String?  // Signed URL for speaking (set on submit, regenerated for admin)
+  responseAudioMimeType String?
+  audioDurationSec    Int?
+  audioFileSize       Int?     // File size in bytes
+  audioStoragePath    String?  // Path in storage bucket (e.g., "bigt-speaking-responses/{userId}/{attemptId}.webm")
+  audioStorageProvider String? // Storage provider name (e.g., "supabase")
+  wordCount           Int?
+
+  // Review fields
+  reviewerId          String?
+  reviewedAt          DateTime?
+  reviewerScoreJson   Json?    // Dimension scores from reviewer ({ "taskAchievement": 4, ... })
+  finalScoreJson      Json?    // Final computed scores
+  internalNotes       String?  // Admin-only notes
+  responseStatus      String   @default("submitted") // draft | submitted | under_review | reviewed | flagged
+  autoScoreJson       Json?    // Auto-assist score (not final for high-stakes)
+  updatedAt           DateTime @updatedAt
+
   @@index([userId])
   @@index([sessionItemId])
+  @@index([responseStatus])
 }
 
 model ItemStatistic {

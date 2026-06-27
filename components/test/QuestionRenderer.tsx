@@ -3,6 +3,8 @@
 import { useTestStore } from '@/store/testStore'
 import { Flag } from 'lucide-react'
 import { useI18n } from '@/lib/i18n/context'
+import ConstructedWriting from './ConstructedWriting'
+import ConstructedSpeaking from './ConstructedSpeaking'
 
 const OPTION_LABELS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
 
@@ -106,32 +108,53 @@ export default function QuestionRenderer() {
     </div>
   )
 
-  const renderEssay = () => (
-    <textarea
-      value={answer?.text || ''}
-      onChange={(e) => setAnswer(question.id, { text: e.target.value })}
-      placeholder={t('testRunner.essayPlaceholder')}
-      className="w-full min-h-[240px] p-5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white/80 text-sm leading-relaxed placeholder:text-white/20 resize-y focus:outline-none focus:border-[#10B981]/50 focus:bg-white/[0.05] transition-all"
-    />
-  )
+  const renderEssay = () => {
+    const stimFromContent = content.stimulus ? {
+      type: content.stimulus.type || 'text',
+      text: content.stimulus.type === 'TEXT' ? (content.stimulus.content || undefined) : undefined,
+      imageUrl: undefined,
+      audioUrl: content.stimulus.type === 'AUDIO' ? (content.stimulus.content || undefined) : undefined,
+    } : null
+    const stimulus = stimFromContent || content.constructedStimulus || null
 
-  const renderSpeaking = () => (
-    <div className="text-center py-8">
-      <div className="w-16 h-16 rounded-full bg-[#10B981]/10 flex items-center justify-center mx-auto mb-4">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
-          <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
-          <line x1="12" y1="19" x2="12" y2="23" />
-          <line x1="8" y1="23" x2="16" y2="23" />
-        </svg>
-      </div>
-      <p className="text-white/60 text-sm mb-4">{t('testRunner.recordResponse')}</p>
-      <button className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#10B981] text-white text-sm font-semibold hover:bg-[#10B981]/90 transition-colors shadow-lg shadow-[#10B981]/20">
-        <div className="w-3 h-3 rounded-full bg-white animate-pulse" />
-        {t('testRunner.startRecording')}
-      </button>
-    </div>
-  )
+    return (
+      <ConstructedWriting
+        questionId={question.id}
+        prompt={content.prompt || ''}
+        instruction={content.instruction || content.instructionForCandidate || ''}
+        constraints={{
+          minWords: content.constraints?.minWords,
+          maxWords: content.constraints?.maxWords,
+        }}
+        stimulus={stimulus}
+      />
+    )
+  }
+
+  const renderSpeaking = () => {
+    const stimFromContent = content.stimulus ? {
+      type: content.stimulus.type || 'text',
+      text: content.stimulus.type === 'TEXT' ? (content.stimulus.content || undefined) : undefined,
+      imageUrl: undefined,
+      audioUrl: content.stimulus.type === 'AUDIO' ? (content.stimulus.content || undefined) : undefined,
+    } : null
+    const stimulus = stimFromContent || content.constructedStimulus || null
+
+    return (
+      <ConstructedSpeaking
+        questionId={question.id}
+        prompt={content.prompt || ''}
+        instruction={content.instruction || content.instructionForCandidate || ''}
+        constraints={{
+          minDurationSec: content.constraints?.minDurationSec,
+          maxDurationSec: content.constraints?.maxDurationSec,
+          preparationTimeSec: content.constraints?.preparationTimeSec,
+          responseTimeSec: content.constraints?.responseTimeSec,
+        }}
+        stimulus={stimulus}
+      />
+    )
+  }
 
   const renderPromptArea = () => (
     <div className="space-y-4">

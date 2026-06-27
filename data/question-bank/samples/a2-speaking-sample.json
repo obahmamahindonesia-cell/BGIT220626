@@ -1,0 +1,63 @@
+{
+  "setId": "BIGT-SAMPLE-SP-A2",
+  "cefr": "A2",
+  "skill": "speaking",
+  "title": "[SAMPLE] A2 Speaking — Sample Items for QA",
+  "version": "0.1.0-dev",
+  "status": "draft",
+  "itemsCount": 2,
+  "items": [
+    {
+      "id": "BIGT-A2-SP-S001-Q001",
+      "level": "A2",
+      "skill": "SPEAKING",
+      "taskType": "voice_picture_description",
+      "responseMode": "audio",
+      "prompt": "Deskripsikan gambar pasar tradisional berikut.",
+      "instructionForCandidate": "Jelaskan apa yang Anda lihat di pasar. Sebutkan orang, barang, dan suasana. Bicara selama 30–60 detik.",
+      "stimulus": {
+        "type": "text",
+        "text": "Gambar: Pasar tradisional yang ramai. Banyak pedagang menjual buah, sayur, dan ikan. Pembeli berjalan-jalan dan menawar harga. Suasana ramai dan penuh warna. Ada seorang ibu membeli jeruk."
+      },
+      "constraints": {
+        "minDurationSec": 30,
+        "maxDurationSec": 60,
+        "preparationTimeSec": 30,
+        "responseTimeSec": 60
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-SPEAKING",
+      "maxScore": 30,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-SPEAKING-001", "BIGT-A2-SPEAKING-002"],
+      "tags": ["sample", "qa", "picture-description", "a2-speaking"],
+      "difficulty": 0.35,
+      "adminOnly": {
+        "scoringNotes": "Nilai kemampuan mendeskripsikan, kosa kata, kelancaran, dan pelafalan. Perhatikan penggunaan kata depan dan urutan deskripsi."
+      }
+    },
+    {
+      "id": "BIGT-A2-SP-S001-Q002",
+      "level": "A2",
+      "skill": "SPEAKING",
+      "taskType": "voice_short_answer",
+      "responseMode": "audio",
+      "prompt": "Apa yang Anda lakukan di akhir pekan?",
+      "instructionForCandidate": "Ceritakan kegiatan akhir pekan Anda. Sebutkan minimal dua kegiatan. Gunakan kalimat lengkap sederhana.",
+      "constraints": {
+        "minDurationSec": 20,
+        "maxDurationSec": 50,
+        "preparationTimeSec": 20,
+        "responseTimeSec": 50
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-SPEAKING",
+      "maxScore": 30,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-SPEAKING-003", "BIGT-A2-SPEAKING-004"],
+      "tags": ["sample", "qa", "weekend-activities", "a2-speaking"],
+      "difficulty": 0.35,
+      "adminOnly": {
+        "scoringNotes": "Nilai variasi kosa kata, struktur kalimat, kelancaran, dan kemampuan menceritakan pengalaman."
+      }
+    }
+  ]
+}

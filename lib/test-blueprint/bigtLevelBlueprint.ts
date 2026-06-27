@@ -11,6 +11,8 @@ export interface LevelBlueprint {
   targetLevel: string
   totalItems: number
   estimatedDurationMinutes: number
+  activeSkills: SkillCode[]
+  futureSkills: SkillCode[]
   sections: Array<{
     skill: SkillCode
     totalItems: number
@@ -37,6 +39,8 @@ export const LEVEL_BLUEPRINTS: Record<LevelBlueprintId, LevelBlueprint> = {
     targetLevel: 'A1',
     totalItems: 60,
     estimatedDurationMinutes: 45,
+    activeSkills: ['reading', 'listening'],
+    futureSkills: ['writing', 'speaking', 'mediation', 'integrated'],
     sections: [
       { skill: 'reading', totalItems: 30, sourceLevels: [{ cefr: 'A1', count: 30 }] },
       { skill: 'listening', totalItems: 30, sourceLevels: [{ cefr: 'A1', count: 30 }] },
@@ -62,6 +66,8 @@ export const LEVEL_BLUEPRINTS: Record<LevelBlueprintId, LevelBlueprint> = {
     targetLevel: 'A2',
     totalItems: 60,
     estimatedDurationMinutes: 50,
+    activeSkills: ['reading', 'listening'],
+    futureSkills: ['writing', 'speaking', 'mediation', 'integrated'],
     sections: [
       { skill: 'reading', totalItems: 30, sourceLevels: [{ cefr: 'A2', count: 30 }] },
       { skill: 'listening', totalItems: 30, sourceLevels: [{ cefr: 'A2', count: 30 }] },
@@ -87,6 +93,8 @@ export const LEVEL_BLUEPRINTS: Record<LevelBlueprintId, LevelBlueprint> = {
     targetLevel: 'A1_A2',
     totalItems: 60,
     estimatedDurationMinutes: 50,
+    activeSkills: ['reading', 'listening'],
+    futureSkills: ['writing', 'speaking'],
     sections: [
       {
         skill: 'reading', totalItems: 30,
@@ -118,6 +126,8 @@ export const LEVEL_BLUEPRINTS: Record<LevelBlueprintId, LevelBlueprint> = {
     targetLevel: 'QUICK',
     totalItems: 30,
     estimatedDurationMinutes: 25,
+    activeSkills: ['reading', 'listening'],
+    futureSkills: [],
     sections: [
       {
         skill: 'reading', totalItems: 15,

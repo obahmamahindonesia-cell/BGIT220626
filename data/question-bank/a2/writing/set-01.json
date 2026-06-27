@@ -1,0 +1,551 @@
+{
+  "setId": "BIGT-A2-WRITING-SET01",
+  "cefr": "A2",
+  "skill": "writing",
+  "title": "A2 Writing — Produksi Terkontrol Set 01",
+  "version": "1.0.0",
+  "status": "review",
+  "itemsCount": 20,
+  "items": [
+    {
+      "id": "BIGT-A2-WR-SET01-001",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "short_text",
+      "responseMode": "text",
+      "prompt": "Ceritakan rutinitas harian Anda dari pagi sampai malam.",
+      "instructionForCandidate": "Tulis 4-5 kalimat tentang kegiatan Anda sehari-hari. Sebutkan waktu dan urutan kegiatan.",
+      "constraints": {
+        "minWords": 25,
+        "maxWords": 70,
+        "responseTimeSec": 420
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-001", "BIGT-A2-WRITING-002"],
+      "tags": ["production", "a2-writing", "short-text", "daily-routine"],
+      "difficulty": 0,
+      "adminOnly": {
+        "sampleResponse": "Setiap hari saya bangun jam setengah enam pagi. Saya mandi dan sarapan nasi goreng. Saya berangkat kerja jam tujuh. Saya bekerja di kantor sampai jam lima sore. Pada malam hari saya membaca buku atau menonton film.",
+        "scoringNotes": "Nilai variasi kosa kata, penggunaan kata penghubung waktu, dan struktur kalimat."
+      }
+    },
+    {
+      "id": "BIGT-A2-WR-SET01-002",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "short_text",
+      "responseMode": "text",
+      "prompt": "Ceritakan pengalaman liburan Anda yang paling berkesan.",
+      "instructionForCandidate": "Tulis 4-5 kalimat tentang liburan Anda. Sebutkan tempat, dengan siapa, dan apa yang Anda lakukan.",
+      "constraints": {
+        "minWords": 25,
+        "maxWords": 75,
+        "responseTimeSec": 420
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-001", "BIGT-A2-WRITING-002"],
+      "tags": ["production", "a2-writing", "short-text", "holiday"],
+      "difficulty": 1,
+      "adminOnly": {
+        "sampleResponse": "Liburan terbaik saya ke Pantai Kuta di Bali. Saya pergi dengan keluarga. Kami berenang dan bermain pasir. Cuaca sangat cerah. Saya senang sekali karena pemandangannya indah dan udaranya sejuk.",
+        "scoringNotes": "Nilai kemampuan menceritakan pengalaman dengan urutan jelas dan kosa kata deskriptif."
+      }
+    },
+    {
+      "id": "BIGT-A2-WR-SET01-003",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "short_text",
+      "responseMode": "text",
+      "prompt": "Deskripsikan kota atau kampung halaman Anda.",
+      "instructionForCandidate": "Tulis 4-5 kalimat tentang kota Anda. Sebutkan nama, lokasi, tempat terkenal, dan suasana kotanya.",
+      "constraints": {
+        "minWords": 25,
+        "maxWords": 80,
+        "responseTimeSec": 420
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-001"],
+      "tags": ["production", "a2-writing", "short-text", "city"],
+      "difficulty": 0,
+      "adminOnly": {
+        "sampleResponse": "Saya berasal dari kota Malang. Malang ada di Jawa Timur. Kotanya sejuk dan banyak pohon. Ada candi dan pantai yang indah. Makanan terkenal di Malang adalah bakso dan apel. Saya bangga dengan kota saya.",
+        "scoringNotes": "Nilai kemampuan mendeskripsikan tempat tinggal dengan detail dan variasi kosa kata."
+      }
+    },
+    {
+      "id": "BIGT-A2-WR-SET01-004",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "short_text",
+      "responseMode": "text",
+      "prompt": "Apa cita-cita Anda? Ceritakan.",
+      "instructionForCandidate": "Tulis 4-5 kalimat tentang cita-cita Anda. Sebutkan apa yang ingin Anda capai dan mengapa.",
+      "constraints": {
+        "minWords": 25,
+        "maxWords": 75,
+        "responseTimeSec": 420
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-001", "BIGT-A2-WRITING-002"],
+      "tags": ["production", "a2-writing", "short-text", "ambition"],
+      "difficulty": 1,
+      "adminOnly": {
+        "sampleResponse": "Cita-cita saya menjadi guru bahasa Indonesia. Saya ingin mengajar orang asing yang belajar bahasa Indonesia. Saya suka berbagi ilmu dan berteman dengan orang dari berbagai negara. Saya akan belajar keras untuk mencapai cita-cita ini.",
+        "scoringNotes": "Nilai kemampuan mengekspresikan tujuan dengan alasan dan penggunaan kata 'ingin', 'akan'."
+      }
+    },
+    {
+      "id": "BIGT-A2-WR-SET01-005",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "short_text",
+      "responseMode": "text",
+      "prompt": "Ceritakan tentang teman terbaik Anda.",
+      "instructionForCandidate": "Tulis 4-5 kalimat tentang teman terbaik Anda. Jelaskan bagaimana kalian bertemu, sifatnya, dan mengapa dia teman baik.",
+      "constraints": {
+        "minWords": 25,
+        "maxWords": 80,
+        "responseTimeSec": 420
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-001", "BIGT-A2-WRITING-002"],
+      "tags": ["production", "a2-writing", "short-text", "friendship"],
+      "difficulty": 0,
+      "adminOnly": {
+        "sampleResponse": "Teman terbaik saya bernama Dewi. Kami bertemu di kelas bahasa Indonesia. Dewi ramah dan suka membantu. Setiap hari kami makan siang bersama. Saya senang berteman dengan Dewi karena dia lucu dan pintar.",
+        "scoringNotes": "Nilai penggunaan kosa kata sifat, kata penghubung 'dan', 'karena', dan struktur kalimat."
+      }
+    },
+    {
+      "id": "BIGT-A2-WR-SET01-006",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "message_reply",
+      "responseMode": "text",
+      "prompt": "Teman Anda dari luar kota akan berkunjung. Balas pesannya.",
+      "instructionForCandidate": "Baca pesan dari teman. Tulis balasan yang sopan dan informatif.",
+      "stimulus": {
+        "type": "text",
+        "text": "Pesan dari Alex:\n\"Halo! Aku akan ke Jakarta minggu depan. Aku mau main ke rumahmu. Apa kabar? Ada tempat menarik di Jakarta? Aku mau jalan-jalan.\""
+      },
+      "constraints": {
+        "minWords": 25,
+        "maxWords": 70,
+        "responseTimeSec": 360
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-002", "BIGT-A2-WRITING-001"],
+      "tags": ["production", "a2-writing", "message-reply", "invitation"],
+      "difficulty": 1,
+      "adminOnly": {
+        "sampleResponse": "Halo Alex! Kabar baik. Senang kamu mau datang. Di Jakarta ada Monas, Kota Tua, dan Ancol. Kita bisa ke sana. Kasih tahu aku jadwalnya nanti, ya. Aku tunggu!",
+        "scoringNotes": "Nilai kesesuaian isi balasan, kosa kata tempat wisata, dan keramahan."
+      }
+    },
+    {
+      "id": "BIGT-A2-WR-SET01-007",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "message_reply",
+      "responseMode": "text",
+      "prompt": "Guru Anda meminta tugas yang terlambat. Balaslah.",
+      "instructionForCandidate": "Baca pesan dari guru. Tulis balasan yang sopan dan jelaskan alasan Anda.",
+      "stimulus": {
+        "type": "text",
+        "text": "Pesan dari Pak Guru:\n\"Selamat pagi. Tugas bahasa Indonesia Anda belum saya terima. Batas pengumpulan sudah lewat. Tolong dikumpulkan hari ini dan jelaskan keterlambatannya.\""
+      },
+      "constraints": {
+        "minWords": 20,
+        "maxWords": 70,
+        "responseTimeSec": 360
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-002", "BIGT-A2-WRITING-001"],
+      "tags": ["production", "a2-writing", "message-reply", "school"],
+      "difficulty": 1,
+      "adminOnly": {
+        "sampleResponse": "Selamat pagi, Pak Guru. Maaf tugas saya belum dikumpulkan. Kemarin saya sakit demam. Sekarang tugas sudah selesai. Saya kumpulkan hari ini. Terima kasih, Pak.",
+        "scoringNotes": "Nilai kesopanan, kemampuan memberi alasan, dan struktur surat elektronik sederhana."
+      }
+    },
+    {
+      "id": "BIGT-A2-WR-SET01-008",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "message_reply",
+      "responseMode": "text",
+      "prompt": "Rekan kerja Anda mengundang makan malam. Balaslah.",
+      "instructionForCandidate": "Baca undangan dari rekan kerja. Tulis balasan. Terima atau tolak dengan sopan dan beri alasan.",
+      "stimulus": {
+        "type": "text",
+        "text": "Pesan dari Rudi:\n\"Halo! Aku traktir makan malam hari Sabtu jam 7 di restoran Padang Sederhana. Kamu bisa datang? Ajak teman-teman yang lain juga.\""
+      },
+      "constraints": {
+        "minWords": 20,
+        "maxWords": 70,
+        "responseTimeSec": 360
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-002"],
+      "tags": ["production", "a2-writing", "message-reply", "invitation"],
+      "difficulty": 0,
+      "adminOnly": {
+        "sampleResponse": "Halo Rudi! Terima kasih undangannya. Aku bisa datang hari Sabtu. Aku suka masakan Padang. Nanti aku ajak Dewi juga. Sampai jumpa Sabtu!",
+        "scoringNotes": "Nilai kesopanan, penerimaan undangan, dan ekspresi antusiasme."
+      }
+    },
+    {
+      "id": "BIGT-A2-WR-SET01-009",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "message_reply",
+      "responseMode": "text",
+      "prompt": "Seorang teman minta rekomendasi tempat belajar bahasa. Balaslah.",
+      "instructionForCandidate": "Baca pesan dari teman. Tulis balasan dengan rekomendasi dan alasan.",
+      "stimulus": {
+        "type": "text",
+        "text": "Pesan dari Mei:\n\"Halo! Aku mau belajar bahasa Indonesia di Jakarta. Ada kursus yang bagus? Aku mau yang murah dan dekat dengan rumah. Terima kasih.\""
+      },
+      "constraints": {
+        "minWords": 25,
+        "maxWords": 75,
+        "responseTimeSec": 360
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-001", "BIGT-A2-WRITING-002"],
+      "tags": ["production", "a2-writing", "message-reply", "recommendation"],
+      "difficulty": 1,
+      "adminOnly": {
+        "sampleResponse": "Halo Mei! Di Jakarta ada kursus bahasa Indonesia di Lembaga Bahasa Internasional dekat Sudirman. Harganya cukup murah. Aku dengar gurunya baik dan belajarnya seru. Kamu bisa cek website mereka. Semoga membantu!",
+        "scoringNotes": "Nilai kemampuan memberi rekomendasi dengan alasan dan informasi yang jelas."
+      }
+    },
+    {
+      "id": "BIGT-A2-WR-SET01-010",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "picture_description",
+      "responseMode": "text",
+      "prompt": "Deskripsikan suasana di sebuah kafe dalam gambar berikut.",
+      "instructionForCandidate": "Tulis 4-5 kalimat mendeskripsikan gambar. Sebutkan suasana, orang, dan kegiatan mereka.",
+      "stimulus": {
+        "type": "text",
+        "text": "Gambar: Sebuah kafe modern yang ramai. Beberapa orang duduk di meja kayu sambil minum kopi. Seorang barista sedang membuat kopi di belakang meja. Ada musik live seorang gitaris di sudut kafe. Lampu temaram membuat suasana nyaman."
+      },
+      "constraints": {
+        "minWords": 25,
+        "maxWords": 75,
+        "responseTimeSec": 360
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-001"],
+      "tags": ["production", "a2-writing", "picture-description", "cafe"],
+      "difficulty": 0,
+      "adminOnly": {
+        "sampleResponse": "Di gambar ada kafe yang ramai dan nyaman. Beberapa orang duduk minum kopi sambil berbicara. Seorang barista membuat kopi di belakang meja. Ada musik gitar di sudut kafe. Suasananya santai dan hangat.",
+        "scoringNotes": "Nilai detail deskripsi, variasi kosa kata, dan kemampuan menggambarkan suasana."
+      }
+    },
+    {
+      "id": "BIGT-A2-WR-SET01-011",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "picture_description",
+      "responseMode": "text",
+      "prompt": "Deskripsikan gambar perayaan ulang tahun berikut.",
+      "instructionForCandidate": "Tulis 4-5 kalimat mendeskripsikan gambar. Sebutkan dekorasi, orang, dan kegiatan.",
+      "stimulus": {
+        "type": "text",
+        "text": "Gambar: Pesta ulang tahun di ruang tamu. Ada balon warna-warni dan spanduk 'Selamat Ulang Tahun'. Seorang anak perempuan duduk di depan kue ulang tahun dengan lilin. Teman-teman dan keluarga berdiri di sekeliling sambil tersenyum dan bertepuk tangan."
+      },
+      "constraints": {
+        "minWords": 25,
+        "maxWords": 75,
+        "responseTimeSec": 360
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-001"],
+      "tags": ["production", "a2-writing", "picture-description", "birthday"],
+      "difficulty": 0,
+      "adminOnly": {
+        "sampleResponse": "Di gambar ada pesta ulang tahun. Hiasan balon warna-warni ada di mana-mana. Seorang anak duduk di depan kue ulang tahun. Keluarga dan teman berdiri di sekelilingnya. Mereka tersenyum dan bernyanyi. Suasananya sangat meriah dan bahagia.",
+        "scoringNotes": "Nilai kosa kata perayaan, dekorasi, dan emosi."
+      }
+    },
+    {
+      "id": "BIGT-A2-WR-SET01-012",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "picture_description",
+      "responseMode": "text",
+      "prompt": "Deskripsikan gambar suasana di perpustakaan.",
+      "instructionForCandidate": "Tulis 4-5 kalimat mendeskripsikan gambar. Sebutkan apa yang terjadi di perpustakaan.",
+      "stimulus": {
+        "type": "text",
+        "text": "Gambar: Perpustakaan yang tenang. Banyak rak buku tinggi dari lantai sampai langit-langit. Beberapa mahasiswa duduk di meja belajar sambil membaca buku. Ada seorang petugas perpustakaan di meja depan. Lampu terang membuat ruangan nyaman untuk membaca."
+      },
+      "constraints": {
+        "minWords": 25,
+        "maxWords": 75,
+        "responseTimeSec": 360
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-001"],
+      "tags": ["production", "a2-writing", "picture-description", "library"],
+      "difficulty": 0,
+      "adminOnly": {
+        "sampleResponse": "Di perpustakaan suasananya tenang. Ada banyak rak buku dengan buku-buku. Mahasiswa duduk di meja sambil membaca. Petugas perpustakaan duduk di depan. Tempat ini nyaman untuk belajar karena tenang dan terang.",
+        "scoringNotes": "Nilai kosa kata tempat umum dan kegiatan di perpustakaan."
+      }
+    },
+    {
+      "id": "BIGT-A2-WR-SET01-013",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "picture_description",
+      "responseMode": "text",
+      "prompt": "Deskripsikan gambar suasana olahraga di stadion.",
+      "instructionForCandidate": "Tulis 4-5 kalimat mendeskripsikan gambar. Sebutkan olahraga, pemain, dan penonton.",
+      "stimulus": {
+        "type": "text",
+        "text": "Gambar: Stadion sepak bola yang penuh penonton. Para pemain memakai seragam merah dan putih sedang berlari mengejar bola. Seorang wasit meniup peluit. Penonton bersorak dan mengibarkan bendera. Lampu stadion terang benderang."
+      },
+      "constraints": {
+        "minWords": 25,
+        "maxWords": 80,
+        "responseTimeSec": 360
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-001"],
+      "tags": ["production", "a2-writing", "picture-description", "sports"],
+      "difficulty": 1,
+      "adminOnly": {
+        "sampleResponse": "Di gambar ada pertandingan sepak bola di stadion. Pemain memakai seragam merah dan putih berlari mengejar bola. Wasit meniup peluit. Penonton bersorak dan mengibarkan bendera. Suasananya ramai dan penuh semangat.",
+        "scoringNotes": "Nilai kosa kata olahraga dan kemampuan mendeskripsikan aksi."
+      }
+    },
+    {
+      "id": "BIGT-A2-WR-SET01-014",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "simple_mediation",
+      "responseMode": "text",
+      "prompt": "Seorang teman asing tidak bisa membaca menu di restoran. Jelaskan menu tersebut dengan sederhana.",
+      "instructionForCandidate": "Baca menu di bawah. Jelaskan setiap makanan dengan bahasa sederhana untuk teman asing Anda. Sebutkan nama makanan, bahan, dan rasa.",
+      "stimulus": {
+        "type": "text",
+        "text": "MENU RUMAH MAKAN SEDERHANA\n1. Nasi Goreng — Rp 25.000\n2. Sate Ayam — Rp 30.000\n3. Gado-gado — Rp 20.000\n4. Es Campur — Rp 15.000\n5. Air Mineral — Rp 5.000"
+      },
+      "constraints": {
+        "minWords": 30,
+        "maxWords": 85,
+        "responseTimeSec": 420
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-001", "BIGT-A2-WRITING-002"],
+      "tags": ["production", "a2-writing", "simple-mediation", "food"],
+      "difficulty": 1,
+      "adminOnly": {
+        "sampleResponse": "Ini menu rumah makan. Nasi goreng adalah nasi yang digoreng dengan bumbu. Sate ayam adalah daging ayam dibakar pakai tusuk. Gado-gado adalah sayuran dengan saus kacang. Es campur adalah minuman manis dengan buah. Air mineral adalah air putih.",
+        "scoringNotes": "Nilai kemampuan menjelaskan informasi dengan bahasa sederhana untuk orang asing."
+      }
+    },
+    {
+      "id": "BIGT-A2-WR-SET01-015",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "simple_mediation",
+      "responseMode": "text",
+      "prompt": "Seorang tetangga asing bertanya tentang jadwal acara di lingkungan Anda. Jelaskan.",
+      "instructionForCandidate": "Baca pengumuman di bawah. Jelaskan informasi pentingnya dengan sederhana untuk tetangga asing.",
+      "stimulus": {
+        "type": "text",
+        "text": "PENGUMUMAN ACARA BULANAN RT 05:\n- Kerja Bakti: Sabtu, 10 Juni 2026, pukul 07.00–10.00\n- Pengajian: Minggu, 11 Juni 2026, pukul 08.00–10.00\n- Senam Sehat: Sabtu, 17 Juni 2026, pukul 06.00–08.00\n- Rapat Warga: Minggu, 18 Juni 2026, pukul 19.00–21.00"
+      },
+      "constraints": {
+        "minWords": 30,
+        "maxWords": 85,
+        "responseTimeSec": 420
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-001", "BIGT-A2-WRITING-002"],
+      "tags": ["production", "a2-writing", "simple-mediation", "community"],
+      "difficulty": 1,
+      "adminOnly": {
+        "sampleResponse": "Ini acara bulanan di lingkungan kami. Sabtu pagi ada kerja bakti bersih-bersih lingkungan. Minggu ada pengajian belajar agama. Sabtu berikutnya ada senam sehat pagi. Dan minggu malam ada rapat warga. Semua acara gratis dan terbuka untuk warga.",
+        "scoringNotes": "Nilai kemampuan menyampaikan informasi jadwal dengan jelas dan sederhana."
+      }
+    },
+    {
+      "id": "BIGT-A2-WR-SET01-016",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "simple_mediation",
+      "responseMode": "text",
+      "prompt": "Seorang teman asing mendapat undangan pernikahan adat. Jelaskan arti tradisi tersebut.",
+      "instructionForCandidate": "Baca deskripsi tradisi di bawah. Jelaskan dengan sederhana untuk teman asing yang belum paham budaya Indonesia.",
+      "stimulus": {
+        "type": "text",
+        "text": "TRADISI PERNIKAHAN ADAT JAWA:\n1. Siraman: calon pengantin disiram air bunga\n2. Midodareni: malam sebelum nikah, keluarga berkumpul\n3. Ijab Kabul: akad nikah resmi\n4. Sungkeman: pengantin bersimpuh di kaki orang tua untuk minta restu\n5. Resepsi: pesta makan bersama"
+      },
+      "constraints": {
+        "minWords": 30,
+        "maxWords": 90,
+        "responseTimeSec": 480
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-001", "BIGT-A2-WRITING-002"],
+      "tags": ["production", "a2-writing", "simple-mediation", "culture"],
+      "difficulty": 1,
+      "adminOnly": {
+        "sampleResponse": "Ini tradisi pernikahan di Jawa. Pertama, siraman adalah mandi dengan air bunga. Lalu malam sebelum nikah keluarga berkumpul. Setelah itu akad nikah resmi. Pengantin lalu minta restu kepada orang tua. Terakhir pesta makan bersama. Semua tradisi ini penting bagi keluarga.",
+        "scoringNotes": "Nilai kemampuan menjelaskan tradisi budaya dengan urutan dan bahasa sederhana."
+      }
+    },
+    {
+      "id": "BIGT-A2-WR-SET01-017",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "form_completion",
+      "responseMode": "text",
+      "prompt": "Isi formulir pendaftaran kursus bahasa Indonesia tingkat lanjut.",
+      "instructionForCandidate": "Lengkapi formulir ini dengan informasi lengkap. Tulis dengan jelas dan rapi.",
+      "stimulus": {
+        "type": "text",
+        "text": "FORMULIR PENDAFTARAN KURSUS BAHASA INDONESIA — TINGKAT A2\n\nNama Lengkap:\nTanggal Lahir:\nKewarganegaraan:\nPekerjaan:\nAlamat di Indonesia:\nNomor Telepon:\nEmail:\nTujuan Belajar:\nPengalaman Belajar Bahasa Indonesia:\nLevel Saat Ini:"
+      },
+      "constraints": {
+        "minWords": 20,
+        "maxWords": 80,
+        "responseTimeSec": 420
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-002"],
+      "tags": ["production", "a2-writing", "form-completion", "registration"],
+      "difficulty": 0,
+      "adminOnly": {
+        "sampleResponse": "Nama Lengkap: Michael Wong\nTanggal Lahir: 15 Maret 1995\nKewarganegaraan: Malaysia\nPekerjaan: Akuntan\nAlamat di Indonesia: Jalan Anggrek No 8, Jakarta Selatan\nNomor Telepon: 081234567890\nEmail: michael.wong@email.com\nTujuan Belajar: Saya ingin bekerja di perusahaan Indonesia\nPengalaman Belajar: Saya sudah belajar bahasa Indonesia 6 bulan\nLevel Saat Ini: A1",
+        "scoringNotes": "Nilai kelengkapan informasi, kosa kata birokrasi dasar, dan kerapian pengisian."
+      }
+    },
+    {
+      "id": "BIGT-A2-WR-SET01-018",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "form_completion",
+      "responseMode": "text",
+      "prompt": "Isi formulir survei kepuasan pelanggan.",
+      "instructionForCandidate": "Lengkapi formulir survei. Berikan pendapat Anda dengan jujur dan sopan.",
+      "stimulus": {
+        "type": "text",
+        "text": "SURVEI KEPUASAN PELANGGAN — RESTORAN SEDAP RASA\n\nNama Pelanggan:\nTanggal Kunjungan:\nMenu yang Dipesan:\n\n1. Bagaimana rasa makanan? (Sangat enak / Enak / Cukup / Tidak enak)\n2. Bagaimana pelayanan? (Sangat baik / Baik / Cukup / Kurang)\n3. Apakah harga sesuai? (Ya / Tidak / Cukup)\n4. Saran atau komentar:"
+      },
+      "constraints": {
+        "minWords": 20,
+        "maxWords": 80,
+        "responseTimeSec": 360
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-002", "BIGT-A2-WRITING-001"],
+      "tags": ["production", "a2-writing", "form-completion", "survey"],
+      "difficulty": 0,
+      "adminOnly": {
+        "sampleResponse": "Nama Pelanggan: Sarah Tan\nTanggal Kunjungan: 12 Juni 2026\nMenu yang Dipesan: Nasi goreng dan es teh manis\n1. Rasa makanan enak sekali.\n2. Pelayanan baik dan ramah.\n3. Harga cukup sesuai.\n4. Saran: tambah menu sayuran. Terima kasih.",
+        "scoringNotes": "Nilai kemampuan mengisi survei dengan pendapat yang jelas dan sopan."
+      }
+    },
+    {
+      "id": "BIGT-A2-WR-SET01-019",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "form_completion",
+      "responseMode": "text",
+      "prompt": "Isi formulir pendaftaran lomba bahasa Indonesia.",
+      "instructionForCandidate": "Lengkapi formulir pendaftaran lomba. Tulis data diri dan jawab pertanyaan dengan singkat.",
+      "stimulus": {
+        "type": "text",
+        "text": "FORMULIR PENDAFTARAN LOMBA PIDATO BAHASA INDONESIA\n\nNama Lengkap:\nAsal Sekolah/Universitas:\nKelas/Semester:\nNomor Telepon:\nEmail:\nJudul Pidato:\nMengapa Anda ingin mengikuti lomba ini?"
+      },
+      "constraints": {
+        "minWords": 20,
+        "maxWords": 85,
+        "responseTimeSec": 420
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-002", "BIGT-A2-WRITING-001"],
+      "tags": ["production", "a2-writing", "form-completion", "competition"],
+      "difficulty": 1,
+      "adminOnly": {
+        "sampleResponse": "Nama Lengkap: Putri Ayu\nAsal Sekolah/Universitas: Universitas Indonesia\nKelas/Semester: Semester 4\nNomor Telepon: 081298765432\nEmail: putri.ayu@email.com\nJudul Pidato: Pentingnya Belajar Bahasa Indonesia\nAlasan: Saya ingin melatih kemampuan pidato dan berbagi pengalaman belajar bahasa Indonesia dengan peserta lain.",
+        "scoringNotes": "Nilai kemampuan mengisi formulir resmi dengan informasi yang relevan."
+      }
+    },
+    {
+      "id": "BIGT-A2-WR-SET01-020",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "form_completion",
+      "responseMode": "text",
+      "prompt": "Isi formulir pemesanan tiket kereta api.",
+      "instructionForCandidate": "Lengkapi formulir pemesanan tiket. Tulis informasi perjalanan dengan benar.",
+      "stimulus": {
+        "type": "text",
+        "text": "FORMULIR PEMESANAN TIKET KERETA API\n\nNama Pemesan:\nNomor Identitas:\nKota Asal:\nKota Tujuan:\nTanggal Keberangkatan:\nJumlah Tiket:\nKelas (Eksekutif / Bisnis / Ekonomi):\nPermintaan Khusus:"
+      },
+      "constraints": {
+        "minWords": 15,
+        "maxWords": 65,
+        "responseTimeSec": 300
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-002"],
+      "tags": ["production", "a2-writing", "form-completion", "transportation"],
+      "difficulty": 0,
+      "adminOnly": {
+        "sampleResponse": "Nama Pemesan: David Lim\nNomor Identitas: E12345678\nKota Asal: Jakarta\nKota Tujuan: Surabaya\nTanggal Keberangkatan: 25 Juli 2026\nJumlah Tiket: 1\nKelas: Eksekutif\nPermintaan Khusus: Tempat duduk dekat jendela",
+        "scoringNotes": "Nilai ketepatan informasi perjalanan dan kosa kata transportasi."
+      }
+    }
+  ]
+}

@@ -15,6 +15,7 @@ export interface TestQuestion {
   content: {
     prompt?: string
     instruction?: string
+    instructionForCandidate?: string
     options?: QuestionOption[]
     questionType?: string
     stimulus?: { type: string; title: string | null; content: string | null; transcript: string | null } | null
@@ -22,6 +23,18 @@ export interface TestQuestion {
     subskill?: string
     topic?: string
     tags?: string[]
+    constructedStimulus?: { type: string; text?: string; imageUrl?: string; audioUrl?: string }
+    constraints?: {
+      minWords?: number
+      maxWords?: number
+      minDurationSec?: number
+      maxDurationSec?: number
+      preparationTimeSec?: number
+      responseTimeSec?: number
+    }
+    responseMode?: string
+    taskType?: string
+    maxScore?: number
   }
 }
 
@@ -102,16 +115,72 @@ export const useTestStore = create<TestState>((set, get) => ({
     const timer = setTimeout(async () => {
       const state = useTestStore.getState()
       if (!state.sessionId) return
+
+      const question = state.questions.find(q => q.id === questionId)
+      const responseMode = question?.content?.responseMode
+
       try {
-        const res = await fetch(`/api/test/session/${state.sessionId}/answer`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            sessionItemId: questionId,
-            answer: answer.selectedOption || answer.text || '',
-          }),
-        })
-        if (!res.ok) throw new Error('Gagal menyimpan')
+        // Constructed response (writing/speaking) → use dedicated submit endpoint
+        if (responseMode === 'audio' || responseMode === 'text_audio') {
+          // Use FormData for blob upload, fallback to JSON for base64
+          if (answer._audioBlob) {
+            const formData = new FormData()
+            formData.append('sessionId', state.sessionId)
+            formData.append('sessionItemId', questionId)
+            formData.append('responseMode', responseMode)
+            formData.append('responseText', answer.text || '')
+            formData.append('audio', answer._audioBlob, `recording.webm`)
+            formData.append('audioDurationSec', String(answer.audioDuration || 0))
+
+            const res = await fetch('/api/test/constructed/submit', {
+              method: 'POST',
+              body: formData,
+            })
+            if (!res.ok) throw new Error('Gagal menyimpan jawaban bicara')
+          } else {
+            // Fallback to JSON (legacy base64)
+            const res = await fetch('/api/test/constructed/submit', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                sessionId: state.sessionId,
+                sessionItemId: questionId,
+                responseMode: responseMode,
+                responseText: answer.text || null,
+                audioUrl: answer.audioUrl || null,
+                audioDurationSec: answer.audioDuration || null,
+              }),
+            })
+            if (!res.ok) throw new Error('Gagal menyimpan jawaban menulis/bicara')
+          }
+        } else if (responseMode === 'text' && answer.text) {
+          // Writing response with text
+          const res = await fetch('/api/test/constructed/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              sessionId: state.sessionId,
+              sessionItemId: questionId,
+              responseMode: 'text',
+              responseText: answer.text,
+              audioUrl: null,
+              audioDurationSec: null,
+            }),
+          })
+          if (!res.ok) throw new Error('Gagal menyimpan jawaban menulis')
+        } else {
+          // Standard MCQ / short answer → legacy endpoint
+          const res = await fetch(`/api/test/session/${state.sessionId}/answer`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              sessionItemId: questionId,
+              answer: answer.selectedOption || answer.text || '',
+            }),
+          })
+          if (!res.ok) throw new Error('Gagal menyimpan')
+        }
+
         useTestStore.getState().setSaveStatus({ state: 'saved', message: 'Jawaban Tersimpan' })
         setTimeout(() => useTestStore.getState().setSaveStatus({ state: 'idle', message: '' }), 2000)
       } catch {

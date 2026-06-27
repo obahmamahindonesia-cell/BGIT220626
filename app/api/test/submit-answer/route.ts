@@ -57,6 +57,8 @@ export async function POST(request: NextRequest) {
 
     const isCorrect = answer === correctAnswer
 
+    // Use questionId (which is the item code) to find the sessionItem
+    // sessionItemId is preferred but we use questionId for backward compat
     const sessionItem = await prisma.testSessionItem.findFirst({
       where: { sessionId, question: { code: questionId } },
     })

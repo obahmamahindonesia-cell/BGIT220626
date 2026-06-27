@@ -1,0 +1,539 @@
+{
+  "setId": "BIGT-A1-WRITING-SET01",
+  "cefr": "A1",
+  "skill": "writing",
+  "title": "A1 Writing — Produksi Terkontrol Set 01",
+  "version": "1.0.0",
+  "status": "review",
+  "itemsCount": 20,
+  "items": [
+    {
+      "id": "BIGT-A1-WR-SET01-001",
+      "level": "A1",
+      "skill": "WRITING",
+      "taskType": "guided_sentence",
+      "responseMode": "text",
+      "prompt": "Perkenalkan diri Anda.",
+      "instructionForCandidate": "Tulis 2 kalimat tentang diri Anda. Sebutkan nama dan asal kota.",
+      "constraints": {
+        "minWords": 5,
+        "maxWords": 25,
+        "responseTimeSec": 180
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-WRITING-001", "BIGT-A1-WRITING-002"],
+      "tags": ["production", "a1-writing", "guided-sentence", "self-introduction"],
+      "difficulty": 0,
+      "adminOnly": {
+        "sampleResponse": "Nama saya Maria. Saya dari Surabaya.",
+        "scoringNotes": "Nilai kosa kata dasar, struktur kalimat sederhana, dan ejaan. A1: target 2 kalimat sederhana."
+      }
+    },
+    {
+      "id": "BIGT-A1-WR-SET01-002",
+      "level": "A1",
+      "skill": "WRITING",
+      "taskType": "guided_sentence",
+      "responseMode": "text",
+      "prompt": "Ceritakan tentang keluarga Anda.",
+      "instructionForCandidate": "Tulis 2 kalimat tentang keluarga Anda. Sebutkan anggota keluarga.",
+      "constraints": {
+        "minWords": 5,
+        "maxWords": 25,
+        "responseTimeSec": 180
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-WRITING-001", "BIGT-A1-WRITING-002"],
+      "tags": ["production", "a1-writing", "guided-sentence", "family"],
+      "difficulty": 0,
+      "adminOnly": {
+        "sampleResponse": "Keluarga saya ada empat orang. Ayah, ibu, kakak, dan saya.",
+        "scoringNotes": "Nilai penggunaan kosa kata anggota keluarga dan struktur kalimat sederhana."
+      }
+    },
+    {
+      "id": "BIGT-A1-WR-SET01-003",
+      "level": "A1",
+      "skill": "WRITING",
+      "taskType": "guided_sentence",
+      "responseMode": "text",
+      "prompt": "Apa makanan favorit Anda?",
+      "instructionForCandidate": "Tulis 2 kalimat tentang makanan favorit Anda. Sebutkan nama makanan dan mengapa Anda suka.",
+      "constraints": {
+        "minWords": 5,
+        "maxWords": 30,
+        "responseTimeSec": 180
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-WRITING-001"],
+      "tags": ["production", "a1-writing", "guided-sentence", "food"],
+      "difficulty": 0,
+      "adminOnly": {
+        "sampleResponse": "Makanan favorit saya adalah nasi goreng. Rasanya enak dan pedas.",
+        "scoringNotes": "Nilai kemampuan menulis preferensi sederhana dengan alasan dasar."
+      }
+    },
+    {
+      "id": "BIGT-A1-WR-SET01-004",
+      "level": "A1",
+      "skill": "WRITING",
+      "taskType": "guided_sentence",
+      "responseMode": "text",
+      "prompt": "Apa hobi Anda?",
+      "instructionForCandidate": "Tulis 2 kalimat tentang hobi Anda. Sebutkan hobi dan kapan Anda melakukannya.",
+      "constraints": {
+        "minWords": 5,
+        "maxWords": 30,
+        "responseTimeSec": 180
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-WRITING-001"],
+      "tags": ["production", "a1-writing", "guided-sentence", "hobby"],
+      "difficulty": 0,
+      "adminOnly": {
+        "sampleResponse": "Hobi saya membaca buku. Saya membaca setiap malam sebelum tidur.",
+        "scoringNotes": "Nilai kosa kata kegiatan sehari-hari dan waktu kegiatan."
+      }
+    },
+    {
+      "id": "BIGT-A1-WR-SET01-005",
+      "level": "A1",
+      "skill": "WRITING",
+      "taskType": "form_completion",
+      "responseMode": "text",
+      "prompt": "Isi formulir pendaftaran kursus bahasa.",
+      "instructionForCandidate": "Lengkapi formulir di bawah ini. Gunakan data diri Anda yang sebenarnya atau buat data diri sederhana.",
+      "stimulus": {
+        "type": "text",
+        "text": "FORMULIR PENDAFTARAN KURSUS BAHASA INDONESIA\nNama Lengkap:\nUsia:\nKota Asal:\nPekerjaan:\nAlasan Belajar:"
+      },
+      "constraints": {
+        "minWords": 10,
+        "maxWords": 40,
+        "responseTimeSec": 300
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-WRITING-002", "BIGT-A1-WRITING-001"],
+      "tags": ["production", "a1-writing", "form-completion", "registration"],
+      "difficulty": 0,
+      "adminOnly": {
+        "sampleResponse": "Nama Lengkap: David Chen\nUsia: 28 tahun\nKota Asal: Beijing\nPekerjaan: Guru\nAlasan Belajar: Saya ingin bekerja di Indonesia.",
+        "scoringNotes": "Nilai kelengkapan pengisian dan kosa kata dasar. Semua field harus diisi."
+      }
+    },
+    {
+      "id": "BIGT-A1-WR-SET01-006",
+      "level": "A1",
+      "skill": "WRITING",
+      "taskType": "form_completion",
+      "responseMode": "text",
+      "prompt": "Isi formulir perpustakaan.",
+      "instructionForCandidate": "Lengkapi formulir anggota perpustakaan. Tulis informasi yang diminta.",
+      "stimulus": {
+        "type": "text",
+        "text": "FORMULIR ANGGOTA PERPUSTAKAAN\nNama:\nAlamat:\nNomor Telepon:\nEmail:"
+      },
+      "constraints": {
+        "minWords": 8,
+        "maxWords": 35,
+        "responseTimeSec": 240
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-WRITING-002"],
+      "tags": ["production", "a1-writing", "form-completion", "library"],
+      "difficulty": 0,
+      "adminOnly": {
+        "sampleResponse": "Nama: Sarah Lim\nAlamat: Jalan Merdeka No 15, Jakarta\nNomor Telepon: 08123456789\nEmail: sarah@email.com",
+        "scoringNotes": "Pastikan semua field diisi dengan informasi yang sesuai."
+      }
+    },
+    {
+      "id": "BIGT-A1-WR-SET01-007",
+      "level": "A1",
+      "skill": "WRITING",
+      "taskType": "form_completion",
+      "responseMode": "text",
+      "prompt": "Isi formulir pemesanan kamar hotel.",
+      "instructionForCandidate": "Lengkapi formulir pemesanan kamar hotel. Tulis informasi yang diminta dengan sederhana.",
+      "stimulus": {
+        "type": "text",
+        "text": "FORMULIR PEMESANAN HOTEL\nNama Tamu:\nTanggal Check-in:\nJumlah Malam:\nTipe Kamar:"
+      },
+      "constraints": {
+        "minWords": 8,
+        "maxWords": 35,
+        "responseTimeSec": 240
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-WRITING-002"],
+      "tags": ["production", "a1-writing", "form-completion", "hotel"],
+      "difficulty": 0,
+      "adminOnly": {
+        "sampleResponse": "Nama Tamu: Kenji Tanaka\nTanggal Check-in: 15 Maret 2026\nJumlah Malam: 3 malam\nTipe Kamar: Kamar standar",
+        "scoringNotes": "Nilai kemampuan mengisi informasi sederhana. Format tanggal dan angka dinilai."
+      }
+    },
+    {
+      "id": "BIGT-A1-WR-SET01-008",
+      "level": "A1",
+      "skill": "WRITING",
+      "taskType": "form_completion",
+      "responseMode": "text",
+      "prompt": "Isi formulir pendaftaran acara.",
+      "instructionForCandidate": "Lengkapi formulir pendaftaran acara. Gunakan data sederhana.",
+      "stimulus": {
+        "type": "text",
+        "text": "DAFTAR HADIR ACARA\nNama:\nAsal Sekolah/Perusahaan:\nAcara: Pesta Budaya Indonesia\nTanggal:"
+      },
+      "constraints": {
+        "minWords": 8,
+        "maxWords": 35,
+        "responseTimeSec": 240
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-WRITING-002"],
+      "tags": ["production", "a1-writing", "form-completion", "event"],
+      "difficulty": 0,
+      "adminOnly": {
+        "sampleResponse": "Nama: Lisa Park\nAsal Sekolah/Perusahaan: Universitas Seoul\nAcara: Pesta Budaya Indonesia\nTanggal: 20 April 2026",
+        "scoringNotes": "Nilai kelengkapan dan kesesuaian data. Perhatikan format tanggal."
+      }
+    },
+    {
+      "id": "BIGT-A1-WR-SET01-009",
+      "level": "A1",
+      "skill": "WRITING",
+      "taskType": "message_reply",
+      "responseMode": "text",
+      "prompt": "Teman Anda mengirim pesan. Balaslah.",
+      "instructionForCandidate": "Baca pesan dari teman Anda. Tulis balasan dengan sopan dan sederhana.",
+      "stimulus": {
+        "type": "text",
+        "text": "Pesan dari Rina:\n\"Halo! Apa kabar? Besok kamu ada waktu? Kita mau ke museum. Mau ikut?\""
+      },
+      "constraints": {
+        "minWords": 8,
+        "maxWords": 30,
+        "responseTimeSec": 240
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-WRITING-001", "BIGT-A1-WRITING-003"],
+      "tags": ["production", "a1-writing", "message-reply", "invitation"],
+      "difficulty": 1,
+      "adminOnly": {
+        "sampleResponse": "Halo Rina! Kabar baik. Aku ada waktu besok. Aku mau ikut ke museum. Jam berapa?",
+        "scoringNotes": "Nilai kesesuaian balasan dengan pesan, kosa kata sederhana, dan kesopanan dasar."
+      }
+    },
+    {
+      "id": "BIGT-A1-WR-SET01-010",
+      "level": "A1",
+      "skill": "WRITING",
+      "taskType": "message_reply",
+      "responseMode": "text",
+      "prompt": "Ibu Anda mengirim pesan. Balaslah.",
+      "instructionForCandidate": "Baca pesan dari Ibu. Tulis balasan pendek.",
+      "stimulus": {
+        "type": "text",
+        "text": "Pesan dari Ibu:\n\"Nak, Ibu sudah di pasar. Ada yang ingin dibeli?\""
+      },
+      "constraints": {
+        "minWords": 5,
+        "maxWords": 25,
+        "responseTimeSec": 180
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-WRITING-001", "BIGT-A1-WRITING-003"],
+      "tags": ["production", "a1-writing", "message-reply", "family"],
+      "difficulty": 0,
+      "adminOnly": {
+        "sampleResponse": "Ibu, belikan saya buah jeruk dua kilo. Terima kasih, Ibu.",
+        "scoringNotes": "Nilai kemampuan meminta sesuatu dengan sopan dalam pesan singkat."
+      }
+    },
+    {
+      "id": "BIGT-A1-WR-SET01-011",
+      "level": "A1",
+      "skill": "WRITING",
+      "taskType": "message_reply",
+      "responseMode": "text",
+      "prompt": "Teman sekelas Anda mengirim pesan. Balaslah.",
+      "instructionForCandidate": "Baca pesan dari teman. Tulis balasan singkat.",
+      "stimulus": {
+        "type": "text",
+        "text": "Pesan dari Budi:\n\"PR matematika ada halaman 10 sampai 20. Kamu sudah selesai?\""
+      },
+      "constraints": {
+        "minWords": 5,
+        "maxWords": 25,
+        "responseTimeSec": 180
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-WRITING-001", "BIGT-A1-WRITING-003"],
+      "tags": ["production", "a1-writing", "message-reply", "school"],
+      "difficulty": 1,
+      "adminOnly": {
+        "sampleResponse": "Halo Budi. Aku sudah selesai halaman 10 sampai 15. Halaman 16 sampai 20 belum. Terima kasih.",
+        "scoringNotes": "Nilai kemampuan merespons pertanyaan sederhana dalam konteks sekolah."
+      }
+    },
+    {
+      "id": "BIGT-A1-WR-SET01-012",
+      "level": "A1",
+      "skill": "WRITING",
+      "taskType": "message_reply",
+      "responseMode": "text",
+      "prompt": "Teman Anda minta bantuan. Balaslah.",
+      "instructionForCandidate": "Baca pesan dari teman. Tulis balasan singkat.",
+      "stimulus": {
+        "type": "text",
+        "text": "Pesan dari Sari:\n\"Maaf, aku tidak bisa datang ke kelas hari ini. Aku sakit kepala. Tolong beritahu guru, ya.\""
+      },
+      "constraints": {
+        "minWords": 8,
+        "maxWords": 30,
+        "responseTimeSec": 240
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-WRITING-001", "BIGT-A1-WRITING-003"],
+      "tags": ["production", "a1-writing", "message-reply", "help"],
+      "difficulty": 1,
+      "adminOnly": {
+        "sampleResponse": "Halo Sari. Baik, aku akan beritahu guru. Semoga cepat sembuh.",
+        "scoringNotes": "Nilai kemampuan menawarkan bantuan dan mengekspresikan empati sederhana."
+      }
+    },
+    {
+      "id": "BIGT-A1-WR-SET01-013",
+      "level": "A1",
+      "skill": "WRITING",
+      "taskType": "short_text",
+      "responseMode": "text",
+      "prompt": "Ceritakan tentang rumah Anda.",
+      "instructionForCandidate": "Tulis 3 kalimat tentang rumah Anda. Sebutkan di mana rumah Anda, berapa kamar, dan siapa yang tinggal di sana.",
+      "constraints": {
+        "minWords": 10,
+        "maxWords": 40,
+        "responseTimeSec": 300
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-WRITING-001"],
+      "tags": ["production", "a1-writing", "short-text", "house"],
+      "difficulty": 1,
+      "adminOnly": {
+        "sampleResponse": "Rumah saya di Jakarta. Rumah saya punya tiga kamar tidur. Saya tinggal dengan ayah, ibu, dan adik.",
+        "scoringNotes": "Nilai kemampuan mendeskripsikan tempat tinggal dengan kosa kata dasar."
+      }
+    },
+    {
+      "id": "BIGT-A1-WR-SET01-014",
+      "level": "A1",
+      "skill": "WRITING",
+      "taskType": "short_text",
+      "responseMode": "text",
+      "prompt": "Ceritakan tentang sekolah atau tempat kerja Anda.",
+      "instructionForCandidate": "Tulis 3 kalimat sederhana tentang sekolah atau tempat kerja Anda.",
+      "constraints": {
+        "minWords": 10,
+        "maxWords": 40,
+        "responseTimeSec": 300
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-WRITING-001"],
+      "tags": ["production", "a1-writing", "short-text", "school"],
+      "difficulty": 1,
+      "adminOnly": {
+        "sampleResponse": "Saya sekolah di SMP Cempaka Putih. Saya di kelas dua. Saya suka pelajaran bahasa Indonesia.",
+        "scoringNotes": "Nilai kosa kata tentang sekolah dan kemampuan membuat kalimat sederhana."
+      }
+    },
+    {
+      "id": "BIGT-A1-WR-SET01-015",
+      "level": "A1",
+      "skill": "WRITING",
+      "taskType": "short_text",
+      "responseMode": "text",
+      "prompt": "Ceritakan kegiatan Anda di pagi hari.",
+      "instructionForCandidate": "Tulis 3 kalimat tentang apa yang Anda lakukan pagi ini. Sebutkan urutan kegiatannya.",
+      "constraints": {
+        "minWords": 10,
+        "maxWords": 40,
+        "responseTimeSec": 300
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-WRITING-001"],
+      "tags": ["production", "a1-writing", "short-text", "daily-routine"],
+      "difficulty": 1,
+      "adminOnly": {
+        "sampleResponse": "Pagi hari saya bangun jam 5. Saya mandi dan sarapan. Lalu saya pergi ke kantor jam 7.",
+        "scoringNotes": "Nilai urutan waktu dan penggunaan kosa kata kegiatan sehari-hari."
+      }
+    },
+    {
+      "id": "BIGT-A1-WR-SET01-016",
+      "level": "A1",
+      "skill": "WRITING",
+      "taskType": "short_text",
+      "responseMode": "text",
+      "prompt": "Ceritakan tentang teman baik Anda.",
+      "instructionForCandidate": "Tulis 3 kalimat tentang teman baik Anda. Sebutkan nama, asal, dan sifatnya.",
+      "constraints": {
+        "minWords": 10,
+        "maxWords": 40,
+        "responseTimeSec": 300
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-WRITING-001"],
+      "tags": ["production", "a1-writing", "short-text", "friend"],
+      "difficulty": 1,
+      "adminOnly": {
+        "sampleResponse": "Teman baik saya bernama Rina. Dia dari Bandung. Rina ramah dan suka membantu.",
+        "scoringNotes": "Nilai penggunaan kosa kata deskriptif sederhana untuk menggambarkan orang."
+      }
+    },
+    {
+      "id": "BIGT-A1-WR-SET01-017",
+      "level": "A1",
+      "skill": "WRITING",
+      "taskType": "picture_description",
+      "responseMode": "text",
+      "prompt": "Deskripsikan gambar kelas berikut.",
+      "instructionForCandidate": "Lihat deskripsi gambar di bawah. Tulis 2-3 kalimat tentang apa yang Anda lihat.",
+      "stimulus": {
+        "type": "text",
+        "text": "Gambar: Sebuah ruang kelas. Ada 10 meja dan kursi. Seorang guru berdiri di depan kelas. Murid-murid duduk dan mendengarkan. Di papan tulis ada tulisan \"Selamat Pagi\"."
+      },
+      "constraints": {
+        "minWords": 10,
+        "maxWords": 35,
+        "responseTimeSec": 240
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-WRITING-001"],
+      "tags": ["production", "a1-writing", "picture-description", "classroom"],
+      "difficulty": 1,
+      "adminOnly": {
+        "sampleResponse": "Di gambar ada ruang kelas. Ada guru dan murid. Guru berdiri di depan. Murid duduk dan belajar.",
+        "scoringNotes": "Nilai kemampuan mengidentifikasi dan mendeskripsikan elemen dasar dalam gambar."
+      }
+    },
+    {
+      "id": "BIGT-A1-WR-SET01-018",
+      "level": "A1",
+      "skill": "WRITING",
+      "taskType": "picture_description",
+      "responseMode": "text",
+      "prompt": "Deskripsikan gambar taman berikut.",
+      "instructionForCandidate": "Lihat deskripsi gambar. Tulis 2-3 kalimat tentang apa yang ada di taman.",
+      "stimulus": {
+        "type": "text",
+        "text": "Gambar: Sebuah taman kota yang indah. Ada pohon besar, rumput hijau, dan bangku taman. Beberapa orang duduk di bangku. Ada anak-anak bermain bola."
+      },
+      "constraints": {
+        "minWords": 10,
+        "maxWords": 35,
+        "responseTimeSec": 240
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-WRITING-001"],
+      "tags": ["production", "a1-writing", "picture-description", "park"],
+      "difficulty": 1,
+      "adminOnly": {
+        "sampleResponse": "Di taman ada pohon besar dan rumput hijau. Orang duduk di bangku. Anak-anak bermain bola.",
+        "scoringNotes": "Nilai kemampuan mendeskripsikan lokasi dan kegiatan orang di gambar."
+      }
+    },
+    {
+      "id": "BIGT-A1-WR-SET01-019",
+      "level": "A1",
+      "skill": "WRITING",
+      "taskType": "picture_description",
+      "responseMode": "text",
+      "prompt": "Deskripsikan gambar dapur berikut.",
+      "instructionForCandidate": "Lihat deskripsi gambar. Tulis 2-3 kalimat tentang apa yang Anda lihat di dapur.",
+      "stimulus": {
+        "type": "text",
+        "text": "Gambar: Sebuah dapur bersih dan rapi. Ada kompor, kulkas, dan wastafel. Seorang ibu sedang memasak di kompor. Di meja ada sayuran dan pisau."
+      },
+      "constraints": {
+        "minWords": 10,
+        "maxWords": 35,
+        "responseTimeSec": 240
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-WRITING-001"],
+      "tags": ["production", "a1-writing", "picture-description", "kitchen"],
+      "difficulty": 1,
+      "adminOnly": {
+        "sampleResponse": "Di dapur ada kompor dan kulkas. Ibu sedang memasak sayuran. Dapur bersih dan rapi.",
+        "scoringNotes": "Nilai kosa kata benda di dapur dan kemampuan deskripsi lokasi."
+      }
+    },
+    {
+      "id": "BIGT-A1-WR-SET01-020",
+      "level": "A1",
+      "skill": "WRITING",
+      "taskType": "picture_description",
+      "responseMode": "text",
+      "prompt": "Deskripsikan gambar pasar berikut.",
+      "instructionForCandidate": "Lihat deskripsi gambar. Tulis 2-3 kalimat tentang apa yang Anda lihat di pasar.",
+      "stimulus": {
+        "type": "text",
+        "text": "Gambar: Pasar tradisional yang ramai. Banyak pedagang menjual buah-buahan di meja. Ada pembeli yang memilih apel dan jeruk. Suasananya ramai dan penuh warna."
+      },
+      "constraints": {
+        "minWords": 10,
+        "maxWords": 40,
+        "responseTimeSec": 300
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-WRITING-001"],
+      "tags": ["production", "a1-writing", "picture-description", "market"],
+      "difficulty": 1,
+      "adminOnly": {
+        "sampleResponse": "Di pasar banyak pedagang. Mereka jual buah apel dan jeruk. Pembeli memilih buah. Suasana ramai.",
+        "scoringNotes": "Nilai kosa kata pasar dan benda yang dijual. Perhatikan penggunaan kata kerja sederhana."
+      }
+    }
+  ]
+}

@@ -114,17 +114,25 @@ export default function TestRunnerPage() {
       setSession(sessionId, mappedQuestions, data.durationMinutes || 30)
 
       // Restore previous answers from DB (page refresh)
+      // DB stores answer as JSON: MCQs →{ selected: "B" }, ESSAY →{ text: "..." }, AUDIO_RESPONSE →{}
       const restoredAnswers: Record<string, any> = {}
       for (const item of data.items) {
-        if (item.answer) {
+        if (item.answer && item.answer.answer) {
           const snapshot = item.question || {}
           const qType = snapshot.questionType || 'MCQ'
           if (qType === 'MCQ') {
-            restoredAnswers[item.id] = { selectedOption: item.answer.answer }
+            const selected = item.answer.answer.selected
+            if (selected) {
+              restoredAnswers[item.id] = { selectedOption: selected }
+            }
           } else if (qType === 'AUDIO_RESPONSE') {
-            restoredAnswers[item.id] = { audioUrl: item.answer.answer }
+            // Audio URL intentionally nulled for security — cannot restore
+            restoredAnswers[item.id] = {}
           } else {
-            restoredAnswers[item.id] = { text: item.answer.answer }
+            const text = item.answer.answer.text
+            if (text) {
+              restoredAnswers[item.id] = { text }
+            }
           }
         }
       }
@@ -154,6 +162,34 @@ export default function TestRunnerPage() {
           const savePromises = state.questions.map(q => {
             const answer = state.answers[q.id]
             if (!answer) return Promise.resolve()
+
+            const responseMode = q.content?.responseMode
+
+            if (responseMode === 'audio' || responseMode === 'text_audio' || (responseMode === 'text' && answer.text)) {
+              if (answer._audioBlob) {
+                const formData = new FormData()
+                formData.append('sessionId', sessionId)
+                formData.append('sessionItemId', q.id)
+                formData.append('responseMode', responseMode || 'text')
+                formData.append('responseText', answer.text || '')
+                formData.append('audio', answer._audioBlob, 'recording.webm')
+                formData.append('audioDurationSec', String(answer.audioDuration || 0))
+                return fetch('/api/test/constructed/submit', { method: 'POST', body: formData }).catch(() => {})
+              }
+              return fetch('/api/test/constructed/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  sessionId,
+                  sessionItemId: q.id,
+                  responseMode: responseMode || 'text',
+                  responseText: answer.text || null,
+                  audioUrl: answer.audioUrl || null,
+                  audioDurationSec: answer.audioDuration || null,
+                }),
+              }).catch(() => {})
+            }
+
             return fetch(`/api/test/session/${sessionId}/answer`, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },

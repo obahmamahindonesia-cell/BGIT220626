@@ -1,0 +1,547 @@
+{
+  "setId": "BIGT-A2-SPEAKING-SET01",
+  "cefr": "A2",
+  "skill": "speaking",
+  "title": "A2 Speaking — Produksi Terkontrol Set 01",
+  "version": "1.0.0",
+  "status": "review",
+  "itemsCount": 20,
+  "items": [
+    {
+      "id": "BIGT-A2-SP-SET01-001",
+      "level": "A2",
+      "skill": "SPEAKING",
+      "taskType": "voice_short_answer",
+      "responseMode": "audio",
+      "prompt": "Ceritakan tentang rutinitas harian Anda.",
+      "instructionForCandidate": "Jelaskan kegiatan Anda dari pagi sampai malam. Sebutkan waktu dan aktivitas. Bicara selama 30-45 detik.",
+      "constraints": {
+        "minDurationSec": 20,
+        "maxDurationSec": 45,
+        "preparationTimeSec": 20,
+        "responseTimeSec": 45
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-SPEAKING",
+      "maxScore": 30,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-SPEAKING-001", "BIGT-A2-SPEAKING-002"],
+      "tags": ["production", "a2-speaking", "short-answer", "daily-routine"],
+      "difficulty": 0,
+      "adminOnly": {
+        "scoringNotes": "Nilai urutan waktu, kosa kata kegiatan harian, dan kelancaran berbicara."
+      }
+    },
+    {
+      "id": "BIGT-A2-SP-SET01-002",
+      "level": "A2",
+      "skill": "SPEAKING",
+      "taskType": "voice_short_answer",
+      "responseMode": "audio",
+      "prompt": "Apa yang Anda lakukan di akhir pekan?",
+      "instructionForCandidate": "Ceritakan kegiatan akhir pekan Anda. Sebutkan dua atau tiga kegiatan. Bicara selama 30-45 detik.",
+      "constraints": {
+        "minDurationSec": 20,
+        "maxDurationSec": 45,
+        "preparationTimeSec": 20,
+        "responseTimeSec": 45
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-SPEAKING",
+      "maxScore": 30,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-SPEAKING-001", "BIGT-A2-SPEAKING-003"],
+      "tags": ["production", "a2-speaking", "short-answer", "weekend"],
+      "difficulty": 0,
+      "adminOnly": {
+        "scoringNotes": "Nilai variasi kosa kata kegiatan, struktur kalimat, dan kelancaran."
+      }
+    },
+    {
+      "id": "BIGT-A2-SP-SET01-003",
+      "level": "A2",
+      "skill": "SPEAKING",
+      "taskType": "voice_short_answer",
+      "responseMode": "audio",
+      "prompt": "Apakah Anda lebih suka tinggal di kota besar atau di desa? Jelaskan.",
+      "instructionForCandidate": "Beri pendapat Anda. Sebutkan dua alasan. Bicara selama 30-50 detik.",
+      "constraints": {
+        "minDurationSec": 20,
+        "maxDurationSec": 50,
+        "preparationTimeSec": 20,
+        "responseTimeSec": 50
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-SPEAKING",
+      "maxScore": 30,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-SPEAKING-001", "BIGT-A2-SPEAKING-003"],
+      "tags": ["production", "a2-speaking", "short-answer", "opinion"],
+      "difficulty": 1,
+      "adminOnly": {
+        "scoringNotes": "Nilai kemampuan memberi pendapat dengan alasan, kosa kata perbandingan, dan kelancaran."
+      }
+    },
+    {
+      "id": "BIGT-A2-SP-SET01-004",
+      "level": "A2",
+      "skill": "SPEAKING",
+      "taskType": "voice_short_answer",
+      "responseMode": "audio",
+      "prompt": "Ceritakan pengalaman liburan yang menyenangkan.",
+      "instructionForCandidate": "Ceritakan liburan terbaik Anda. Sebutkan tempat, dengan siapa, dan apa yang Anda lakukan. Bicara selama 30-50 detik.",
+      "constraints": {
+        "minDurationSec": 25,
+        "maxDurationSec": 50,
+        "preparationTimeSec": 20,
+        "responseTimeSec": 50
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-SPEAKING",
+      "maxScore": 30,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-SPEAKING-001", "BIGT-A2-SPEAKING-002"],
+      "tags": ["production", "a2-speaking", "short-answer", "holiday"],
+      "difficulty": 1,
+      "adminOnly": {
+        "scoringNotes": "Nilai kemampuan menceritakan pengalaman masa lalu dengan urutan jelas dan kosa kata deskriptif."
+      }
+    },
+    {
+      "id": "BIGT-A2-SP-SET01-005",
+      "level": "A2",
+      "skill": "SPEAKING",
+      "taskType": "voice_short_answer",
+      "responseMode": "audio",
+      "prompt": "Apa makanan khas dari negara Anda? Jelaskan.",
+      "instructionForCandidate": "Ceritakan satu makanan khas dari negara Anda. Jelaskan bahan, rasa, dan cara makannya. Bicara selama 30-50 detik.",
+      "constraints": {
+        "minDurationSec": 20,
+        "maxDurationSec": 50,
+        "preparationTimeSec": 20,
+        "responseTimeSec": 50
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-SPEAKING",
+      "maxScore": 30,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-SPEAKING-001", "BIGT-A2-SPEAKING-003"],
+      "tags": ["production", "a2-speaking", "short-answer", "food"],
+      "difficulty": 0,
+      "adminOnly": {
+        "scoringNotes": "Nilai kosa kata makanan, kemampuan deskripsi, dan pelafalan."
+      }
+    },
+    {
+      "id": "BIGT-A2-SP-SET01-006",
+      "level": "A2",
+      "skill": "SPEAKING",
+      "taskType": "voice_short_answer",
+      "responseMode": "audio",
+      "prompt": "Apa rencana Anda untuk tahun depan?",
+      "instructionForCandidate": "Ceritakan rencana Anda. Gunakan kata 'akan' atau 'ingin'. Bicara selama 30-50 detik.",
+      "constraints": {
+        "minDurationSec": 20,
+        "maxDurationSec": 50,
+        "preparationTimeSec": 20,
+        "responseTimeSec": 50
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-SPEAKING",
+      "maxScore": 30,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-SPEAKING-001", "BIGT-A2-SPEAKING-003"],
+      "tags": ["production", "a2-speaking", "short-answer", "plan"],
+      "difficulty": 1,
+      "adminOnly": {
+        "scoringNotes": "Nilai penggunaan kata 'akan'/'ingin', struktur kalimat masa depan, dan kelancaran."
+      }
+    },
+    {
+      "id": "BIGT-A2-SP-SET01-007",
+      "level": "A2",
+      "skill": "SPEAKING",
+      "taskType": "voice_picture_description",
+      "responseMode": "audio",
+      "prompt": "Deskripsikan gambar suasana pasar tradisional.",
+      "instructionForCandidate": "Lihat deskripsi gambar. Jelaskan apa yang Anda lihat. Sebutkan orang, barang, dan suasananya. Bicara selama 30-50 detik.",
+      "stimulus": {
+        "type": "text",
+        "text": "Gambar: Pasar tradisional di pagi hari. Banyak pedagang menjual sayur, buah, dan daging. Beberapa pembeli sedang menawar harga. Seorang ibu membawa keranjang belanja. Suasana ramai dan penuh warna. Ada bau rempah-rempah dari warung bumbu."
+      },
+      "constraints": {
+        "minDurationSec": 25,
+        "maxDurationSec": 55,
+        "preparationTimeSec": 25,
+        "responseTimeSec": 55
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-SPEAKING",
+      "maxScore": 30,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-SPEAKING-001", "BIGT-A2-SPEAKING-002"],
+      "tags": ["production", "a2-speaking", "picture-description", "market"],
+      "difficulty": 0,
+      "adminOnly": {
+        "scoringNotes": "Nilai detail deskripsi, kosa kata pasar, dan kemampuan menggambarkan suasana."
+      }
+    },
+    {
+      "id": "BIGT-A2-SP-SET01-008",
+      "level": "A2",
+      "skill": "SPEAKING",
+      "taskType": "voice_picture_description",
+      "responseMode": "audio",
+      "prompt": "Deskripsikan gambar kegiatan di pantai.",
+      "instructionForCandidate": "Lihat deskripsi gambar. Jelaskan kegiatan orang-orang di pantai. Bicara selama 30-50 detik.",
+      "stimulus": {
+        "type": "text",
+        "text": "Gambar: Pantai yang cerah dan ramai. Beberapa orang berenang di laut. Seorang anak bermain bola voli pantai dengan teman-temannya. Ada keluarga duduk di tikar sambil piknik. Seorang pedagang berjalan menjual es kelapa muda. Matahari bersinar terang."
+      },
+      "constraints": {
+        "minDurationSec": 25,
+        "maxDurationSec": 55,
+        "preparationTimeSec": 25,
+        "responseTimeSec": 55
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-SPEAKING",
+      "maxScore": 30,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-SPEAKING-001", "BIGT-A2-SPEAKING-002"],
+      "tags": ["production", "a2-speaking", "picture-description", "beach"],
+      "difficulty": 0,
+      "adminOnly": {
+        "scoringNotes": "Nilai kosa kata kegiatan pantai, variasi kalimat, dan kelancaran."
+      }
+    },
+    {
+      "id": "BIGT-A2-SP-SET01-009",
+      "level": "A2",
+      "skill": "SPEAKING",
+      "taskType": "voice_picture_description",
+      "responseMode": "audio",
+      "prompt": "Deskripsikan gambar acara musik di taman.",
+      "instructionForCandidate": "Lihat deskripsi gambar. Jelaskan apa yang terjadi, siapa yang ada di sana, dan suasananya.",
+      "stimulus": {
+        "type": "text",
+        "text": "Gambar: Konser musik di taman kota. Sebuah panggung besar dengan lampu warna-warni. Seorang penyanyi sedang bernyanyi di atas panggung. Banyak penonton berdiri dan bertepuk tangan. Ada yang menari dan bernyanyi bersama. Suasananya meriah dan gembira."
+      },
+      "constraints": {
+        "minDurationSec": 25,
+        "maxDurationSec": 55,
+        "preparationTimeSec": 25,
+        "responseTimeSec": 55
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-SPEAKING",
+      "maxScore": 30,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-SPEAKING-001", "BIGT-A2-SPEAKING-003"],
+      "tags": ["production", "a2-speaking", "picture-description", "concert"],
+      "difficulty": 1,
+      "adminOnly": {
+        "scoringNotes": "Nilai kosa kata musik dan hiburan, kemampuan mendeskripsikan aksi, dan ekspresi."
+      }
+    },
+    {
+      "id": "BIGT-A2-SP-SET01-010",
+      "level": "A2",
+      "skill": "SPEAKING",
+      "taskType": "voice_picture_description",
+      "responseMode": "audio",
+      "prompt": "Deskripsikan gambar suasana di kantor.",
+      "instructionForCandidate": "Lihat deskripsi gambar. Jelaskan apa yang dilakukan orang-orang di kantor.",
+      "stimulus": {
+        "type": "text",
+        "text": "Gambar: Sebuah kantor yang modern. Beberapa karyawan duduk di meja masing-masing sambil bekerja di komputer. Dua orang sedang berdiskusi di ruang rapat kaca. Seorang resepsionis duduk di meja depan. Tanaman hias ada di sudut ruangan."
+      },
+      "constraints": {
+        "minDurationSec": 25,
+        "maxDurationSec": 55,
+        "preparationTimeSec": 25,
+        "responseTimeSec": 55
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-SPEAKING",
+      "maxScore": 30,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-SPEAKING-001", "BIGT-A2-SPEAKING-002"],
+      "tags": ["production", "a2-speaking", "picture-description", "office"],
+      "difficulty": 1,
+      "adminOnly": {
+        "scoringNotes": "Nilai kosa kata lingkungan kerja dan kemampuan mendeskripsikan situasi profesional sederhana."
+      }
+    },
+    {
+      "id": "BIGT-A2-SP-SET01-011",
+      "level": "A2",
+      "skill": "SPEAKING",
+      "taskType": "voice_picture_description",
+      "responseMode": "audio",
+      "prompt": "Deskripsikan gambar suasana di rumah sakit.",
+      "instructionForCandidate": "Lihat deskripsi gambar. Jelaskan apa yang Anda lihat di rumah sakit.",
+      "stimulus": {
+        "type": "text",
+        "text": "Gambar: Ruang tunggu rumah sakit yang bersih. Beberapa pasien duduk di kursi menunggu panggilan. Seorang perawat berbicara dengan pasien di meja pendaftaran. Ada poster kesehatan di dinding. Seorang dokter berjalan dengan stetoskop di leher."
+      },
+      "constraints": {
+        "minDurationSec": 25,
+        "maxDurationSec": 55,
+        "preparationTimeSec": 25,
+        "responseTimeSec": 55
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-SPEAKING",
+      "maxScore": 30,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-SPEAKING-001", "BIGT-A2-SPEAKING-002"],
+      "tags": ["production", "a2-speaking", "picture-description", "hospital"],
+      "difficulty": 1,
+      "adminOnly": {
+        "scoringNotes": "Nilai kosa kata kesehatan dan tempat umum."
+      }
+    },
+    {
+      "id": "BIGT-A2-SP-SET01-012",
+      "level": "A2",
+      "skill": "SPEAKING",
+      "taskType": "read_and_speak",
+      "responseMode": "audio",
+      "prompt": "Baca teks pendek ini, lalu ceritakan kembali dengan kata-kata Anda sendiri.",
+      "instructionForCandidate": "Baca teks di bawah dalam hati. Setelah siap, ceritakan isi teks dengan bahasa Anda sendiri. Bicara selama 30-50 detik.",
+      "stimulus": {
+        "type": "text",
+        "text": "Budi adalah siswa SMA dari Yogyakarta. Setiap hari Budi naik sepeda ke sekolah. Jarak rumah ke sekolah tiga kilometer. Budi suka naik sepeda karena udaranya segar. Dia juga hemat uang jajan."
+      },
+      "constraints": {
+        "minDurationSec": 25,
+        "maxDurationSec": 50,
+        "preparationTimeSec": 30,
+        "responseTimeSec": 50
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-SPEAKING",
+      "maxScore": 30,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-SPEAKING-001", "BIGT-A2-SPEAKING-002"],
+      "tags": ["production", "a2-speaking", "read-and-speak", "summary"],
+      "difficulty": 0,
+      "adminOnly": {
+        "scoringNotes": "Nilai pemahaman isi teks, kemampuan merangkum, dan kelancaran berbicara. Transcript teks asli tidak boleh bocor ke peserta setelah tes."
+      }
+    },
+    {
+      "id": "BIGT-A2-SP-SET01-013",
+      "level": "A2",
+      "skill": "SPEAKING",
+      "taskType": "read_and_speak",
+      "responseMode": "audio",
+      "prompt": "Baca pengumuman ini, lalu sampaikan informasinya kepada teman yang tidak bisa membaca.",
+      "instructionForCandidate": "Baca pengumuman. Bayangkan Anda harus menyampaikan info ini kepada teman. Jelaskan dengan sederhana. Bicara selama 30-50 detik.",
+      "stimulus": {
+        "type": "text",
+        "text": "PENGUMUMAN — KEGIATAN BAHASA INDONESIA\nHari: Sabtu, 20 Agustus 2026\nWaktu: Pukul 08.00 - 12.00\nTempat: Aula Sekolah\nAcara: Lomba pidato, baca puisi, dan menulis cerita pendek.\nPendaftaran: Hubungi Ibu Dewi di ruang guru."
+      },
+      "constraints": {
+        "minDurationSec": 25,
+        "maxDurationSec": 50,
+        "preparationTimeSec": 30,
+        "responseTimeSec": 50
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-SPEAKING",
+      "maxScore": 30,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-SPEAKING-002", "BIGT-A2-SPEAKING-003"],
+      "tags": ["production", "a2-speaking", "read-and-speak", "announcement"],
+      "difficulty": 1,
+      "adminOnly": {
+        "scoringNotes": "Nilai kemampuan menyampaikan informasi dengan akurat dan mudah dipahami."
+      }
+    },
+    {
+      "id": "BIGT-A2-SP-SET01-014",
+      "level": "A2",
+      "skill": "SPEAKING",
+      "taskType": "read_and_speak",
+      "responseMode": "audio",
+      "prompt": "Baca resep masakan ini. Jelaskan cara membuatnya.",
+      "instructionForCandidate": "Baca resep. Jelaskan langkah-langkahnya dengan urutan yang benar. Bicara selama 35-55 detik.",
+      "stimulus": {
+        "type": "text",
+        "text": "RESEP JUS ALPUKAT:\nBahan: 1 buah alpukat, 2 sendok gula, 200 ml susu, es batu.\nCara membuat:\n1. Belah alpukat dan ambil dagingnya.\n2. Masukkan alpukat, gula, dan susu ke blender.\n3. Blender sampai halus.\n4. Tuang ke gelas dan tambahkan es batu.\n5. Jus alpukat siap diminum."
+      },
+      "constraints": {
+        "minDurationSec": 25,
+        "maxDurationSec": 55,
+        "preparationTimeSec": 30,
+        "responseTimeSec": 55
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-SPEAKING",
+      "maxScore": 30,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-SPEAKING-001", "BIGT-A2-SPEAKING-002"],
+      "tags": ["production", "a2-speaking", "read-and-speak", "recipe"],
+      "difficulty": 1,
+      "adminOnly": {
+        "scoringNotes": "Nilai urutan instruksi, penggunaan kata kerja imperatif, dan kejelasan."
+      }
+    },
+    {
+      "id": "BIGT-A2-SP-SET01-015",
+      "level": "A2",
+      "skill": "SPEAKING",
+      "taskType": "read_and_speak",
+      "responseMode": "audio",
+      "prompt": "Baca cerita pendek ini. Lalu ceritakan kembali pendapat Anda tentang cerita tersebut.",
+      "instructionForCandidate": "Baca cerita dalam hati. Setelah siap, ceritakan kembali dan beri pendapat Anda. Apakah ceritanya bagus? Apa yang Anda pelajari?",
+      "stimulus": {
+        "type": "text",
+        "text": "Cerita: Rani mendapatkan seekor kucing kecil di depan rumahnya. Kucing itu kurus dan kotor. Rani memberi makan dan memandikannya. Setelah beberapa minggu, kucing itu sehat dan lucu. Sekarang kucing itu menjadi teman bermain Rani setiap hari."
+      },
+      "constraints": {
+        "minDurationSec": 30,
+        "maxDurationSec": 60,
+        "preparationTimeSec": 30,
+        "responseTimeSec": 60
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-SPEAKING",
+      "maxScore": 30,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-SPEAKING-001", "BIGT-A2-SPEAKING-003"],
+      "tags": ["production", "a2-speaking", "read-and-speak", "story"],
+      "difficulty": 1,
+      "adminOnly": {
+        "scoringNotes": "Nilai pemahaman cerita, kemampuan menyampaikan pendapat, dan ekspresi."
+      }
+    },
+    {
+      "id": "BIGT-A2-SP-SET01-016",
+      "level": "A2",
+      "skill": "SPEAKING",
+      "taskType": "read_and_speak",
+      "responseMode": "audio",
+      "prompt": "Baca informasi tentang Taman Nasional. Jelaskan kepada teman yang ingin berkunjung.",
+      "instructionForCandidate": "Baca informasi. Bayangkan Anda menjelaskan kepada teman yang ingin pergi ke sana. Bicara selama 30-50 detik.",
+      "stimulus": {
+        "type": "text",
+        "text": "TAMAN NASIONAL BROMO TENGGER SEMERU\nLokasi: Jawa Timur\nJam buka: 05.00 - 17.00\nTiket: Rp 30.000 per orang\nAktivitas: Melihat matahari terbit, naik kuda, hiking\nFasilitas: Toilet, warung makan, tempat parkir"
+      },
+      "constraints": {
+        "minDurationSec": 25,
+        "maxDurationSec": 50,
+        "preparationTimeSec": 25,
+        "responseTimeSec": 50
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-SPEAKING",
+      "maxScore": 30,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-SPEAKING-002", "BIGT-A2-SPEAKING-003"],
+      "tags": ["production", "a2-speaking", "read-and-speak", "travel"],
+      "difficulty": 1,
+      "adminOnly": {
+        "scoringNotes": "Nilai kemampuan menyampaikan informasi wisata dengan jelas dan menarik."
+      }
+    },
+    {
+      "id": "BIGT-A2-SP-SET01-017",
+      "level": "A2",
+      "skill": "SPEAKING",
+      "taskType": "simple_mediation",
+      "responseMode": "audio",
+      "prompt": "Seorang teman asing tidak mengerti aturan di perpustakaan. Jelaskan dengan sederhana.",
+      "instructionForCandidate": "Baca aturan perpustakaan. Jelaskan dengan bahasa sederhana kepada teman asing. Bicara selama 30-50 detik.",
+      "stimulus": {
+        "type": "text",
+        "text": "PERATURAN PERPUSTAKAAN UMUM:\n1. Dilarang makan dan minum di dalam ruangan.\n2. Jaga ketenangan.\n3. Buku pinjaman maksimal 2 minggu.\n4. Denda Rp 2.000 per hari untuk keterlambatan.\n5. Buku harus dikembalikan dalam kondisi baik."
+      },
+      "constraints": {
+        "minDurationSec": 25,
+        "maxDurationSec": 50,
+        "preparationTimeSec": 25,
+        "responseTimeSec": 50
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-SPEAKING",
+      "maxScore": 30,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-SPEAKING-002", "BIGT-A2-SPEAKING-003"],
+      "tags": ["production", "a2-speaking", "simple-mediation", "rules"],
+      "difficulty": 0,
+      "adminOnly": {
+        "scoringNotes": "Nilai kemampuan menjelaskan aturan dengan bahasa sederhana dan jelas."
+      }
+    },
+    {
+      "id": "BIGT-A2-SP-SET01-018",
+      "level": "A2",
+      "skill": "SPEAKING",
+      "taskType": "simple_mediation",
+      "responseMode": "audio",
+      "prompt": "Seorang turis bertanya arah ke museum. Jelaskan petunjuknya.",
+      "instructionForCandidate": "Baca petunjuk arah. Jelaskan dengan sederhana cara pergi ke museum. Bicara selama 25-45 detik.",
+      "stimulus": {
+        "type": "text",
+        "text": "PETUNJUK ARAH KE MUSEUM NASIONAL:\nDari stasiun, keluar pintu utama dan belok kiri. Jalan lurus 200 meter sampai lampu merah. Belok kanan di lampu merah. Museum ada di sebelah kiri, gedung putih besar dengan halaman luas."
+      },
+      "constraints": {
+        "minDurationSec": 20,
+        "maxDurationSec": 45,
+        "preparationTimeSec": 25,
+        "responseTimeSec": 45
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-SPEAKING",
+      "maxScore": 30,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-SPEAKING-002", "BIGT-A2-SPEAKING-003"],
+      "tags": ["production", "a2-speaking", "simple-mediation", "directions"],
+      "difficulty": 1,
+      "adminOnly": {
+        "scoringNotes": "Nilai kemampuan memberi petunjuk arah dengan urutan logis dan preposisi tempat."
+      }
+    },
+    {
+      "id": "BIGT-A2-SP-SET01-019",
+      "level": "A2",
+      "skill": "SPEAKING",
+      "taskType": "simple_mediation",
+      "responseMode": "audio",
+      "prompt": "Seorang tetangga baru ingin tahu tentang acara di lingkungan. Jelaskan.",
+      "instructionForCandidate": "Baca informasi. Jelaskan kepada tetangga baru tentang acara lingkungan. Bicara selama 30-50 detik.",
+      "stimulus": {
+        "type": "text",
+        "text": "INFORMASI LINGKUNGAN RT 03:\nPosyandu: Setiap hari Selasa jam 09.00\nArisan: Hari Minggu pertama setiap bulan\nOlahraga bersama: Hari Sabtu pagi jam 06.00 di lapangan\nKerja bakti: Hari Minggu ketiga setiap bulan"
+      },
+      "constraints": {
+        "minDurationSec": 25,
+        "maxDurationSec": 50,
+        "preparationTimeSec": 25,
+        "responseTimeSec": 50
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-SPEAKING",
+      "maxScore": 30,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-SPEAKING-002", "BIGT-A2-SPEAKING-003"],
+      "tags": ["production", "a2-speaking", "simple-mediation", "community"],
+      "difficulty": 1,
+      "adminOnly": {
+        "scoringNotes": "Nilai kemampuan mediasi informasi komunitas dengan jelas dan ramah."
+      }
+    },
+    {
+      "id": "BIGT-A2-SP-SET01-020",
+      "level": "A2",
+      "skill": "SPEAKING",
+      "taskType": "simple_mediation",
+      "responseMode": "audio",
+      "prompt": "Seorang teman asing tidak mengerti cara memesan di restoran Indonesia. Jelaskan.",
+      "instructionForCandidate": "Bayangkan teman asing Anda belum pernah makan di restoran Indonesia. Jelaskan cara memesan makanan dengan sederhana. Bicara selama 30-50 detik.",
+      "stimulus": {
+        "type": "text",
+        "text": "TIPS MEMESAN DI RESTORAN INDONESIA:\n1. Cari tempat duduk.\n2. Lihat menu.\n3. Panggil pelayan dengan bilang 'Mbak' atau 'Mas'.\n4. Sebutkan pesanan: 'Saya pesan nasi goreng, ya.'\n5. Jika perlu, bilang 'Tolong dikurangi pedasnya.'\n6. Setelah selesai, minta bon dengan bilang 'Minta bon, ya.'"
+      },
+      "constraints": {
+        "minDurationSec": 30,
+        "maxDurationSec": 60,
+        "preparationTimeSec": 30,
+        "responseTimeSec": 60
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-SPEAKING",
+      "maxScore": 30,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-SPEAKING-002", "BIGT-A2-SPEAKING-003"],
+      "tags": ["production", "a2-speaking", "simple-mediation", "restaurant"],
+      "difficulty": 1,
+      "adminOnly": {
+        "scoringNotes": "Nilai kemampuan menjelaskan prosedur sosial dengan urutan logis dan bahasa sederhana. Perhatikan penyebutan panggilan 'Mbak/Mas'."
+      }
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "setId": "BIGT-SAMPLE-WR-A1",
+  "cefr": "A1",
+  "skill": "writing",
+  "title": "[SAMPLE] A1 Writing — Sample Items for QA",
+  "version": "0.1.0-dev",
+  "status": "draft",
+  "itemsCount": 2,
+  "items": [
+    {
+      "id": "BIGT-A1-WR-S001-Q001",
+      "level": "A1",
+      "skill": "WRITING",
+      "taskType": "form_completion",
+      "responseMode": "text",
+      "prompt": "Isi formulir pendaftaran dengan data pribadi Anda.",
+      "instructionForCandidate": "Lengkapi setiap bagian formulir. Gunakan kalimat sederhana.",
+      "stimulus": {
+        "type": "text",
+        "text": "Formulir Pendaftaran Kursus Bahasa Indonesia\nNama:\nUsia:\nAlamat:\nNomor Telepon:\nAlasan mendaftar:"
+      },
+      "constraints": {
+        "minWords": 10,
+        "maxWords": 50,
+        "responseTimeSec": 300
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-WRITING-001", "BIGT-A1-WRITING-002"],
+      "tags": ["sample", "qa", "form-completion", "a1-writing"],
+      "difficulty": 0.25,
+      "adminOnly": {
+        "sampleResponse": "Nama: John Smith. Usia: 25 tahun. Alamat: Jalan Merdeka No. 10, Jakarta. Nomor Telepon: 08123456789. Alasan mendaftar: Saya ingin belajar bahasa Indonesia untuk bekerja di Jakarta.",
+        "scoringNotes": "Nilai kelengkapan data, kosa kata dasar, dan struktur kalimat. Pastikan semua field formulir diisi."
+      }
+    },
+    {
+      "id": "BIGT-A1-WR-S001-Q002",
+      "level": "A1",
+      "skill": "WRITING",
+      "taskType": "message_reply",
+      "responseMode": "text",
+      "prompt": "Teman Anda mengirim pesan singkat. Balas pesannya.",
+      "instructionForCandidate": "Tulis balasan singkat. Gunakan kata-kata yang sopan dan sederhana.",
+      "stimulus": {
+        "type": "text",
+        "text": "Pesan dari Siti:\n\"Halo! Apa kabar? Aku mau ke kantor pos besok. Kamu mau ikut?\""
+      },
+      "constraints": {
+        "minWords": 10,
+        "maxWords": 40,
+        "responseTimeSec": 240
+      },
+      "rubricRef": "BIGT-RUBRIC-A1-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-WRITING-003", "BIGT-A1-WRITING-004"],
+      "tags": ["sample", "qa", "message-reply", "a1-writing"],
+      "difficulty": 0.25,
+      "adminOnly": {
+        "sampleResponse": "Halo Siti! Kabar baik. Aku mau ikut ke kantor pos. Jam berapa kita bertemu? Terima kasih.",
+        "scoringNotes": "Nilai kesesuaian isi balasan, kosa kata sapaan, dan struktur kalimat dasar."
+      }
+    }
+  ]
+}

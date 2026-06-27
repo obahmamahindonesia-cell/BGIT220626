@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button'
 import { 
   BarChart3, Headphones, BookOpen, Mic, PenSquare, RefreshCw, 
   Puzzle, Award, Clock, CheckCircle2, XCircle, AlertCircle, 
-  Home, RotateCcw, FileText, Loader2 
+  Home, RotateCcw, FileText, Loader2, Shield, Eye, UserCheck 
 } from 'lucide-react'
 
 interface ItemAnswer {
@@ -17,6 +17,15 @@ interface ItemAnswer {
   score: number | null
   aiScore: number | null
   isCorrect: boolean | null
+  // Constructed response fields
+  responseText: string | null
+  responseAudioUrl: string | null
+  audioDurationSec: number | null
+  wordCount: number | null
+  responseStatus: string | null
+  feedback: string | null
+  scoreText: string | null
+  scorePercentage: number | null
 }
 
 interface SessionItem {
@@ -28,6 +37,7 @@ interface SessionItem {
   question: any
   maxScore: number
   answer: ItemAnswer | null
+  responseStatus?: string
 }
 
 interface SessionData {
@@ -40,6 +50,7 @@ interface SessionData {
   startedAt: string
   completedAt: string | null
   durationSeconds: number | null
+  metadata?: Record<string, any>
   items: SessionItem[]
 }
 
@@ -82,6 +93,8 @@ const DIMENSION_META: Record<string, { name: string; icon: any; color: string }>
   INTEGRATED: { name: 'Terintegrasi', icon: Puzzle, color: '#06B6D4' },
 }
 
+const CONSTRUCTED_DIMENSIONS = ['WRITING', 'SPEAKING', 'INTEGRATED', 'MEDIATION']
+
 export default function TestResultsPage() {
   const params = useParams()
   const router = useRouter()
@@ -114,6 +127,8 @@ export default function TestResultsPage() {
     if (!session) return {}
     const dims: Record<string, number[]> = {}
     for (const item of session.items) {
+      // Skip constructed dimensions (Writing/Speaking) — not auto-scored, not part of exam total
+      if (CONSTRUCTED_DIMENSIONS.includes(item.dimension)) continue
       if (item.answer && item.answer.score !== null) {
         if (!dims[item.dimension]) dims[item.dimension] = []
         dims[item.dimension].push(item.answer.score)
@@ -194,11 +209,24 @@ export default function TestResultsPage() {
     PROFESSIONAL: 'BIGT Profesional',
     PLACEMENT: 'BIGT Penempatan',
     PRACTICE: 'BIGT Latihan',
+    TRIAL_A1: 'Trial A1 Full Skills',
+    TRIAL_A2: 'Trial A2 Full Skills',
+    DEV_FULL: 'Dev Full Test',
   }
   const productName = productLabel[session.product || ''] || session.product || 'Tes'
   const hasPendingReview = session.items.some(
-    i => i.answer && i.answer.isCorrect === null && i.answer.score === 0
+    i => i.answer && (
+      // Constructed response waiting for manual review
+      (i.answer.responseStatus && ['submitted', 'under_review', 'draft'].includes(i.answer.responseStatus)) ||
+      // Legacy: scored but isCorrect null (manual scoring items)
+      (i.answer.isCorrect === null && i.answer.score === 0)
+    )
   )
+
+  const isTrial = session.product === 'TRIAL_A1' || session.product === 'TRIAL_A2' || session.product === 'DEV_FULL'
+  const trialLabel = isTrial
+    ? session.product === 'DEV_FULL' ? 'Dev Full Test' : `Trial ${session.product?.replace('TRIAL_', '')} Full Skills`
+    : ''
 
   return (
     <div className="max-w-4xl mx-auto space-y-8">
@@ -220,13 +248,29 @@ export default function TestResultsPage() {
         )}
       </div>
 
+      {isTrial && (
+        <div className="bg-blue-50 border border-blue-200 rounded-2xl p-5 flex items-start gap-3">
+          <Shield className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
+          <div>
+            <p className="text-sm font-semibold text-blue-800">Mode Uji Coba — {trialLabel}</p>
+            <p className="text-xs text-blue-700 mt-1">
+              Hasil Writing dan Speaking belum dinilai dan perlu di-review manual oleh admin.
+              Skor uji coba ini <strong>tidak memengaruhi</strong> skor akhir atau level CEFR Anda.
+            </p>
+          </div>
+        </div>
+      )}
+
       {hasPendingReview && (
         <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5 flex items-start gap-3">
           <AlertCircle className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
           <div>
             <p className="text-sm font-semibold text-amber-800">Menunggu Penilaian</p>
             <p className="text-xs text-amber-700 mt-1">
-              Beberapa soal memerlukan penilaian manual oleh pengajar. Hasil akhir akan diperbarui setelah penilaian selesai.
+              {session.items.some(i => i.answer?.responseStatus)
+                ? 'Jawaban Menulis/Bicara Anda sudah terkirim dan sedang menunggu penilaian oleh pengajar.'
+                : 'Beberapa soal memerlukan penilaian manual oleh pengajar.'}
+              Hasil akhir akan diperbarui setelah penilaian selesai.
             </p>
           </div>
         </div>
@@ -346,34 +390,119 @@ export default function TestResultsPage() {
             {session.items.map((item) => {
               const isAnswered = item.answer !== null
               const isCorrect = item.answer?.isCorrect
+              const isConstructed = CONSTRUCTED_DIMENSIONS.includes(item.dimension)
+              const respStatus = item.answer?.responseStatus
+
+              const renderScoreBadge = () => {
+                if (!isAnswered) {
+                  return <span className="text-[10px] text-[#64748B]">-</span>
+                }
+
+                // Constructed response status
+                if (isConstructed) {
+                  if (respStatus === 'reviewed' && item.answer?.scoreText) {
+                    return (
+                      <div className="flex items-center gap-1.5">
+                        <span className="flex items-center gap-1 text-[10px] text-[#10B981]">
+                          <CheckCircle2 className="w-3.5 h-3.5" />
+                          {item.answer.scoreText}
+                        </span>
+                        {item.answer.scorePercentage != null && (
+                          <span className="text-[10px] text-[#64748B]">
+                            ({Math.round(item.answer.scorePercentage)}%)
+                          </span>
+                        )}
+                        {item.answer.feedback && (
+                          <span className="text-[10px] text-[#64748B] ml-1 italic">
+                            &quot;{item.answer.feedback}&quot;
+                          </span>
+                        )}
+                      </div>
+                    )
+                  }
+                  if (respStatus === 'under_review') {
+                    return (
+                      <span className="flex items-center gap-1 text-[10px] text-[#F59E0B]">
+                        <Eye className="w-3.5 h-3.5" />
+                        Sedang Dinilai
+                      </span>
+                    )
+                  }
+                  if (respStatus === 'submitted' || respStatus === 'draft') {
+                    return (
+                      <span className="flex items-center gap-1 text-[10px] text-[#F59E0B]">
+                        <Clock className="w-3.5 h-3.5" />
+                        Menunggu Penilaian
+                      </span>
+                    )
+                  }
+                  if (respStatus === 'needs_second_review') {
+                    return (
+                      <span className="flex items-center gap-1 text-[10px] text-[#F59E0B]">
+                        <UserCheck className="w-3.5 h-3.5" />
+                        Diperiksa Kembali
+                      </span>
+                    )
+                  }
+                  if (respStatus === 'flagged') {
+                    return (
+                      <span className="flex items-center gap-1 text-[10px] text-[#F59E0B]">
+                        <AlertCircle className="w-3.5 h-3.5" />
+                        Diperiksa Lebih Lanjut
+                      </span>
+                    )
+                  }
+                  if (respStatus === 'rejected') {
+                    return (
+                      <span className="flex items-center gap-1 text-[10px] text-red-400">
+                        <XCircle className="w-3.5 h-3.5" />
+                        Tidak Dapat Dinilai
+                      </span>
+                    )
+                  }
+                }
+
+                // Standard MCQ / short answer
+                if (isCorrect === true) {
+                  return (
+                    <span className="flex items-center gap-1 text-[10px] text-[#10B981]">
+                      <CheckCircle2 className="w-3.5 h-3.5" />
+                      {item.answer?.score ?? 0} poin
+                    </span>
+                  )
+                }
+                if (isCorrect === false) {
+                  return (
+                    <span className="flex items-center gap-1 text-[10px] text-red-400">
+                      <XCircle className="w-3.5 h-3.5" />
+                      {item.answer?.score ?? 0} poin
+                    </span>
+                  )
+                }
+                // Legacy pending
+                return (
+                  <span className="flex items-center gap-1 text-[10px] text-[#F59E0B]">
+                    <Clock className="w-3.5 h-3.5" />
+                    Review
+                  </span>
+                )
+              }
+
               return (
                 <div key={item.id} className="flex items-center justify-between p-3 rounded-xl bg-[#F7F9FC] border border-[#E5EAF2]">
                   <div className="flex items-center gap-3">
                     <span className="text-xs font-bold text-[#64748B] w-6">#{item.order}</span>
                     <span className="text-xs text-[#64748B]">{item.dimension}</span>
                     <span className="text-[10px] text-[#64748B] bg-white px-1.5 py-0.5 rounded">{item.level}</span>
+                    {isConstructed && item.answer?.wordCount != null && (
+                      <span className="text-[10px] text-[#64748B]">{item.answer.wordCount} kata</span>
+                    )}
+                    {isConstructed && item.answer?.audioDurationSec != null && (
+                      <span className="text-[10px] text-[#64748B]">{item.answer.audioDurationSec}dtk</span>
+                    )}
                   </div>
                   <div className="flex items-center gap-2">
-                    {isAnswered ? (
-                      isCorrect === true ? (
-                        <span className="flex items-center gap-1 text-[10px] text-[#10B981]">
-                          <CheckCircle2 className="w-3.5 h-3.5" />
-                          {item.answer?.score ?? 0} poin
-                        </span>
-                      ) : isCorrect === false ? (
-                        <span className="flex items-center gap-1 text-[10px] text-red-400">
-                          <XCircle className="w-3.5 h-3.5" />
-                          {item.answer?.score ?? 0} poin
-                        </span>
-                      ) : (
-                        <span className="flex items-center gap-1 text-[10px] text-[#F59E0B]">
-                          <Clock className="w-3.5 h-3.5" />
-                          Review
-                        </span>
-                      )
-                    ) : (
-                      <span className="text-[10px] text-[#64748B]">-</span>
-                    )}
+                    {renderScoreBadge()}
                   </div>
                 </div>
               )

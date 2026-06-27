@@ -41,6 +41,10 @@ export interface AnswerResponse {
   text?: string
   selectedOption?: string | number
   audioUrl?: string
+  audioDuration?: number
+  // Internal audio blob for FormData upload (not persisted to Zustand store)
+  _audioBlob?: Blob
+  _audioMimeType?: string
 }
 
 export interface AIScoreResult {

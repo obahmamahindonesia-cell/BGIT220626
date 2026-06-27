@@ -1,0 +1,63 @@
+{
+  "setId": "BIGT-SAMPLE-WR-A2",
+  "cefr": "A2",
+  "skill": "writing",
+  "title": "[SAMPLE] A2 Writing — Sample Items for QA",
+  "version": "0.1.0-dev",
+  "status": "draft",
+  "itemsCount": 2,
+  "items": [
+    {
+      "id": "BIGT-A2-WR-S001-Q001",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "short_text",
+      "responseMode": "text",
+      "prompt": "Ceritakan tentang rutinitas harian Anda.",
+      "instructionForCandidate": "Tulis 3-5 kalimat tentang kegiatan Anda setiap hari. Sebutkan waktu dan aktivitas.",
+      "constraints": {
+        "minWords": 20,
+        "maxWords": 80,
+        "responseTimeSec": 420
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-001", "BIGT-A2-WRITING-002"],
+      "tags": ["sample", "qa", "short-text", "a2-writing"],
+      "difficulty": 0.35,
+      "adminOnly": {
+        "sampleResponse": "Setiap hari saya bangun pukul 05.00 pagi. Saya mandi dan sarapan. Kemudian saya pergi ke kantor pukul 07.30. Saya bekerja sampai pukul 17.00. Pada malam hari, saya belajar bahasa Indonesia dan menonton televisi.",
+        "scoringNotes": "Nilai variasi kosa kata, struktur kalimat, dan kemampuan menjelaskan rutinitas dengan urutan yang jelas."
+      }
+    },
+    {
+      "id": "BIGT-A2-WR-S001-Q002",
+      "level": "A2",
+      "skill": "WRITING",
+      "taskType": "picture_description",
+      "responseMode": "text",
+      "prompt": "Deskripsikan gambar keluarga di bawah ini.",
+      "instructionForCandidate": "Tulis deskripsi singkat. Sebutkan siapa saja yang ada di gambar, apa yang mereka lakukan, dan di mana mereka berada.",
+      "stimulus": {
+        "type": "text",
+        "text": "Gambar: Sebuah keluarga sedang makan malam bersama di ruang makan. Ada ayah, ibu, dan dua anak. Mereka tersenyum dan berbicara. Di meja ada nasi, sayur, dan ikan goreng."
+      },
+      "constraints": {
+        "minWords": 20,
+        "maxWords": 70,
+        "responseTimeSec": 360
+      },
+      "rubricRef": "BIGT-RUBRIC-A2-WRITING",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A2-WRITING-003", "BIGT-A2-WRITING-004"],
+      "tags": ["sample", "qa", "picture-description", "a2-writing"],
+      "difficulty": 0.35,
+      "adminOnly": {
+        "sampleResponse": "Di gambar ada keluarga sedang makan malam. Ayah duduk di kursi dekat jendela. Ibu duduk di sebelah ayah. Dua anak duduk di seberang. Mereka makan nasi, sayur, dan ikan goreng. Mereka terlihat bahagia.",
+        "scoringNotes": "Nilai kemampuan mendeskripsikan secara detail, kosa kata, dan urutan deskripsi."
+      }
+    }
+  ]
+}

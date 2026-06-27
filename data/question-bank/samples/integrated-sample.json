@@ -1,0 +1,67 @@
+{
+  "setId": "BIGT-SAMPLE-INT-01",
+  "cefr": "A1",
+  "skill": "integrated",
+  "title": "[SAMPLE] Integrated & Mediation — Sample Items for QA",
+  "version": "0.1.0-dev",
+  "status": "draft",
+  "itemsCount": 2,
+  "items": [
+    {
+      "id": "BIGT-A1-INT-S001-Q001",
+      "level": "A1",
+      "skill": "INTEGRATED",
+      "taskType": "read_and_speak",
+      "responseMode": "text_audio",
+      "prompt": "Baca pengumuman berikut, lalu jelaskan isinya dengan kata-kata sendiri.",
+      "instructionForCandidate": "Baca pengumuman dengan saksama. Kemudian jelaskan isinya kepada teman Anda yang tidak bisa membaca. Gunakan kalimat sederhana.",
+      "stimulus": {
+        "type": "text",
+        "text": "PENGUMUMAN\nPerpustakaan Kota Jakarta\nJam Buka:\nSenin-Jumat: 08.00-16.00\nSabtu-Minggu: 09.00-14.00\nTutup pada hari libur nasional."
+      },
+      "constraints": {
+        "minWords": 15,
+        "maxWords": 60,
+        "responseTimeSec": 360
+      },
+      "rubricRef": "BIGT-RUBRIC-INTEGRATED-A1",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-INTEGRATED-001"],
+      "tags": ["sample", "qa", "read-and-speak", "integrated"],
+      "difficulty": 0.40,
+      "adminOnly": {
+        "sampleResponse": "Perpustakaan kota Jakarta buka setiap hari. Hari Senin sampai Jumat buka jam 8 pagi sampai jam 4 sore. Hari Sabtu dan Minggu buka jam 9 pagi sampai jam 2 siang. Perpustakaan tutup pada hari libur.",
+        "scoringNotes": "Nilai pemahaman teks, kemampuan mentransfer informasi, dan penggunaan bahasa sendiri."
+      }
+    },
+    {
+      "id": "BIGT-A1-INT-S001-Q002",
+      "level": "A1",
+      "skill": "MEDIATION",
+      "taskType": "simple_mediation",
+      "responseMode": "text",
+      "prompt": "Seorang turis asing bertanya cara naik bus ke museum. Jelaskan dengan sederhana.",
+      "instructionForCandidate": "Bayangkan ada turis asing yang tidak bisa berbahasa Indonesia. Bantu dia dengan penjelasan sederhana. Sebutkan langkah-langkahnya.",
+      "stimulus": {
+        "type": "text",
+        "text": "Turis: \"Excuse me, how can I go to the National Museum?\"\nInformasi:\nBus nomor 02 jurusan Kota.\nNaik di halte depan hotel.\nTurun di halte Museum Nasional.\nPerjalanan sekitar 20 menit."
+      },
+      "constraints": {
+        "minWords": 10,
+        "maxWords": 50,
+        "responseTimeSec": 300
+      },
+      "rubricRef": "BIGT-RUBRIC-INTEGRATED-A1",
+      "maxScore": 25,
+      "scoringMode": "manual",
+      "cefrCanDo": ["BIGT-A1-MEDIATION-001"],
+      "tags": ["sample", "qa", "mediation", "simple-mediation"],
+      "difficulty": 0.45,
+      "adminOnly": {
+        "sampleResponse": "Naik bus nomor 02 di depan hotel. Bus pergi ke Kota. Turun di halte Museum Nasional. Jalan sekitar 20 menit.",
+        "scoringNotes": "Nilai kemampuan mediasi sederhana: menyampaikan informasi dengan jelas dan bahasa yang mudah dipahami."
+      }
+    }
+  ]
+}
